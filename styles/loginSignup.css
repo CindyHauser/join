@@ -1,0 +1,96 @@
+body {
+    flex-direction: column;
+}
+
+.header-login-signup {
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 max(16px, calc((100% - 1440px)/2));
+}
+
+.login-signup-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.login-span {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.main-login-signup{
+    display: flex;
+    justify-content: center;
+    padding: 32px max(16px, calc((100% - 1440px)/2));
+}
+
+.h-line {
+    width: 80%;
+    height: 2px;
+    background-color: var(--easy-blue-color-secondary);
+    margin: 8px 0 16px 0;
+}
+
+.h1-login-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{font-size: 4rem;}
+
+.input-icon {
+    background-image: url('../assets/ui-icons/inputMail.svg'); /* Ersetzen Sie dies mit Ihrem Icon-Pfad */
+    background-position: right 12px center;     /* Position: 10px vom linken Rand, vertikal zentriert */
+    background-repeat: no-repeat;
+    padding-left: 12px;                    /* WICHTIG: Platzhalter-Abstand, damit das Icon nicht überdeckt wird */
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background-color: white;
+    padding: 64px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.loginSignup-btn {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.login-btn-guest {
+    background-color: transparent;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}

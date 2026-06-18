@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/loginSignup.css">
+</head>
+
+<body>
+    <header class="header-login-signup">
+        <img src="../assets/logo/logoDark.svg" alt="LogoDark" class="logoDark">
+        <div class="login-signup-section">
+            <span class="login-span">Not a Join user?</span>
+            <button class="loginSignup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </header>
+    <main class="main-login-signup">
+        <div class="login-container">
+            <div class="h1-login-signup">
+                <h1>Log in</h1>
+                <div class="h-line"></div>
+            </div>
+
+            <form action="/login" method="POST" class="login-form">
+                <input type="email" id="email" name="email" class="input-icon" placeholder="Enter your email" required>
+
+                <input type="password" id="password" name="password" class="input-icon"
+                    placeholder="Enter your password" required>
+                <div class="form-btn">
+                    <button type="submit" class="loginSignup-btn">Log in</button>
+                    <button type="button" class="login-btn-guest" onclick="window.location.href='../index.html'">Guest Log
+                        in</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>
