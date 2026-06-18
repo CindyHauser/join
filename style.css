@@ -1,10 +1,27 @@
+* {
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    font-family: 'Inter-Regular';
+    background-color: var(--background-color-body);
+}
+
 /* color-palette */
 :root {
     --main-color: #2A3647;
     --easy-blue-color-secondary: #29ABE2;
     --menu-hover: #0d1d34;
     --background-color-body: #F6F7F8;
+    --text-color-links: rgba(205, 205, 205);
     font-size: 16px;
+}
+
+.content-limit {
+    padding: 0 max(16px, calc((100% - 1440px)/2));
 }
 
 /* font-settings */
@@ -13,13 +30,6 @@
     src: url('assets/fonts/Inter_18pt-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
-}
-
-body {
-    margin: 0;
-    display: flex;
-    font-family: 'Inter-Regular';
-    background-color: var(--background-color-body);
 }
 
 h1 {
@@ -60,6 +70,10 @@ h1 {
     justify-content: space-between;
 }
 
+.menu-inner-container a {
+    color: var(--text-color-links);
+}
+
 .menu-point {
     height: 20%;
     display: flex;
@@ -87,7 +101,6 @@ h1 {
 .menu-point img {
     min-width: 30px;
 }
-
 
 .privacy-and-security-section {
     height: 25%;
@@ -193,7 +206,6 @@ h1 {
 
 .main-content {
     height: 84%;
-
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,13 +1,15 @@
-body {
+.body-login-signup {
     flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
 }
 
 .header-login-signup {
     height: 30vh;
+    height: 30dvh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 max(16px, calc((100% - 1440px)/2));
 }
 
 .login-signup-section {
@@ -24,7 +26,8 @@ body {
 .main-login-signup{
     display: flex;
     justify-content: center;
-    padding: 32px max(16px, calc((100% - 1440px)/2));
+    align-items: center;
+    flex: 1;
 }
 
 .h-line {
@@ -40,7 +43,9 @@ body {
     align-items: center;
 }
 
-h1{font-size: 4rem;}
+h1{
+    font-size: 4rem;
+}
 
 .input-icon {
     background-image: url('../assets/ui-icons/inputMail.svg'); /* Ersetzen Sie dies mit Ihrem Icon-Pfad */
@@ -74,6 +79,7 @@ h1{font-size: 4rem;}
     justify-content: center;
     gap: 1rem;
 }
+
 .loginSignup-btn {
     background-color: var(--main-color);
     color: white;
@@ -84,6 +90,7 @@ h1{font-size: 4rem;}
     font-weight: 700;
     cursor: pointer;
 }
+
 .login-btn-guest {
     background-color: transparent;
     color: var(--main-color);
@@ -93,4 +100,21 @@ h1{font-size: 4rem;}
     font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
+}
+
+.footer-login-signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    height: 10dvh;
+}
+
+.footer-login-signup nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-login-signup nav a {
+    color: var(--text-color-links);
 }
