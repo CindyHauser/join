@@ -113,9 +113,8 @@ h1 {
 }
 
 .privacy-button-box {
-    width: 56%;
     overflow: hidden;
-    transition: all 450ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 .privacy-button-box:hover {
@@ -125,9 +124,8 @@ h1 {
 }
 
 .legal-notice-box {
-    width: 56%;
     overflow: hidden;
-    transition: all 450ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 .legal-notice-box:hover {
