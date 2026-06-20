@@ -205,11 +205,6 @@ h1 {
 .main-content {
     height: 84%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 56px;
-    font-weight: 700;
-    color: #2b2b2b33;
 }
 
 .checkbox {

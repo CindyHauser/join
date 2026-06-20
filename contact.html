@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="shortcut icon" href="./assets/logo/logoDark.svg" type="image/x-icon">
+    <link rel="stylesheet" href="styles/contact-static.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-     <div class="menu-section">
+    <div class="menu-section">
         <div class="logo-container">
             <img src="assets/logo/join-mainlogo.svg" alt="join-mainlogo.svg" class="main-logo">
         </div>
@@ -39,7 +42,9 @@
     </div>
     <main class="main-section">
         <header class="header-main-html">
-            <div class="app-main-title"><h1>Kanban Project Management Tool</h1></div>
+            <div class="app-main-title">
+                <h1>Kanban Project Management Tool</h1>
+            </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
                     <img src="assets/ui-icons/help.svg" alt="help.svg">
@@ -48,10 +53,42 @@
             </div>
         </header>
         <section class="main-content">
-            
+            <div class="contact-list">
+                <div class="add-contact-button-parent">
+                    <div class="add-contact-button">
+                        <span>Add new contact</span>
+                        <img src="assets/ui-icons/person_add.svg" alt="person_add.svg">
+                    </div>
+                </div>
+                <div class="contact-main-list-parent">
+                    <div class="contact-card"></div>
+                    <div class="contact-card"></div>
+                </div>
+            </div>
+            <div class="contact-expanded-field">
+                <div class="contact-expanded-field-inner-container">
+                    <div class="contact-responsive-back-button-parent"></div>
+                    <div class="contact-static-title">
+                        <div class="contact-txt"><span>Contacts</span></div>
+                        <div class="contact-border-line"></div>
+                        <div class="contact-subtitle"><span>Better with a team </span></div>
+                    </div>
+                    <div class="contact-main-expanded-card">
+                        <div class="contact-expanded-name-and-functions"></div>
+                        <div class="contact-info-txt"></div>
+                        <div class="contact-telephone-and-email-parent">
+                            <div class="contact-email-txt"></div>
+                            <div class="contact-email" id="contactEmail"></div>
+                            <div class="contact-phone-txt"></div>
+                            <div class="contact-phone" id="contactPhone"></div>
+                        </div>
+                    </div>
+                    <div class="contact-success-message-parent"></div>
+                </div>
+            </div>
         </section>
-
     </main>
-    
+
 </body>
+
 </html>
