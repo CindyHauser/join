@@ -47,18 +47,51 @@ h1{
     font-size: 4rem;
 }
 
+.back-arrow {
+    position: absolute;
+    top: 83px;
+    left: 20px;
+    font-size: 32px;
+    aspect-ratio: 1/1;
+    width: 40px;
+    text-align: center;
+    color: var(--easy-blue-color-secondary);
+}
+
+.back-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.2);
+    border-radius: 50%;
+}
+
 .input-icon {
-    background-image: url('../assets/ui-icons/inputMail.svg'); /* Ersetzen Sie dies mit Ihrem Icon-Pfad */
-    background-position: right 12px center;     /* Position: 10px vom linken Rand, vertikal zentriert */
-    background-repeat: no-repeat;
-    padding-left: 12px;                    /* WICHTIG: Platzhalter-Abstand, damit das Icon nicht überdeckt wird */
+    padding-left: 12px;                    
     height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
+.bg-input-mail {
+    background-image: url('../assets/ui-icons/inputMail.svg');
+    background-position: right 12px center;     
+    background-repeat: no-repeat;
+}
+
+.bg-input-password {
+    background-image: url('../assets/ui-icons/inputLock.svg');
+    background-position: right 12px center;     
+    background-repeat: no-repeat;
+}
+
+.bg-input-name {
+    background-image: url('../assets/ui-icons/inputPerson.svg');
+    background-position: right 12px center;     
+    background-repeat: no-repeat;
+}
+
 .login-signup-container {
     width: 50%;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

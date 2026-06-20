@@ -16,19 +16,20 @@
     </header>
     <main class="main-login-signup content-limit">
         <div class="login-signup-container">
+            <a href="login.html" class="back-arrow">&#8592;</a>
             <div class="h1-login-signup">
                 <h1>Sign up</h1>
                 <div class="h-line"></div>
             </div>
             <form action="/signup" method="POST" class="login-signup-form">
-                <input type="text" id="name" name="name" class="input-icon" placeholder="Enter your name" required>
+                <input type="text" id="name" name="name" class="input-icon bg-input-name" placeholder="Enter your name" required>
 
-                <input type="email" id="email" name="email" class="input-icon" placeholder="Enter your email" required>
+                <input type="email" id="email" name="email" class="input-icon bg-input-mail" placeholder="Enter your email" required>
 
-                <input type="password" id="password" name="password" class="input-icon"
-                    placeholder="Enter your password" autocomplete="current-password" required>
+                <input type="password" id="password" name="password" class="input-icon bg-input-password"
+                    placeholder="Enter your password" required>
 
-                <input type="password" id="confirm-password" name="confirm-password" class="input-icon"
+                <input type="password" id="confirm-password" name="confirm-password" class="input-icon bg-input-password"
                     placeholder="Confirm your password" required>
                 <div class="terms-container">
                     <input type="checkbox" id="terms" name="terms" required>
@@ -42,7 +43,7 @@
     </main>
     <footer class="footer-login-signup content-limit">
         <nav>
-            <a class="privacy-button-box" href="'#">Privacy Policy</a>
+            <a class="privacy-button-box" href="#">Privacy Policy</a>
             <a class="legal-notice-box" href="#">Legal notice</a>
         </nav>
     </footer>
