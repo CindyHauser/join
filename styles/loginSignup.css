@@ -143,11 +143,6 @@ h1{
     align-items: center;
     gap: 0.5rem;
 }
-.terms-container input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
 
 .footer-login-signup {
     display: flex;
