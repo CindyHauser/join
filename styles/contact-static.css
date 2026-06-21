@@ -138,6 +138,9 @@
 .contact-expanded-field-inner-container {
     height: 100%;
     width: 96%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .contact-responsive-back-button-parent {
@@ -150,6 +153,19 @@
     align-items: center;
     gap: 32px;
 }
+
+#contactCardExpandedRenderTarget {
+    height: max-content;
+    width: 100%;
+    min-height: 49vh;
+}
+
+.contact-main-expanded-card {
+    height: 49vh;
+    width: 49vw;
+}
+
+.contact-success-message-parent {}
 
 .contact-txt {
     font-size: 56px;
@@ -171,7 +187,7 @@
 }
 
 .contact-main-expanded-card {
-    height: 60%;
+    height: 49vh;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -212,7 +228,6 @@
     height: 75%;
     font-size: 42px;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -223,10 +238,16 @@
 
 .function-edit {
     width: 33%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .function-delete {
     width: 33%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 
