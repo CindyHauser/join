@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
-    <link rel="shortcut icon" href="./assets/logo/logoDark.svg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+    <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/loginSignup.css">
 </head>
-<body>
 
-     <div class="menu-section">
-        <div class="logo-container">
-            <img src="assets/logo/join-mainlogo.svg" alt="join-mainlogo.svg" class="main-logo">
+<body class="body-login-signup">
+    <header class="header-login-signup content-limit">
+        <img src="../assets/logo/logoDark.svg" alt="LogoDark" class="logoDark">
+        <div class="login-signup-section">
+            <span class="login-span">Not a Join user?</span>
+            <button class="login-signup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
         </div>
-        <div class="menu-bar">
-            <div class="menu-inner-container">
-                <a class='menu-point ' href='/'>
-                    <img src="assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">
-                    <span>Summary</span>
-                </a>
-                <a href="index copy 2.html" class="menu-point">
-                    <img src="assets/ui-icons/add-Icons.svg" alt="add-Icons.svg">
-                    <span>Add Task</span></a>
-                <a href="index copy 3.html" class="menu-point">
-                    <img src="assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
-                    <span>Board</span>
-                </a>
-                <a href="index copy 4.html" class="menu-point menu-point-selected">
-                    <img src="assets/ui-icons/contact-icons.svg" alt="contact-icons.svg">
-                    <span>Contacts</span>
-                </a>
-            </div>
-        </div>
-        <div class="privacy-and-security-section">
-            <div class="privacy-button-box"><span>Privacy Policy</span></div>
-            <div class="legal-notice-box"><span>Legal Notice</span></div>
-        </div>
-    </div>
-    <main class="main-section">
-        <header class="header-main-html">
-            <div class="app-main-title"><h1>Kanban Project Management Tool</h1></div>
-            <div class="app-profile-and-help-section">
-                <div class="help-icon">
-                    <img src="assets/ui-icons/help.svg" alt="help.svg">
-                </div>
-                <div class="profile-initial">SM</div>
-            </div>
-        </header>
-        <section class="main-content">
-            
-        </section>
-
-    </main>
+    </header>
     
+    <main class="main-login-signup content-limit">
+        <div class="login-signup-container">
+            <div class="h1-login-signup">
+                <h1>Log in</h1>
+                <div class="h-line"></div>
+            </div>
+
+            <form action="/login" method="POST" class="login-signup-form">
+                <input type="email" id="email" name="email" class="input-icon bg-input-mail" placeholder="Enter your email" autocomplete="email" required>
+
+                <input type="password" id="password" name="password" class="input-icon bg-input-password"
+                    placeholder="Enter your password" autocomplete="current-password" required>
+                <div class="form-btn">
+                    <button type="submit" class="login-signup-btn">Log in</button>
+                    <button type="button" class="login-btn-guest" onclick="window.location.href='./HTML/summary.html'">Guest Log
+                        in</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer-login-signup content-limit">
+        <nav>
+            <a class="privacy-button-box" href="'#">Privacy Policy</a>
+            <a class="legal-notice-box" href="#">Legal notice</a>
+        </nav>
+    </footer>
+
 </body>
+
 </html>
