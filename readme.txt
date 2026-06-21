@@ -6,6 +6,7 @@
 1. weitere Vorbereitung auf render Elemente
 2. erste UI funktionalität am Contact member mini card mit eingebunden (wenn contact card geklickt wird passiert was)
 3. template contact cards und expanded cards fertig
+4. contact rendering und expanding completed ( clicken zum testen)
 
 
 Änderung Stand 21.06.2026 von Cindy
