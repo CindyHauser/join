@@ -4,6 +4,26 @@
     height: 100dvh;
 }
 
+.start-logo {
+    position: fixed;
+    z-index: 1;
+    animation: shrinkLogo 1.2s ease-in-out forwards;
+}
+
+@keyframes shrinkLogo {
+    from {
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        top: 40px;
+        left: 40px;
+        width: 80px;
+    }
+}
+
 .header-login-signup {
     height: 30vh;
     height: 30dvh;
@@ -23,7 +43,7 @@
     font-weight: 400;
 }
 
-.main-login-signup{
+.main-login-signup {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,7 +63,7 @@
     align-items: center;
 }
 
-h1{
+h1 {
     font-size: 4rem;
 }
 
@@ -65,7 +85,7 @@ h1{
 }
 
 .input-icon {
-    padding-left: 12px;                    
+    padding-left: 12px;
     height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -73,19 +93,19 @@ h1{
 
 .bg-input-mail {
     background-image: url('../assets/ui-icons/inputMail.svg');
-    background-position: right 12px center;     
+    background-position: right 12px center;
     background-repeat: no-repeat;
 }
 
 .bg-input-password {
     background-image: url('../assets/ui-icons/inputLock.svg');
-    background-position: right 12px center;     
+    background-position: right 12px center;
     background-repeat: no-repeat;
 }
 
 .bg-input-name {
     background-image: url('../assets/ui-icons/inputPerson.svg');
-    background-position: right 12px center;     
+    background-position: right 12px center;
     background-repeat: no-repeat;
 }
 
