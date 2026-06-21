@@ -61,8 +61,17 @@
                     </div>
                 </div>
                 <div class="contact-main-list-parent">
-                    <div class="contact-card"></div>
-                    <div class="contact-card"></div>
+                    <div class="contact-card letter-border">
+                        <div class="leter-border-letter-box">A</div>
+                        <div class="letter-border-line"></div>
+                    </div>
+                    <div class="contact-card contacts-member" onclick="clicked(this)">
+                        <div class="contacts-member-circle-initial"><span>AS</span></div>
+                        <div class="contacts-member-name-and-email-parent">
+                            <div class="contacts-member-name"><span>Anja Schulz</span></div>
+                            <div class="contacts-member-email"><span>schulz@hotmail.com</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="contact-expanded-field">
@@ -90,5 +99,9 @@
     </main>
 
 </body>
-
+<script src="js/contactData.js"></script>
+<script src="js/contactTemplate.js"></script>
+<script src="js/contactRender.js"></script>
+<script src="js/contactUserInterface.js"></script>
+<script src="script.js"></script>
 </html>
