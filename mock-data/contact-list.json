@@ -1,0 +1,92 @@
+[
+    {
+        "forename": "Anna",
+        "surname": "Müller",
+        "phone": 4915112345678,
+        "fornameFirstLetter": "a",
+        "surnameFirstLetter": "m",
+        "email": "anna.mueller@test.de",
+        "badgeColor": [46, 204, 113]
+    },
+    {
+        "forename": "Bernd",
+        "surname": "Schmidt",
+        "phone": 4915223456789,
+        "fornameFirstLetter": "b",
+        "surnameFirstLetter": "s",
+        "email": "b.schmidt@test.de",
+        "badgeColor": [52, 152, 219]
+    },
+    {
+        "forename": "Clara",
+        "surname": "Weber",
+        "phone": 4915334567890,
+        "fornameFirstLetter": "c",
+        "surnameFirstLetter": "w",
+        "email": "clara.w@test.de",
+        "badgeColor": [155, 89, 182]
+    },
+    {
+        "forename": "David",
+        "surname": "Wagner",
+        "phone": 4915445678901,
+        "fornameFirstLetter": "d",
+        "surnameFirstLetter": "w",
+        "email": "david.wagner@test.de",
+        "badgeColor": [241, 196, 15]
+    },
+    {
+        "forename": "Elena",
+        "surname": "Becker",
+        "phone": 4915556789012,
+        "fornameFirstLetter": "e",
+        "surnameFirstLetter": "b",
+        "email": "elena.b@test.de",
+        "badgeColor": [230, 126, 34]
+    },
+    {
+        "forename": "Felix",
+        "surname": "Hoffmann",
+        "phone": 4915667890123,
+        "fornameFirstLetter": "f",
+        "surnameFirstLetter": "h",
+        "email": "f.hoffmann@test.de",
+        "badgeColor": [231, 76, 60]
+    },
+    {
+        "forename": "Greta",
+        "surname": "Schäfer",
+        "phone": 4915778901234,
+        "fornameFirstLetter": "g",
+        "surnameFirstLetter": "s",
+        "email": "greta.schaefer@test.de",
+        "badgeColor": [26, 188, 156]
+    },
+    {
+        "forename": "Hans",
+        "surname": "Koch",
+        "phone": 4915889012345,
+        "fornameFirstLetter": "h",
+        "surnameFirstLetter": "k",
+        "email": "hans.koch@test.de",
+        "badgeColor": [52, 73, 94]
+    },
+    {
+        "forename": "Ida",
+        "surname": "Bauer",
+        "phone": 4915990123456,
+        "fornameFirstLetter": "i",
+        "surnameFirstLetter": "b",
+        "email": "ida.bauer@test.de",
+        "badgeColor": [149, 165, 166]
+    },
+    {
+        "forename": "Jan",
+        "surname": "Richter",
+        "phone": 4916001234567,
+        "fornameFirstLetter": "j",
+        "surnameFirstLetter": "r",
+        "email": "jan.richter@test.de",
+        "badgeColor": [211, 84, 0]
+    }
+]

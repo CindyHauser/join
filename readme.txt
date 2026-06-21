@@ -7,6 +7,7 @@
 2. erste UI funktionalität am Contact member mini card mit eingebunden (wenn contact card geklickt wird passiert was)
 3. template contact cards und expanded cards fertig
 
+
 Änderung Stand 21.06.2026 von Cindy
 1. alle HTML-Seiten in den entsprechenden Ordner getan bis auf index.html
 2. alle Verlinkungen darin korrigiert
