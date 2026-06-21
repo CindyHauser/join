@@ -172,7 +172,7 @@
 
 .contact-main-expanded-card {
     height: 60%;
-    width: 80%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -180,7 +180,55 @@
 
 .contact-expanded-name-and-functions {
     height: 40%;
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
+
+.contacts-member-circle-initial-expanded {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    min-width: 96px;
+    min-height: 96px;
+    background-color: var(--easy-blue-color-secondary);
+    color: white;
+    box-shadow: -2px 0px 5px 2px #2b2b2b33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 56px;
+}
+
+.contacts-member-name-and-functions-expanded {
+    width: 60%;
+    height: 16vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contacts-member-name-expanded {
+    height: 75%;
+    font-size: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts-member-functions {
+    height: 25%;
+    display: flex;
+}
+
+.function-edit {
+    width: 33%;
+}
+
+.function-delete {
+    width: 33%;
+}
+
 
 .contact-info-txt {
     height: 10%;
@@ -196,18 +244,28 @@
 
 .contact-email-txt {
     height: 23%;
+    font-weight: 700;
 }
 
 .contact-email {
     height: 23%;
 }
 
+.contact-email a {
+    color: var(--easy-blue-color-secondary);
+}
+
 .contact-phone-txt {
     height: 23%;
+    font-weight: 700;
 }
 
 .contact-phone {
     height: 23%;
+}
+
+.contact-phone a {
+    color: black;
 }
 
 .contact-success-message-parent {
