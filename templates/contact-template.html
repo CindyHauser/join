@@ -1,10 +1,10 @@
 <!-- expanded contact card template -->
-<div class="contact-main-expanded-card">
+<div class="contact-main-expanded-card" id="contactMainExpandedCard">
     <div class="contact-expanded-name-and-functions">
         <div class="contacts-member-circle-initial-expanded">AS</div>
         <div class="contacts-member-name-and-functions-expanded">
             <div class="contacts-member-name-expanded">Anja Schulz</div>
-            <div class="contacts-member-functions">
+            <div class="contacts-member-functions" onclick="setEventBubbling(event)">
                 <div class="function-edit">
                     <img src="../assets/ui-icons/edit.svg" alt="edit.svg">
                     <span>Edit</span>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="contact-info-txt"><span>Contact Information</span></div>
-    <div class="contact-telephone-and-email-parent">
+    <div class="contact-telephone-and-email-parent" onclick="setEventBubbling(event)">
         <div class="contact-email-txt"><span>Email</span></div>
         <div class="contact-email" id="contactEmail"><a href="mailto:antom@gmail.com">antom@gmail.com</a></div>
         <div class="contact-phone-txt"><span>Phone</span></div>
@@ -36,8 +36,8 @@
 
 
 <!-- contact card contacts member template -->
-<div class="contact-card contacts-member" onclick="clicked(this)">
-    <div class="contacts-member-circle-initial"><span>AS</span></div>
+<div class="contact-card contacts-member" onclick="clicked(this)" id="test-id">
+    <div class="contacts-member-circle-initial" style="background-color: rgba(255, 0, 0, 1);"><span>AS</span></div>
     <div class="contacts-member-name-and-email-parent">
         <div class="contacts-member-name"><span>Anja Schulz</span></div>
         <div class="contacts-member-email"><span>schulz@hotmail.com</span></div>

@@ -1,8 +1,7 @@
 let contactListJsonLibrary = ''
 let fornameFirstLetter= ''
 const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
-let preludeContactArray = []
-let contactArray = []
+let contactsArray = []
 
 const getLibraryForFirebaseInit = async () => {
     const response = await fetch(BASE_URL + "/contact" + ".json")
@@ -28,6 +27,7 @@ const postContactDataToFireBase = async (path, data = {}) => {
 }
 
 const getPreldudeContactArray = (object) => {
+    let preludeContactArray = []
     for (key in object) {
         if (key != "position") {
             preludeContactArray.push(setPreludeContactArrayStructure(key, object))
@@ -39,16 +39,16 @@ const getPreldudeContactArray = (object) => {
 }
 
 
-const getContactArray = ()=>{
+const getContactsArray = ()=>{
     const preludeArray = getPreldudeContactArray(contactListJsonLibrary)
     for (let index = 0; index < preludeArray.length; index++) {
         if (preludeArray[index].fornameFirstLetter != fornameFirstLetter) {
-            contactArray.push(preludeArray[index].fornameFirstLetter)
+            contactsArray.push(preludeArray[index].fornameFirstLetter)
             fornameFirstLetter= preludeArray[index].fornameFirstLetter
         }
-        contactArray.push(preludeArray[index])
+        contactsArray.push(preludeArray[index])
     }
-    return contactArray
+    return contactsArray
 }
 
 

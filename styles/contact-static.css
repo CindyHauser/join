@@ -156,7 +156,7 @@
 
 #contactCardExpandedRenderTarget {
     height: max-content;
-    width: 100%;
+    width: 73%;
     min-height: 49vh;
 }
 
@@ -188,7 +188,7 @@
 
 .contact-main-expanded-card {
     height: 49vh;
-    width: 60%;
+    width: 72%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -213,7 +213,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 56px;
+    font-size: 40px;
 }
 
 .contacts-member-name-and-functions-expanded {
@@ -226,7 +226,7 @@
 
 .contacts-member-name-expanded {
     height: 75%;
-    font-size: 42px;
+    font-size: 32px;
     display: flex;
     align-items: center;
 }

@@ -1,0 +1,15 @@
+.fade-in-effect-on {
+    animation: fade-in 450ms ease-in 0s 1 normal forwards;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
