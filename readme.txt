@@ -15,3 +15,10 @@
 
  änderung stand 22.06.2026 von Arnesto Arnesto
 1. delete contact active
+
+Änderungen Stand 22.06.2026 von Kevin Eberheim
+1. Summary HTML ist erstellt
+2. Beim User Login werden Namen und Initialen im localstorage gespeichert
+3. Auf Summary wird User mit seinem Namen begrüßt, bei Guest nur Good Morning.
+4. Verbindungen zu den einzelnen Task muss noch gemacht werden
+5. Hover Effekte fehlen noch
