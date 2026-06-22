@@ -34,12 +34,13 @@
                 <div class="h-line"></div>
             </div>
 
-            <form action="/login" method="POST" class="login-signup-form">
+            <form action="/login" method="POST" class="login-signup-form" id="loginForm">
                 <input type="email" id="email" name="email" class="input-icon bg-input-mail"
                     placeholder="Enter your email" autocomplete="email" required>
 
                 <input type="password" id="password" name="password" class="input-icon bg-input-password"
                     placeholder="Enter your password" autocomplete="current-password" required>
+                <p id="loginError" class="error-message"></p>
                 <div class="form-btn">
                     <button type="submit" class="login-signup-btn">Log in</button>
                     <button type="button" class="login-btn-guest"
@@ -59,5 +60,6 @@
     </footer>
 
 </body>
+<script src="../js/login.js"></script>
 
 </html>

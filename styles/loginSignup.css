@@ -196,3 +196,9 @@ h1 {
 .footer-login-signup nav a {
     color: var(--text-color-links);
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+}

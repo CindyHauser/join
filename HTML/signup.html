@@ -21,7 +21,7 @@
                 <h1>Sign up</h1>
                 <div class="h-line"></div>
             </div>
-            <form action="/signup" method="POST" class="login-signup-form">
+            <form action="/signup" method="POST" class="login-signup-form" id="signupForm">
                 <input type="text" id="name" name="name" class="input-icon bg-input-name" placeholder="Enter your name"
                     autocomplete="name" required>
 
@@ -31,8 +31,9 @@
                 <input type="password" id="password" name="password" class="input-icon bg-input-password"
                     placeholder="Enter your password" autocomplete="new-password" required>
 
-                <input type="password" id="confirm-password" name="confirm-password"
+                <input type="password" id="confirmPassword" name="confirm-password"
                     class="input-icon bg-input-password" placeholder="Confirm your password" required>
+                    <p id="signupError" class="error-message"></p>
                 <div class="terms-container">
                     <input type="checkbox" class="checkbox" id="terms" name="terms" required>
                     <label for="terms" class="terms-label">I agree to the <a href="#">Privacy Policy</a></label>
@@ -50,10 +51,5 @@
         </nav>
     </footer>
 </body>
-<script>
-    function goBack() {
-        sessionStorage.setItem("skipAnimation", "true");
-    }
-</script>
-
+<script src="../js/signup.js"></script>
 </html>
