@@ -16,10 +16,7 @@
 
 @keyframes introLogo {
     from {
-        transform: translate(
-            calc(50vw - 50%),
-            calc(50vh - 50%)
-        ) scale(7);
+        transform: translate(calc(50vw - 50% - max(16px, calc((100vw - 1440px)/2))), calc(50vh - 15vh)) scale(5);
     }
 
     to {
