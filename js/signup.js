@@ -25,7 +25,8 @@ async function openPostSignup() {
     const signupData = {
         name: name.value,
         email: email.value,
-        password: password.value
+        password: password.value,
+        initials: getInitials(name.value)
     };
     await postSignupDataToFireBase("user", signupData);
     signupForm.reset();
@@ -71,4 +72,17 @@ const postSignupDataToFireBase = async (path, data = {}) => {
 
 function goBack() {
     sessionStorage.setItem("skipAnimation", "true");
+}
+
+function getInitials(name) {
+    if (!name || !name.trim()) {
+        return "";
+    }
+    const nameParts = name.trim().split(/\s+/);
+    if (nameParts.length === 1) {
+        return (nameParts[0][0]).toUpperCase();
+    }
+
+    return (nameParts[0][0] + nameParts[nameParts.length - 1][0])
+        .toUpperCase();
 }

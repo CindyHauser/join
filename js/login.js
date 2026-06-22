@@ -9,7 +9,7 @@ loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     errorMessageElement.textContent = '';
     const user = await checkUserExists();
-
+    await saveUserDataToLocalStorage();
     if (user) {
         email.value = '';
         password.value = '';
@@ -25,4 +25,16 @@ async function checkUserExists() {
     const userData = await users.json();
     const user = Object.values(userData).find(u => u.email === email.value);
     return user;
+}
+
+async function getUserByEmail(email) {
+    const users = await fetch(BASE_URL + "user.json");
+    const userData = await users.json();
+    return Object.values(userData).find(u => u.email === email);
+}
+
+async function saveUserDataToLocalStorage() {
+    const currentUser = await getUserByEmail(email.value);
+    localStorage.setItem("currentUserName", currentUser.name);
+    localStorage.setItem("currentUserInitials", currentUser.initials);
 }

@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summary</title>
     <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/summary.css">
 </head>
+
 <body>
 
-     <div class="menu-section">
+    <div class="menu-section">
         <div class="logo-container">
             <img src="../assets/logo/join-mainlogo.svg" alt="join-mainlogo.svg" class="main-logo">
         </div>
@@ -39,19 +42,90 @@
     </div>
     <main class="main-section">
         <header class="header-main-html">
-            <div class="app-main-title"><h1>Kanban Project Management Tool</h1></div>
+            <div class="app-main-title">
+                <h1>Kanban Project Management Tool</h1>
+            </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
                     <img src="../assets/ui-icons/help.svg" alt="help.svg">
                 </div>
-                <div class="profile-initial">G</div>
+                <div class="profile-initial" id="profileInitial">G</div>
             </div>
         </header>
         <section class="main-content">
-            
+            <div class="summary-container">
+                <div class="summary-header">
+                    <h2>Join 360</h2>
+                    <div class="v-line-header"></div>
+                    <p>Key Metrics at a Glance</p>
+                </div>
+
+                <div class="summary-metrics">
+                    <div class="metric-card">
+                        <div class="summary-icon-container">
+                            <img src="../assets/ui-icons/edit.svg" alt="edit.svg" class="summary-icon">
+                        </div>
+                        <div>
+                            <h2 id="numberToDo">0</h2>
+                            <p id="todoTasks">To-Do</p>
+                        </div>
+
+                    </div>
+                    <div class="metric-card">
+                        <div class="summary-icon-container">
+                            <img src="../assets/ui-icons/done.svg" alt="done.svg" class="summary-icon">
+                        </div>
+                        <div>
+                            <h2 id="numberDoneTasks">0</h2>
+                            <p id="doneTasks">Done</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-metrics">
+                    <div class="metric-card">
+                        <div class="summary-icon-container bg-red">
+                            <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg" class="summary-icon">
+                        </div>
+                        <div>
+                            <h2 id="numberToDo">0</h2>
+                            <p id="todoTasks">To-Do</p>
+                        </div>
+                        <div class="v-line-urgent"></div>
+                        <div>
+                            <h3 id="urgentDate">October 15, 2026</h3>
+                            <p>Upcoming Deadline</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="summary-metrics">
+                    <div class="metric-card flex-column">
+                        <h2 id="numberTotalTasks">0</h2>
+                        <p id="totalTasks">Task in Board</p>
+                    </div>
+                    <div class="metric-card flex-column">
+                        <h2 id="numberPendingTasks">0</h2>
+                        <p id="pendingTasks">Tasks in Progress</p>
+                    </div>
+                    <div class="metric-card flex-column">
+                        <h2 id="numberAwaitingFeedback">0</h2>
+                        <p id="awaitingFeedback">Awaiting Feedback</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="greeting-section">
+                <h3>Good morning<span id="greetingUser">!</span></h3>
+                <h2 id="greetingUserName"></h2>
+            </div>
         </section>
 
     </main>
-    
+
 </body>
+<script src="../script.js"></script>
+<script src="../js/summary.js"></script>
+
 </html>
