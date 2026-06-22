@@ -4,23 +4,32 @@
     height: 100dvh;
 }
 
-.start-logo {
-    position: fixed;
+.logoDark {
     z-index: 1;
-    animation: shrinkLogo 1.2s ease-in-out forwards;
+    animation: introLogo 1.2s ease-in-out forwards;
 }
 
-@keyframes shrinkLogo {
+@keyframes introLogo {
     from {
-        top: 50%;
-        left: 50%;
-        width: 300px;
-        transform: translate(-50%, -50%);
+        transform: translate(
+            calc(50vw - 50%),
+            calc(50vh - 50%)
+        ) scale(7);
     }
+
     to {
-        top: 40px;
-        left: 40px;
-        width: 80px;
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+.page-content {
+    opacity: 0;
+    animation: showContent 0.4s 0.8s ease-in-out forwards;
+}
+
+@keyframes showContent {
+    to {
+        opacity: 1;
     }
 }
 
