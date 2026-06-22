@@ -9,6 +9,11 @@
     animation: introLogo 1.2s ease-in-out forwards;
 }
 
+.no-animation .logoDark {
+    animation: none;
+    transform: translate(0, 0) scale(1);
+}
+
 @keyframes introLogo {
     from {
         transform: translate(
@@ -25,6 +30,11 @@
 .page-content {
     opacity: 0;
     animation: showContent 0.4s 0.8s ease-in-out forwards;
+}
+
+.no-animation .page-content {
+    animation: none;
+    opacity: 1;
 }
 
 @keyframes showContent {
