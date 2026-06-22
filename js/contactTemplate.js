@@ -43,7 +43,7 @@ const setExpandedContactcardsTemplate = (id,library) => {
                     <img src="../assets/ui-icons/edit.svg" alt="edit.svg">
                     <span>Edit</span>
                 </div>
-                <div class="function-delete">
+                <div class="function-delete" onclick="deleteContact('${id}')">
                     <img src="../assets/ui-icons/delete.svg" alt="delete.svg">
                     <span>Delete</span>
                 </div>

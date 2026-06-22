@@ -1,7 +1,7 @@
 const renderContactList = () =>{
-    let contactListInnerHtml = ''
+    let contactList = document.getElementById('contactMainListParent')
+    contactList.innerHTML = ''
     for (let index = 0; index < contactsArray.length; index++) {
-        contactListInnerHtml += setContactCards(index,contactsArray)
+        contactList.innerHTML += setContactCards(index,contactsArray)
     }
-    document.getElementById('contactMainListParent').innerHTML = contactListInnerHtml
 }

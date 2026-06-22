@@ -3,7 +3,7 @@ const clicked = (element) => {
     const expandedContactField = document.getElementById('contactCardExpandedRenderTarget')
     refreshmarksOnContactCards()
     container.classList.add('contact-member-selected')
-    expandedContactField.innerHTML = setExpandedContactcardsTemplate(element.id,contactListJsonLibrary)
+    expandedContactField.innerHTML = setExpandedContactcardsTemplate(element.id, contactListJsonLibrary)
     addEnteranceEffect(expandedContactField, 450)
 
 
@@ -32,4 +32,12 @@ const addEnteranceEffect = (container, transitionTime) => {
     setTimeout(() => {
         container.classList.remove('fade-in-effect-on')
     }, transitionTime + 100)
+}
+
+const deleteContact = async (id) => {
+    await deleteContactDataFromFireBase("/contact/" + `${id}`)
+    closeExpandingCards()
+    await setLibraryForFirebaseInit();
+    getContactsArray();
+    renderContactList()
 }

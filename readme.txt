@@ -12,3 +12,6 @@
 Änderung Stand 21.06.2026 von Cindy
 1. alle HTML-Seiten in den entsprechenden Ordner getan bis auf index.html
 2. alle Verlinkungen darin korrigiert
+
+ änderung stand 22.06.2026 von Arnesto Arnesto
+1. delete contact active

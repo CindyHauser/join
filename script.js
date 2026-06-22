@@ -5,8 +5,4 @@ const initContactPage = async ()=>{
         getContactsArray();
         // rendering list
         renderContactList();
-        
-
-        
 }
-
