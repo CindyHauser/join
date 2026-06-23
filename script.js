@@ -2,11 +2,33 @@ const profileInitialElement = document.getElementById('profileInitial');
 const currentUserInitials = localStorage.getItem("currentUserInitials");
 profileInitialElement.textContent = currentUserInitials || "G";
 
-const initContactPage = async ()=>{
+const initContactPage = async () => {
         // set up the library
         await setLibraryForFirebaseInit();
         // setup contact Array
         getContactsArray();
         // rendering list
         renderContactList();
+}
+
+function showProfileMenu() {
+        // Implementation for showing profile menu
+        const profileInitial = document.getElementById("profileInitial");
+        const profileMenu = document.getElementById("profileMenu");
+
+        profileMenu.classList.toggle("active");
+
+        document.addEventListener("click", (event) => {
+                if (!profileInitial.contains(event.target) &&
+                        !profileMenu.contains(event.target)) {
+                        profileMenu.classList.remove("active");
+                }
+        });
+}
+
+function logOut(){
+        localStorage.removeItem("currentUserInitials");
+        localStorage.removeItem("currentUserName");
+        sessionStorage.setItem("skipAnimation", "true");
+        window.location.href = '../index.html';
 }

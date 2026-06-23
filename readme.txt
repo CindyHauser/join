@@ -22,3 +22,7 @@
 3. Auf Summary wird User mit seinem Namen begrüßt, bei Guest nur Good Morning.
 4. Verbindungen zu den einzelnen Task muss noch gemacht werden
 5. Hover Effekte fehlen noch
+
+Änderungen Stand 23.06.2026 von Kevin Eberheim
+1. Hover Effekte für Summary erstellt
+2. LogOut bei Initialen hinzugefügt
