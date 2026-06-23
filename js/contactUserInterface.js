@@ -41,3 +41,15 @@ const deleteContact = async (id) => {
     getContactsArray();
     renderContactList()
 }
+
+const initOverlayAddContact = () => {
+    const overlayAddContact = document.getElementById('contactAddOverlay')
+    const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
+    overlayAddContact.classList.add('contact-overlay-activated')
+    addEnteranceEffect(OverlayInnerContainer, 450)
+}
+
+const closeOverlayAddContact = () => {
+    const overlayAddContact = document.getElementById('contactAddOverlay')
+    overlayAddContact.classList.remove('contact-overlay-activated')
+}

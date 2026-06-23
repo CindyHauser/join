@@ -26,3 +26,7 @@
 Änderungen Stand 23.06.2026 von Kevin Eberheim
 1. Hover Effekte für Summary erstellt
 2. LogOut bei Initialen hinzugefügt
+
+Änderungen Stand 23.06.2026 von Arnesto
+1. Merge conflict bei gitHub gelöst bitte um Funktionstest ob Funktionen verloren gehen
+2. Add new contact Form und UI dafür ist hinzugefügt 

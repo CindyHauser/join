@@ -1,0 +1,299 @@
+.contact-overlay {
+    background-color: rgba(0, 0, 0, 0.723);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+
+.contact-overlay-inner-container {
+    height: 90%;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-overlay-form {
+    height: 80%;
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+}
+
+.contact-overlay-form-header {
+    height: 100%;
+    border-radius: 10px 0px 0px 10px;
+    width: 37%;
+    background-color: var(--menu-hover);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.contact-overlay-form-header-inner-hug {
+    height: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.contact-overlay-form-fist-section {
+    height: 20%;
+    display: flex;
+    justify-content: end;
+}
+
+.contact-overlay-form-second-section {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-overlay-form-close-bar-responsive {
+    display: none;
+    justify-content: flex-end;
+    padding: 8px;
+    height: 64%;
+    width: 96%;
+}
+
+.contact-overlay-form-logo-container {
+    height: 30%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-overlay-form-logo-container img {
+    height: 80%;
+    width: auto;
+    object-fit: cover;
+}
+
+
+.contact-overlay-form-title-container {
+    width: 96%;
+    height: 15%;
+    color: white;
+    font-size: 42px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.contact-overlay-form-subtitle-container {
+    width: 96%;
+    color: white;
+    height: 8%;
+    display: flex;
+    align-items: center;
+}
+
+.contact-overlay-form-border-line {
+    border: 2px solid var(--easy-blue-color-secondary);
+    height: 2px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.contact-overlay-form-body {
+    background-color: white;
+    width: 63%;
+    border-radius: 0 10px 10px 0;
+}
+
+.contact-overlay-form-body-inner-hug {
+    height: 100%;
+    display: flex;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.contact-overlay-form-body-first-section {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-overlay-form-body-round-initial {
+    border: 2px solid #00000012;
+    background-color: rgba(44, 43, 43, 0.423);
+    height: 120px;
+    width: 120px;
+    min-height: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-overlay-form-body-second-section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.contact-overlay-form-close-bar-desktop {
+    height: 8%;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.contact-overlay-form-close-bar-desktop img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    transition: all 450ms ease-in-out;
+}
+
+.contact-overlay-form-close-bar-desktop img:hover {
+    cursor: pointer;
+    background-color: var(--text-color-links);
+}
+
+.contact-overlay-form-name-container {
+    border: 2px solid var(--text-color-links);
+    height: 8%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px 8px 8px 8px;
+    justify-content: center;
+}
+
+.contact-overlay-form-name-container input {
+    width: 90%;
+    height: 90%;
+    padding: 0;
+    border: 0;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.contact-overlay-form-name-container img {
+    height: 24px;
+    width: 24px;
+    max-width: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.contact-overlay-error {
+    height: 6%;
+    display: flex;
+}
+
+.contact-overlay-form-email-container {
+    border: 2px solid var(--text-color-links);
+    height: 8%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px 8px 8px 8px;
+    justify-content: center;
+}
+
+.contact-overlay-form-email-container input {
+    width: 90%;
+    height: 90%;
+    padding: 0;
+    border: 0;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.contact-overlay-form-email-container img {
+    height: 24px;
+    width: 24px;
+    max-width: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+
+.contact-overlay-form-phone-container {
+    border: 2px solid var(--text-color-links);
+    height: 8%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px 8px 8px 8px;
+    justify-content: center;
+}
+
+
+
+.contact-overlay-form-phone-container input {
+    width: 90%;
+    height: 90%;
+    padding: 0;
+    border: 0;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.contact-overlay-form-phone-container img {
+    height: 24px;
+    width: 24px;
+    max-width: 24px;
+    max-height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+
+.contact-overlay-functions {
+    display: flex;
+    gap: 16px;
+    height: 11%;
+}
+
+.contact-overlay-function-cancel-container {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 16px;
+    gap: 8px;
+    padding: 8px;
+    transition: all 450ms ease-in-out;
+}
+
+.contact-overlay-function-cancel-container:hover {
+    cursor: pointer;
+    color: var(--easy-blue-color-secondary);
+    border: 2px solid var(--easy-blue-color-secondary);
+}
+
+.contact-overlay-function-check-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--menu-hover);
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    font-size: 16px;
+    gap: 8px;
+    padding: 8px;
+    transition: all 450ms ease-in-out;
+}
+
+.contact-overlay-function-check-container:hover {
+    background-color: var(--easy-blue-color-secondary);
+    cursor: pointer;
+}
+
+input:focus {
+    outline: none;
+}
