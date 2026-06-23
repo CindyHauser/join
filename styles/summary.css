@@ -83,6 +83,15 @@
     color: white;
 }
 
+.metric-card:hover .summary-icon-container:not(.bg-red) {
+    background-color: white;
+}
+
+.metric-card:hover .summary-icon-container:not(.bg-red) .summary-icon {
+    filter: brightness(0);
+    transform: scale(1.1);
+}
+
 .v-line-urgent {
     width: 2px;
     height: 80%;
@@ -108,6 +117,22 @@
     font-size: 2rem;
     font-weight: 500;
     margin: 0;
+}
+
+.transform-origin-left {
+    transform-origin: left center;
+}
+
+.transform-origin-right {
+    transform-origin: right center;
+}
+
+.transform-origin-top {
+    transform-origin: top center;
+}
+
+.transform-origin-top:hover {
+    transform: scaleY(1.1);
 }
 
 
