@@ -4,6 +4,19 @@ const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatab
 let contactsArray = []
 
 
+
+const data1 =
+{
+    "forename": "Arnesto",
+    "surname": "Arnesto",
+    "phone": 4915223456789,
+    "fornameFirstLetter": "a",
+    "surnameFirstLetter": "a",
+    "email": "b.schmidt@test.de",
+    "badgeColor": [52, 51, 119]
+}
+
+
 const postMethode = (data) => {
     const methode = {
         method: "POST",

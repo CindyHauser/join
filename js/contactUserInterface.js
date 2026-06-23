@@ -37,5 +37,7 @@ const addEnteranceEffect = (container, transitionTime) => {
 const deleteContact = async (id) => {
     await deleteContactDataFromFireBase("/contact/" + `${id}`)
     closeExpandingCards()
-    await initContactPage()
+    await setLibraryForFirebaseInit();
+    getContactsArray();
+    renderContactList()
 }
