@@ -131,8 +131,12 @@
     transform-origin: top center;
 }
 
-.transform-origin-top:hover {
+.metric-card.transform-origin-top:hover {
     transform: scaleY(1.1);
+}
+
+.metric-card.transform-origin-top:hover .summary-icon-container {
+    transform: scaleX(1.1);
 }
 
 
