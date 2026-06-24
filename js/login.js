@@ -9,8 +9,8 @@ loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     errorMessageElement.textContent = '';
     const user = await checkUserExists();
-    await saveUserDataToLocalStorage();
     if (user) {
+        await saveUserDataToLocalStorage();
         email.value = '';
         password.value = '';
         window.location.href = './HTML/summary.html';
@@ -21,20 +21,19 @@ loginForm.addEventListener('submit', async (event) => {
 });
 
 async function checkUserExists() {
-    const users = await fetch(BASE_URL + "user.json");
-    const userData = await users.json();
-    const user = Object.values(userData).find(u => u.email === email.value);
-    return user;
+    const user = await getUserByEmail();
+    if (user.password === password.value){return true;}
+    return false;
 }
 
-async function getUserByEmail(email) {
+async function getUserByEmail() {
     const users = await fetch(BASE_URL + "user.json");
     const userData = await users.json();
-    return Object.values(userData).find(u => u.email === email);
+    return Object.values(userData).find(u => u.email === email.value);
 }
 
 async function saveUserDataToLocalStorage() {
-    const currentUser = await getUserByEmail(email.value);
+    const currentUser = await getUserByEmail();
     localStorage.setItem("currentUserName", currentUser.name);
     localStorage.setItem("currentUserInitials", currentUser.initials);
 }
