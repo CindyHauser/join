@@ -211,6 +211,37 @@ h1 {
     width: 16px;
     height: 16px;
     cursor: pointer;
+
+    appearance: none;
+    border: 2px solid #555;
+    border-radius: 4px;
+    position: relative;
+    overflow: visible;
+    background: transparent;
+}
+
+.checkbox:checked::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: -7px;
+    width: 0px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 8px 1px 0;
+    transform: rotate(40deg);
+}
+
+.checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: -4px; /* ragt nach oben */
+    width: 4px;
+    height: 12px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    transform: rotate(35deg);
 }
 
 
