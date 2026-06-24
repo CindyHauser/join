@@ -2,10 +2,14 @@
     animation: fade-in 450ms ease-in 0s 1 normal forwards;
 }
 
+.fade-out-effect-on {
+    animation: fade-out 450ms ease-in 0s 1 normal forwards;
+}
+
 @keyframes fade-in {
     0% {
         opacity: 0;
-        transform: translateX(200px);
+        transform: translateX(100px);
     }
 
     100% {
@@ -14,9 +18,29 @@
     }
 }
 
-.contact-overlay-activated{
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+.contact-overlay-activated {
     display: flex;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
+}
+
+.contact-form-overlay-input-parent-focused {
+    border: 2px solid var(--easy-blue-color-secondary);
+}
+
+.error-message-activated {
+    border: 2px solid red;
 }

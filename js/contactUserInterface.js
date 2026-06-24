@@ -1,3 +1,6 @@
+const overlayAdd = document.getElementById('contactAddOverlay')
+const allAddContactInputs = overlayAdd.querySelectorAll('input')
+
 const clicked = (element) => {
     const container = element
     const expandedContactField = document.getElementById('contactCardExpandedRenderTarget')
@@ -34,6 +37,15 @@ const addEnteranceEffect = (container, transitionTime) => {
     }, transitionTime + 100)
 }
 
+const addOverlayContactEXitEffect = (OverlayInnerContainer, overlayAddContact, transitionTime) => {
+    OverlayInnerContainer.classList.add('fade-out-effect-on')
+    setTimeout(() => {
+        OverlayInnerContainer.classList.remove('fade-out-effect-on')
+        overlayAddContact.classList.remove('contact-overlay-activated')
+        resetAllErrorMarks()
+    }, transitionTime + 100)
+}
+
 const deleteContact = async (id) => {
     await deleteContactDataFromFireBase("/contact/" + `${id}`)
     closeExpandingCards()
@@ -51,5 +63,52 @@ const initOverlayAddContact = () => {
 
 const closeOverlayAddContact = () => {
     const overlayAddContact = document.getElementById('contactAddOverlay')
-    overlayAddContact.classList.remove('contact-overlay-activated')
+    const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
+    addOverlayContactEXitEffect(OverlayInnerContainer, overlayAddContact, 450)
+    
+}
+
+const resetAllErrorMarks = () => {
+    const parent = document.querySelector('.contact-overlay-form-body-second-section')
+    const allErrorMessage = parent.querySelectorAll('.input-error-span')
+    const allInputContainer = parent.querySelectorAll('.contact-input-parent')
+    allErrorMessage.forEach(
+        (error) => {
+            error.setAttribute('style', 'opacity:0')
+        }
+    )
+    allInputContainer.forEach(
+        (container)=>{
+            container.classList.remove('error-message-activated')
+        }
+    )   
+}
+
+
+let contactFormInputPlaceHolder = ''
+const contactFormFocused = (element) => {
+    let focusedPlaceHolder = element.getAttribute('placeholder')
+    contactFormInputPlaceHolder = focusedPlaceHolder
+    element.setAttribute('placeholder', '')
+    const inputParent = element.closest('.contact-input-parent')
+    inputParent.classList.remove('error-message-activated')
+    inputParent.classList.add('contact-form-overlay-input-parent-focused')
+    document.getElementById(`${element.id}ContainerError`).setAttribute('style', 'opacity:0')
+}
+
+const contactFormBlured = (element) => {
+    element.setAttribute('placeholder', contactFormInputPlaceHolder)
+    const inputParent = element.closest('.contact-input-parent')
+    inputParent.classList.remove('contact-form-overlay-input-parent-focused')
+}
+
+
+
+const createContact = () => {
+    validationArray = []
+    validationArray = setValidationArray(allAddContactInputs, validationArray)
+    let validationCheckvalue = ObjectArrayValidation(validationArray)
+    if (validationCheckvalue != true) {
+        markFalsevalue(validationCheckvalue)
+    }
 }

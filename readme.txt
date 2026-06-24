@@ -30,3 +30,6 @@
 Änderungen Stand 23.06.2026 von Arnesto
 1. Merge conflict bei gitHub gelöst bitte um Funktionstest ob Funktionen verloren gehen
 2. Add new contact Form und UI dafür ist hinzugefügt 
+
+Änderungen Stand 24.06.2026 von Arnesto
+1.form Validation in add contact finished

@@ -193,6 +193,9 @@
 .contact-overlay-error {
     height: 6%;
     display: flex;
+    color: red;
+    font-size: 12px;
+    align-items: center;
 }
 
 .contact-overlay-form-email-container {
