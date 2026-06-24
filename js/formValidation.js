@@ -1,8 +1,7 @@
 const isValidName = (name) => /^[a-zA-ZäöüÄÖÜß\s\-]{2,}$/.test(name);
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const isValidPhone = (phone) => /^[\+]?[0-9\s\-()]{6,20}$/.test(phone);
-let validationArray = []
-let falseObjects = []
+
 
 const setObjectValidation = (input, RegexFunction) => {
     let dataStrcture = {
@@ -29,7 +28,7 @@ const setValidationArray = (allInputQuerry, ObjectArray) => {
 
 
 const ObjectArrayValidation = (arrayObject) => {
-    falseObjects = []
+    let falseObjects = []
     for (let index = 0; index < arrayObject.length; index++) {
         if (arrayObject[index].checkvalue === false) {
             falseObjects.push(arrayObject[index].id)

@@ -105,7 +105,7 @@ const contactFormBlured = (element) => {
 
 
 const createContact = () => {
-    validationArray = []
+    let validationArray = []
     validationArray = setValidationArray(allAddContactInputs, validationArray)
     let validationCheckvalue = ObjectArrayValidation(validationArray)
     if (validationCheckvalue != true) {
