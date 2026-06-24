@@ -1,0 +1,28 @@
+.main-content {
+    padding: 2rem;
+}
+
+.summary-header {
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+.input-task-btn{
+    display: flex;
+    align-items: center;
+}
+
+.board-input {
+    height: 2rem;
+}
+
+.add-task-btn{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
