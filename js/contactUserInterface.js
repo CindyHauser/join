@@ -121,7 +121,6 @@ const createContact = () => {
 
 // get All Value to cleaning function first !!!!
 const getAllValue = (validationArray)=>{
-    let valueObject = {}
     return {
         "name" : document.getElementById(validationArray[0].id).value,
         "email" : document.getElementById(validationArray[1].id).value,

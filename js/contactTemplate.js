@@ -59,8 +59,8 @@ const setUpContactData = (getAllValue, array) => {
         "forename": setName(getAllValue(array).name).firstName,
         "surname": setName(getAllValue(array).name).secondName,
         "phone": getAllValue(array).phone,
-        "fornameFirstLetter": setName(getAllValue(array).name).firstName[0].toUpperCase(),
-        "surnameFirstLetter": setName(getAllValue(array).name).secondName[0].toUpperCase(),
+        "fornameFirstLetter": setName(getAllValue(array).name).firstName[0],
+        "surnameFirstLetter": setName(getAllValue(array).name).secondName[0],
         "email": getAllValue(array).email,
         "badgeColor": setBadgeColor()
     }
