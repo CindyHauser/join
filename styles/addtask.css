@@ -23,14 +23,14 @@ input, select{
     width: 440px;
     height: 48px;
     border-radius: 8px;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
 }
 
 textarea{
     width: 440px;
     height: 136px;
     border-radius: 8px;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
 }
 
 .main-content{
@@ -53,11 +53,18 @@ textarea{
     gap: 2rem;
 }
 
-.add-Task-leftside{
+.add-task{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    flex:1;
     gap:2rem;
+}
+.align-start{
+    align-items: flex-start;
+}
+
+.align-end{
+    align-items: flex-end;
 }
 
 .form-inputs{
@@ -66,30 +73,11 @@ textarea{
     gap: 0.5rem;
 }
 
-.add-task-footer{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
 fieldset{
     border: none;
     padding-inline: 0;
     gap: 0.5rem;
     margin: 0;
-}
-
-
-
-
-
-
-
-
-.priority-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
 }
 
 .priority-options {
@@ -103,10 +91,13 @@ fieldset{
 .priority-btn {
     padding: 10px 20px;
     border: 1px solid #ccc;
-    background: white;
+    background-color: white;
     cursor: pointer;
     border-radius: 8px;
     font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Ausgewählte Farben */
@@ -130,4 +121,35 @@ fieldset{
 
 .priority-btn.selected img {
     filter: brightness(0) invert(1);
+}
+
+.add-task-footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 140px;
+}
+
+.add-task-buttons{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.add-task-footer button{
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-main{
+    background-color: var(--main-color);
+    color: white;
+}
+
+.btn-secondary{
+    background-color: white ;
 }
