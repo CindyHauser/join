@@ -1,0 +1,89 @@
+label.required::after {
+    content: "*";
+    color: red;
+}
+
+p.required::before {
+    content: "*";
+    color: red;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.add-task-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.add-task-content{
+    display: flex;
+    gap: 2rem;
+}
+
+.add-Task-leftside{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:2rem;
+}
+
+.add-task-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+.priority-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.priority-options {
+    display: flex;
+    gap: 10px;
+}
+
+.priority-btn {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+/* Ausgewählte Farben */
+.priority-btn.selected.urgent {
+    background: #FF3D00;
+    color: white;
+    border-color: #FF3D00;
+}
+
+.priority-btn.selected.medium {
+    background: #FFA800;
+    color: white;
+    border-color: #FFA800;
+}
+
+.priority-btn.selected.low {
+    background: #7AE229;
+    color: white;
+    border-color: #7AE229;
+}
+
+.priority-btn.selected img {
+    filter: brightness(0) invert(1);
+}

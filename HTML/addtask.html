@@ -7,6 +7,7 @@
     <title>Add Task</title>
     <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/addtask.css">
 </head>
 
 <body>
@@ -58,24 +59,55 @@
         </header>
         <section class="main-content">
             <h2>Add Task</h2>
-            <form>
-                <div>
-                    <label for="title">Title<span class="star-required">*</span></label>
-                    <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" placeholder="Enter a Description"></textarea>
-                    <label for="date">Due date<span class="star-required">*</span></label>
-                    <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+            <form class="add-task-form">
+                <div class="add-task-content">
+                    <div class="add-Task-leftside">
+                        <label class="required" for="title">Title</label>
+                        <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" placeholder="Enter a Description"></textarea>
+                        <label class="required" for="date">Due date</label>
+                        <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+                    </div>
+                    <div class="add-Task-leftside">
+                        <div class="priority-container">
+                            <label class="priority-label">Priority</label>
+
+                            <div class="priority-options">
+                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)">
+                                    Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
+                                </button>
+                                <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
+                                    Medium <img src="../assets/ui-icons/medium.svg" alt="medium.svg">
+                                </button>
+                                <button type="button" class="priority-btn low" onclick="selectPriority(this)">
+                                    Low <img src="../assets/ui-icons/low.svg" alt="low.svg">
+                                </button>
+                            </div>
+                        </div>
+
+                        <label for="assigned">Assigned to</label>
+                        <select id="contactSelect">
+                            <option value="Select contact to assign">Select contact to assign</option>
+                        </select>
+
+                        <div id="contactList"></div>
+
+                        <label class="required" for="assigned">Category</label>
+                        <select required name="assigend" id="assigend">
+                            <option value="" selected hidden>Select task Category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <p>Priority</p>
-                    <input type="button" value="Urgent">
-                    <label for="assigned">Assigned to</label>
-                    <select name="assigend" id="assigend">
-                        <option value="Select task Category" selected hidden>Select task Category</option>
-                        <option value="Technical Task">Technical Task</option>
-                        <option value="User Story">User Story</option>
-                    </select>
+                <div class="add-task-footer">
+                    <p class="required">This field is required</p>
+                    <div>
+                        <button>Clear x</button>
+                        <button>Create task <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
+                    </div>
+                    
                 </div>
             </form>
         </section>
@@ -84,4 +116,6 @@
 
 </body>
 <script src="../script.js"></script>
+<script src="../js/addTask.js"></script>
+
 </html>
