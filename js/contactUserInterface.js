@@ -8,9 +8,16 @@ const clicked = (element) => {
     container.classList.add('contact-member-selected')
     expandedContactField.innerHTML = setExpandedContactcardsTemplate(element.id, contactListJsonLibrary)
     addEnteranceEffect(expandedContactField, 450)
-
-
 }
+
+const resetAllContactInput = () => {
+    allAddContactInputs.forEach(
+        (input) => {
+            input.value = ''
+        }
+    )
+}
+
 
 const refreshmarksOnContactCards = () => {
     const memberCards = document.querySelectorAll('.contacts-member')
@@ -65,7 +72,7 @@ const closeOverlayAddContact = () => {
     const overlayAddContact = document.getElementById('contactAddOverlay')
     const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
     addOverlayContactEXitEffect(OverlayInnerContainer, overlayAddContact, 450)
-
+    resetAllContactInput()
 }
 
 const resetAllErrorMarks = () => {
@@ -102,41 +109,48 @@ const contactFormBlured = (element) => {
     inputParent.classList.remove('contact-form-overlay-input-parent-focused')
 }
 
+const getAllValue = (validationArray) => {
+    return {
+        "name": document.getElementById(validationArray[0].id).value,
+        "email": document.getElementById(validationArray[1].id).value,
+        "phone": document.getElementById(validationArray[2].id).value
+    }
+}
 
-
-const createContact = () => {
+const createContact = async () => {
     let validationArray = []
     validationArray = setValidationArray(allAddContactInputs, validationArray)
     let validationCheckvalue = ObjectArrayValidation(validationArray)
     if (validationCheckvalue != true) {
         markFalsevalue(validationCheckvalue)
     } else {
-        
-        //console.log(setUpContactData(getAllValue,validationArray));
-        
+        await uploadAndinitNewContactList(validationArray)
     }
 }
 
-// setupData
-
-// get All Value to cleaning function first !!!!
-const getAllValue = (validationArray)=>{
-    return {
-        "name" : document.getElementById(validationArray[0].id).value,
-        "email" : document.getElementById(validationArray[1].id).value,
-        "phone" : document.getElementById(validationArray[2].id).value
-    }
+const uploadAndinitNewContactList = async (validationArray) => {
+    const response = await postContactDataToFireBase("/contact", setUpContactData(getAllValue, validationArray))
+    await initContactPage()
+    closeOverlayAddContact()
+    const newContactCard = document.getElementById(response.name)
+    clicked(newContactCard)
+    newContactCard.scrollIntoView({ behavior: 'smooth' })
+    setAlertAddContactSuccess()
 }
 
-
-
-
-
-// setUpName
-
-
-
-
+const setAlertAddContactSuccess = () => {
+    const alertElement = document.getElementById('AddContactSuccessAlert')
+    setTimeout(() => {
+        alertElement.classList.add('fade-in-effect-on')
+    }, 600);
+    setTimeout(() => {
+        alertElement.classList.remove('fade-in-effect-on')
+        alertElement.classList.add('fade-out-effect-on')
+    }, 2550);
+    setTimeout(() => {
+        alertElement.classList.remove('fade-out-effect-on')
+    }, 3000);
+}
 
 
 

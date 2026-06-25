@@ -35,6 +35,4 @@
 1.form Validation in add contact finished
 
 Änderungen Stand 25.06.2026 von Arnesto
-1.data structure für add new contact fehlt nur noch die bereinigungsfunktion
-2. secction main content : height 84% wurde bei contact-static css neu hinzugefügt, damit 
-   die Bildschirmverhältnisse wieder stimmen 
+1.add contact feature fertig bite testen

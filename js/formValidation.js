@@ -1,5 +1,5 @@
 const isValidName = (name) => /^[a-zA-ZäöüÄÖÜß\s\-]{2,}$/.test(name);
-const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 const isValidPhone = (phone) => /^[\+]?[0-9\s\-()]{6,20}$/.test(phone);
 
 
