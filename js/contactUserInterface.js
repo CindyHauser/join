@@ -65,7 +65,7 @@ const closeOverlayAddContact = () => {
     const overlayAddContact = document.getElementById('contactAddOverlay')
     const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
     addOverlayContactEXitEffect(OverlayInnerContainer, overlayAddContact, 450)
-    
+
 }
 
 const resetAllErrorMarks = () => {
@@ -78,10 +78,10 @@ const resetAllErrorMarks = () => {
         }
     )
     allInputContainer.forEach(
-        (container)=>{
+        (container) => {
             container.classList.remove('error-message-activated')
         }
-    )   
+    )
 }
 
 
@@ -110,5 +110,35 @@ const createContact = () => {
     let validationCheckvalue = ObjectArrayValidation(validationArray)
     if (validationCheckvalue != true) {
         markFalsevalue(validationCheckvalue)
+    } else {
+        
+        //console.log(setUpContactData(getAllValue,validationArray));
+        
     }
 }
+
+// setupData
+
+// get All Value to cleaning function first !!!!
+const getAllValue = (validationArray)=>{
+    let valueObject = {}
+    return {
+        "name" : document.getElementById(validationArray[0].id).value,
+        "email" : document.getElementById(validationArray[1].id).value,
+        "phone" : document.getElementById(validationArray[2].id).value
+    }
+}
+
+
+
+
+
+// setUpName
+
+
+
+
+
+
+
+

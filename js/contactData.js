@@ -17,6 +17,9 @@ const data1 =
 }
 
 
+
+
+
 const postMethode = (data) => {
     const methode = {
         method: "POST",

@@ -12,6 +12,61 @@ const setPreludeContactArrayStructure = (key, object) => {
     return template
 }
 
+
+const setName = (name) => {
+    let output = name.trim()
+    output = output.split(" ")
+    if (output.length == 1) {
+        output = setObjectSingleName(output)
+    } else if (output.length == 2) {
+        output = setObjectDoubleName(output)
+    } else if (output.length > 2) {
+        output = setTripleAndMoreName(output)
+    }
+    return output
+}
+
+
+const setObjectSingleName = (array) => {
+    return {
+        "firstName": array[0],
+        "secondName": array[0]
+    }
+}
+
+const setObjectDoubleName = (array) => {
+    return {
+        "firstName": array[0],
+        "secondName": array[1]
+    }
+}
+
+const setTripleAndMoreName = (array) => {
+    return {
+        "firstName": array[0],
+        "secondName": array[1] + " " + array[array.length - 1]
+    }
+}
+
+const setBadgeColor = () => {
+    return [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)]
+}
+
+
+const setUpContactData = (getAllValue, array) => {
+    let values = getAllValue(array)
+    return {
+        "forename": setName(getAllValue(array).name).firstName,
+        "surname": setName(getAllValue(array).name).secondName,
+        "phone": getAllValue(array).phone,
+        "fornameFirstLetter": setName(getAllValue(array).name).firstName[0].toUpperCase(),
+        "surnameFirstLetter": setName(getAllValue(array).name).secondName[0].toUpperCase(),
+        "email": getAllValue(array).email,
+        "badgeColor": setBadgeColor()
+    }
+}
+
+
 const setContactCards = (index, array) => {
     let template;
     if (typeof array[index] === 'string') {
@@ -31,7 +86,7 @@ const setContactCards = (index, array) => {
     return template
 }
 
-const setExpandedContactcardsTemplate = (id,library) => {
+const setExpandedContactcardsTemplate = (id, library) => {
     let template;
     template = `<div class="contact-main-expanded-card">
     <div class="contact-expanded-name-and-functions">
