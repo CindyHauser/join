@@ -62,19 +62,26 @@
             <form class="add-task-form">
                 <div class="add-task-content">
                     <div class="add-Task-leftside">
+                        <div class="form-inputs">
                         <label class="required" for="title">Title</label>
                         <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
+                        </div>
+                        <div class="form-inputs">
                         <label for="description">Description</label>
                         <textarea name="description" id="description" placeholder="Enter a Description"></textarea>
+                        </div>
+                        <div class="form-inputs">
                         <label class="required" for="date">Due date</label>
                         <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+                        </div>
                     </div>
+                    <hr>
                     <div class="add-Task-leftside">
-                        <div class="priority-container">
-                            <label class="priority-label">Priority</label>
+                        <fieldset>
+                            <legend>Priority</legend>
 
                             <div class="priority-options">
-                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)">
+                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)" id="priorityOptions">
                                     Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
                                 </button>
                                 <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
@@ -84,21 +91,27 @@
                                     Low <img src="../assets/ui-icons/low.svg" alt="low.svg">
                                 </button>
                             </div>
-                        </div>
-
-                        <label for="assigned">Assigned to</label>
+                        </fieldset>
+                        <div class="form-inputs">
+                        <label for="contactSelect">Assigned to</label>
                         <select id="contactSelect">
                             <option value="Select contact to assign">Select contact to assign</option>
                         </select>
-
-                        <div id="contactList"></div>
-
-                        <label class="required" for="assigned">Category</label>
-                        <select required name="assigend" id="assigend">
+                        
+                        <div id="contactList">Hier kommen Kontakte</div>
+                        </div>
+                        <div class="form-inputs">
+                        <label class="required" for="category">Category</label>
+                        <select required name="category" id="category">
                             <option value="" selected hidden>Select task Category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                         </select>
+                        </div>
+                        <div class="form-inputs">
+                        <label for="subtask">Subtask</label>
+                        <input type="text" id="subtask" name="titel" placeholder="Add new subtask" required>
+                        </div>
                     </div>
                 </div>
                 <div class="add-task-footer">

@@ -8,11 +8,38 @@ p.required::before {
     color: red;
 }
 
+hr{
+    margin:0;
+}
+
+h2{
+    font-size: 4rem;
+}
+label, legend{
+    font-size: 1.25rem;
+}
+
+input, select{
+    width: 440px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid grey;
+}
+
+textarea{
+    width: 440px;
+    height: 136px;
+    border-radius: 8px;
+    border: 1px solid grey;
+}
+
 .main-content{
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
+    padding-inline: 120px;
+    max-width: 1210px;
 }
 
 .add-task-form{
@@ -33,9 +60,23 @@ p.required::before {
     gap:2rem;
 }
 
+.form-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .add-task-footer{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+
+fieldset{
+    border: none;
+    padding-inline: 0;
+    gap: 0.5rem;
+    margin: 0;
 }
 
 
@@ -53,7 +94,10 @@ p.required::before {
 
 .priority-options {
     display: flex;
+    justify-content: space-between;
     gap: 10px;
+    width: 440px;
+    height: 48px;
 }
 
 .priority-btn {
@@ -61,8 +105,8 @@ p.required::before {
     border: 1px solid #ccc;
     background: white;
     cursor: pointer;
-    border-radius: 6px;
-    transition: 0.2s;
+    border-radius: 8px;
+    font-size: 1.25rem;
 }
 
 /* Ausgewählte Farben */
