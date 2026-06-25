@@ -38,7 +38,7 @@ textarea{
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
-    padding-inline: 120px;
+    padding-left: 120px;
     max-width: 1210px;
 }
 

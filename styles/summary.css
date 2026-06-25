@@ -3,6 +3,8 @@
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
+    padding-left: 120px;
+    max-width: 1210px;
 }
 
 .summary-header {
@@ -102,9 +104,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
     justify-content: center;
     gap: 0.5rem;
+    padding-top: 190px;
 }
 
 .greeting-section h2 {
