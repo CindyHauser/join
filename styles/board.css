@@ -1,28 +1,103 @@
 .main-content {
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 1210px;
+    padding: 120px;
 }
 
 .summary-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 h2 {
     font-size: 4rem;
 }
 
-.input-task-btn{
+.input-task-btn {
     display: flex;
     align-items: center;
+    gap: 24px;
+}
+
+.search-wrapper {
+    background: white;
+    display: flex;
+    align-items: center;
+    width: 312px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding-right: 12px;
 }
 
 .board-input {
-    height: 2rem;
+    height: 46px;
+    font-size: 22px;
+    border-radius: 8px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 12px;
 }
 
-.add-task-btn{
-    height: 2rem;
+.search-icon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background: lightgrey;
+}
+
+.add-task-btn {
+    background: var(--main-color);
+    font-size: 20px;
+    height: 48px;
+    color: white;
     display: flex;
     align-items: center;
     gap: 10px;
+    border-radius: 8px;
+    padding-inline: 24px;
+    cursor: pointer;
+}
+
+.kanban-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.progress-tasks {
+    width: 25%;
+}
+
+.progress-tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-on-board-btn {
+    padding: 0;
+    border: 2px solid black;
+    height: 24px;
+    width: 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.drag-and-drop-tasks {
+    padding-block: 20px;
+    border-radius: 8px;
+    border: 1px dashed black;
+    text-align: center;
 }
