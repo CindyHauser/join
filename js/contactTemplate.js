@@ -67,6 +67,19 @@ const setUpContactData = (getAllValue, array) => {
 }
 
 
+const setAllEditContactInputs = (
+    nameInputId, phoneInputId, emailInputId, initialBadgeId, name, email, phone, colorArray,
+    fornameFirstLetter, surnameFirstLetter
+) => {
+    document.getElementById(nameInputId).value = name
+    document.getElementById(phoneInputId).value = phone
+    document.getElementById(emailInputId).value = email
+    document.getElementById(initialBadgeId).style.backgroundColor = `rgba(${colorArray[0]},${colorArray[1]},${colorArray[2]})`
+    document.getElementById(initialBadgeId).innerText = `${fornameFirstLetter.toUpperCase()}${surnameFirstLetter.toUpperCase()}`
+}
+
+
+
 const setContactCards = (index, array) => {
     let template;
     if (typeof array[index] === 'string') {
@@ -94,7 +107,7 @@ const setExpandedContactcardsTemplate = (id, library) => {
         <div class="contacts-member-name-and-functions-expanded">
             <div class="contacts-member-name-expanded">${library[id].forename} ${library[id].surname}</div>
             <div class="contacts-member-functions" onclick="setEventBubbling(event)">
-                <div class="function-edit">
+                <div class="function-edit" onclick="initEditContact('${id}')">
                     <img src="../assets/ui-icons/edit.svg" alt="edit.svg">
                     <span>Edit</span>
                 </div>

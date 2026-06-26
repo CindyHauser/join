@@ -11,7 +11,15 @@ const setObjectValidation = (input, RegexFunction) => {
     return dataStrcture
 }
 
-const setValidationArray = (allInputQuerry, ObjectArray) => {
+const getAllValue = (validationArray) => {
+    return {
+        "name": document.getElementById(validationArray[0].id).value,
+        "email": document.getElementById(validationArray[1].id).value,
+        "phone": document.getElementById(validationArray[2].id).value
+    }
+}
+
+const setContactInputsValidationArray = (allInputQuerry, ObjectArray) => {
     allInputQuerry.forEach(
         (input) => {
             if ((input.id).includes('Name')) {
@@ -27,7 +35,7 @@ const setValidationArray = (allInputQuerry, ObjectArray) => {
 }
 
 
-const ObjectArrayValidation = (arrayObject) => {
+const getValidationValue = (arrayObject) => {
     let falseObjects = []
     for (let index = 0; index < arrayObject.length; index++) {
         if (arrayObject[index].checkvalue === false) {
@@ -48,4 +56,22 @@ const markFalsevalue = (validationCheckvalue) => {
             document.getElementById(`${value}`).closest('.contact-input-parent').classList.add('error-message-activated')
         }
     )
+}
+
+
+const initValidation = (setArrayCallback, getvalueCallback, markingCallback, inputs) => {
+    let validationArray = []
+    validationArray = setArrayCallback(inputs, validationArray)
+    let validationCheckvalue = getvalueCallback(validationArray)
+    if (validationCheckvalue != true) {
+        markingCallback(validationCheckvalue)
+        return {
+            "value": false
+        }
+    } else {
+        return {
+            "value": true,
+            "array": validationArray
+        }
+    }
 }

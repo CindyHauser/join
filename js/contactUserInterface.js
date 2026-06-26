@@ -1,6 +1,10 @@
 const overlayAdd = document.getElementById('contactAddOverlay')
 const allAddContactInputs = overlayAdd.querySelectorAll('input')
+const overlayEdit = document.getElementById('contactEditOverlay')
+const allEditContactInputs = overlayEdit.querySelectorAll('input')
 
+
+// general ui
 const clicked = (element) => {
     const container = element
     const expandedContactField = document.getElementById('contactCardExpandedRenderTarget')
@@ -12,6 +16,14 @@ const clicked = (element) => {
 
 const resetAllContactInput = () => {
     allAddContactInputs.forEach(
+        (input) => {
+            input.value = ''
+        }
+    )
+}
+
+const resetAllEditContactInput = () => {
+    allEditContactInputs.forEach(
         (input) => {
             input.value = ''
         }
@@ -49,20 +61,19 @@ const addOverlayContactEXitEffect = (OverlayInnerContainer, overlayAddContact, t
     setTimeout(() => {
         OverlayInnerContainer.classList.remove('fade-out-effect-on')
         overlayAddContact.classList.remove('contact-overlay-activated')
-        resetAllErrorMarks()
+        resetAllErrorMarks(resetAllErrorMarksCallBack)
     }, transitionTime + 100)
-}
-
-const deleteContact = async (id) => {
-    await deleteContactDataFromFireBase("/contact/" + `${id}`)
-    closeExpandingCards()
-    await setLibraryForFirebaseInit();
-    getContactsArray();
-    renderContactList()
 }
 
 const initOverlayAddContact = () => {
     const overlayAddContact = document.getElementById('contactAddOverlay')
+    const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
+    overlayAddContact.classList.add('contact-overlay-activated')
+    addEnteranceEffect(OverlayInnerContainer, 450)
+}
+
+const initOverlayEditContact = () => {
+    const overlayAddContact = document.getElementById('contactEditOverlay')
     const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
     overlayAddContact.classList.add('contact-overlay-activated')
     addEnteranceEffect(OverlayInnerContainer, 450)
@@ -75,8 +86,24 @@ const closeOverlayAddContact = () => {
     resetAllContactInput()
 }
 
-const resetAllErrorMarks = () => {
-    const parent = document.querySelector('.contact-overlay-form-body-second-section')
+const closeOverlayEditContact = () => {
+    const overlayEditContact = document.getElementById('contactEditOverlay')
+    const OverlayInnerContainer = overlayEditContact.querySelector('.contact-overlay-inner-container')
+    addOverlayContactEXitEffect(OverlayInnerContainer, overlayEditContact, 450)
+    resetAllEditContactInput()
+    savedID = ''
+}
+
+const resetAllErrorMarks = (resetAllErrorMarksCallBack) => {
+    const parents = document.querySelectorAll('.contact-overlay-form-body-second-section')
+    parents.forEach(
+        (parent)=>{
+            resetAllErrorMarksCallBack(parent)
+        }
+    )
+}
+
+const resetAllErrorMarksCallBack = (parent) => {
     const allErrorMessage = parent.querySelectorAll('.input-error-span')
     const allInputContainer = parent.querySelectorAll('.contact-input-parent')
     allErrorMessage.forEach(
@@ -90,7 +117,6 @@ const resetAllErrorMarks = () => {
         }
     )
 }
-
 
 let contactFormInputPlaceHolder = ''
 const contactFormFocused = (element) => {
@@ -109,22 +135,22 @@ const contactFormBlured = (element) => {
     inputParent.classList.remove('contact-form-overlay-input-parent-focused')
 }
 
-const getAllValue = (validationArray) => {
-    return {
-        "name": document.getElementById(validationArray[0].id).value,
-        "email": document.getElementById(validationArray[1].id).value,
-        "phone": document.getElementById(validationArray[2].id).value
-    }
-}
 
+// delete contact
+const deleteContact = async (id) => {
+    await deleteContactDataFromFireBase("/contact/" + `${id}`)
+    closeExpandingCards()
+    await setLibraryForFirebaseInit();
+    getContactsArray();
+    renderContactList()
+}
+//createcontact
 const createContact = async () => {
-    let validationArray = []
-    validationArray = setValidationArray(allAddContactInputs, validationArray)
-    let validationCheckvalue = ObjectArrayValidation(validationArray)
-    if (validationCheckvalue != true) {
-        markFalsevalue(validationCheckvalue)
-    } else {
-        await uploadAndinitNewContactList(validationArray)
+    let validationResultObject = initValidation(
+        setContactInputsValidationArray, getValidationValue, markFalsevalue, allAddContactInputs
+    )
+    if (validationResultObject.value == true) {
+        await uploadAndinitNewContactList(validationResultObject.array)
     }
 }
 
@@ -152,6 +178,37 @@ const setAlertAddContactSuccess = () => {
     }, 3000);
 }
 
+// edit contact
 
 
+let savedID = ''
+const initEditContact = (id) => {
+    savedID = id
+    const contactAsJson = contactListJsonLibrary[id];
+    setAllEditContactInputs(
+        'editContactOverlayFormName', 'editContactOverlayFormPhone', 'editContactOverlayFormEmail',
+        'editContactOverlayFormInitial', `${contactAsJson.forename} ${contactAsJson.surname}`, `${contactAsJson.email}`,
+        contactAsJson.phone, contactAsJson.badgeColor, contactAsJson.fornameFirstLetter, contactAsJson.surnameFirstLetter
+    )
+    initOverlayEditContact()
+}
+// saved id always at '' at the cycle end
+const editContact = async () => {
+    const contactID = savedID
+    let validationResultObject = initValidation(
+        setContactInputsValidationArray, getValidationValue, markFalsevalue, allEditContactInputs
+    )
+    if (validationResultObject.value == true) {
+        await uploadAndShowEdit (validationResultObject.array,contactID)
+    }
+}
 
+
+const uploadAndShowEdit = async (validationArray,id) => {
+    const response = await putContactDataToFireBase("/contact/",`${id}`, setUpContactData(getAllValue, validationArray))
+    await initContactPage()
+    closeOverlayEditContact()
+    const newContactCard = document.getElementById(id)
+    clicked(newContactCard)
+    newContactCard.scrollIntoView({ behavior: 'smooth' })
+}

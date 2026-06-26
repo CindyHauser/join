@@ -22,6 +22,19 @@ const deleteMethode = (data) => {
     return methode
 }
 
+const putMethode = (data) => {
+    const methode = {
+        method: "PUT",
+        headers: {
+            "content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+    return methode
+}
+
+
+
 
 const getLibraryForFirebaseInit = async () => {
     const response = await fetch(BASE_URL + "/contact" + ".json")
@@ -35,6 +48,11 @@ const setLibraryForFirebaseInit = async () => {
 
 const postContactDataToFireBase = async (path, data = {}) => {
     const response = await fetch(BASE_URL + path + ".json", postMethode(data))
+    return await response.json()
+}
+
+const putContactDataToFireBase = async (path,id, data = {}) => {
+    const response = await fetch(BASE_URL + path +id+ ".json", putMethode(data))
     return await response.json()
 }
 

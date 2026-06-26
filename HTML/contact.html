@@ -78,7 +78,8 @@
                     </div>
                     <div id="contactCardExpandedRenderTarget"></div>
                     <div class="contact-success-message-parent">
-                        <div class="adding-contact-sucess-alert-card" id="AddContactSuccessAlert"><span>Contact successfully created</span></div>
+                        <div class="adding-contact-sucess-alert-card" id="AddContactSuccessAlert"><span>Contact
+                                successfully created</span></div>
                     </div>
                 </div>
             </div>
@@ -117,31 +118,38 @@
                         </div>
                         <div class="contact-overlay-form-body-second-section">
                             <div class="contact-overlay-form-close-bar-desktop">
-                                <img src="../assets/ui-icons/Close.svg" alt="Close.svg" onclick="closeOverlayAddContact()">
+                                <img src="../assets/ui-icons/Close.svg" alt="Close.svg"
+                                    onclick="closeOverlayAddContact()">
                             </div>
                             <div class="contact-overlay-form-name-container contact-input-parent">
-                                <input type="text" id="contactOverlayFormName" placeholder="Name" onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
+                                <input type="text" id="contactOverlayFormName" placeholder="Name"
+                                    onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/person--grey.svg" alt="person--grey.svg">
                             </div>
                             <div class="contact-overlay-error">
-                                <span id="contactOverlayFormNameContainerError" class="input-error-span" style="opacity: 0;">name not valid ! please enter again</span>
+                                <span id="contactOverlayFormNameContainerError" class="input-error-span"
+                                    style="opacity: 0;">name not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-form-email-container contact-input-parent">
-                                <input type="text" id="contactOverlayFormEmail" placeholder="Email" onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
+                                <input type="text" id="contactOverlayFormEmail" placeholder="Email"
+                                    onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/mail.svg" alt="mail.svg">
                             </div>
-                            <div class="contact-overlay-error" >
-                                <span id="contactOverlayFormEmailContainerError" class="input-error-span" style="opacity: 0;">email not valid ! please enter again</span>
+                            <div class="contact-overlay-error">
+                                <span id="contactOverlayFormEmailContainerError" class="input-error-span"
+                                    style="opacity: 0;">email not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-form-phone-container contact-input-parent">
-                                <input type="text" id="contactOverlayFormPhone" placeholder="Phone" onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
+                                <input type="text" id="contactOverlayFormPhone" placeholder="Phone"
+                                    onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/call.svg" alt="call.svg">
                             </div>
                             <div class="contact-overlay-error">
-                                <span id="contactOverlayFormPhoneContainerError" class="input-error-span" style="opacity: 0;">phone number not valid ! please enter again</span>
+                                <span id="contactOverlayFormPhoneContainerError" class="input-error-span"
+                                    style="opacity: 0;">phone number not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-functions">
-                                <div class="contact-overlay-function-cancel-container">
+                                <div class="contact-overlay-function-cancel-container" onclick="closeOverlayAddContact()">
                                     <span>Cancel</span>
                                     <img src="../assets/ui-icons/cancel.svg" alt="cancel.svg">
                                 </div>
@@ -156,7 +164,82 @@
             </div>
         </div>
     </div>
-
+    <div class="contact-overlay" id="contactEditOverlay">
+        <div class="contact-overlay-inner-container">
+            <div class="contact-overlay-form">
+                <div class="contact-overlay-form-header">
+                    <div class="contact-overlay-form-header-inner-hug">
+                        <div class="contact-overlay-form-fist-section">
+                            <div class="contact-overlay-form-close-bar-responsive">
+                                <img src="../assets/ui-icons/Close--white--resp.svg" alt="Close--white--resp.svg">
+                            </div>
+                        </div>
+                        <div class="contact-overlay-form-second-section">
+                            <div class="contact-overlay-form-logo-container">
+                                <img src="../assets/logo/join-mainlogo.svg" alt="join-mainlogo.svg">
+                            </div>
+                            <div class="contact-overlay-form-title-container">
+                                <span>Edit contact</span>
+                            </div>
+                            <div class="contact-overlay-form-border-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-overlay-form-body">
+                    <div class="contact-overlay-form-body-inner-hug">
+                        <div class="contact-overlay-form-body-first-section">
+                            <div class="contact-overlay-form-body-round-initial" id="editContactOverlayFormInitial">
+                                <img src="../assets/ui-icons/person.svg" alt="person.svg">
+                            </div>
+                        </div>
+                        <div class="contact-overlay-form-body-second-section">
+                            <div class="contact-overlay-form-close-bar-desktop">
+                                <img src="../assets/ui-icons/Close.svg" alt="Close.svg"
+                                    onclick="closeOverlayEditContact()">
+                            </div>
+                            <div class="contact-overlay-form-name-container contact-input-parent">
+                                <input type="text" id="editContactOverlayFormName" placeholder="Name"
+                                    onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
+                                <img src="../assets/ui-icons/person--grey.svg" alt="person--grey.svg">
+                            </div>
+                            <div class="contact-overlay-error">
+                                <span id="editContactOverlayFormNameContainerError" class="input-error-span"
+                                    style="opacity: 0;">name not valid ! please enter again</span>
+                            </div>
+                            <div class="contact-overlay-form-email-container contact-input-parent">
+                                <input type="text" id="editContactOverlayFormEmail" placeholder="Email"
+                                    onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
+                                <img src="../assets/ui-icons/mail.svg" alt="mail.svg">
+                            </div>
+                            <div class="contact-overlay-error">
+                                <span id="editContactOverlayFormEmailContainerError" class="input-error-span"
+                                    style="opacity: 0;">email not valid ! please enter again</span>
+                            </div>
+                            <div class="contact-overlay-form-phone-container contact-input-parent">
+                                <input type="text" id="editContactOverlayFormPhone" placeholder="Phone"
+                                    onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
+                                <img src="../assets/ui-icons/call.svg" alt="call.svg">
+                            </div>
+                            <div class="contact-overlay-error">
+                                <span id="editContactOverlayFormPhoneContainerError" class="input-error-span"
+                                    style="opacity: 0;">phone number not valid ! please enter again</span>
+                            </div>
+                            <div class="contact-overlay-functions">
+                                <div class="contact-overlay-function-cancel-container" onclick="closeOverlayEditContact()">
+                                    <span>Cancel</span>
+                                    <img src="../assets/ui-icons/cancel.svg" alt="cancel.svg">
+                                </div>
+                                <div class="contact-overlay-function-check-container" onclick="editContact()">
+                                    <span>Save</span>
+                                    <img src="../assets/ui-icons/check.svg" alt="cancel.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="../js/formValidation.js"></script>
 <script src="../js/contactData.js"></script>
