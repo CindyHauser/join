@@ -123,7 +123,7 @@ const setExpandedContactcardsTemplate = (id, library) => {
         <div class="contact-email-txt"><span>Email</span></div>
         <div class="contact-email" id="contactEmail"><a href="mailto:${library[id].email}">${library[id].email}</a></div>
         <div class="contact-phone-txt"><span>Phone</span></div>
-        <div class="contact-phone" id="contactPhone"><a href="tel:+${library[id].email}">${library[id].phone}</a></div>
+        <div class="contact-phone" id="contactPhone"><a href="tel:${library[id].phone}">${library[id].phone}</a></div>
     </div>
 </div>`
     return template
