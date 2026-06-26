@@ -39,3 +39,6 @@
 
 Änderungen Stand 26.06.2026 von Arnesto
 1.edit contact feature fertig bitte testen
+
+Änderungen Stand 26.06.2026 von Kevin Eberheim
+1. Funktionalität für clear und create Task erstellt

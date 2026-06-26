@@ -59,7 +59,7 @@
         </header>
         <section class="main-content">
             <h2>Add Task</h2>
-            <form class="add-task-form">
+            <form class="add-task-form" onsubmit="createTask(event)">
                 <div class="add-task-content">
                     <div class="add-task align-start">
                         <div class="form-inputs">
@@ -95,7 +95,7 @@
                         <div class="form-inputs">
                         <label for="contactSelect">Assigned to</label>
                         <select id="contactSelect">
-                            <option value="Select contact to assign">Select contact to assign</option>
+                            <option value="" selected hidden>Select contact to assign</option>
                         </select>
                         
                         <div id="contactList">Hier kommen Kontakte</div>
@@ -110,15 +110,15 @@
                         </div>
                         <div class="form-inputs">
                         <label for="subtask">Subtask</label>
-                        <input type="text" id="subtask" name="titel" placeholder="Add new subtask" required>
+                        <input type="text" id="subtask" name="titel" placeholder="Add subtasks separated by commas">
                         </div>
                     </div>
                 </div>
                 <div class="add-task-footer">
                     <p class="required">This field is required</p>
                     <div class="add-task-buttons">
-                        <button class="btn-secondary">Clear x</button>
-                        <button class="btn-main">Create task <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
+                        <button type="button" onclick="clearAllInput()" class="btn-secondary">Clear x</button>
+                        <button type="submit" class="btn-main">Create task <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
                     </div>
                     
                 </div>
