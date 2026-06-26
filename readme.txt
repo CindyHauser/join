@@ -35,4 +35,7 @@
 1.form Validation in add contact finished
 
 Änderungen Stand 25.06.2026 von Arnesto
-1.add contact feature fertig bite testen
+1.add contact feature fertig bitte testen
+
+Änderungen Stand 26.06.2026 von Arnesto
+1.edit contact feature fertig bitte testen

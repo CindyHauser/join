@@ -192,7 +192,7 @@ const initEditContact = (id) => {
     )
     initOverlayEditContact()
 }
-// saved id always at '' at the cycle end
+
 const editContact = async () => {
     const contactID = savedID
     let validationResultObject = initValidation(
@@ -202,7 +202,6 @@ const editContact = async () => {
         await uploadAndShowEdit (validationResultObject.array,contactID)
     }
 }
-
 
 const uploadAndShowEdit = async (validationArray,id) => {
     const response = await putContactDataToFireBase("/contact/",`${id}`, setUpContactData(getAllValue, validationArray))
