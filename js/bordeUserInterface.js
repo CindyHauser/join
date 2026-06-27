@@ -1,21 +1,29 @@
 const cardDragged = (event) => {
-    event.target.classList.add('task-board-card-dragged');
+    const element = event.target.closest('.progress-tasks')
+    const card = event.target
+    card.classList.add('task-board-card-dragged');
+    element.querySelector('.drag-and-drop-tasks').classList.add('drag-zone-entered')
     const cardData = {
-        "cardId": event.target.id,
-        "cardState": event.target.parentElement.id
+        "cardId": card.id,
+        "cardState": element.id
     }
     event.dataTransfer.setData("application/json", JSON.stringify(cardData))
+    console.log(cardData);
+
 }
 
 const cardDropped = (event) => {
     event.preventDefault()
-    const parentElement = document.getElementById(event.target.id)
+    const element = event.target.closest('.progress-tasks')
+    const dropZone = element.querySelector('.drag-and-drop-tasks')
+
     const preludeStringifyData = event.dataTransfer.getData("application/json")
     const cardData = JSON.parse(preludeStringifyData)
-    cardData.cardState = event.target.id
+    cardData.cardState = element.id
+    console.log(cardData);
+
     const draggedCard = document.getElementById(cardData.cardId)
-    visualRefreshCardAndDragZone(parentElement, draggedCard)
-    renderDragzoneVisual(parentElement,draggedCard)
+    renderDragzoneVisual(dropZone, draggedCard)
 }
 
 
@@ -27,24 +35,34 @@ const visualRefreshCardAndDragZone = (zone, card) => {
 
 const renderDragzoneVisual = (zone, card) => {
     if (zone.contains(card)) {
-        console.log('already in position');
-
+        visualRefreshCardAndDragZone(zone, card)
     } else {
-        zone.appendChild(card)
+        if (zone) {
+            zone.appendChild(card)
+            visualRefreshCardAndDragZone(zone, card)
+        } else
+            return
     }
 }
 
 const cardDraggedOver = (event) => {
     event.preventDefault()
+    const element = event.target.closest('.progress-tasks')
+    const dropZone = element.querySelector('.drag-and-drop-tasks')
+    dropZone.classList.add('drag-zone-entered')
 
 }
 
 const cardEnteringDragZone = (event) => {
     event.preventDefault()
-    event.target.classList.add('drag-zone-entered')
+    const element = event.target.closest('.progress-tasks')
+    const dropZone = element.querySelector('.drag-and-drop-tasks')
+    dropZone.classList.add('drag-zone-entered')
 }
 
 const cardLeavingDragZone = (event) => {
     event.preventDefault()
-    event.target.classList.remove('drag-zone-entered')
+    const element = event.target.closest('.progress-tasks')
+    const dropZone = element.querySelector('.drag-and-drop-tasks')
+    dropZone.classList.remove('drag-zone-entered')
 }
