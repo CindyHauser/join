@@ -1,18 +1,31 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    max-width: 1210px;
-    padding: 120px;
+    height: 84%;
+    width: 100%;
+    align-items: center;
+}
+
+.main-content-board-inner-hug {
+    margin-left: 24px;
+    margin-right: 24px;
+    height: 100%;
+    margin-top: 24px;
+    max-width: 1920px;
+    width: 96%;
 }
 
 .summary-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 20%;
 }
 
 h2 {
     font-size: 4rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .input-task-btn {
@@ -71,12 +84,14 @@ h2 {
 .kanban-board {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;
+    height: 80%;
 }
 
 .progress-tasks {
     width: 25%;
+    max-height: 66vh;
+    overflow: auto;
 }
 
 .progress-tasks-header {
