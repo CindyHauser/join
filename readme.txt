@@ -48,3 +48,6 @@
 1.Board.html angepasst
 2.visual drag and drop ui vorbereitet
 3.visual drag and drop ui updated
+4.realtime drag und drop is finished
+5.data structure in der instanz von tasks justiert
+6. render function hinzugefügt

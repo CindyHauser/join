@@ -6,3 +6,29 @@
 .drag-zone-entered {
     box-shadow: #29ABE2 0px 1px 13px 0px;
 }
+
+.left0{
+    left: 0;
+}
+
+.left1{
+    left: 16px;
+
+}
+
+.left2{
+    left: 32px;
+}
+
+.left3{
+    left: 48px;
+}
+
+.technical-task{
+    background-color:#1FD7C1 ;
+}
+
+.user-story{
+    background-color: #0038FF;
+}
+

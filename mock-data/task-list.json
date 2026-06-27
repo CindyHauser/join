@@ -2,10 +2,7 @@
     "-P1aX87YUyXrj696_abc": {
         "title": "Drag & Drop Flimmern beheben",
         "category": "Technical Task",
-        "contactSelect": [
-            "-NzA1B2C3D4E5F6G7H8I", 
-            "-NzB2C3D4E5F6G7H8I9J"
-        ],
+        "contactSelect": [],
         "date": "2026-06-27",
         "description": "Das Flackern beim Hovern über innere Elemente muss durch pointer-events: none behoben werden.",
         "priority": "urgent",
@@ -18,9 +15,7 @@
     "-P1aY98ZVxWsk707_def": {
         "title": "Datenbank-Struktur aufsetzen",
         "category": "Technical Task",
-        "contactSelect": [
-            "-NzC3D4E5F6G7H8I9J0K"
-        ],
+        "contactSelect": [],
         "date": "2026-06-28",
         "description": "Die JSON-Struktur für die Task-Objekte im Backend definieren und erste Testdaten pushen.",
         "priority": "urgent",
@@ -33,10 +28,7 @@
     "-P1aZ09AWyXtl818_ghi": {
         "title": "Login mit E-Mail und Passwort",
         "category": "User Story",
-        "contactSelect": [
-            "-NzD4E5F6G7H8I9J0K1L",
-            "-NzE5F6G7H8I9J0K1L2M"
-        ],
+        "contactSelect": [],
         "date": "2026-06-30",
         "description": "Als Nutzer möchte ich mich mit meiner E-Mail und einem Passwort einloggen können, um auf mein Board zuzugreifen.",
         "priority": "medium",
@@ -49,9 +41,7 @@
     "-P1bA12BXuYum929_jkl": {
         "title": "Matroschka-Bug beim Drop fixen",
         "category": "Technical Task",
-        "contactSelect": [
-            "-NzF6G7H8I9J0K1L2M3N"
-        ],
+        "contactSelect": [],
         "date": "2026-06-27",
         "description": "Verhindern, dass Karten in andere Karten gedroppt werden. closest() Methode implementieren.",
         "priority": "urgent",
@@ -76,10 +66,7 @@
     "-P1bC34DXwAwo141_pqr": {
         "title": "CSS Architektur aufräumen",
         "category": "Technical Task",
-        "contactSelect": [
-            "-NzG7H8I9J0K1L2M3N4O",
-            "-NzH8I9J0K1L2M3N4O5P"
-        ],
+        "contactSelect": [],
         "date": "2026-06-25",
         "description": "Doppelte Klassen entfernen und einheitliche Variablen für Farben (CSS Custom Properties) nutzen.",
         "priority": "low",
@@ -92,9 +79,7 @@
     "-P1bD45EXxBxp252_stu": {
         "title": "Karten-Design verfeinern",
         "category": "User Story",
-        "contactSelect": [
-            "-NzI9J0K1L2M3N4O5P6Q"
-        ],
+        "contactSelect": [],
         "date": "2026-07-05",
         "description": "Als Nutzer möchte ich auf einen Blick sehen, welche Priorität eine Aufgabe hat (z.B. durch kleine farbige Badges).",
         "priority": "medium",
@@ -107,9 +92,7 @@
     "-P1bE56FYyCyq363_vwx": {
         "title": "API Keys schützen",
         "category": "Technical Task",
-        "contactSelect": [
-            "-NzJ0K1L2M3N4O5P6Q7R"
-        ],
+        "contactSelect": [],
         "date": "2026-07-01",
         "description": "Sicherstellen, dass keine sensiblen API Keys im Frontend Code auf GitHub landen.",
         "priority": "urgent",
@@ -135,10 +118,7 @@
     "-P1bG78H_aE_s585_bcd": {
         "title": "Performance Optimierung",
         "category": "Technical Task",
-        "contactSelect": [
-            "-NzA1B2C3D4E5F6G7H8I",
-            "-NzC3D4E5F6G7H8I9J0K"
-        ],
+        "contactSelect": [],
         "date": "2026-07-12",
         "description": "Das Laden der Aufgaben dauert aktuell zu lange. Wir müssen überprüfen, ob wir zu viele unnötige Re-Renders im DOM haben.",
         "priority": "medium",

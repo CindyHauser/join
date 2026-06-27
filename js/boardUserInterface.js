@@ -10,22 +10,22 @@ const cardDragged = (event) => {
     event.dataTransfer.setData("application/json", JSON.stringify(cardData))
 }
 
-const cardDropped = (event) => {
+const cardDropped = async (event) => {
     event.preventDefault()
     const element = event.target.closest('.progress-tasks')
     const dropZone = element.querySelector('.drag-and-drop-tasks')
     const preludeStringifyData = event.dataTransfer.getData("application/json")
     const cardData = JSON.parse(preludeStringifyData)
     cardData.cardState = element.id
-    const draggedCard = document.getElementById(cardData.cardId)
-    renderDragzoneVisual(dropZone, draggedCard)
+    await putTaskDataToFireBaseOnDrop(cardData.cardId, cardData.cardState)
+    await initBoardPage()
+    visualRefreshCardAndDragZone(dropZone)
 }
 
 
 
-const visualRefreshCardAndDragZone = (zone, card) => {
+const visualRefreshCardAndDragZone = (zone) => {
     zone.classList.remove('drag-zone-entered')
-    card.classList.remove('task-board-card-dragged')
 }
 
 const renderDragzoneVisual = (zone, card) => {

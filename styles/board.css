@@ -113,7 +113,8 @@ h2 {
     border: 1px dashed black;
     max-height: 82%;
     min-height: 82%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -127,6 +128,8 @@ h2 {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border: 2px solid var(--text-color-links);
     border-radius: 8px;
+    min-width: 200px;
+    min-height: 300px;
     width: 200px;
     height: 300px;
     padding: 8px;
@@ -139,11 +142,11 @@ h2 {
 
 .task-board-card:hover {
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 1) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 8px;
 }
 
 .task-card-header {
-    height: 20%;
+    height: 16%;
     display: flex;
     align-items: center;
 }
@@ -161,7 +164,7 @@ h2 {
 }
 
 .task-card-body {
-    height: 80%;
+    height: 84%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -188,24 +191,46 @@ h2 {
 }
 
 .subtask-progress-indicator {
-    height: 20%;
+    height: 16%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 12px;
 }
 
 .subtask-indicator-bar {
     height: 80%;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtask-indicator-bar100 {
+    border: 1px solid var(--text-color-links);
+    height: 30%;
+    width: 70%;
+    border-radius: 8px;
+    background-color: var(--text-color-links);
+}
+
+.subtask-indicator-bar-current {
+    height: 100%;
+    background-color: var(--easy-blue-color-secondary);
+    border-radius: 8px;
 }
 
 .subtask-indicator-in-number {
     height: 80%;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
 }
 
 .task-assigned-contact-and-priority-indicator {
-    height: 20%;
+    height: 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -213,10 +238,39 @@ h2 {
 
 .assigned-contact-indicator {
     height: 80%;
-    width: 50%;
+    width: 80%;
+    display: flex;
+    position: relative;
+}
+
+.assigned-contact-indicator-no-contact-selected {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .priority-indicator {
     height: 80%;
     width: 50%;
+}
+
+.board-card-assigned-contact-badge {
+    border: 2px solid var(--background-color-body);
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    position: absolute;
+    top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.priority-indicator {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

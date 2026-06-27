@@ -11,8 +11,13 @@ const initContactPage = async () => {
         renderContactList();
 }
 
-const initBoardPage = async ()=>{
+const initBoardPage = async () => {
+        await setTaskLibraryForFirebaseInit();
+        getGeneralTaskArray(taskListJsonLibrary,setTaskDataStructure,getPreludeGeneralTaskArray)
+        getAllArray()
+        renderAllCards(toDoTaskArray,inProgressTaskArray,awaitFeedbackTaskArray,doneTaskArray)
         
+               
 }
 
 function showProfileMenu() {
@@ -30,7 +35,7 @@ function showProfileMenu() {
         });
 }
 
-function logOut(){
+function logOut() {
         localStorage.removeItem("currentUserInitials");
         localStorage.removeItem("currentUserName");
         sessionStorage.setItem("skipAnimation", "true");
