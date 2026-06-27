@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
     <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../styles/board.css">
+    <link rel="stylesheet" href="../styles/board-userInterface.css">
+    <link rel="stylesheet" href="../style.css">
+    
 </head>
 
 <body>
@@ -57,13 +59,11 @@
                 </div>
             </div>
         </header>
-
         <section class="main-content">
             <div class="main-content-board-inner-hug">
                 <div class="summary-header">
                     <h2>Board</h2>
                     <div class="input-task-btn">
-
                         <div class="search-wrapper">
                             <input class="board-input" type="text" placeholder="Find Task">
                             <div class="search-icon">
@@ -71,19 +71,27 @@
                                 <img src="../assets/ui-icons/search.svg" alt="search symbol">
                             </div>
                         </div>
-
                         <button class="add-task-btn">Add task <img src="../assets/ui-icons/add-board.svg"
                                 alt="plus to add"></button>
                     </div>
                 </div>
                 <div class="kanban-board">
-
                     <div class="progress-tasks progress-tasks-todo">
                         <div class="progress-tasks-header">
                             <h3>To Do</h3>
                             <button class="add-task-on-board-btn">+</button>
                         </div>
-                        <div class="drag-and-drop-tasks">drag and drop</div>
+                        <div class="drag-and-drop-tasks" 
+                        id="toDo" 
+                        ondrop="cardDropped(event)" 
+                        ondragover="cardDraggedOver(event)"
+                        ondragenter="cardEnteringDragZone(event)" 
+                        ondragleave="cardLeavingDragZone(event)"
+                        >
+                            <div class="task-board-card" id="id01" draggable="true" ondragstart="cardDragged(event)">
+                                <span>top</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="progress-tasks">
@@ -91,7 +99,13 @@
                             <h3>In progress</h3>
                             <button class="add-task-on-board-btn">+</button>
                         </div>
-                        <div class="drag-and-drop-tasks">drag and drop</div>
+                        <div class="drag-and-drop-tasks" 
+                        id="inProgress" 
+                        ondrop="cardDropped(event)" 
+                        ondragover="cardDraggedOver(event)"
+                        ondragenter="cardEnteringDragZone(event)" 
+                        ondragleave="cardLeavingDragZone(event)"
+                        >drag and drop</div>
                     </div>
 
                     <div class="progress-tasks">
@@ -99,14 +113,26 @@
                             <h3>Await feedback</h3>
                             <button class="add-task-on-board-btn">+</button>
                         </div>
-                        <div class="drag-and-drop-tasks">drag and drop</div>
+                        <div class="drag-and-drop-tasks" 
+                        id="awaitFeedBack" 
+                        ondrop="cardDropped(event)" 
+                        ondragover="cardDraggedOver(event)"
+                        ondragenter="cardEnteringDragZone(event)" 
+                        ondragleave="cardLeavingDragZone(event)"
+                        >drag and drop</div>
                     </div>
 
                     <div class="progress-tasks">
                         <div class="progress-tasks-header">
                             <h3>Done</h3>
                         </div>
-                        <div class="drag-and-drop-tasks">drag and drop</div>
+                        <div class="drag-and-drop-tasks" 
+                        id="done" 
+                        ondrop="cardDropped(event)" 
+                        ondragover="cardDraggedOver(event)"
+                        ondragenter="cardEnteringDragZone(event)" 
+                        ondragleave="cardLeavingDragZone(event)"
+                        >drag and drop</div>
                     </div>
 
                 </div>
@@ -116,6 +142,7 @@
     </main>
 
 </body>
+<script src="../js/bordeUserInterface.js"></script>
 <script src="../script.js"></script>
 
 </html>

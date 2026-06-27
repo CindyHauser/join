@@ -46,3 +46,4 @@
 
 Änderungen Stand 27.06.2026 von Arnesto
 1.Board.html angepasst
+2.visual drag and drop ui vorbereitet

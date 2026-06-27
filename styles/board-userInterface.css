@@ -1,0 +1,8 @@
+.task-board-card-dragged {
+    transform: rotate(6deg);
+    opacity: 0.5;
+}
+
+.drag-zone-entered {
+    box-shadow: #29ABE2 0px 1px 13px 0px;
+}
