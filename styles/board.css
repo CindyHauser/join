@@ -124,7 +124,8 @@ h2 {
 }
 
 .task-board-card {
-    border: 2px solid blue;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: 2px solid var(--text-color-links);
     border-radius: 8px;
     width: 200px;
     height: 300px;
@@ -138,7 +139,7 @@ h2 {
 
 .task-board-card:hover {
     cursor: pointer;
-    box-shadow: #29ABE2 0px 1px 13px 0px;
+    box-shadow: rgba(0, 0, 0, 1) 0px 3px 8px;
 }
 
 .task-card-header {
