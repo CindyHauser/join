@@ -12,7 +12,7 @@
 
 </head>
 
-<body>
+<body onload="init()">
 
     <div class="menu-section">
         <div class="logo-container">
@@ -83,19 +83,12 @@
                             <h3>To Do</h3>
                             <button class="add-task-on-board-btn">+</button>
                         </div>
-                        <div class="drag-and-drop-tasks">
-                            <div class="task-board-card" id="id01" draggable="true" ondragstart="cardDragged(event)">
-                                <span>top1</span>
-                            </div>
+                        <div class="drag-and-drop-tasks" id="toDoColumn">
+
                             <div class="task-board-card" id="id02" draggable="true" ondragstart="cardDragged(event)">
-                                <span>top2</span>
+                                <p>top2</p>
                             </div>
-                            <div class="task-board-card" id="id04" draggable="true" ondragstart="cardDragged(event)">
-                                <span>top4</span>
-                            </div>
-                            <div class="task-board-card" id="id03" draggable="true" ondragstart="cardDragged(event)">
-                                <span>top3</span>
-                            </div>
+
                         </div>
                     </div>
 
@@ -137,5 +130,6 @@
 </body>
 <script src="../js/bordeUserInterface.js"></script>
 <script src="../script.js"></script>
+<script src="../js/board.js"></script>
 
 </html>

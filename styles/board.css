@@ -111,7 +111,6 @@ h2 {
 
 .drag-and-drop-tasks {
     border: 1px dashed black;
-    text-align: center;
     display: flex;
     max-height: 82%;
     min-height: 82%;
@@ -128,10 +127,10 @@ h2 {
 .task-board-card {
     border: 2px solid blue;
     border-radius: 8px;
-    min-height: 180px;
     width: 200px;
     border-radius: 8px;
     transition: all 450ms ease-in-out;
+    padding: 12px;
 }
 
 .task-board-card:hover {
