@@ -2,8 +2,6 @@ let contactListJsonLibrary = ''
 const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
 let contactsArray = []
 
-
-
 const postMethode = (data) => {
     const methode = {
         method: "POST",
@@ -32,9 +30,6 @@ const putMethode = (data) => {
     }
     return methode
 }
-
-
-
 
 const getLibraryForFirebaseInit = async () => {
     const response = await fetch(BASE_URL + "/contact" + ".json")

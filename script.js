@@ -11,6 +11,10 @@ const initContactPage = async () => {
         renderContactList();
 }
 
+const initBoardPage = async ()=>{
+        
+}
+
 function showProfileMenu() {
         // Implementation for showing profile menu
         const profileInitial = document.getElementById("profileInitial");
