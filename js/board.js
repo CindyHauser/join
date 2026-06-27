@@ -16,9 +16,9 @@ async function getTasksFromFirebase() {
 async function getTasksCards() {
     const tasks = await getTasksFromFirebase();
     const taskContainer = document.getElementById('toDoColumn');
-    for (let i = 0; i < tasks.length - 1; i++) {
-        const task = tasks[i];
-        const taskCard = createTaskCard(task);
+    for (let curentTask = 0; curentTask < tasks.length - 1; curentTask++) {
+        const task = tasks[curentTask];
+        const taskCard = createTaskCard(task, curentTask);
 
         console.log(task);
 
@@ -26,16 +26,16 @@ async function getTasksCards() {
     };
 };
 
-function createTaskCard(task) {
+function createTaskCard(task, id) {
     return `
-                <div class="task-board-card" id="${task}" draggable="true" ondragstart="cardDragged(event)">
+                <div class="task-board-card" id="${id}" draggable="true" ondragstart="cardDragged(event)">
                    <p>${task.category}</p>
                    <h3>${task.title}</h3>
                    <p>${task.description}</p>
                    <p>${task.subtasks[1]}</p>
                    <div>
                        <div>contacts</div>
-                       <div><img src="../assets/ui-icons/${task.priority}.svg"></div>
+                       ${task.priority && task.priority.trim() ? `<div><img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></div>` : ''}
                    </div>
 
                 </div>
