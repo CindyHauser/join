@@ -134,7 +134,7 @@ fieldset{
     gap: 0.5rem;
 }
 
-.add-task-footer button{
+.add-task-button{
     padding: 10px 20px;
     border: 1px solid #ccc;
     cursor: pointer;

@@ -1,4 +1,4 @@
-const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
+if (typeof BASE_URL === "undefined"){const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"}
 
 function selectPriority(button) {
     removePriority();
