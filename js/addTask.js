@@ -10,38 +10,59 @@ function removePriority() {
 }
 
 async function createTask(event) {
-    if (event) {
-        event.preventDefault();
-    }
+    if (event) {event.preventDefault();}
 
     const form = document.querySelector('.add-task-form');
-    const newTask = {};
+    if (!form) {return;}
 
-    if (form) {
-        Array.from(form.elements).forEach((element) => {
-            if (element.id === 'subtask') {
-                const subtaskValue = element.value.trim();
-                newTask.subtasks = subtaskValue === ''
-                    ? ''
-                    : subtaskValue
-                        .split(/[\n,;]+/)
-                        .map((item) => item.trim())
-                        .filter((item) => item.length > 0);
-            } else if (['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) {
-                const key = element.id || element.name || 'field';
-                newTask[key] = element.value;
-            }
-        });
-    }
+    const newTask = buildTaskFromForm(form);
+    newTask.priority = getSelectedPriority();
+    newTask.state = 'toDo';
 
-    const selectedPriorityButton = document.querySelector('.priority-btn.selected');
-    newTask.priority = selectedPriorityButton
-        ? selectedPriorityButton.textContent.trim().split(' ')[0].toLowerCase()
-        : '';
-    newTask.state = 'toDo'
     await postNewTaskToFireBase("task", newTask);
     clearAllInput();
-    return;
+}
+
+const buildTaskFromForm = (form) => {
+    const task = { contactSelect: [], subtasks: [] };
+    Array.from(form.elements).forEach((element) => collectTaskField(element, task));
+    return task;
+}
+
+const collectTaskField = (element, task) => {
+    if (element.id === 'subtask') {
+        task.subtasks = parseSubtasks(element.value);
+    } else if (element.id === 'contactSelect') {
+        task.contactSelect = parseContactSelect(element.value);
+    } else if (['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) {
+        const key = element.id || element.name || 'field';
+        if (key !== 'subtask' && key !== 'contactSelect') {
+            task[key] = element.value;
+        }
+    }
+}
+
+const parseSubtasks = (value) => {
+    const subtaskValue = value.trim();
+    return subtaskValue === ''
+        ? []
+        : subtaskValue
+            .split(/[\n,;]+/)
+            .map((item) => item.trim())
+            .filter((item) => item.length > 0)
+            .map((taskDescription) => ({ taskDescription, subtaskStateDone: false }));
+}
+
+const parseContactSelect = (value) => {
+    const selectedContact = value.trim();
+    return selectedContact === '' ? [] : [selectedContact];
+}
+
+const getSelectedPriority = () => {
+    const selectedPriorityButton = document.querySelector('.priority-btn.selected');
+    return selectedPriorityButton
+        ? selectedPriorityButton.textContent.trim().split(' ')[0].toLowerCase()
+        : 'low';
 }
 
 function clearAllInput() {
