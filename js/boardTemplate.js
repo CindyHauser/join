@@ -66,6 +66,8 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     return template
 }
 
+
+
 const catchZeroSubtaskForBar = (subtasks) => {
     let finishedSubtask = []
     for (let index = 0; index < subtasks.length; index++) {
