@@ -61,3 +61,54 @@ const cardLeavingDragZone = (event) => {
     const dropZone = element.querySelector('.drag-and-drop-tasks')
     dropZone.classList.remove('drag-zone-entered')
 }
+
+const initFindTask = (element) => {
+    const value = element.value
+    if (value.length >= 5) {
+        generalTaskArray = initFilteringArray(value)
+        getAllArray()
+        renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
+    }
+    if (value.length < 4) {
+        getGeneralTaskArray(taskListJsonLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
+        getAllArray()
+        renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
+    }
+}
+
+const initFilteringArray = (string) => {
+    let filteredArray = []
+    for (let index = 0; index < generalTaskArray.length; index++) {
+        if (checkDesctiptionValue(string, generalTaskArray, index)) {
+            filteredArray.push(generalTaskArray[index])
+        } else if (checkTitleValue(string, generalTaskArray, index)) {
+            filteredArray.push(generalTaskArray[index])
+        }
+    }
+    return filteredArray
+}
+
+const setStringToMatchTheFilter = (string) => {
+    let stringAsArray = string.split('')
+    stringAsArray[0] = stringAsArray[0].toUpperCase()
+    stringAsArray = stringAsArray.join('')
+    return stringAsArray
+}
+
+const checkDesctiptionValue = (string, generalTaskArray, index) => {
+    if (generalTaskArray[index].description.includes(string) ||
+        generalTaskArray[index].description.includes(setStringToMatchTheFilter(string))) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const checkTitleValue = (string, generalTaskArray, index) => {
+    if (generalTaskArray[index].title.includes(string) ||
+        generalTaskArray[index].title.includes(setStringToMatchTheFilter(string))) {
+        return true
+    } else {
+        return false
+    }
+}

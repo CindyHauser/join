@@ -267,9 +267,9 @@ h2 {
 
 .board-card-assigned-contact-badge {
     border: 2px solid var(--background-color-body);
-    width: 40px;
+    width: 32px;
     border-radius: 50%;
-    height: 40px;
+    height: 32px;
     position: absolute;
     top: 10%;
     display: flex;

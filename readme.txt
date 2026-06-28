@@ -51,3 +51,6 @@
 4.realtime drag und drop is finished
 5.data structure in der instanz von tasks justiert
 6. render function hinzugefügt
+
+Änderungen Stand 28.06.2026 von Arnesto
+1.such funktionalität hinzugefügt
