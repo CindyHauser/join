@@ -64,12 +64,12 @@ const cardLeavingDragZone = (event) => {
 
 const initFindTask = (element) => {
     const value = element.value
-    if (value.length >= 5) {
+    if (value.length >= 3) {
         generalTaskArray = initFilteringArray(value)
         getAllArray()
         renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
     }
-    if (value.length < 4) {
+    if (value.length < 3) {
         getGeneralTaskArray(taskListJsonLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
         getAllArray()
         renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
