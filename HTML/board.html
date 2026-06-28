@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/board.css">
     <link rel="stylesheet" href="../styles/board-userInterface.css">
+    <link rel="stylesheet" href="../styles/addtask.css">
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -69,10 +70,11 @@
                                 <img src="../assets/ui-icons/search.svg" alt="search symbol">
                             </div>
                         </div>
-                        <button class="add-task-btn">Add task <img src="../assets/ui-icons/add-board.svg"
+                        <button onclick="toggleDialog('dialogAddTask')"  class="add-task-btn">Add task <img src="../assets/ui-icons/add-board.svg"
                                 alt="plus to add"></button>
                     </div>
                 </div>
+
                 <div class="kanban-board">
                     <div class="progress-tasks progress-tasks-todo" id="toDo" ondrop="cardDropped(event)"
                         ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
@@ -118,11 +120,97 @@
         </section>
     </main>
 
+    <dialog id="dialogAddTask">
+        <section onclick="stopPropagationFunction(event)" id="dialogContent">
+            <section class="main-content">
+            <h2>Add Task</h2>
+            <form class="add-task-form" onsubmit="createTask(event)">
+                <div class="add-task-content">
+                    <div class="add-task align-start">
+                        <div class="form-inputs">
+                        <label class="required" for="title">Title</label>
+                        <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
+                        </div>
+                        <div class="form-inputs">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" placeholder="Enter a Description"></textarea>
+                        </div>
+                        <div class="form-inputs">
+                        <label class="required" for="date">Due date</label>
+                        <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="add-task align-end">
+                        <fieldset>
+                            <legend>Priority</legend>
+
+                            <div class="priority-options">
+                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)" id="priorityOptions">
+                                    Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
+                                </button>
+                                <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
+                                    Medium <img src="../assets/ui-icons/medium.svg" alt="medium.svg">
+                                </button>
+                                <button type="button" class="priority-btn low" onclick="selectPriority(this)">
+                                    Low <img src="../assets/ui-icons/low.svg" alt="low.svg">
+                                </button>
+                            </div>
+                        </fieldset>
+                        <div class="form-inputs">
+                        <label for="contactSelect">Assigned to</label>
+                        <select id="contactSelect">
+                            <option value="" selected hidden>Select contact to assign</option>
+                        </select>
+                        
+                        <div id="contactList">Hier kommen Kontakte</div>
+                        </div>
+                        <div class="form-inputs">
+                        <label class="required" for="category">Category</label>
+                        <select required name="category" id="category">
+                            <option value="" selected hidden>Select task Category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                        </div>
+                        <div class="form-inputs">
+                        <label for="subtask">Subtask</label>
+                        <input type="text" id="subtask" name="titel" placeholder="Add subtasks separated by commas">
+                        </div>
+                    </div>
+                </div>
+                <div class="add-task-footer">
+                    <p class="required">This field is required</p>
+                    <div class="add-task-buttons">
+                        <button type="button" onclick="clearAllInput()" class="btn-secondary">Clear x</button>
+                        <button type="submit" class="btn-main">Create task <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
+                    </div>
+                    
+                </div>
+            </form>
+        </section>
+        </section>
+    </dialog>
+
+    <dialog id="dialogOpenTask" onclick="toggleDialog('dialogOpenTask')">
+        <section onclick="stopPropagationFunction(event)" id="dialogContent">
+
+        </section>
+    </dialog>
+
+    <dialog id="dialogEditTask" onclick="toggleDialog('dialogEditTask')">
+        <section onclick="stopPropagationFunction(event)" id="dialogContent">
+
+        </section>
+    </dialog>
+
 </body>
 <script src="../js/boardData.js"></script>
 <script src="../js/boardTemplate.js"></script>
 <script src="../js/boardRender.js"></script>
+<script src="../js/boardDialogTask.js"></script>
 <script src="../js/boardUserInterface.js"></script>
+<script src="../js/addTask.js"></script>
 <script src="../script.js"></script>
 
 </html>
