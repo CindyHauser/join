@@ -66,42 +66,47 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
 
 const taskDialogContentTemplate = (task) => {
     let template = `
-    <div class="task-board-card" id="${task.id}">
-    <div class="task-card-inner-hug">
-        <div class="task-card-header">
+<div class="dialog-task-board-card" id="${task.id}">
+    <div class="dialog-task-card-inner-hug">
+        <div class="dialog-task-card-header">
             <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
-            <button type="button" onclick="toggleDialog('dialogOpenBigCard')"
-                        class="add-task-button btn-secondary">x</button>
+            <button type="button" onclick="toggleDialog('dialogOpenBigCard')" class="dialog-close-btn">x</button>
         </div>
-        <div class="task-card-body">
-            <div class="task-card-title">
-                <span>
-                    ${task.title}
-                </span>
-            </div>
-            <div class="task-card-description">
-                <span>
-                    ${task.description}
-                </span>
-            </div>
-            <div class="subtask-progress-indicator">
-                        ${dialogSubtask(task.subtasks)}
+
+        <div class="dialog-task-card-body">
+            <h3 class="dialog-task-card-title">
+                ${task.title}
+            </h3>
+            <p class="dialog-task-card-description">
+                ${task.description}
+            </p>
+
             <div class="task-assigned-contact-and-priority-indicator">
                 ${(task.contactSelect)}
                 <div class="priority-indicator">
                     <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}">
                 </div>
             </div>
-            <button class="add-task-button btn-secondary" onclick="toggleDialog('dialogEditTask')">Edit</button>
+
+            <div>
+             <p>Subtasks</p>
+              <div class="dialog-subtasks">
+                 ${dialogSubtask(task.subtasks)}
+              </div>
+            </div>
+
+            <footer>
+                <button>delete</button>
+                <button class="add-task-button btn-secondary" onclick="toggleDialog('dialogEditTask')">Edit</button>
+            </footer>
         </div>
-    </div>
-</div>`
+
+    </div>`
     return template
 }
 
 const dialogSubtask = (subtasks) => {
     let dialogSubtaskArray = [];
-
     if (subtasks.length == 0) {
         return ``
     } else {
@@ -111,9 +116,7 @@ const dialogSubtask = (subtasks) => {
         console.log(dialogSubtaskArray)
         return dialogSubtaskArray.map(element =>`<p>${element}</p>`).join("")
     }
-}
-
-
+};
 
 const catchZeroSubtaskForBar = (subtasks) => {
     let finishedSubtask = []
