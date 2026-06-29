@@ -1,0 +1,22 @@
+.headerDialogAddTask{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.closeButton{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialog-edit-form{
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.add-task-footer-dialog{
+    display: flex;
+    justify-content: space-between;
+}

@@ -284,10 +284,3 @@ h2 {
     justify-content: center;
     align-items: center;
 }
-
-.headerDialogAddTask{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}

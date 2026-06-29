@@ -70,6 +70,8 @@ const taskDialogContentTemplate = (task) => {
     <div class="task-card-inner-hug">
         <div class="task-card-header">
             <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
+            <button type="button" onclick="toggleDialog('dialogOpenBigCard')"
+                        class="add-task-button btn-secondary">x</button>
         </div>
         <div class="task-card-body">
             <div class="task-card-title">
@@ -90,6 +92,7 @@ const taskDialogContentTemplate = (task) => {
                     <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}">
                 </div>
             </div>
+            <button class="add-task-button btn-secondary" onclick="toggleDialog('dialogEditTask')">Edit</button>
         </div>
     </div>
 </div>`
