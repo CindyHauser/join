@@ -26,6 +26,9 @@
 //     };
 // };
 
+// global task state used by the Add Task form
+let taskState = 'toDo';
+
 // function createTaskCard(task, id) {
 //     return `
 //                 <div class="task-board-card" id="${id}" draggable="true" ondragstart="cardDragged(event)">
@@ -46,11 +49,15 @@ function stopPropagationFunction(event) {
     event.stopPropagation();
 };
 
-function toggleDialog(id) {
+function toggleDialog(id, state) {
     const dialog = document.getElementById(id);
     if (dialog.open) {
         dialog.close();
     } else {
+        // if a state was provided when opening, use it
+        if (state) {
+            taskState = state;
+        }
         dialog.showModal();
     }
 };

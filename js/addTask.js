@@ -1,4 +1,6 @@
-if (typeof BASE_URL === "undefined"){const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"}
+if (typeof BASE_URL === "undefined") {
+    globalThis.BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/";
+}
 
 function selectPriority(button) {
     removePriority();
@@ -9,7 +11,7 @@ function removePriority() {
     document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('selected'));
 }
 
-async function createTask(event) {
+async function createTask(event, state) {
     if (event) {event.preventDefault();}
 
     const form = document.querySelector('.add-task-form');
@@ -17,7 +19,7 @@ async function createTask(event) {
 
     const newTask = buildTaskFromForm(form);
     newTask.priority = getSelectedPriority();
-    newTask.state = 'toDo';
+    newTask.state = state;
 
     await postNewTaskToFireBase("task", newTask);
     clearAllInput();

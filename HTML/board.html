@@ -70,7 +70,7 @@
                                 <img src="../assets/ui-icons/search.svg" alt="search symbol">
                             </div>
                         </div>
-                        <button onclick="toggleDialog('dialogAddTask')" class="add-task-btn">Add task <img
+                        <button onclick="toggleDialog('dialogAddTask','toDo')" class="add-task-btn">Add task <img
                                 src="../assets/ui-icons/add-board.svg" alt="plus to add"></button>
                     </div>
                 </div>
@@ -79,10 +79,10 @@
                     <div class="progress-tasks progress-tasks-todo" id="toDo" ondrop="cardDropped(event)"
                         ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
                         ondragleave="cardLeavingDragZone(event)">
-                        <div class="progress-tasks-header">
-                            <h3>To Do</h3>
-                            <button class="add-task-on-board-btn">+</button>
-                        </div>
+                            <div class="progress-tasks-header">
+                                <h3>To Do</h3>
+                                <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','toDo')">+</button>
+                            </div>
                         <div class="drag-and-drop-tasks"></div>
                     </div>
 
@@ -91,7 +91,7 @@
                         ondragleave="cardLeavingDragZone(event)">
                         <div class="progress-tasks-header">
                             <h3>In progress</h3>
-                            <button class="add-task-on-board-btn">+</button>
+                            <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','inProgress')">+</button>
                         </div>
                         <div class="drag-and-drop-tasks"></div>
                     </div>
@@ -101,7 +101,7 @@
                         ondragleave="cardLeavingDragZone(event)">
                         <div class="progress-tasks-header">
                             <h3>Await feedback</h3>
-                            <button class="add-task-on-board-btn">+</button>
+                            <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','awaitFeedBack')">+</button>
                         </div>
                         <div class="drag-and-drop-tasks"></div>
                     </div>
@@ -128,7 +128,7 @@
                     <button type="button" onclick="toggleDialog('dialogAddTask')"
                         class="add-task-button btn-secondary">x</button>
                 </div>
-                <form class="add-task-form" onsubmit="createTask(event)">
+                <form class="add-task-form" onsubmit="createTask(event, taskState)">
                     <div class="add-task-content">
                         <div class="add-task align-start">
                             <div class="form-inputs">

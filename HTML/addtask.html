@@ -59,7 +59,7 @@
         </header>
         <section class="main-content">
             <h2>Add Task</h2>
-            <form class="add-task-form" onsubmit="createTask(event)">
+            <form class="add-task-form" onsubmit="createTask(event, 'toDo')">
                 <div class="add-task-content">
                     <div class="add-task align-start">
                         <div class="form-inputs">
@@ -117,8 +117,8 @@
                 <div class="add-task-footer">
                     <p class="required">This field is required</p>
                     <div class="add-task-buttons">
-                        <button type="button" onclick="clearAllInput()" class="btn-secondary">Clear x</button>
-                        <button type="submit" class="btn-main">Create task <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
+                        <button type="button" onclick="clearAllInput()" class="add-task-button btn-secondary">Clear x</button>
+                        <button type="submit" class="add-task-button btn-main">Create task <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
                     </div>
                     
                 </div>
