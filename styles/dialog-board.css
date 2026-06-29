@@ -1,22 +1,70 @@
-.headerDialogAddTask{
+.headerDialogAddTask {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-.closeButton{
+.closeButton {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-.dialog-edit-form{
+.dialog-edit-form {
     overflow-y: auto;
     max-height: 80vh;
 }
 
-.add-task-footer-dialog{
+.add-task-footer-dialog {
     display: flex;
     justify-content: space-between;
 }
+
+.dialog-task-board-card {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: 2px solid var(--text-color-links);
+    border-radius: 16px;
+    width: 400px;
+    min-height: 84dvh;
+    padding: 36px;
+}
+
+#dialogOpenBigCard {
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+}
+
+.dialog-task-card-inner-hug {
+    height: 100%;
+}
+
+.dialog-task-card-header {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dialog-close-btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    background-color: white;
+}
+
+.dialog-task-card-body {
+    height: 84%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 16px;
+}
+
+.dialog-task-card-title {
+    font-size: 3rem;
+    margin: 0;
+}
+
