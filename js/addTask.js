@@ -1,6 +1,10 @@
 if (typeof BASE_URL === "undefined") {
     globalThis.BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/";
 }
+// by Arnesto
+let contactListJsonLibrary = '';
+let contactInputListArray = []
+let contactSelectedList = []
 
 function selectPriority(button) {
     removePriority();
@@ -12,21 +16,22 @@ function removePriority() {
 }
 
 async function createTask(event, state) {
-    if (event) {event.preventDefault();}
+    if (event) { event.preventDefault(); }
 
     const form = document.querySelector('.add-task-form');
-    if (!form) {return;}
+    if (!form) { return; }
 
     const newTask = buildTaskFromForm(form);
     newTask.priority = getSelectedPriority();
     newTask.state = state;
-
-    await postNewTaskToFireBase("task", newTask);
+    console.log(newTask);
+    
+    //await postNewTaskToFireBase("task", newTask);
     clearAllInput();
 }
 
 const buildTaskFromForm = (form) => {
-    const task = { contactSelect: [], subtasks: [] };
+    const task = { contactSelect: contactSelectedList, subtasks: [] };
     Array.from(form.elements).forEach((element) => collectTaskField(element, task));
     return task;
 }
@@ -34,11 +39,9 @@ const buildTaskFromForm = (form) => {
 const collectTaskField = (element, task) => {
     if (element.id === 'subtask') {
         task.subtasks = parseSubtasks(element.value);
-    } else if (element.id === 'contactSelect') {
-        task.contactSelect = parseContactSelect(element.value);
     } else if (['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) {
         const key = element.id || element.name || 'field';
-        if (key !== 'subtask' && key !== 'contactSelect') {
+        if (key !== 'subtask' && key !== 'contactInput' && key.length < 20) {
             task[key] = element.value;
         }
     }
@@ -55,10 +58,6 @@ const parseSubtasks = (value) => {
             .map((taskDescription) => ({ taskDescription, subtaskStateDone: false }));
 }
 
-const parseContactSelect = (value) => {
-    const selectedContact = value.trim();
-    return selectedContact === '' ? [] : [selectedContact];
-}
 
 const getSelectedPriority = () => {
     const selectedPriorityButton = document.querySelector('.priority-btn.selected');
@@ -88,4 +87,162 @@ const postNewTaskToFireBase = async (path, data = {}) => {
         }
     )
     return await response.json()
+}
+
+
+// contact input template by Arnesto
+
+const setContactListCard = (array, index) => {
+    let template = `<div class="contact-input-class-card" onclick="contactSelected(this)">
+    <div class="input-name-and-badge">
+        <div class="contact-input-badge"  style="background-color: rgb(${array[index].badgeColor[0]},${array[index].badgeColor[1]},${array[index].badgeColor[2]});">${array[index].fornameFirstLetter}${array[index].surnameFirstLetter}</div>
+        <div class="contact-input-name"> ${array[index].forename} ${array[index].surname}</div>
+    </div>
+    <input type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
+</div>`
+    return template
+}
+
+const setSelectedContactBadge = (array, index, library) => {
+    let template = `
+        <div class="contact-input-badge"  style="background-color: rgb(${library[array[index]].badgeColor[0]},${library[array[index]].badgeColor[1]},${library[array[index]].badgeColor[2]});">${library[array[index]].fornameFirstLetter}${library[array[index]].surnameFirstLetter}</div>`
+    return template
+}
+
+// contact input Render by Arnesto
+
+const renderContactInputList = () => {
+    let contactListInnerHtml = ''
+    for (let index = 0; index < contactInputListArray.length; index++) {
+        contactListInnerHtml += setContactListCard(contactInputListArray, index)
+    }
+    document.getElementById('contactInputList').innerHTML = contactListInnerHtml
+}
+
+const renderfilteredArrayList = (filteredArray) => {
+    let contactListInnerHtml = ''
+    for (let index = 0; index < filteredArray.length; index++) {
+        contactListInnerHtml += setContactListCard(filteredArray, index)
+    }
+    document.getElementById('contactInputList').innerHTML = contactListInnerHtml
+}
+
+const renderContactSelectedList = () => {
+    let contactSelectedListInnerHtml = ''
+    for (let index = 0; index < contactSelectedList.length; index++) {
+        contactSelectedListInnerHtml += setSelectedContactBadge(contactSelectedList, index, contactListJsonLibrary)
+    }
+    document.getElementById('selectedContactField').innerHTML = contactSelectedListInnerHtml
+}
+
+// contact input data function by Arnesto
+
+const getLibraryForFirebaseInit = async () => {
+    const response = await fetch(BASE_URL + "/contact" + ".json")
+    return response.json()
+}
+
+const setLibraryForFirebaseInit = async () => {
+    contactListJsonLibrary = await getLibraryForFirebaseInit()
+    return
+}
+
+const setPreludeContactArrayStructure = (key, object) => {
+    let template = {
+        "id": key,
+        "forename": object[key].forename,
+        "surname": object[key].surname,
+        "phone": object[key].phone,
+        "fornameFirstLetter": object[key].fornameFirstLetter,
+        "surnameFirstLetter": object[key].surnameFirstLetter,
+        "email": object[key].email,
+        "badgeColor": object[key].badgeColor
+    }
+    return template
+}
+
+const getPreldudeContactArray = (object) => {
+    let preludeContactArray = []
+    for (key in object) {
+        if (key != "position") {
+            preludeContactArray.push(setPreludeContactArrayStructure(key, object))
+        }
+    }
+    return preludeContactArray.sort(
+        (a, b) => a.forename.localeCompare(b.forename)
+    )
+}
+
+const setContactInputList = () => {
+    contactInputListArray = getPreldudeContactArray(contactListJsonLibrary)
+    return
+}
+
+// contact input interface by Arnesto
+
+const initInput = (element) => {
+    const parentElement = element.closest('.contact-list-input-container')
+    parentElement.querySelector('img').setAttribute('src', `../assets/ui-icons/arrow-up.svg`)
+    element.setAttribute('placeholder', '')
+    focusedContactListState()
+}
+
+const finishedInput = (element) => {
+    const parentElement = element.closest('.contact-list-input-container')
+    parentElement.querySelector('img').setAttribute('src', `../assets/ui-icons/arrow-down.svg`)
+    element.setAttribute('placeholder', 'Select contact to assign')
+    blurredContactListState()
+}
+
+
+const focusedContactListState = () => {
+    const contactList = document.getElementById('contactInputList')
+    contactList.classList.remove('pop-up-contact-liste-add-task-animating')
+    contactList.classList.add('pop-down-contact-liste-add-task-animating')
+}
+
+const blurredContactListState = () => {
+    const contactList = document.getElementById('contactInputList')
+    contactList.classList.remove('pop-down-contact-liste-add-task-animating')
+    contactList.classList.add('pop-up-contact-liste-add-task-animating')
+    setTimeout(() => {
+        contactList.classList.remove('pop-up-contact-liste-add-task-animating')
+    }, 500);
+}
+
+const contactInputListClicked = (event) => {
+    event.preventDefault()
+}
+
+const contactSelected = (element) => {
+    const parentElement = element.closest('.contact-input-class-card')
+    const checkbox = parentElement.querySelector('input')
+    setContactSelectedList(checkbox.id)
+    renderContactSelectedList()
+    checkbox.checked = !checkbox.checked
+}
+
+
+const setContactSelectedList = (id) => {
+    if (contactSelectedList.includes(id)) {
+        const index = contactSelectedList.indexOf(id)
+        contactSelectedList.splice(index, 1)
+    } else {
+        contactSelectedList.push(id)
+    }
+}
+
+const initContactListSearch = (element) => {
+    const inputValue = element.value
+    if (inputValue.length >= 3) {
+        let filteredArray = contactInputListArray.filter(
+            (arrayIndex) => {
+                return arrayIndex.forename.toLowerCase().includes(element.value)
+            })
+        renderfilteredArrayList(filteredArray)
+    }
+    if (inputValue < 3) {
+        renderContactInputList()
+    }
+
 }

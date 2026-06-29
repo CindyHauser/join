@@ -18,6 +18,13 @@ const initBoardPage = async () => {
         renderAllCards(toDoTaskArray,inProgressTaskArray,awaitFeedbackTaskArray,doneTaskArray)
 }
 
+
+const initAddTaskPage = async ()=>{
+        await setLibraryForFirebaseInit()
+        setContactInputList()
+        renderContactInputList()
+}
+
 function showProfileMenu() {
         // Implementation for showing profile menu
         const profileInitial = document.getElementById("profileInitial");
