@@ -61,3 +61,8 @@ function toggleDialog(id, state) {
         dialog.showModal();
     }
 };
+
+async function submitFormDialog(event, taskState) {
+    createTask(event, taskState);
+    await initBoardPage();
+}
