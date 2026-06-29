@@ -64,7 +64,8 @@
                     <h2>Board</h2>
                     <div class="input-task-btn">
                         <div class="search-wrapper">
-                            <input class="board-input" type="text" placeholder="Find Task" id="boardInput" oninput="initFindTask(this)">
+                            <input class="board-input" type="text" placeholder="Find Task" id="boardInput"
+                                oninput="initFindTask(this)">
                             <div class="search-icon">
                                 <span class="divider"></span>
                                 <img src="../assets/ui-icons/search.svg" alt="search symbol">
@@ -79,10 +80,11 @@
                     <div class="progress-tasks progress-tasks-todo" id="toDo" ondrop="cardDropped(event)"
                         ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
                         ondragleave="cardLeavingDragZone(event)">
-                            <div class="progress-tasks-header">
-                                <h3>To Do</h3>
-                                <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','toDo')">+</button>
-                            </div>
+                        <div class="progress-tasks-header">
+                            <h3>To Do</h3>
+                            <button class="add-task-on-board-btn"
+                                onclick="toggleDialog('dialogAddTask','toDo')">+</button>
+                        </div>
                         <div class="drag-and-drop-tasks"></div>
                     </div>
 
@@ -91,7 +93,8 @@
                         ondragleave="cardLeavingDragZone(event)">
                         <div class="progress-tasks-header">
                             <h3>In progress</h3>
-                            <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','inProgress')">+</button>
+                            <button class="add-task-on-board-btn"
+                                onclick="toggleDialog('dialogAddTask','inProgress')">+</button>
                         </div>
                         <div class="drag-and-drop-tasks"></div>
                     </div>
@@ -101,7 +104,8 @@
                         ondragleave="cardLeavingDragZone(event)">
                         <div class="progress-tasks-header">
                             <h3>Await feedback</h3>
-                            <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','awaitFeedBack')">+</button>
+                            <button class="add-task-on-board-btn"
+                                onclick="toggleDialog('dialogAddTask','awaitFeedBack')">+</button>
                         </div>
                         <div class="drag-and-drop-tasks"></div>
                     </div>
@@ -204,15 +208,20 @@
 
     <dialog id="dialogOpenTask" onclick="toggleDialog('dialogOpenTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContent">
-
         </section>
     </dialog>
 
     <dialog id="dialogEditTask" onclick="toggleDialog('dialogEditTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContent">
-
         </section>
     </dialog>
+
+    <dialog id="dialogOpenBigCard">
+        <section onclick="stopPropagationFunction(event)" id="dialogContent">
+            <div id="dialogTaskContent"></div>
+        </section>
+    </dialog>
+
 
 </body>
 <script src="../js/boardData.js"></script>

@@ -81,8 +81,8 @@ const postNewTaskToFireBase = async (path, data = {}) => {
     const response = await fetch(BASE_URL + path + ".json",
         {
             method: "POST",
-            header: {
-                "content-Type": "application/json"
+            headers: {
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
         }

@@ -14,8 +14,6 @@ const setTaskDataStructure = (key, object) => {
     }
 }
 
-
-
 const reconstructSubTaskArray = (array) => {
     let reconstructedArray = []
     if (array == undefined) {
@@ -32,7 +30,7 @@ const reconstructSubTaskArray = (array) => {
 }
 
 const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, contactAssignedCatcherCallback, array, index) => {
-    let template = `<div class="task-board-card" id="${array[index].id}" draggable="true" ondragstart="cardDragged(event)">
+    let template = `<div onclick="openTaskDialog('${array[index].id}')" class="task-board-card" id="${array[index].id}" draggable="true" ondragstart="cardDragged(event)">
     <div class="task-card-inner-hug">
         <div class="task-card-header">
             <div class="task-category ${convertStringToclass(array[index].category)}">${array[index].category}</div>
@@ -64,6 +62,52 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     </div>
 </div>`
     return template
+};
+
+const taskDialogContentTemplate = (task) => {
+    let template = `
+    <div class="task-board-card" id="${task.id}">
+    <div class="task-card-inner-hug">
+        <div class="task-card-header">
+            <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
+        </div>
+        <div class="task-card-body">
+            <div class="task-card-title">
+                <span>
+                    ${task.title}
+                </span>
+            </div>
+            <div class="task-card-description">
+                <span>
+                    ${task.description}
+                </span>
+            </div>
+            <div class="subtask-progress-indicator">
+                        ${dialogSubtask(task.subtasks)}
+            <div class="task-assigned-contact-and-priority-indicator">
+                ${(task.contactSelect)}
+                <div class="priority-indicator">
+                    <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+    return template
+}
+
+const dialogSubtask = (subtasks) => {
+    let dialogSubtaskArray = [];
+
+    if (subtasks.length == 0) {
+        return ``
+    } else {
+        for (let index = 0; index < subtasks.length; index++) {
+            dialogSubtaskArray.push(subtasks[index].taskDescription)
+        }
+        console.log(dialogSubtaskArray)
+        return dialogSubtaskArray.map(element =>`<p>${element}</p>`).join("")
+    }
 }
 
 
