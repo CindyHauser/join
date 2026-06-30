@@ -54,3 +54,6 @@
 
 Änderungen Stand 28.06.2026 von Arnesto
 1.such funktionalität hinzugefügt
+
+Änderungen Stand 28.06.2026 von Arnesto
+1.assigned to funktionalität hinzugefügt
