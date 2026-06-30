@@ -67,7 +67,7 @@ function clearAllInput() {
     if (form) {
         form.reset();
     }
-    contactSelectedList=[]
+    contactSelectedList = []
     document.getElementById('selectedContactField').innerHTML = ''
     removePriority();
 }
@@ -95,17 +95,17 @@ const setContactListCard = (array, index, comparedArray) => {
                     <div class="contact-input-badge"  style="background-color: rgb(${array[index].badgeColor[0]},${array[index].badgeColor[1]},${array[index].badgeColor[2]});">${array[index].fornameFirstLetter}${array[index].surnameFirstLetter}</div>
                     <div class="contact-input-name"> ${array[index].forename} ${array[index].surname}</div>
                     </div>
-                    <input type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
+                    <input onclick="contactSelectedCheckbox(this)" type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
                     </div>`
-    if (comparedArray.includes(array[index].id)) {    
+    if (comparedArray.includes(array[index].id)) {
         template = `<div class="contact-input-class-card" onclick="contactSelected(this)">
                     <div class="input-name-and-badge">
                     <div class="contact-input-badge"  style="background-color: rgb(${array[index].badgeColor[0]},${array[index].badgeColor[1]},${array[index].badgeColor[2]});">${array[index].fornameFirstLetter}${array[index].surnameFirstLetter}</div>
                     <div class="contact-input-name"> ${array[index].forename} ${array[index].surname}</div>
                     </div>
-                    <input checked type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
+                    <input checked onclick="contactSelectedCheckbox(this)" type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
                     </div>`
-                }
+    }
     return template
 }
 
@@ -127,6 +127,7 @@ const renderContactInputList = () => {
 
 const renderfilteredArrayList = (filteredArray, comparedArray) => {
     let contactListInnerHtml = ''
+    document.getElementById('contactInputList').innerHTML = ''
     for (let index = 0; index < filteredArray.length; index++) {
         contactListInnerHtml += setContactListCard(filteredArray, index, comparedArray)
     }
@@ -135,6 +136,7 @@ const renderfilteredArrayList = (filteredArray, comparedArray) => {
 
 const renderContactSelectedList = () => {
     let contactSelectedListInnerHtml = ''
+    document.getElementById('selectedContactField').innerHTML=''
     for (let index = 0; index < contactSelectedList.length; index++) {
         contactSelectedListInnerHtml += setSelectedContactBadge(contactSelectedList, index, contactListJsonLibrary)
     }
@@ -186,21 +188,33 @@ const setContactInputList = () => {
 
 // contact input interface by Arnesto
 
-const initInput = (element) => {
+const initInput = (element,event) => {
+    event.stopPropagation()
     const parentElement = element.closest('.contact-list-input-container')
     parentElement.querySelector('img').setAttribute('src', `../assets/ui-icons/arrow-up.svg`)
     element.setAttribute('placeholder', '')
     focusedContactListState()
 }
 
-const finishedInput = (element) => {
+const initInputContainer = (element) => {
+    element.querySelector('input').focus()
+    element.setAttribute('onclick', 'finishInputContainer(this)')
+    renderContactInputList()
+}
+
+const finishInputContainer = (element) => {
+    element.querySelector('input').blur()
+    element.setAttribute('onclick', 'initInputContainer(this)')
+}
+
+const finishedInput = (element,event) => {
+    event.stopPropagation()
     const parentElement = element.closest('.contact-list-input-container')
     parentElement.querySelector('img').setAttribute('src', `../assets/ui-icons/arrow-down.svg`)
     element.setAttribute('placeholder', 'Select contact to assign')
     blurredContactListState()
     element.value = ''
 }
-
 
 const focusedContactListState = () => {
     const contactList = document.getElementById('contactInputList')
@@ -221,12 +235,23 @@ const contactInputListClicked = (event) => {
     event.preventDefault()
 }
 
+const assignedToLabelClicked = (event) => {
+    event.preventDefault()
+}
+
 const contactSelected = (element) => {
     const parentElement = element.closest('.contact-input-class-card')
     const checkbox = parentElement.querySelector('input')
     setContactSelectedList(checkbox.id)
     renderContactSelectedList()
     checkbox.checked = !checkbox.checked
+}
+
+const contactSelectedCheckbox = (element) => {
+    setContactSelectedList(element.id)
+    setContactSelectedList(element.id)
+    renderContactSelectedList()
+    element.checked = !element.checked
 }
 
 
@@ -239,7 +264,8 @@ const setContactSelectedList = (id) => {
     }
 }
 
-const initContactListSearch = (element) => {
+const initContactListSearch = (element,event) => {
+    event.stopPropagation()
     const inputValue = element.value
     if (inputValue.length >= 3) {
         let filteredArray = contactInputListArray.filter(
