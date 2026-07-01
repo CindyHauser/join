@@ -81,15 +81,17 @@ const taskDialogContentTemplate = (task) => {
                 ${task.description}
             </p>
 
-            <section class="dialog-task-card-due-date">
-                <p>Due Date: <span>${task.date}</span></p>         
+            <section>
+                <span class="dialog-task-card-distance">Due Date: </span> <span>${task.date}</span>         
+            </section>
+
+            <section>
+                <span class="dialog-task-card-distance">Priority: </span> <span>${task.priority[0].charAt(0).toUpperCase() + task.priority.slice(1)}
+                        <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
             </section>
 
             <section class="task-assigned-contact-and-priority-indicator">
                 ${(task.contactSelect)}
-                <div class="priority-indicator">
-                    <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}">
-                </div>
             </section>
 
             <section>

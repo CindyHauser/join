@@ -71,6 +71,11 @@
     margin: 0;
 }
 
+.dialog-task-card-distance {
+    display: inline-block;
+    width: 80px;
+}
+
 .dialog-task-card-footer {
     display: flex;
     align-items: center;

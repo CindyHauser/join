@@ -73,12 +73,13 @@
                 ${task.description}
             </p>
 
-
             <section class="dialog-task-card-due-date">
+                <span>Due Date: </span> <span>${task.date}</span>
             </section>
 
-            <section class="dialog-task-card-due-date">
-                
+            <section class="dialog-task-card-priority">
+                <span>Priority: </span> <span>${task.priority[0].charAt(0).toUpperCase() + task.priority.slice(1)}
+                        <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
             </section>
 
             <section class="task-assigned-contact-and-priority-indicator">
