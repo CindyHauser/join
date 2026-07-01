@@ -133,12 +133,13 @@
                     <button type="button" onclick="toggleDialog('dialogAddTask')"
                         class="add-task-button btn-secondary">x</button>
                 </div>
-                <form class="add-task-form" onsubmit="submitFormDialog(event, taskState)">
+                <form class="add-task-form" id="addTaskForm" onsubmit="submitFormDialog(event, taskState)" novalidate>
                     <div class="add-task-content">
                         <div class="add-task align-start">
                             <div class="form-inputs">
                                 <label class="required" for="title">Title</label>
-                                <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
+                                <input type="text" id="title" name="titel" placeholder="Enter a Title" required
+                                    data-error="Title is required">
                             </div>
                             <div class="form-inputs">
                                 <label for="description">Description</label>
@@ -147,7 +148,8 @@
                             </div>
                             <div class="form-inputs">
                                 <label class="required" for="date">Due date</label>
-                                <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+                                <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required
+                                    data-error="Date is required">
                             </div>
                         </div>
                         <hr>
@@ -168,17 +170,21 @@
                                     </button>
                                 </div>
                             </fieldset>
-                            <div class="form-inputs">
-                                <label for="contactSelect">Assigned to</label>
-                                <select id="contactSelect">
-                                    <option value="" selected hidden>Select contact to assign</option>
-                                </select>
-
-                                <div id="contactList">Hier kommen Kontakte</div>
+                            <div class="form-inputs contact-form">
+                                <label for="contactInput" id="assignedToLabel"
+                                    onclick="assignedToLabelClicked(event)">Assigned to</label>
+                                <div class="contact-list-input-container" onclick="initInputContainer(this)">
+                                    <input type="text" placeholder="Select contact to assign"
+                                        onfocus="initInput(this,event)" onblur="finishedInput(this,event)"
+                                        id="contactInput" oninput="initContactListSearch(this,event)">
+                                    <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg">
+                                </div>
+                                <div id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
+                                <div id="selectedContactField"></div>
                             </div>
                             <div class="form-inputs">
                                 <label class="required" for="category">Category</label>
-                                <select required name="category" id="category">
+                                <select required name="category" id="category" data-error="Category is required">
                                     <option value="" selected hidden>Select task Category</option>
                                     <option value="Technical Task">Technical Task</option>
                                     <option value="User Story">User Story</option>
@@ -186,7 +192,7 @@
                             </div>
                             <div class="form-inputs">
                                 <label for="subtask">Subtask</label>
-                                <input type="text" id="subtask" name="titel"
+                                <input type="text" id="subtask" name="subtask"
                                     placeholder="Add subtasks separated by commas">
                             </div>
                         </div>
@@ -196,9 +202,8 @@
                         <div class="add-task-buttons">
                             <button type="button" onclick="clearAllInput()" class="add-task-button btn-secondary">Clear
                                 x</button>
-                            <button type="submit" onclick="toggleDialog('dialogAddTask')"
-                                class="add-task-button btn-main">Create task <img src="../assets/ui-icons/check.svg"
-                                    alt="check.svg"></button>
+                            <button type="submit" class="add-task-button btn-main">Create task <img
+                                    src="../assets/ui-icons/check.svg" alt="check.svg"></button>
                         </div>
 
                     </div>
@@ -211,29 +216,32 @@
         <section onclick="stopPropagationFunction(event)" id="dialogContentEditTask">
             <div class="closeButton">
                 <button type="button" onclick="toggleDialog('dialogEditTask')"
-                        class="add-task-button btn-secondary">x</button>
+                    class="add-task-button btn-secondary">x</button>
             </div>
-            
-            <form class="add-task-form" onsubmit="createTask(event, 'toDo')">
+
+            <form class="add-task-form" id="editTaskForm" novalidate>
                 <div class="dialog-edit-form">
                     <div class="add-task align-start">
                         <div class="form-inputs">
-                        <label class="required" for="title">Title</label>
-                        <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
+                            <label class="required" for="title">Title</label>
+                            <input type="text" id="title" name="titel" placeholder="Enter a Title" required
+                                data-error="Title is required">
                         </div>
                         <div class="form-inputs">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" placeholder="Enter a Description"></textarea>
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" placeholder="Enter a Description"></textarea>
                         </div>
                         <div class="form-inputs">
-                        <label class="required" for="date">Due date</label>
-                        <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+                            <label class="required" for="date">Due date</label>
+                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required
+                                data-error="Date is required">
                         </div>
                         <fieldset>
                             <legend>Priority</legend>
 
                             <div class="priority-options">
-                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)" id="priorityOptions">
+                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)"
+                                    id="priorityOptions">
                                     Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
                                 </button>
                                 <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
@@ -244,35 +252,40 @@
                                 </button>
                             </div>
                         </fieldset>
-                        <div class="form-inputs">
-                        <label for="contactSelect">Assigned to</label>
-                        <select id="contactSelect">
-                            <option value="" selected hidden>Select contact to assign</option>
-                        </select>
-                        
-                        <div id="contactList">Hier kommen Kontakte</div>
+                        <div class="form-inputs contact-form">
+                            <label for="contactInput" id="assignedToLabel"
+                                onclick="assignedToLabelClicked(event)">Assigned to</label>
+                            <div class="contact-list-input-container" onclick="initInputContainer(this)">
+                                <input type="text" placeholder="Select contact to assign"
+                                    onfocus="initInput(this,event)" onblur="finishedInput(this,event)" id="contactInput"
+                                    oninput="initContactListSearch(this,event)">
+                                <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg">
+                            </div>
+                            <div id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
+                            <div id="selectedContactField"></div>
                         </div>
                         <div class="form-inputs">
-                        <label class="required" for="category">Category</label>
-                        <select required name="category" id="category">
-                            <option value="" selected hidden>Select task Category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                        </select>
+                            <label class="required" for="category">Category</label>
+                            <select required name="category" id="category" data-error="Category is required">
+                                <option value="" selected hidden>Select task Category</option>
+                                <option value="Technical Task">Technical Task</option>
+                                <option value="User Story">User Story</option>
+                            </select>
                         </div>
                         <div class="form-inputs">
-                        <label for="subtask">Subtask</label>
-                        <input type="text" id="subtask" name="titel" placeholder="Add subtasks separated by commas">
-                        <ul id="subtaskDescription"></ul>
+                            <label for="subtask">Subtask</label>
+                            <input type="text" id="subtask" name="titel" placeholder="Add subtasks separated by commas">
+                            <ul id="subtaskDescription"></ul>
                         </div>
                     </div>
                 </div>
                 <div class="add-task-footer-dialog">
                     <p class="required">This field is required</p>
                     <div class="add-task-buttons">
-                        <button type="submit" class="add-task-button btn-main">Ok<img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
+                        <button type="submit" class="add-task-button btn-main">Ok<img src="../assets/ui-icons/check.svg"
+                                alt="check.svg"></button>
                     </div>
-                    
+
                 </div>
             </form>
         </section>
@@ -286,6 +299,7 @@
 
 
 </body>
+<script src="../js/validateForm.js"></script>
 <script src="../js/boardData.js"></script>
 <script src="../js/boardTemplate.js"></script>
 <script src="../js/boardRender.js"></script>

@@ -1,8 +1,8 @@
 if (typeof BASE_URL === "undefined") {
     globalThis.BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/";
 }
-// by Arnesto
-let contactListJsonLibrary = '';
+const addTaskForm = document.querySelector('.add-task-form');
+ contactListJsonLibrary = '';
 let contactInputListArray = []
 let contactSelectedList = []
 
@@ -14,6 +14,14 @@ function selectPriority(button) {
 function removePriority() {
     document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('selected'));
 }
+
+initValidation(addTaskForm);
+
+addTaskForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!validateForm(addTaskForm)) return;
+    await createTask(event, 'toDo');
+});
 
 async function createTask(event, state) {
     if (event) { event.preventDefault(); }

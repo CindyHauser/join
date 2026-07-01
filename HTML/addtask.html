@@ -58,12 +58,12 @@
         </header>
         <section class="main-content">
             <h2>Add Task</h2>
-            <form class="add-task-form" onsubmit="createTask(event, 'toDo')">
+            <form class="add-task-form" id="addTaskForm" novalidate>
                 <div class="add-task-content">
                     <div class="add-task align-start">
                         <div class="form-inputs">
                             <label class="required" for="title">Title</label>
-                            <input type="text" id="title" name="titel" placeholder="Enter a Title" required>
+                            <input type="text" id="title" name="titel" placeholder="Enter a Title" required data-error="Title is required">
                         </div>
                         <div class="form-inputs">
                             <label for="description">Description</label>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="date">Due date</label>
-                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy">
+                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required data-error="Date is required">
                         </div>
                     </div>
                     <hr>
@@ -104,7 +104,7 @@
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="category">Category</label>
-                            <select required name="category" id="category">
+                            <select required name="category" id="category" data-error="Category is required">
                                 <option value="" selected hidden>Select task Category</option>
                                 <option value="Technical Task">Technical Task</option>
                                 <option value="User Story">User Story</option>
@@ -112,7 +112,7 @@
                         </div>
                         <div class="form-inputs">
                             <label for="subtask">Subtask</label>
-                            <input type="text" id="subtask" name="titel" placeholder="Add subtasks separated by commas">
+                            <input type="text" id="subtask" name="subtask" placeholder="Add subtasks separated by commas">
                         </div>
                     </div>
                 </div>
@@ -132,6 +132,7 @@
     </main>
 
 </body>
+<script src="../js/validateForm.js"></script>
 <script src="../js/addTask.js"></script>
 <script src="../script.js"></script>
 

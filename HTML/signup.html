@@ -21,21 +21,18 @@
                 <h1>Sign up</h1>
                 <div class="h-line"></div>
             </div>
-            <form action="/signup" method="POST" class="login-signup-form" id="signupForm">
+            <form action="/signup" method="POST" class="login-signup-form" id="signupForm" novalidate>
                 <input type="text" id="name" name="name" class="input-icon bg-input-name" placeholder="Enter your name"
-                    autocomplete="name" pattern="[A-Za-zÄÖÜäöüß ]+" required>
-
+                    autocomplete="name" pattern="[A-Za-zÄÖÜäöüß ]+" required data-error="Name is required.">
                 <input type="email" id="email" name="email" class="input-icon bg-input-mail"
-                    placeholder="Enter your email" autocomplete="email" required>
-
+                    placeholder="Enter your email" autocomplete="email" required data-error="E-Mail is required.">
                 <input type="password" id="password" name="password" class="input-icon bg-input-password"
-                    placeholder="Enter your password" autocomplete="new-password" required>
-
-                <input type="password" id="confirmPassword" name="confirm-password"
-                    class="input-icon bg-input-password" placeholder="Confirm your password" required>
-                    <p id="signupError" class="error-message"></p>
+                    placeholder="Enter your password" autocomplete="new-password" required data-error="Password is required.">
+                <input type="password" id="confirmPassword" name="confirm-password" class="input-icon bg-input-password"
+                    placeholder="Confirm your password" required data-error="Please confirm your password.">
+                    <p class="error-message" id="confirmPasswordError"></p>
                 <div class="terms-container">
-                    <input type="checkbox" class="checkbox" id="terms" name="terms" required>
+                    <input type="checkbox" class="checkbox" id="terms" name="terms" required data-error="You must accept the Privacy Policy.">
                     <label for="terms" class="terms-label">I agree to the <a href="#">Privacy Policy</a></label>
                 </div>
                 <div class="form-btn">
@@ -51,5 +48,6 @@
         </nav>
     </footer>
 </body>
+<script src="../js/validateForm.js"></script>
 <script src="../js/signup.js"></script>
 </html>

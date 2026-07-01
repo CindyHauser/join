@@ -14,6 +14,7 @@ function toggleDialog(id, state) {
             taskState = state;
         }
         dialog.showModal();
+        initAddTaskPage();
     }
 };
 
@@ -26,6 +27,9 @@ async function openTaskDialog(taskId) {
 };
 
 async function submitFormDialog(event, taskState) {
-    createTask(event, taskState);
-    await initBoardPage();
+    event.preventDefault();
+    if (!validateForm(addTaskForm)) return;
+    await createTask(event, taskState);
+    toggleDialog('dialogAddTask');
+    await initBoardPage();    
 };

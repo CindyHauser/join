@@ -4,21 +4,32 @@ const name = document.getElementById('name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
-const errorMessageElement = document.getElementById('signupError');
+const errorMessageElement = document.getElementById('confirmPasswordError');
 
-signupForm.addEventListener('submit', async (event) => {
+initValidation(signupForm);
+
+signupForm.addEventListener("submit", async (event) => {
+
     event.preventDefault();
 
-    errorMessageElement.textContent = '';
-    if (checkPassword()) { return; }
-    if (await checkUserExists()) { return; }
+    if (!validateForm(signupForm)) return;
+
+    if (checkPassword()) return;
+
+    if (await checkUserExists()) return;
 
     try {
+
         await openPostSignup();
         goBack();
-        window.location.href = '../index.html';
+        window.location.href = "../index.html";
+
+    } catch (error) {
+
+        console.error(error);
+
     }
-    catch (error) { console.error("Firebase Fehler:", error); }
+
 });
 
 async function openPostSignup() {

@@ -5,8 +5,11 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const errorMessageElement = document.getElementById('loginError');
 
+initValidation(loginForm);
+
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (!validateForm(loginForm)) return;
     errorMessageElement.textContent = '';
     const user = await checkUserExists();
     if (user) {

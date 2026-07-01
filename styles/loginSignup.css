@@ -202,3 +202,7 @@ h1 {
     font-size: 0.9rem;
     text-align: center;
 }
+
+.input-error {
+    border: 2px solid red;
+}

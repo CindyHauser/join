@@ -296,3 +296,13 @@ fieldset {
 .btn-secondary {
     background-color: white;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.input-error {
+    border: 2px solid red;
+}
