@@ -26,8 +26,11 @@
     border: 2px solid var(--text-color-links);
     border-radius: 16px;
     width: 400px;
-    min-height: 84dvh;
     padding: 36px;
+}
+
+.dialog-task-board-card p {
+    margin: 0;
 }
 
 #dialogOpenBigCard {
@@ -59,7 +62,7 @@
     height: 84%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     padding-block: 16px;
 }
 
@@ -68,3 +71,21 @@
     margin: 0;
 }
 
+.dialog-task-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dialog-task-card-btn {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.border-left-btn {
+border-left: 1px solid var(--text-color-links);
+}

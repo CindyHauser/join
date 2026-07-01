@@ -68,10 +68,10 @@ const taskDialogContentTemplate = (task) => {
     let template = `
 <div class="dialog-task-board-card" id="${task.id}">
     <div class="dialog-task-card-inner-hug">
-        <div class="dialog-task-card-header">
+        <header class="dialog-task-card-header">
             <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
             <button type="button" onclick="toggleDialog('dialogOpenBigCard')" class="dialog-close-btn">x</button>
-        </div>
+        </header>
 
         <div class="dialog-task-card-body">
             <h3 class="dialog-task-card-title">
@@ -81,25 +81,29 @@ const taskDialogContentTemplate = (task) => {
                 ${task.description}
             </p>
 
-            <div class="task-assigned-contact-and-priority-indicator">
+            <section class="dialog-task-card-due-date">
+                <p>Due Date: <span>${task.date}</span></p>         
+            </section>
+
+            <section class="task-assigned-contact-and-priority-indicator">
                 ${(task.contactSelect)}
                 <div class="priority-indicator">
                     <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}">
                 </div>
-            </div>
+            </section>
 
-            <div>
+            <section>
              <p>Subtasks</p>
               <div class="dialog-subtasks">
                  ${dialogSubtask(task.subtasks)}
               </div>
-            </div>
+            </section>
 
-            <footer>
-                <button>delete</button>
-                <button class="add-task-button btn-secondary" onclick="toggleDialog('dialogEditTask')">Edit</button>
-            </footer>
         </div>
+            <footer class="dialog-task-card-footer">
+                <button class="dialog-task-card-btn"><img src="../assets/ui-icons/delete.svg" alt="delete Button"> Delete</button>
+                <button class="dialog-task-card-btn border-left-btn" onclick="toggleDialog('dialogEditTask')"><img src="../assets/ui-icons/edit.svg" alt="edit Button"> Edit</button>
+            </footer>
 
     </div>`
     return template
@@ -113,7 +117,6 @@ const dialogSubtask = (subtasks) => {
         for (let index = 0; index < subtasks.length; index++) {
             dialogSubtaskArray.push(subtasks[index].taskDescription)
         }
-        console.log(dialogSubtaskArray)
         return dialogSubtaskArray.map(element =>`<p>${element}</p>`).join("")
     }
 };
