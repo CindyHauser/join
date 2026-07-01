@@ -239,7 +239,7 @@ h2 {
 }
 
 .task-assigned-contact-and-priority-indicator {
-    height: 20%;
+    height: 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -251,6 +251,8 @@ h2 {
     width: 80%;
     display: flex;
     position: relative;
+    justify-content: center;
+    align-items: center;
 }
 
 .assigned-contact-indicator-no-contact-selected {

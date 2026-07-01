@@ -37,6 +37,17 @@ const putMethode = (data) => {
     return methode
 }
 
+const getContactLibraryForFirebaseInit = async () => {
+    const response = await fetch(BASE_URL + "/contact" + ".json")
+    return response.json()
+}
+
+const setContactLibraryForFirebaseInit = async () => {
+    contactListJsonLibrary = await getContactLibraryForFirebaseInit()
+    return
+}
+
+
 const getTaskLibraryForFirebaseInit = async () => {
     const response = await fetch(BASE_URL + "/task" + ".json")
     return response.json()

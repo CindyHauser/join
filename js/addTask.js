@@ -2,7 +2,7 @@ if (typeof BASE_URL === "undefined") {
     globalThis.BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/";
 }
 const addTaskForm = document.querySelector('.add-task-form');
- contactListJsonLibrary = '';
+contactListJsonLibrary = '';
 let contactInputListArray = []
 let contactSelectedList = []
 
@@ -144,7 +144,7 @@ const renderfilteredArrayList = (filteredArray, comparedArray) => {
 
 const renderContactSelectedList = () => {
     let contactSelectedListInnerHtml = ''
-    document.getElementById('selectedContactField').innerHTML=''
+    document.getElementById('selectedContactField').innerHTML = ''
     for (let index = 0; index < contactSelectedList.length; index++) {
         contactSelectedListInnerHtml += setSelectedContactBadge(contactSelectedList, index, contactListJsonLibrary)
     }
@@ -196,7 +196,7 @@ const setContactInputList = () => {
 
 // contact input interface by Arnesto
 
-const initInput = (element,event) => {
+const initInput = (element, event) => {
     event.stopPropagation()
     const parentElement = element.closest('.contact-list-input-container')
     parentElement.querySelector('img').setAttribute('src', `../assets/ui-icons/arrow-up.svg`)
@@ -215,9 +215,10 @@ const finishInputContainer = (element) => {
     element.setAttribute('onclick', 'initInputContainer(this)')
 }
 
-const finishedInput = (element,event) => {
+const finishedInput = (element, event) => {
     event.stopPropagation()
     const parentElement = element.closest('.contact-list-input-container')
+    parentElement.setAttribute('onclick', 'initInputContainer(this)')
     parentElement.querySelector('img').setAttribute('src', `../assets/ui-icons/arrow-down.svg`)
     element.setAttribute('placeholder', 'Select contact to assign')
     blurredContactListState()
@@ -241,6 +242,13 @@ const blurredContactListState = () => {
 
 const contactInputListClicked = (event) => {
     event.preventDefault()
+}
+
+const preventDefault = (element, event) => {
+    const inputField = document.getElementById('contactInput')
+    if (event.target !== inputField) {
+        event.preventDefault()
+    }
 }
 
 const assignedToLabelClicked = (event) => {
@@ -272,7 +280,7 @@ const setContactSelectedList = (id) => {
     }
 }
 
-const initContactListSearch = (element,event) => {
+const initContactListSearch = (element, event) => {
     event.stopPropagation()
     const inputValue = element.value
     if (inputValue.length >= 3) {

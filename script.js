@@ -12,6 +12,7 @@ const initContactPage = async () => {
 }
 
 const initBoardPage = async () => {
+        await setContactLibraryForFirebaseInit()
         await setTaskLibraryForFirebaseInit();
         getGeneralTaskArray(taskListJsonLibrary,setTaskDataStructure,getPreludeGeneralTaskArray)
         getAllArray()

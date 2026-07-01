@@ -53,7 +53,7 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
                 </div>
             </div>
             <div class="task-assigned-contact-and-priority-indicator">
-                ${contactAssignedCatcherCallback(array[index].contactSelect)}
+                ${contactAssignedCatcherCallback(array[index].contactSelect, contactListJsonLibrary)}
                 <div class="priority-indicator">
                     <img src="../assets/ui-icons/${array[index].priority}.svg" alt="${array[index].priority}">
                 </div>
@@ -91,7 +91,7 @@ const taskDialogContentTemplate = (task) => {
             </section>
 
             <section class="task-assigned-contact-and-priority-indicator">
-                ${(task.contactSelect)}
+                ${task.contactSelect}
             </section>
 
             <section>
@@ -119,7 +119,7 @@ const dialogSubtask = (subtasks) => {
         for (let index = 0; index < subtasks.length; index++) {
             dialogSubtaskArray.push(subtasks[index].taskDescription)
         }
-        return dialogSubtaskArray.map(element =>`<p>${element}</p>`).join("")
+        return dialogSubtaskArray.map(element => `<p>${element}</p>`).join("")
     }
 };
 
@@ -154,17 +154,30 @@ const catchZeroSubtaskForLabel = (subtasks) => {
     }
 }
 
-const catchZeroContact = (contact) => {
+const catchZeroContact = (contact, library) => {
     if (contact == undefined) {
         return `<div class="assigned-contact-indicator assigned-contact-indicator-no-contact-selected">
                     <span>no contact selected yet</span>
                 </div>`
+    } else if (contact.length >= 4) {
+        let contactSelectInnerHtml = ''
+        for (let index = 0; index < 3; index++) {
+            contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+
+        }
+        return ` <div class="assigned-contact-indicator">
+                    ${contactSelectInnerHtml}
+                    <div class="board-card-assigned-contact-badge left3" style="background-color: rgb(154, 148, 148);">+${contact.length-3}</div>
+                </div>`
     } else {
-        return `    <div class="board-card-assigned-contact-badge left0" style="background-color: red;">AB</div>
-                    <div class="board-card-assigned-contact-badge left1" style="background-color: green;">CD</div>
-                    <div class="board-card-assigned-contact-badge left2" style="background-color: blue;">EF</div>
-                    <div class="board-card-assigned-contact-badge left3" style="background-color: rgb(154, 148, 148);">
-                        GH</div>`
+        let contactSelectInnerHtml = ''
+        for (let index = 0; index < contact.length; index++) {
+            contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+
+        }
+        return ` <div class="assigned-contact-indicator">
+                    ${contactSelectInnerHtml}
+                </div>`
     }
 
 }
