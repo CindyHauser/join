@@ -1,8 +1,12 @@
+.main-content{
+    height: 84%;
+}
+
 .summary-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+    justify-content: flex-start;
+    padding: 2rem 0 2rem 2rem;
     padding-left: 120px;
     max-width: 1210px;
 }
@@ -13,6 +17,7 @@
     align-items: center;
     width: 650px;
     gap: 1rem;
+    height: 20%;
 }
 
 .v-line-header {
@@ -30,9 +35,16 @@
     font-size: 2rem;
 }
 
+.metrics-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 560px;
+    flex: 1;
+}
+
 .summary-metrics {
     display: flex;
-    width: 560px;
     justify-content: space-between;
     gap: 2rem;
 }
@@ -44,7 +56,6 @@
     text-align: center;
     background-color: white;
     border-radius: 16px;
-    padding: 1rem;
     flex: 1;
 }
 
@@ -106,7 +117,7 @@
     align-items: flex-start;
     justify-content: center;
     gap: 0.5rem;
-    padding-top: 190px;
+    padding-top: 10%;
 }
 
 .greeting-section h2 {

@@ -12,8 +12,16 @@ hr {
     margin: 0;
 }
 
+.addTask-header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 20%;
+}
+
 h2 {
     font-size: 4rem;
+    margin: 0;
 }
 
 label,
@@ -43,24 +51,28 @@ textarea {
     padding: 2rem;
     padding-left: 120px;
     max-width: 1210px;
+    height: 84%;
 }
 
 .add-task-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    justify-content: space-between;
+    flex: 1;
+    height: 80%;
 }
 
 .add-task-content {
     display: flex;
     gap: 2rem;
+    flex: 1;
 }
 
 .add-task {
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: 2rem;
+    justify-content: space-between;
 }
 
 .align-start {
@@ -272,7 +284,8 @@ fieldset {
 .add-task-footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 140px;
+    align-items: center;
+    height: 37%;
 }
 
 .add-task-buttons {

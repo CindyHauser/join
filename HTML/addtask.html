@@ -57,13 +57,16 @@
             </div>
         </header>
         <section class="main-content">
-            <h2>Add Task</h2>
+            <div class="addTask-header">
+                <h2>Add Task</h2>
+            </div>
             <form class="add-task-form" id="addTaskForm" novalidate>
                 <div class="add-task-content">
                     <div class="add-task align-start">
                         <div class="form-inputs">
                             <label class="required" for="title">Title</label>
-                            <input type="text" id="title" name="titel" placeholder="Enter a Title" required data-error="Title is required">
+                            <input type="text" id="title" name="titel" placeholder="Enter a Title" required
+                                data-error="Title is required">
                         </div>
                         <div class="form-inputs">
                             <label for="description">Description</label>
@@ -71,7 +74,8 @@
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="date">Due date</label>
-                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required data-error="Date is required">
+                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required
+                                data-error="Date is required">
                         </div>
                     </div>
                     <hr>
@@ -93,11 +97,14 @@
                             </div>
                         </fieldset>
                         <div class="form-inputs contact-form">
-                            <label for="contactInput" id="assignedToLabel"  onclick="assignedToLabelClicked(event)">Assigned to</label>
+                            <label for="contactInput" id="assignedToLabel"
+                                onclick="assignedToLabelClicked(event)">Assigned to</label>
                             <div class="contact-list-input-container" onclick="initInputContainer(this)">
-                                <input type="text"  placeholder="Select contact to assign" onfocus="initInput(this,event)"
-                                    onblur="finishedInput(this,event)" id="contactInput" oninput="initContactListSearch(this,event)">
-                                <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault(); event.stopPropagation()">
+                                <input type="text" placeholder="Select contact to assign"
+                                    onfocus="initInput(this,event)" onblur="finishedInput(this,event)" id="contactInput"
+                                    oninput="initContactListSearch(this,event)">
+                                <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg"
+                                    onmousedown="event.preventDefault(); event.stopPropagation()">
                             </div>
                             <div id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
                             <div id="selectedContactField"></div>
@@ -112,7 +119,8 @@
                         </div>
                         <div class="form-inputs">
                             <label for="subtask">Subtask</label>
-                            <input type="text" id="subtask" name="subtask" placeholder="Add subtasks separated by commas">
+                            <input type="text" id="subtask" name="subtask"
+                                placeholder="Add subtasks separated by commas">
                         </div>
                     </div>
                 </div>
