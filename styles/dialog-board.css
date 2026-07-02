@@ -32,6 +32,10 @@
 }
 
 .dialogAddTask{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
     width: 80vw;
     height: 80vh;
 }
