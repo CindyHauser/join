@@ -160,26 +160,33 @@ const catchZeroContact = (contact, library) => {
                     <span>no contact selected yet</span>
                 </div>`
     } else if (contact.length >= 4) {
-        let contactSelectInnerHtml = ''
-        for (let index = 0; index < 3; index++) {
-            contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
-
-        }
-        return ` <div class="assigned-contact-indicator">
-                    ${contactSelectInnerHtml}
-                    <div class="board-card-assigned-contact-badge left3" style="background-color: rgb(154, 148, 148);">+${contact.length-3}</div>
-                </div>`
+        return catchContactAssignedLength3(contact, library)
     } else {
-        let contactSelectInnerHtml = ''
-        for (let index = 0; index < contact.length; index++) {
-            contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
-
-        }
-        return ` <div class="assigned-contact-indicator">
-                    ${contactSelectInnerHtml}
-                </div>`
+        return catchContactAssignedLengthMoreThan3(contact, library)
     }
 
+}
+
+const catchContactAssignedLength3 = (contact, library) => {
+    let contactSelectInnerHtml = ''
+    for (let index = 0; index < 3; index++) {
+        contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+    }
+    return ` <div class="assigned-contact-indicator">
+                    ${contactSelectInnerHtml}
+                    <div class="board-card-assigned-contact-badge left3" style="background-color: rgb(154, 148, 148);">+${contact.length - 3}</div>
+                </div>`
+
+}
+
+const catchContactAssignedLengthMoreThan3 = (contact, library) => {
+    let contactSelectInnerHtml = ''
+    for (let index = 0; index < contact.length; index++) {
+        contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+    }
+    return ` <div class="assigned-contact-indicator">
+                    ${contactSelectInnerHtml}
+                </div>`
 }
 
 
