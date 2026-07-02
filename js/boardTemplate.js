@@ -64,7 +64,7 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     return template
 };
 
-const taskDialogContentTemplate = (task) => {
+const taskDialogContentTemplate = (task, contactLibrary) => {
     let template = `
 <div class="dialog-task-board-card" id="${task.id}">
     <div class="dialog-task-card-inner-hug">
@@ -89,9 +89,11 @@ const taskDialogContentTemplate = (task) => {
                 <span class="dialog-task-card-distance">Priority: </span> <span>${task.priority[0].charAt(0).toUpperCase() + task.priority.slice(1)}
                         <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
             </section>
-
-            <section class="task-assigned-contact-and-priority-indicator">
-                ${task.contactSelect}
+            
+            
+            <section class="dialog-task-card-contacts">
+                <p>Assigned To:</p>
+                ${renderDialogAssignedContacts(task.contactSelect, contactLibrary)}
             </section>
 
             <section>
@@ -110,6 +112,8 @@ const taskDialogContentTemplate = (task) => {
     </div>`
     return template
 }
+
+// ${console.log(task.contactSelect, contactListJsonLibrary)}
 
 const dialogSubtask = (subtasks) => {
     let dialogSubtaskArray = [];
@@ -154,6 +158,35 @@ const catchZeroSubtaskForLabel = (subtasks) => {
     }
 }
 
+const createDialogAssignedContactMarkup = (contactId, library) => {
+    const contactData = library[contactId]
+    if (!contactData) {
+        return ''
+    };
+
+    const initials = `${contactData.fornameFirstLetter.toUpperCase()}${contactData.surnameFirstLetter.toUpperCase()}`
+    return `
+        <div class="dialog-assigned-contact-item">
+            <div class="dialog-assigned-contact-badge" 
+            style="background-color: rgb(${contactData.badgeColor[0]}, ${contactData.badgeColor[1]}, ${contactData.badgeColor[2]});">${initials}</div>
+            <span>${contactData.forename} ${contactData.surname}</span>
+        </div>
+    `
+};
+
+const renderDialogAssignedContacts = (contact, library) => {
+    if (contact == undefined || contact.length == 0) {
+        return `<div class="dialog-assigned-contact-indicator">
+                    <span>no contact selected yet</span>
+                </div>`
+    };
+
+    const contactSelectInnerHtml = contact.map(contactId => createDialogAssignedContactMarkup(contactId, library)).join('')
+    return ` <div class="dialog-assigned-contact-indicator">
+                    ${contactSelectInnerHtml}
+                </div>`
+};
+
 const catchZeroContact = (contact, library) => {
     if (contact == undefined) {
         return `<div class="assigned-contact-indicator assigned-contact-indicator-no-contact-selected">
@@ -164,7 +197,6 @@ const catchZeroContact = (contact, library) => {
     } else {
         return catchContactAssignedLengthMoreThan3(contact, library)
     }
-
 }
 
 const catchContactAssignedLength3 = (contact, library) => {

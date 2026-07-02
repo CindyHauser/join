@@ -76,6 +76,29 @@
     width: 80px;
 }
 
+.dialog-assigned-contact-indicator {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.dialog-assigned-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dialog-assigned-contact-badge {
+    width: 32px;
+    border-radius: 50%;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
 .dialog-task-card-footer {
     display: flex;
     align-items: center;
@@ -92,5 +115,5 @@
 }
 
 .border-left-btn {
-border-left: 1px solid var(--text-color-links);
+    border-left: 1px solid var(--text-color-links);
 }

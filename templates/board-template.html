@@ -82,11 +82,9 @@
                         <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
             </section>
 
-            <section class="task-assigned-contact-and-priority-indicator">
-                ${(task.contactSelect)}
-                <div class="priority-indicator">
-                    <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}">
-                </div>
+            <section class="dialog-task-card-contacts">
+                <p>Assigned To:</p>
+                ${catchZeroContact(task.contactSelect, contactListJsonLibrary)}
             </section>
 
             <section>
@@ -95,8 +93,6 @@
                     ${dialogSubtask(task.subtasks)}
                 </div>
             </section>
-
-
 
         </div>
         <footer class="dialog-task-card-footer">
