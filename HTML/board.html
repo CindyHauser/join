@@ -177,7 +177,7 @@
                                     <input type="text" placeholder="Select contact to assign"
                                         onfocus="initInput(this,event)" onblur="finishedInput(this,event)"
                                         id="contactInput" oninput="initContactListSearch(this,event)">
-                                    <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg">
+                                    <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault(); event.stopPropagation()">
                                 </div>
                                 <div id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
                                 <div id="selectedContactField"></div>
