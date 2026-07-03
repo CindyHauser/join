@@ -106,7 +106,7 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
         </div>
             <footer class="dialog-task-card-footer">
                 <button class="dialog-task-card-btn"><img src="../assets/ui-icons/delete.svg" alt="delete Button"> Delete</button>
-                <button class="dialog-task-card-btn border-left-btn" onclick="openEditTaskDialog('${task.priority}')"><img src="../assets/ui-icons/edit.svg" alt="edit Button"> Edit</button>
+                <button class="dialog-task-card-btn border-left-btn" onclick="openEditTaskDialog(${JSON.stringify(task).replace(/"/g, '&quot;')})"><img src="../assets/ui-icons/edit.svg" alt="edit Button"> Edit</button>
             </footer>
 
     </div>`
@@ -120,29 +120,28 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                     class="add-task-button btn-secondary">x</button>
             </div>
 
-            <form class="add-task-form" id="editTaskForm" novalidate>
+            <form class="add-task-form" id="editTaskForm" onsubmit="submitEditTask(event, this)" novalidate>
                 <div class="dialog-edit-form">
                     <div class="add-task align-start">
                         <div class="form-inputs">
-                            <label class="required" for="title">Title</label>
-                            <input type="text" id="title" name="title" placeholder="Enter a Title" value="${task.title}" required
+                            <label class="required" for="editTitle">Title</label>
+                            <input type="text" id="editTitle" name="editTitle" placeholder="Enter a Title" value="${task.title}" required
                                 data-error="Title is required">
                         </div>
                         <div class="form-inputs">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" placeholder="Enter a Description">${task.description}</textarea>
+                            <label for="editDescription">Description</label>
+                            <textarea name="editDescription" id="editDescription" placeholder="Enter a Description">${task.description}</textarea>
                         </div>
                         <div class="form-inputs">
-                            <label class="required" for="date">Due date</label>
-                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" value="${task.date}" required
+                            <label class="required" for="editDate">Due date</label>
+                            <input type="date" id="editDate" name="editDate" placeholder="dd/mm/yyyy" value="${task.date}" required
                                 data-error="Date is required">
                         </div>
                         <fieldset>
                             <legend>Priority</legend>
 
                             <div class="priority-options">
-                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)"
-                                    id="priorityOptions">
+                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)">
                                     Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
                                 </button>
                                 <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
@@ -154,7 +153,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                             </div>
                         </fieldset>
                         <div class="form-inputs contact-form">
-                            <label for="contactInput" id="assignedToLabel"
+                            <label for="contactInputEdit" id="assignedToLabel"
                                 onclick="assignedToLabelClicked(event)">Assigned to</label>
                             <div class="contact-list-input-container" onclick="initInputContainer(this)">
                                 <input type="text" placeholder="Select contact to assign"
@@ -166,17 +165,17 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                             <div id="selectedContactFieldEdit"></div>
                         </div>
                         <div class="form-inputs">
-                            <label class="required" for="category">Category</label>
-                            <select required name="category" id="category" data-error="Category is required">
+                            <label class="required" for="categoryEdit">Category</label>
+                            <select required name="category" id="categoryEdit" data-error="Category is required">
                                 <option value="" selected hidden>Select task Category</option>
                                 <option value="Technical Task">Technical Task</option>
                                 <option value="User Story">User Story</option>
                             </select>
                         </div>
                         <div class="form-inputs">
-                            <label for="subtask">Subtask</label>
-                            <input type="text" id="subtask" name="subtasks" placeholder="Add subtasks separated by commas">
-                            <ul id="subtaskDescription">${dialogSubtask(task.subtasks, true)}</ul>
+                            <label for="editSubtask">Subtask</label>
+                            <input type="text" id="editSubtask" name="editSubtasks" placeholder="Add subtasks with Enter" onkeydown="editSubtask(event,'${task.id}')">
+                            <ul id="editSubtaskDescription">${dialogSubtask(task.subtasks, true)}</ul>
                         </div>
                     </div>
                 </div>
@@ -202,9 +201,9 @@ const dialogSubtask = (subtasks, editTask) => {
             dialogSubtaskArray.push(subtasks[index].taskDescription)
         }
         if (editTask) {
-            return dialogSubtaskArray.map(element => `<li>${element}</li>`).join("")
+            return dialogSubtaskArray.map(element => `<li data-value="${dialogSubtaskArray.indexOf(element)}">${element}</li>`).join("")
         }
-        return dialogSubtaskArray.map(element => `<p class="input-label"><input class="checkbox" type="checkbox" id="${element}">
+        return dialogSubtaskArray.map(element => `<p class="input-label"><input class="checkbox" type="checkbox" id="${element}" data-value="${dialogSubtaskArray.indexOf(element)}">
        <label class="dialog-task-card-checkbox-label" for="${element}">${element}</label></p>`).join("")
     }
 };
