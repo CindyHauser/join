@@ -93,12 +93,29 @@ async function editSubtask(event, taskId) {
     input.value = "";
 }
 
-
-
-async function submitEditTask(event, editTaskForm) {
+async function submitEditTask(event, editTaskForm, taskId, taskState) {
     event.preventDefault();
     if (!validateForm(editTaskForm)) return;
-    await editTask(event);
+    await editTask(event, taskId, taskState);
     toggleDialog('dialogEditTask');
     await initBoardPage();
 };
+
+async function editTask(event, taskId , taskState) {
+    const formData = new FormData(event.target);
+    const taskTitle = formData.get('editTitle');
+    const taskDescription = formData.get('editDescription');
+    const taskDate = formData.get('editDate');
+    const taskPriority = getSelectedPriority();
+    const taskCategory = formData.get('categoryEdit');
+    const taskSubtasks = formData.getAll('editSubtasks').filter(subtask => subtask.trim() !== '');
+    putTaskDataToFireBase(taskId, {
+        title: taskTitle,
+        description: taskDescription,
+        date: taskDate,
+        state: taskState,
+        priority: taskPriority,
+        category: taskCategory,
+        subtasks: taskSubtasks
+    });
+}

@@ -120,7 +120,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                     class="add-task-button btn-secondary">x</button>
             </div>
 
-            <form class="add-task-form" id="editTaskForm" onsubmit="submitEditTask(event, this)" novalidate>
+            <form class="add-task-form" id="editTaskForm" onsubmit="submitEditTask(event, this, '${task.id}', '${task.state}')" novalidate>
                 <div class="dialog-edit-form">
                     <div class="add-task align-start">
                         <div class="form-inputs">
@@ -166,7 +166,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="categoryEdit">Category</label>
-                            <select required name="category" id="categoryEdit" data-error="Category is required">
+                            <select required name="categoryEdit" id="categoryEdit" data-error="Category is required">
                                 <option value="" selected hidden>Select task Category</option>
                                 <option value="Technical Task">Technical Task</option>
                                 <option value="User Story">User Story</option>
