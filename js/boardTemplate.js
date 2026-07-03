@@ -204,7 +204,8 @@ const dialogSubtask = (subtasks, editTask) => {
         if (editTask) {
             return dialogSubtaskArray.map(element => `<li>${element}</li>`).join("")
         }
-        return dialogSubtaskArray.map(element => `<p>${element}</p>`).join("")
+        return dialogSubtaskArray.map(element => `<p class="input-label"><input class="checkbox" type="checkbox" id="${element}">
+       <label class="dialog-task-card-checkbox-label" for="${element}">${element}</label></p>`).join("")
     }
 };
 
