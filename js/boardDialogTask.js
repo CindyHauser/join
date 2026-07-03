@@ -22,6 +22,8 @@ async function openTaskDialog(taskId) {
     const taskListLibrary = await getTaskLibraryForFirebaseInit();
     const task = setTaskDataStructure(taskId, taskListLibrary);
     const dialogTaskContent = document.getElementById('dialogTaskContent');
+    const dialogEditTaskContent = document.getElementById('dialogContentEditTask');
+    dialogEditTaskContent.innerHTML = taskDialogEditContentTemplate(task, contactListJsonLibrary);
     dialogTaskContent.innerHTML = taskDialogContentTemplate(task, contactListJsonLibrary);
     toggleDialog('dialogOpenBigCard');
 };

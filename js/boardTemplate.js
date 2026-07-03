@@ -113,15 +113,96 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
     return template
 }
 
-// ${console.log(task.contactSelect, contactListJsonLibrary)}
+const taskDialogEditContentTemplate = (task, contactLibrary) => {
+    let template = `
+    <div class="closeButton">
+                <button type="button" onclick="toggleDialog('dialogEditTask')"
+                    class="add-task-button btn-secondary">x</button>
+            </div>
 
-const dialogSubtask = (subtasks) => {
+            <form class="add-task-form" id="editTaskForm" novalidate>
+                <div class="dialog-edit-form">
+                    <div class="add-task align-start">
+                        <div class="form-inputs">
+                            <label class="required" for="title">Title</label>
+                            <input type="text" id="title" name="title" placeholder="Enter a Title" value="${task.title}" required
+                                data-error="Title is required">
+                        </div>
+                        <div class="form-inputs">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" placeholder="Enter a Description">${task.description}</textarea>
+                        </div>
+                        <div class="form-inputs">
+                            <label class="required" for="date">Due date</label>
+                            <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" value="${task.date}" required
+                                data-error="Date is required">
+                        </div>
+                        <fieldset>
+                            <legend>Priority</legend>
+
+                            <div class="priority-options">
+                                <button type="button" class="priority-btn urgent" onclick="selectPriority(this)"
+                                    id="priorityOptions">
+                                    Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
+                                </button>
+                                <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
+                                    Medium <img src="../assets/ui-icons/medium.svg" alt="medium.svg">
+                                </button>
+                                <button type="button" class="priority-btn low" onclick="selectPriority(this)">
+                                    Low <img src="../assets/ui-icons/low.svg" alt="low.svg">
+                                </button>
+                            </div>
+                        </fieldset>
+                        <div class="form-inputs contact-form">
+                            <label for="contactInput" id="assignedToLabel"
+                                onclick="assignedToLabelClicked(event)">Assigned to</label>
+                            <div class="contact-list-input-container" onclick="initInputContainer(this)">
+                                <input type="text" placeholder="Select contact to assign"
+                                    onfocus="initInput(this,event)" onblur="finishedInput(this,event)" id="contactInputEdit"
+                                    oninput="initContactListSearch(this,event)">
+                                <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg">
+                            </div>
+                            <div id="contactInputListEdit" onmousedown="contactInputListClicked(event)"></div>
+                            <div id="selectedContactFieldEdit"></div>
+                        </div>
+                        <div class="form-inputs">
+                            <label class="required" for="category">Category</label>
+                            <select required name="category" id="category" data-error="Category is required">
+                                <option value="" selected hidden>Select task Category</option>
+                                <option value="Technical Task">Technical Task</option>
+                                <option value="User Story">User Story</option>
+                            </select>
+                        </div>
+                        <div class="form-inputs">
+                            <label for="subtask">Subtask</label>
+                            <input type="text" id="subtask" name="subtasks" placeholder="Add subtasks separated by commas">
+                            <ul id="subtaskDescription">${dialogSubtask(task.subtasks, true)}</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-task-footer-dialog">
+                    <p class="required">This field is required</p>
+                    <div class="add-task-buttons">
+                        <button type="submit" class="add-task-button btn-main">Ok<img src="../assets/ui-icons/check.svg"
+                                alt="check.svg"></button>
+                    </div>
+
+                </div>
+            </form>`
+    return template
+}
+
+
+const dialogSubtask = (subtasks, editTask) => {
     let dialogSubtaskArray = [];
     if (subtasks.length == 0) {
         return ``
     } else {
         for (let index = 0; index < subtasks.length; index++) {
             dialogSubtaskArray.push(subtasks[index].taskDescription)
+        }
+        if (editTask) {
+            return dialogSubtaskArray.map(element => `<li>${element}</li>`).join("")
         }
         return dialogSubtaskArray.map(element => `<p>${element}</p>`).join("")
     }
