@@ -82,22 +82,22 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
             </p>
 
             <section>
-                <span class="dialog-task-card-distance">Due Date: </span> <span>${task.date}</span>         
+                <span class="dialog-task-card-distance dialog-task-card-color">Due Date: </span> <span>${task.date}</span>         
             </section>
 
             <section>
-                <span class="dialog-task-card-distance">Priority: </span> <span>${task.priority[0].charAt(0).toUpperCase() + task.priority.slice(1)}
+                <span class="dialog-task-card-distance dialog-task-card-color">Priority: </span> <span>${task.priority[0].charAt(0).toUpperCase() + task.priority.slice(1)}
                         <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
             </section>
             
             
             <section class="dialog-task-card-contacts">
-                <p>Assigned To:</p>
+                <p class="dialog-task-card-color">Assigned To:</p>
                 ${renderDialogAssignedContacts(task.contactSelect, contactLibrary)}
             </section>
 
             <section>
-             <p>Subtasks</p>
+             <p class="dialog-task-card-color">Subtasks</p>
               <div class="dialog-subtasks">
                  ${dialogSubtask(task.subtasks)}
               </div>

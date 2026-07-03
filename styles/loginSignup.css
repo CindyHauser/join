@@ -201,6 +201,7 @@ h1 {
     color: red;
     font-size: 0.9rem;
     text-align: center;
+    margin: 0;
 }
 
 .input-error {
