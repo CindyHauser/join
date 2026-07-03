@@ -28,6 +28,12 @@ async function openTaskDialog(taskId) {
     toggleDialog('dialogOpenBigCard');
 };
 
+function openEditTaskDialog(taskPriority) {
+    toggleDialog('dialogEditTask');
+    const dialog = document.getElementById('dialogEditTask');
+    setPriority(dialog, taskPriority);
+}
+
 async function submitFormDialog(event, taskState) {
     event.preventDefault();
     if (!validateForm(addTaskForm)) return;

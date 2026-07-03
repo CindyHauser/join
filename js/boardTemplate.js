@@ -106,7 +106,7 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
         </div>
             <footer class="dialog-task-card-footer">
                 <button class="dialog-task-card-btn"><img src="../assets/ui-icons/delete.svg" alt="delete Button"> Delete</button>
-                <button class="dialog-task-card-btn border-left-btn" onclick="toggleDialog('dialogEditTask')"><img src="../assets/ui-icons/edit.svg" alt="edit Button"> Edit</button>
+                <button class="dialog-task-card-btn border-left-btn" onclick="openEditTaskDialog('${task.priority}')"><img src="../assets/ui-icons/edit.svg" alt="edit Button"> Edit</button>
             </footer>
 
     </div>`

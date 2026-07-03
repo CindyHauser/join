@@ -15,6 +15,13 @@ function removePriority() {
     document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('selected'));
 }
 
+function setPriority(dialog,priority) {
+    const button = dialog.querySelector(`.priority-btn.${priority}`);
+    if (button) {
+        selectPriority(button);
+    }
+}
+
 initValidation(addTaskForm);
 
 addTaskForm.addEventListener('submit', async (event) => {
