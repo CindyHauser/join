@@ -6,6 +6,8 @@ function stopPropagationFunction(event) {
 
 function toggleDialog(id, state) {
     const dialog = document.getElementById(id);
+    contactSelectedList = []
+    document.getElementById('selectedContactField').innerHTML = ''
     if (dialog.open) {
         dialog.close();
     } else {
@@ -15,6 +17,7 @@ function toggleDialog(id, state) {
         }
         dialog.showModal();
         initAddTaskPage();
+        
     }
 };
 
@@ -34,6 +37,7 @@ function openEditTaskDialog(task) {
     setPriority(dialog, task.priority);
     selectCategoryByValue('categoryEdit', task.category);
     const editTaskForm = document.querySelector('#editTaskForm');
+    contactSelectedList = task.contactSelect
     initValidation(editTaskForm);
 }
 

@@ -12,7 +12,7 @@ hr {
     margin: 0;
 }
 
-.addTask-header{
+.addTask-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -111,6 +111,33 @@ textarea {
     opacity: 0;
 }
 
+
+#contactInputListEdit {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 8;
+    padding: 16px;
+    gap: 16px;
+    top: 58%;
+    width: 100%;
+    background-color: white;
+    max-height: 200px;
+    overflow: auto;
+    height: 0px;
+    opacity: 0;
+    z-index: 4;
+}
+
+#selectedContactFieldEdit {
+    display: flex;
+    gap: 16px;
+    max-width: 440px;
+    overflow: auto;
+    height: 56px;
+}
+
 .contact-input-class-card {
     width: 90%;
     display: flex;
@@ -192,14 +219,14 @@ textarea {
     }
 
     100% {
-        height: 160px;
+        height: 200px;
         opacity: 1;
     }
 }
 
 @keyframes popUpContactlist {
     0% {
-        height: 160px;
+        height: 200px;
         opacity: 1;
     }
 

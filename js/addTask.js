@@ -105,13 +105,10 @@ const postNewTaskToFireBase = async (path, data = {}) => {
 
 const setContactListCard = (array, index, comparedArray) => {
     let template;
-    template = `<div class="contact-input-class-card" onclick="contactSelected(this)">
-                    <div class="input-name-and-badge">
-                    <div class="contact-input-badge"  style="background-color: rgb(${array[index].badgeColor[0]},${array[index].badgeColor[1]},${array[index].badgeColor[2]});">${array[index].fornameFirstLetter}${array[index].surnameFirstLetter}</div>
-                    <div class="contact-input-name"> ${array[index].forename} ${array[index].surname}</div>
-                    </div>
-                    <input onclick="contactSelectedCheckbox(this)" type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
-                    </div>`
+    template = returnStandardContactListCard(array,index)
+    if (comparedArray === undefined) {
+        return returnStandardContactListCard(array,index)
+    }
     if (comparedArray.includes(array[index].id)) {
         template = `<div class="contact-input-class-card" onclick="contactSelected(this)">
                     <div class="input-name-and-badge">
@@ -122,6 +119,17 @@ const setContactListCard = (array, index, comparedArray) => {
                     </div>`
     }
     return template
+}
+
+
+const returnStandardContactListCard = (array,index)=>{
+    return `<div class="contact-input-class-card" onclick="contactSelected(this)">
+                    <div class="input-name-and-badge">
+                    <div class="contact-input-badge"  style="background-color: rgb(${array[index].badgeColor[0]},${array[index].badgeColor[1]},${array[index].badgeColor[2]});">${array[index].fornameFirstLetter}${array[index].surnameFirstLetter}</div>
+                    <div class="contact-input-name"> ${array[index].forename} ${array[index].surname}</div>
+                    </div>
+                    <input onclick="contactSelectedCheckbox(this)" type="checkbox" name="${array[index].forename} ${array[index].surname}" id=${array[index].id} class="checkbox-contact-list">
+                    </div>`
 }
 
 const setSelectedContactBadge = (array, index, library) => {
@@ -140,6 +148,8 @@ const renderContactInputList = () => {
     document.getElementById('contactInputList').innerHTML = contactListInnerHtml
     document.getElementById('contactInputListEdit').innerHTML = contactListInnerHtml
 }
+
+
 
 const renderfilteredArrayList = (filteredArray, comparedArray) => {
     let contactListInnerHtml = ''
@@ -216,9 +226,10 @@ const initInput = (element, event) => {
 
 const initInputContainer = (element) => {
     element.querySelector('input').focus()
-    element.setAttribute('onclick', 'finishInputContainer(this)')
+    element.setAttribute('onclick', 'finishInputContainer(this)')    
     renderContactInputList()
 }
+
 
 const finishInputContainer = (element) => {
     element.querySelector('input').blur()
@@ -290,6 +301,9 @@ const contactSelectedCheckbox = (element) => {
 
 
 const setContactSelectedList = (id) => {
+    if (!contactSelectedList) {
+        contactSelectedList = []
+    }
     if (contactSelectedList.includes(id)) {
         const index = contactSelectedList.indexOf(id)
         contactSelectedList.splice(index, 1)

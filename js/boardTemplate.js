@@ -159,10 +159,10 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                                 <input type="text" placeholder="Select contact to assign"
                                     onfocus="initInput(this,event)" onblur="finishedInput(this,event)" id="contactInputEdit"
                                     oninput="initContactListSearch(this,event)">
-                                <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg">
+                                <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault()">
                             </div>
                             <div id="contactInputListEdit" onmousedown="contactInputListClicked(event)"></div>
-                            <div id="selectedContactFieldEdit"></div>
+                            <div id="selectedContactFieldEdit">${renderDialogAssignedContactsEdit(task.contactSelect, contactLibrary)}</div>  
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="categoryEdit">Category</label>
@@ -255,6 +255,22 @@ const createDialogAssignedContactMarkup = (contactId, library) => {
     `
 };
 
+
+const createDialogAssignedContactMarkupEdit = (contactId, library) => {
+    const contactData = library[contactId]
+    if (!contactData) {
+        return ''
+    };
+
+    const initials = `${contactData.fornameFirstLetter.toUpperCase()}${contactData.surnameFirstLetter.toUpperCase()}`
+    return `
+        <div class="dialog-assigned-contact-item">
+            <div class="dialog-assigned-contact-badge" 
+            style="background-color: rgb(${contactData.badgeColor[0]}, ${contactData.badgeColor[1]}, ${contactData.badgeColor[2]});">${initials}</div>
+        </div>
+    `
+};
+
 const renderDialogAssignedContacts = (contact, library) => {
     if (contact == undefined || contact.length == 0) {
         return `<div class="dialog-assigned-contact-indicator">
@@ -267,6 +283,17 @@ const renderDialogAssignedContacts = (contact, library) => {
                     ${contactSelectInnerHtml}
                 </div>`
 };
+
+const renderDialogAssignedContactsEdit = (contact, library) => {
+    if (contact == undefined || contact.length == 0) {
+        return `
+                    <span>no contact selected yet</span>
+                `
+    };
+    const contactSelectInnerHtml = contact.map(contactId => createDialogAssignedContactMarkupEdit(contactId, library)).join('')
+    return ` ${contactSelectInnerHtml}`
+};
+
 
 const catchZeroContact = (contact, library) => {
     if (contact == undefined) {
