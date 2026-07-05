@@ -142,11 +142,14 @@ const setSelectedContactBadge = (array, index, library) => {
 
 const renderContactInputList = () => {
     let contactListInnerHtml = ''
+    const contactInputListEdit = document.getElementById('contactInputListEdit')
     for (let index = 0; index < contactInputListArray.length; index++) {
         contactListInnerHtml += setContactListCard(contactInputListArray, index, contactSelectedList)
     }
     document.getElementById('contactInputList').innerHTML = contactListInnerHtml
-    document.getElementById('contactInputListEdit').innerHTML = contactListInnerHtml
+    if (contactInputListEdit) {
+        contactInputListEdit.innerHTML = contactListInnerHtml
+    }
 }
 
 
