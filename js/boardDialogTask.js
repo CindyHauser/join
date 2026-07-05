@@ -64,7 +64,7 @@ function selectCategoryByValue(selectId, value) {
     } else {select.value = "";}
 }
 
-async function editSubtask(event, taskId) {
+async function addEditSubtask(event, taskId) {
     if (event.key !== "Enter") return;
 
     event.preventDefault();
@@ -103,6 +103,9 @@ async function submitEditTask(event, editTaskForm, taskId, taskState) {
     await editTask(event, taskId, taskState);
     toggleDialog('dialogEditTask');
     await initBoardPage();
+    const taskListLibrary = await getTaskLibraryForFirebaseInit();
+    const task = setTaskDataStructure(taskId, taskListLibrary);
+    document.getElementById('dialogTaskContent').innerHTML =  taskDialogContentTemplate(task, contactListJsonLibrary);
 };
 
 async function editTask(event, taskId , taskState) {
@@ -118,8 +121,15 @@ async function editTask(event, taskId , taskState) {
         description: taskDescription,
         date: taskDate,
         state: taskState,
+        contactSelect: contactSelectedList,
         priority: taskPriority,
         category: taskCategory,
         subtasks: taskSubtasks
     });
+}
+
+function deleteTask(taskId) {
+    deleteTaskDataFromFireBase(taskId);
+    toggleDialog('dialogOpenBigCard');
+    initBoardPage();
 }

@@ -6,26 +6,38 @@
 }
 
 .closeButton {
+    height: 10%;
     width: 100%;
     display: flex;
+    align-items: start;
     justify-content: flex-end;
 }
 
 .dialog-edit-form {
     overflow-y: auto;
-    max-height: 80vh;
+    height: 90%;
+}
+
+.dialog-edit-rem{
+    gap: 2rem;
+}
+
+.dialog-edit-form-height{
+    height: 90%;
 }
 
 .add-task-footer-dialog {
     display: flex;
     justify-content: space-between;
+    height: 10%;
+    align-items: end;
 }
 
 .dialog-task-board-card {
-    width: 36vw;
+    min-width: 36vw;
     height: 90vh;
     padding: 36px;
-    max-width: 520px;
+    max-width: 550px;
 }
 
 .dialog-task-board-card p {

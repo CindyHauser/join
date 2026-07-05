@@ -105,7 +105,7 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
 
         </div>
             <footer class="dialog-task-card-footer">
-                <button class="dialog-task-card-btn"><img src="../assets/ui-icons/delete.svg" alt="delete Button"> Delete</button>
+                <button class="dialog-task-card-btn" onclick="deleteTask('${task.id}')"><img src="../assets/ui-icons/delete.svg" alt="delete Button"> Delete</button>
                 <button class="dialog-task-card-btn border-left-btn" onclick="openEditTaskDialog(${JSON.stringify(task).replace(/"/g, '&quot;')})"><img src="../assets/ui-icons/edit.svg" alt="edit Button"> Edit</button>
             </footer>
 
@@ -120,9 +120,9 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                     class="add-task-button btn-secondary">x</button>
             </div>
 
-            <form class="add-task-form" id="editTaskForm" onsubmit="submitEditTask(event, this, '${task.id}', '${task.state}')" novalidate>
+            <form class="add-task-form dialog-edit-form-height" id="editTaskForm" onsubmit="submitEditTask(event, this, '${task.id}', '${task.state}')" novalidate>
                 <div class="dialog-edit-form">
-                    <div class="add-task align-start">
+                    <div class="add-task align-start dialog-edit-rem">
                         <div class="form-inputs">
                             <label class="required" for="editTitle">Title</label>
                             <input type="text" id="editTitle" name="editTitle" placeholder="Enter a Title" value="${task.title}" required
@@ -174,7 +174,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         </div>
                         <div class="form-inputs">
                             <label for="editSubtask">Subtask</label>
-                            <input type="text" id="editSubtask" name="editSubtasks" placeholder="Add subtasks with Enter" onkeydown="editSubtask(event,'${task.id}')">
+                            <input type="text" id="editSubtask" name="editSubtasks" placeholder="Add subtasks with Enter" onkeydown="addEditSubtask(event,'${task.id}')">
                             <ul id="editSubtaskDescription">${dialogSubtask(task.subtasks, true)}</ul>
                         </div>
                     </div>
