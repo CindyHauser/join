@@ -156,22 +156,28 @@ const renderContactInputList = () => {
 
 const renderfilteredArrayList = (filteredArray, comparedArray) => {
     let contactListInnerHtml = ''
+    const contactInputListEdit = document.getElementById('contactInputListEdit')
     document.getElementById('contactInputList').innerHTML = ''
     for (let index = 0; index < filteredArray.length; index++) {
         contactListInnerHtml += setContactListCard(filteredArray, index, comparedArray)
     }
     document.getElementById('contactInputList').innerHTML = contactListInnerHtml
-    document.getElementById('contactInputListEdit').innerHTML = contactListInnerHtml
+    if (contactInputListEdit) {
+        contactInputListEdit.innerHTML = contactListInnerHtml
+    }
 }
 
 const renderContactSelectedList = () => {
     let contactSelectedListInnerHtml = ''
+    const selectedContactFieldEdit = document.getElementById('selectedContactFieldEdit')
     document.getElementById('selectedContactField').innerHTML = ''
     for (let index = 0; index < contactSelectedList.length; index++) {
         contactSelectedListInnerHtml += setSelectedContactBadge(contactSelectedList, index, contactListJsonLibrary)
     }
     document.getElementById('selectedContactField').innerHTML = contactSelectedListInnerHtml
-    document.getElementById('selectedContactFieldEdit').innerHTML = contactSelectedListInnerHtml
+    if (selectedContactFieldEdit) {
+        selectedContactFieldEdit.innerHTML = contactSelectedListInnerHtml
+    }
 }
 
 // contact input data function by Arnesto
@@ -254,8 +260,10 @@ const focusedContactListState = () => {
     const contactListEdit = document.getElementById('contactInputListEdit')
     contactList.classList.remove('pop-up-contact-liste-add-task-animating')
     contactList.classList.add('pop-down-contact-liste-add-task-animating')
-    contactListEdit.classList.remove('pop-up-contact-liste-add-task-animating')
-    contactListEdit.classList.add('pop-down-contact-liste-add-task-animating')
+    if (contactListEdit) {
+        contactListEdit.classList.remove('pop-up-contact-liste-add-task-animating')
+        contactListEdit.classList.add('pop-down-contact-liste-add-task-animating')
+    }
 }
 
 const blurredContactListState = () => {
@@ -263,11 +271,15 @@ const blurredContactListState = () => {
     const contactListEdit = document.getElementById('contactInputListEdit')
     contactList.classList.remove('pop-down-contact-liste-add-task-animating')
     contactList.classList.add('pop-up-contact-liste-add-task-animating')
-    contactListEdit.classList.remove('pop-down-contact-liste-add-task-animating')
-    contactListEdit.classList.add('pop-up-contact-liste-add-task-animating')
+    if (contactListEdit) {
+        contactListEdit.classList.remove('pop-down-contact-liste-add-task-animating')
+        contactListEdit.classList.add('pop-up-contact-liste-add-task-animating')
+    }
     setTimeout(() => {
         contactList.classList.remove('pop-up-contact-liste-add-task-animating')
-        contactListEdit.classList.remove('pop-up-contact-liste-add-task-animating')
+        if (contactListEdit) {
+            contactListEdit.classList.remove('pop-up-contact-liste-add-task-animating')
+        }
     }, 500);
 }
 
