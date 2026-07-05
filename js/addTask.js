@@ -27,7 +27,12 @@ initValidation(addTaskForm);
 addTaskForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!validateForm(addTaskForm)) return;
-    await createTask(event, 'toDo');
+
+    if (typeof submitFormDialog === 'function') {
+        await submitFormDialog(event, typeof taskState !== 'undefined' ? taskState : 'toDo');
+    } else {
+        await createTask(event, 'toDo');
+    }
 });
 
 async function createTask(event, state) {
