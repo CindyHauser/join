@@ -18,11 +18,11 @@
     height: 90%;
 }
 
-.dialog-edit-rem{
+.dialog-edit-rem {
     gap: 2rem;
 }
 
-.dialog-edit-form-height{
+.dialog-edit-form-height {
     height: 90%;
 }
 
@@ -44,7 +44,7 @@
     margin: 0;
 }
 
-.dialogAddTask{
+.dialogAddTask {
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -149,9 +149,7 @@
     font-size: 1rem;
 }
 
-.dialog-task-card-checkbox-subtask {
-
-}
+.dialog-task-card-checkbox-subtask {}
 
 .dialog-task-card-footer {
     display: flex;
@@ -170,4 +168,71 @@
 
 .border-left-btn {
     border-left: 1px solid var(--text-color-links);
+}
+
+ul {
+    margin: 0;
+    padding-left: 0.5rem;
+    width: 440px;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.actions {
+    display: none;
+    gap: 5px;
+}
+
+li:not(:has(input)):hover {
+    background: var(--text-color-links);
+}
+
+li:hover .actions {
+    display: flex;
+}
+
+.subtaskButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.subtaskButton img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(0);
+}
+
+.edit-input{
+    border: none;
+    height: 30px;
+    width: unset;
+}
+
+.edit-input:focus {
+  outline: none;
+}
+
+.delete-btn{
+    border-left: 1px solid var(--text-color-links);
+}
+
+li:has(input){
+    border-bottom: 2px solid var(--main-color);
+    border-radius: unset;
+}
+
+li:has(input) .actions{
+    display: flex;
 }

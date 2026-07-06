@@ -191,6 +191,18 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
     return template
 }
 
+function getButtonSubtask() {
+    return `
+    <div class="actions">
+        <button type="button" class="edit-btn subtaskButton">
+            <img src="../assets/ui-icons/edit.svg" alt="edit.svg">
+        </button>
+        <button type="button" class="delete-btn subtaskButton">
+            <img src="../assets/ui-icons/delete.svg" alt="delete.svg">
+        </button>
+    </div>
+`}
+
 
 const dialogSubtask = (subtasks, editTask) => {
     let dialogSubtaskArray = [];
@@ -201,7 +213,7 @@ const dialogSubtask = (subtasks, editTask) => {
             dialogSubtaskArray.push(subtasks[index].taskDescription)
         }
         if (editTask) {
-            return dialogSubtaskArray.map(element => `<li data-value="${dialogSubtaskArray.indexOf(element)}">${element}</li>`).join("")
+            return dialogSubtaskArray.map(element => `<li data-value="${dialogSubtaskArray.indexOf(element)}"><span class="editSubtaskText">${element}</span> ${getButtonSubtask()}</li>`).join("")
         }
         return dialogSubtaskArray.map(element => `<p class="input-label"><input class="checkbox" type="checkbox" id="${element}" data-value="${dialogSubtaskArray.indexOf(element)}">
        <label class="dialog-task-card-checkbox-label" for="${element}">${element}</label></p>`).join("")

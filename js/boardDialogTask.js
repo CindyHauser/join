@@ -1,3 +1,4 @@
+let editSubtaskList = null;
 let taskState = 'toDo';
 
 function stopPropagationFunction(event) {
@@ -17,7 +18,7 @@ function toggleDialog(id, state) {
         }
         dialog.showModal();
         initAddTaskPage();
-        
+
     }
 };
 
@@ -28,6 +29,7 @@ async function openTaskDialog(taskId) {
     const dialogEditTaskContent = document.getElementById('dialogContentEditTask');
     dialogEditTaskContent.innerHTML = taskDialogEditContentTemplate(task, contactListJsonLibrary);
     dialogTaskContent.innerHTML = taskDialogContentTemplate(task, contactListJsonLibrary);
+    initEditSubtaskListEvents();
     toggleDialog('dialogOpenBigCard');
 };
 
@@ -46,7 +48,7 @@ async function submitFormDialog(event, taskState) {
     if (!validateForm(addTaskForm)) return;
     await createTask(event, taskState);
     toggleDialog('dialogAddTask');
-    await initBoardPage();    
+    await initBoardPage();
 };
 
 function selectCategoryByValue(selectId, value) {
@@ -61,7 +63,7 @@ function selectCategoryByValue(selectId, value) {
     if (option) {
         option.setAttribute("selected", "selected");
         select.value = value;
-    } else {select.value = "";}
+    } else { select.value = ""; }
 }
 
 async function addEditSubtask(event, taskId) {
@@ -90,7 +92,7 @@ async function addEditSubtask(event, taskId) {
 
     const li = document.createElement("li");
     li.dataset.value = nextIndex;
-    li.textContent = value;
+    li.innerHTML = `<span class="editSubtaskText">${value}</span> ${getButtonSubtask()}`;
 
     subtaskList.appendChild(li);
 
@@ -105,17 +107,26 @@ async function submitEditTask(event, editTaskForm, taskId, taskState) {
     await initBoardPage();
     const taskListLibrary = await getTaskLibraryForFirebaseInit();
     const task = setTaskDataStructure(taskId, taskListLibrary);
-    document.getElementById('dialogTaskContent').innerHTML =  taskDialogContentTemplate(task, contactListJsonLibrary);
+    document.getElementById('dialogTaskContent').innerHTML = taskDialogContentTemplate(task, contactListJsonLibrary);
 };
 
-async function editTask(event, taskId , taskState) {
+async function editTask(event, taskId, taskState) {
     const formData = new FormData(event.target);
     const taskTitle = formData.get('editTitle');
     const taskDescription = formData.get('editDescription');
     const taskDate = formData.get('editDate');
     const taskPriority = getSelectedPriority();
     const taskCategory = formData.get('categoryEdit');
-    const taskSubtasks = formData.getAll('editSubtasks').filter(subtask => subtask.trim() !== '');
+    const taskSubtasks = Object.fromEntries(
+  [...document.querySelectorAll('#editSubtaskDescription li')]
+    .map(li => [
+      li.dataset.value,
+      {
+        subtaskStateDone: li.querySelector('.checkbox')?.checked || false,
+        taskDescription: li.querySelector('.editSubtaskText')?.textContent.trim()
+      }
+    ])
+);
     putTaskDataToFireBase(taskId, {
         title: taskTitle,
         description: taskDescription,
@@ -126,10 +137,73 @@ async function editTask(event, taskId , taskState) {
         category: taskCategory,
         subtasks: taskSubtasks
     });
+    console.log(taskSubtasks);
 }
 
 function deleteTask(taskId) {
     deleteTaskDataFromFireBase(taskId);
     toggleDialog('dialogOpenBigCard');
     initBoardPage();
+}
+
+function handleEditSubtaskListClick(e) {
+    if (!editSubtaskList || !editSubtaskList.contains(e.target)) return;
+
+    const deleteButton = e.target.closest(".delete-btn");
+    if (deleteButton) {
+        const li = deleteButton.closest("li");
+        if (li) li.remove();
+        return;
+    }
+
+    const editButton = e.target.closest(".edit-btn");
+    if (editButton) {
+        const li = editButton.closest("li");
+        const text = li.querySelector(".editSubtaskText").textContent;
+
+        li.innerHTML = `
+            <input class="edit-input" type="text" value="${text}" name="editSubtask">
+
+            <div class="actions">
+                <button class="confirm-btn subtaskButton">
+                    <img src="../assets/ui-icons/check.svg" alt="Bestätigen">
+                </button>
+                <button class="delete-btn subtaskButton">
+                    <img src="../assets/ui-icons/delete.svg" alt="Löschen">
+                </button>
+            </div>
+        `;
+
+        li.querySelector(".edit-input").focus();
+        return;
+    }
+
+    const confirmButton = e.target.closest(".confirm-btn");
+    if (confirmButton) {
+        const li = confirmButton.closest("li");
+        const value = li.querySelector(".edit-input").value;
+
+        li.innerHTML = `
+            <span class="editSubtaskText">${value}</span>
+
+            <div class="actions">
+                <button class="edit-btn subtaskButton">
+                    <img src="../assets/ui-icons/edit.svg" alt="Bearbeiten">
+                </button>
+                <button class="delete-btn subtaskButton">
+                    <img src="../assets/ui-icons/delete.svg" alt="Löschen">
+                </button>
+            </div>
+        `;
+    }
+}
+
+function initEditSubtaskListEvents() {
+    const list = document.getElementById("editSubtaskDescription");
+    if (!list || editSubtaskList === list) return;
+    if (editSubtaskList) {
+        editSubtaskList.removeEventListener("click", handleEditSubtaskListClick);
+    }
+    editSubtaskList = list;
+    editSubtaskList.addEventListener("click", handleEditSubtaskListClick);
 }
