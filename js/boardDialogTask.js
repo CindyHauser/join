@@ -147,7 +147,6 @@ async function editTask(event, taskId, taskState) {
         category: taskCategory,
         subtasks: taskSubtasks
     });
-    console.log(taskSubtasks);
 }
 
 function deleteTask(taskId) {
