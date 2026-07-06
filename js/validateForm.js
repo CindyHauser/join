@@ -84,3 +84,21 @@ function validateForm(form) {
 
     return valid;
 }
+
+async function showSuccessDialog(id) {
+    if (!id) {
+        id = "successDialog";
+    }
+    const dialog = document.getElementById(id);
+
+    dialog.addEventListener("cancel", e => e.preventDefault(), { once: true });
+
+    dialog.showModal();
+
+    return new Promise(resolve => {
+        setTimeout(() => {
+            dialog.close();
+            resolve();
+        }, 2000);
+    });
+}

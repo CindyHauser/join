@@ -30,8 +30,11 @@ addTaskForm.addEventListener('submit', async (event) => {
 
     if (typeof submitFormDialog === 'function') {
         await submitFormDialog(event, typeof taskState !== 'undefined' ? taskState : 'toDo');
+        await showSuccessDialog();
     } else {
         await createTask(event, 'toDo');
+        await showSuccessDialog();
+        window.location.href = "../HTML/board.html";
     }
 });
 

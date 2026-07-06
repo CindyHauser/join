@@ -103,6 +103,7 @@ async function submitEditTask(event, editTaskForm, taskId, taskState) {
     event.preventDefault();
     if (!validateForm(editTaskForm)) return;
     await editTask(event, taskId, taskState);
+    await showSuccessDialog('editSuccessDialog');
     toggleDialog('dialogEditTask');
     await initBoardPage();
     const taskListLibrary = await getTaskLibraryForFirebaseInit();
