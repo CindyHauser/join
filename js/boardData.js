@@ -78,7 +78,6 @@ const deleteTaskDataFromFireBase = async (id, data = {}) => {
     return await response.json()
 }
 
-
 const getPreludeGeneralTaskArray = (objectLibrary, callbackFn) => {
     let preludeGeneralTaskArray = []
     for (key in objectLibrary) {
