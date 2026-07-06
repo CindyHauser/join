@@ -119,6 +119,8 @@ async function toggleSubtaskState(taskId, index, checked) {
 }
 
 async function editTask(event, taskId, taskState) {
+    const taskListLibrary = await getTaskLibraryForFirebaseInit();
+    const task = setTaskDataStructure(taskId, taskListLibrary);
     const formData = new FormData(event.target);
     const taskTitle = formData.get('editTitle');
     const taskDescription = formData.get('editDescription');
@@ -130,7 +132,7 @@ async function editTask(event, taskId, taskState) {
     .map(li => [
       li.dataset.value,
       {
-        subtaskStateDone: li.querySelector('.checkbox')?.checked || false,
+        subtaskStateDone:  task.subtasks[li.dataset.value].subtaskStateDone,
         taskDescription: li.querySelector('.editSubtaskText')?.textContent.trim()
       }
     ])
@@ -160,7 +162,19 @@ function handleEditSubtaskListClick(e) {
     const deleteButton = e.target.closest(".delete-btn");
     if (deleteButton) {
         const li = deleteButton.closest("li");
-        if (li) li.remove();
+
+    // Startwert merken (optional, falls Lücken entstehen könnten)
+    const removedValue = Number(li.dataset.value);
+
+    // alle nachfolgenden <li> anpassen
+    let next = li.nextElementSibling;
+    while (next) {
+        const current = Number(next.dataset.value);
+        next.dataset.value = current - 1;
+
+        next = next.nextElementSibling;
+    }
+     li.remove();
         return;
     }
 

@@ -210,7 +210,7 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
     if (editTask) {
         return subtasks.map((subtask, index) => {
             const description = subtask.taskDescription || subtask
-            return `<li data-value="${index}">${description}</li>`
+            return `<li data-value="${index}"><span class="editSubtaskText">${description}</span> ${getButtonSubtask()}</li>`
         }).join("")
     }
     return subtasks.map((subtask, index) => {
@@ -221,17 +221,7 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
          onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
        <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`
     }).join("")
-    } else {
-        for (let index = 0; index < subtasks.length; index++) {
-            dialogSubtaskArray.push(subtasks[index].taskDescription)
-        }
-        if (editTask) {
-            return dialogSubtaskArray.map(element => `<li data-value="${dialogSubtaskArray.indexOf(element)}"><span class="editSubtaskText">${element}</span> ${getButtonSubtask()}</li>`).join("")
-        }
-        return dialogSubtaskArray.map(element => `<p class="input-label"><input class="checkbox" type="checkbox" id="${element}" data-value="${dialogSubtaskArray.indexOf(element)}">
-       <label class="dialog-task-card-checkbox-label" for="${element}">${element}</label></p>`).join("")
-    }
-};
+    };
 
 const catchZeroSubtaskForBar = (subtasks) => {
     let finishedSubtask = []
