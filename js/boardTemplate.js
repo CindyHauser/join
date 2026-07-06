@@ -99,7 +99,7 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
             <section>
              <p class="dialog-task-card-color">Subtasks</p>
               <div class="dialog-subtasks">
-                 ${dialogSubtask(task.subtasks)}
+                 ${dialogSubtask(task.subtasks, false, task.id)}
               </div>
             </section>
 
@@ -175,7 +175,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         <div class="form-inputs">
                             <label for="editSubtask">Subtask</label>
                             <input type="text" id="editSubtask" name="editSubtasks" placeholder="Add subtasks with Enter" onkeydown="addEditSubtask(event,'${task.id}')">
-                            <ul id="editSubtaskDescription">${dialogSubtask(task.subtasks, true)}</ul>
+                            <ul id="editSubtaskDescription">${dialogSubtask(task.subtasks, true, task.id)}</ul>
                         </div>
                     </div>
                 </div>
@@ -203,11 +203,24 @@ function getButtonSubtask() {
     </div>
 `}
 
-
-const dialogSubtask = (subtasks, editTask) => {
-    let dialogSubtaskArray = [];
-    if (subtasks.length == 0) {
+const dialogSubtask = (subtasks, editTask, taskId) => {
+    if (!subtasks || subtasks.length === 0) {
         return ``
+    }
+    if (editTask) {
+        return subtasks.map((subtask, index) => {
+            const description = subtask.taskDescription || subtask
+            return `<li data-value="${index}">${description}</li>`
+        }).join("")
+    }
+    return subtasks.map((subtask, index) => {
+        const description = subtask.taskDescription || subtask
+        const checked = subtask.subtaskStateDone ? 'checked' : ''
+        const safeId = `${taskId}-subtask-${index}`
+        return `<p class="input-label"><input class="checkbox" type="checkbox" id="${safeId}" data-value="${index}" 
+         onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
+       <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`
+    }).join("")
     } else {
         for (let index = 0; index < subtasks.length; index++) {
             dialogSubtaskArray.push(subtasks[index].taskDescription)

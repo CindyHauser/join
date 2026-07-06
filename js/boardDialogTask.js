@@ -110,6 +110,14 @@ async function submitEditTask(event, editTaskForm, taskId, taskState) {
     document.getElementById('dialogTaskContent').innerHTML = taskDialogContentTemplate(task, contactListJsonLibrary);
 };
 
+async function toggleSubtaskState(taskId, index, checked) {
+    await fetch(`${BASE_URL}/task/${taskId}/subtasks/${index}/subtaskStateDone.json`, putMethode(checked));
+    const taskListLibrary = await getTaskLibraryForFirebaseInit();
+    const task = setTaskDataStructure(taskId, taskListLibrary);
+    document.getElementById('dialogTaskContent').innerHTML = taskDialogContentTemplate(task, contactListJsonLibrary);
+    await initBoardPage();
+}
+
 async function editTask(event, taskId, taskState) {
     const formData = new FormData(event.target);
     const taskTitle = formData.get('editTitle');
