@@ -7,6 +7,16 @@ if (greetingUserName.textContent) {
     greetingUserElement.textContent = `,`;
 }
 
+function getGreeting(date = new Date()) {
+  const h = date.getHours();
+  if (h >= 5 && h < 12) return "Good morning";
+  if (h >= 12 && h < 17) return "Good afternoon";
+  if (h >= 17 && h < 21) return "Good evening";
+  return "Good night";
+}
+
+document.querySelector('.greeting-section h3').firstChild.textContent = getGreeting();
+
 const fetchTasksFromFirebase = async () => {
     try {
         const res = await fetch(BASE_URL + "task.json");
