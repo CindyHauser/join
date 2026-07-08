@@ -11,12 +11,14 @@ function toggleDialog(id, state) {
     document.getElementById('selectedContactField').innerHTML = ''
     if (dialog.open) {
         dialog.close();
+        dialog.classList.remove("opened");
     } else {
         // if a state was provided when opening, use it
         if (state) {
             taskState = state;
         }
         dialog.showModal();
+        dialog.classList.add("opened");
         initAddTaskPage();
 
     }
