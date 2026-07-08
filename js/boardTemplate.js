@@ -30,7 +30,7 @@ const reconstructSubTaskArray = (array) => {
 }
 
 const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, contactAssignedCatcherCallback, array, index) => {
-    let template = `<div onclick="openTaskDialog('${array[index].id}')" class="task-board-card" id="${array[index].id}" draggable="true" ondragstart="cardDragged(event)">
+    let template = `<div onclick="openTaskDialog('${array[index].id}')" class="task-board-card" id="${array[index].id}" draggable="true" ondragstart="cardDragged(event)" ondragend="cardDragEnd(event)">
     <div class="task-card-inner-hug">
         <div class="task-card-header">
             <div class="task-category ${convertStringToclass(array[index].category)}">${array[index].category}</div>
