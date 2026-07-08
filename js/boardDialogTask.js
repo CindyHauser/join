@@ -152,10 +152,11 @@ async function editTask(event, taskId, taskState) {
     });
 }
 
-function deleteTask(taskId) {
+async function deleteTask(taskId) {
     deleteTaskDataFromFireBase(taskId);
     toggleDialog('dialogOpenBigCard');
-    initBoardPage();
+    await initBoardPage();
+    await showSuccessDialog('deleteSuccessDialog');
 }
 
 function handleEditSubtaskListClick(e) {

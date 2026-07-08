@@ -207,3 +207,12 @@ h1 {
 .input-error {
     border: 2px solid red;
 }
+
+.dialogLoginAndSignUpDesign {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: 2px solid var(--text-color-links);
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--main-color);
+    color: white;
+}

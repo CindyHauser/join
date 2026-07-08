@@ -77,6 +77,16 @@
     color: white;
 }
 
+.dialogAddAndEditTaskDesign:open {
+    width: 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialogAddAndEditTaskDesign img{
+    filter: brightness(0) invert(1);
+}
+
 .dialog-task-card-inner-hug {
     display: flex;
     flex-direction: column;

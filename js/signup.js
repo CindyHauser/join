@@ -9,27 +9,18 @@ const errorMessageElement = document.getElementById('confirmPasswordError');
 initValidation(signupForm);
 
 signupForm.addEventListener("submit", async (event) => {
-
     event.preventDefault();
-
     if (!validateForm(signupForm)) return;
-
     if (checkPassword()) return;
-
     if (await checkUserExists()) return;
-
     try {
-
         await openPostSignup();
         goBack();
+        await showSuccessDialog("successDialog");
         window.location.href = "../index.html";
-
     } catch (error) {
-
         console.error(error);
-
     }
-
 });
 
 async function openPostSignup() {
