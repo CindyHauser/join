@@ -96,7 +96,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 16%;
+    height: 5%;
 }
 
 .add-task-on-board-btn {
@@ -284,4 +284,13 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.noTask-Container{
+    color: grey;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    text-align: center;
+    width: 100%;
+    border: 1px dashed grey;
 }
