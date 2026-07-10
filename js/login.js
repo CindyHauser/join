@@ -26,6 +26,7 @@ loginForm.addEventListener('submit', async (event) => {
 
 async function checkUserExists() {
     const user = await getUserByEmail();
+    if (!user) return false;
     if (user.password === password.value){return true;}
     return false;
 }
