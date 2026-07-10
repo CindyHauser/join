@@ -125,13 +125,13 @@
         </section>
     </main>
 
-    <dialog class="dialogDesign" id="dialogAddTask">
+    <dialog class="dialogDesign" id="dialogAddTask" onclick="toggleDialog('dialogAddTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContentAddTask">
             <section class="dialogAddTask">
                 <div class="headerDialogAddTask">
                     <h2>Add Task</h2>
                     <button type="button" onclick="toggleDialog('dialogAddTask')"
-                        class="add-task-button btn-secondary">x</button>
+                        class="dialog-close-btn"><img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
                 </div>
                 <form class="add-task-form" id="addTaskForm" novalidate>
                     <div class="add-task-content">
@@ -200,7 +200,7 @@
                         <p class="required">This field is required</p>
                         <div class="add-task-buttons">
                             <button type="button" onclick="clearAllInput()" class="add-task-button btn-secondary">Clear
-                                x</button>
+                                <img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
                             <button type="submit" class="add-task-button btn-main">Create task <img
                                     src="../assets/ui-icons/check.svg" alt="check.svg"></button>
                         </div>
@@ -211,13 +211,13 @@
         </section>
     </dialog>
 
-    <dialog class="dialogDesign" id="dialogEditTask">
+    <dialog class="dialogDesign" id="dialogEditTask" onclick="toggleDialog('dialogEditTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContentEditTask" class="dialog-task-board-card">
             
         </section>
     </dialog>
 
-    <dialog class="dialogDesign" id="dialogOpenBigCard">
+    <dialog class="dialogDesign" id="dialogOpenBigCard" onclick="toggleDialog('dialogOpenBigCard')">
         <section onclick="stopPropagationFunction(event)" id="dialogContentOpenTask">
             <div id="dialogTaskContent"></div>
         </section>

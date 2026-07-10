@@ -70,7 +70,8 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
     <div class="dialog-task-card-inner-hug">
         <header class="dialog-task-card-header">
             <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
-            <button type="button" onclick="toggleDialog('dialogOpenBigCard')" class="dialog-close-btn">x</button>
+            <button type="button" onclick="toggleDialog('dialogOpenBigCard')" class="dialog-close-btn">
+            <img class="x-btn" src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
         </header>
 
         <div class="dialog-task-card-body">
@@ -117,7 +118,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
     let template = `
     <div class="closeButton">
                 <button type="button" onclick="toggleDialog('dialogEditTask')"
-                    class="add-task-button btn-secondary">x</button>
+                    class="dialog-close-btn"><img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
             </div>
 
             <form class="add-task-form dialog-edit-form-height" id="editTaskForm" onsubmit="submitEditTask(event, this, '${task.id}', '${task.state}')" novalidate>

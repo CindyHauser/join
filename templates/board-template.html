@@ -79,7 +79,7 @@
 
             <section class="dialog-task-card-priority">
                 <span>Priority: </span> <span>${task.priority[0].charAt(0).toUpperCase() + task.priority.slice(1)}
-                        <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
+                    <img src="../assets/ui-icons/${task.priority}.svg" alt="${task.priority}"></span>
             </section>
 
             <section class="dialog-task-card-contacts">
@@ -103,3 +103,10 @@
         </footer>
 
     </div>
+
+    <header class="dialog-task-card-header">
+        <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
+        <button type="button" onclick="toggleDialog('dialogOpenBigCard')" class="dialog-close-btn">
+            <img src="../assets/ui-icons/Close.svg" alt="Schliessen">
+        </button>
+    </header>
