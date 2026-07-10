@@ -60,3 +60,6 @@
 
 Änderung Stand 10.07.2026 von Kevin Eberheim
 1. Punkt vor Listenelement Li wurde gefixed in edit Task
+
+Änderungen Stand 10.07.2026 von Cindy
+1. Dialog kommt jetzt schnell von rechts zur Mitte rein
