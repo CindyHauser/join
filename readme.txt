@@ -57,3 +57,6 @@
 
 Änderungen Stand 28.06.2026 von Arnesto
 1.assigned to funktionalität hinzugefügt
+
+Änderungen Stand 10.07.2026 von Cindy
+1. Dialog kommt jetzt schnell von rechts zur Mitte rein
