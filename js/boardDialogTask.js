@@ -11,6 +11,7 @@ function toggleDialog(id, state) {
     document.getElementById('selectedContactField').innerHTML = ''
     if (dialog.open) {
         dialog.close();
+        document.body.style.overflow = 'auto';
         dialog.classList.remove("opened");
     } else {
         // if a state was provided when opening, use it
@@ -19,6 +20,7 @@ function toggleDialog(id, state) {
         }
         dialog.showModal();
         dialog.classList.add("opened");
+        document.body.style.overflow = 'hidden';
         initAddTaskPage();
 
     }

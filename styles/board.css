@@ -100,6 +100,7 @@ h2 {
 }
 
 .add-task-on-board-btn {
+    cursor: pointer;
     padding: 0;
     border: 2px solid black;
     height: 24px;

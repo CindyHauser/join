@@ -138,7 +138,7 @@
     gap: 8px;
     align-items: flex-start;
     max-height: 24dvh;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding-left: 10px;
 }
 
