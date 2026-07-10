@@ -211,7 +211,7 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
     if (editTask) {
         return subtasks.map((subtask, index) => {
             const description = subtask.taskDescription || subtask
-            return `<li data-value="${index}"><span class="editSubtaskText">${description}</span> ${getButtonSubtask()}</li>`
+            return `<li data-value="${index}"><div class="subtask-item"><span class="editSubtaskText">${description}</span> ${getButtonSubtask()}</div></li>`
         }).join("")
     }
     return subtasks.map((subtask, index) => {

@@ -96,7 +96,7 @@ async function addEditSubtask(event, taskId) {
 
     const li = document.createElement("li");
     li.dataset.value = nextIndex;
-    li.innerHTML = `<span class="editSubtaskText">${value}</span> ${getButtonSubtask()}`;
+    li.innerHTML = `<div class="subtask-item"><span class="editSubtaskText">${value}</span> ${getButtonSubtask()}</div>`;
 
     subtaskList.appendChild(li);
 
@@ -133,15 +133,15 @@ async function editTask(event, taskId, taskState) {
     const taskPriority = getSelectedPriority();
     const taskCategory = formData.get('categoryEdit');
     const taskSubtasks = Object.fromEntries(
-  [...document.querySelectorAll('#editSubtaskDescription li')]
-    .map(li => [
-      li.dataset.value,
-      {
-        subtaskStateDone:  task.subtasks[li.dataset.value].subtaskStateDone,
-        taskDescription: li.querySelector('.editSubtaskText')?.textContent.trim()
-      }
-    ])
-);
+        [...document.querySelectorAll('#editSubtaskDescription li')]
+            .map(li => [
+                li.dataset.value,
+                {
+                    subtaskStateDone: task.subtasks[li.dataset.value].subtaskStateDone,
+                    taskDescription: li.querySelector('.editSubtaskText')?.textContent.trim()
+                }
+            ])
+    );
     putTaskDataToFireBase(taskId, {
         title: taskTitle,
         description: taskDescription,
@@ -168,18 +168,18 @@ function handleEditSubtaskListClick(e) {
     if (deleteButton) {
         const li = deleteButton.closest("li");
 
-    // Startwert merken (optional, falls Lücken entstehen könnten)
-    const removedValue = Number(li.dataset.value);
+        // Startwert merken (optional, falls Lücken entstehen könnten)
+        const removedValue = Number(li.dataset.value);
 
-    // alle nachfolgenden <li> anpassen
-    let next = li.nextElementSibling;
-    while (next) {
-        const current = Number(next.dataset.value);
-        next.dataset.value = current - 1;
+        // alle nachfolgenden <li> anpassen
+        let next = li.nextElementSibling;
+        while (next) {
+            const current = Number(next.dataset.value);
+            next.dataset.value = current - 1;
 
-        next = next.nextElementSibling;
-    }
-     li.remove();
+            next = next.nextElementSibling;
+        }
+        li.remove();
         return;
     }
 
@@ -189,6 +189,7 @@ function handleEditSubtaskListClick(e) {
         const text = li.querySelector(".editSubtaskText").textContent;
 
         li.innerHTML = `
+        <div class="subtask-item">
             <input class="edit-input" type="text" value="${text}" name="editSubtask">
 
             <div class="actions">
@@ -199,6 +200,7 @@ function handleEditSubtaskListClick(e) {
                     <img src="../assets/ui-icons/delete.svg" alt="Löschen">
                 </button>
             </div>
+        </div>
         `;
 
         li.querySelector(".edit-input").focus();
@@ -211,6 +213,7 @@ function handleEditSubtaskListClick(e) {
         const value = li.querySelector(".edit-input").value;
 
         li.innerHTML = `
+        <div class="subtask-item">
             <span class="editSubtaskText">${value}</span>
 
             <div class="actions">
@@ -221,6 +224,7 @@ function handleEditSubtaskListClick(e) {
                     <img src="../assets/ui-icons/delete.svg" alt="Löschen">
                 </button>
             </div>
+        </div>
         `;
     }
 }

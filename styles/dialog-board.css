@@ -34,10 +34,9 @@
 }
 
 .dialog-task-board-card {
-    min-width: 36vw;
     height: 90vh;
     padding: 36px;
-    max-width: 550px;
+    max-width: 530px;
 }
 
 .dialog-task-board-card p {
@@ -195,20 +194,34 @@
 }
 
 ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin: 0;
     padding-left: 0.5rem;
     width: 440px;
-    list-style-type: disc;
-    list-style-position: inside;
+    list-style-type: none;
 }
 
-li {
+li{
+    display: flex;
+}
+
+li::before {
+  content: "•";
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.subtask-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 32px;
+    height: 40px;
     padding: 8px;
     border-radius: 8px;
+    flex: 1;
 }
 
 .actions {
@@ -239,6 +252,8 @@ li:hover .actions {
 }
 
 .edit-input{
+    padding: 0;
+    font-size: 1rem;
     border: none;
     height: 30px;
     width: unset;
