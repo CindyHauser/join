@@ -57,3 +57,6 @@
 
 Änderungen Stand 28.06.2026 von Arnesto
 1.assigned to funktionalität hinzugefügt
+
+Änderung Stand 10.07.2026 von Kevin Eberheim
+1. Punkt vor Listenelement Li wurde gefixed in edit Task
