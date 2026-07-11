@@ -26,7 +26,12 @@ function initValidation(form) {
         }
         field.errorElement = error;
 
-        const event = field.type === "checkbox" ? "change" : "input";
+        const isCustomDropdown = field.dataset.customDropdown === "true";
+        const event = field.type === "checkbox"
+          ? "change"
+          : isCustomDropdown
+            ? "customchange"
+            : "input";
 
         field.addEventListener(event, () => {
             field.errorElement.textContent = "";
@@ -61,7 +66,10 @@ function validateForm(form) {
             return;
         }
 
-        if (field.value.trim() === "") {
+        const isCustomDropdown = field.dataset.customDropdown === "true";
+        const value = isCustomDropdown ? (field.dataset.value || "") : field.value;
+
+        if (value.trim() === "") {
 
             error.textContent = field.dataset.error;
             field.classList.add("input-error");

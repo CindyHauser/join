@@ -183,11 +183,23 @@
                             </div>
                             <div class="form-inputs">
                                 <label class="required" for="category">Category</label>
-                                <select required name="category" id="category" data-error="Category is required">
-                                    <option value="" selected hidden>Select task Category</option>
-                                    <option value="Technical Task">Technical Task</option>
-                                    <option value="User Story">User Story</option>
-                                </select>
+                                <div class="dropdown" id="categoryDropdown">
+                                <button type="button" class="dropdown-trigger" id="category" required
+                                    data-error="Category is required" data-custom-dropdown="true" aria-required="true"
+                                    aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="placeholder" id="dropdownLabel">Select task Category</span>
+                                    <img class="arrow" id="dropdownArrow" src="../assets/ui-icons/arrow-down.svg"
+                                        alt="arrow-down" />
+                                </button>
+
+                                <ul class="dropdown-list" id="dropdownList" role="listbox" tabindex="-1"
+                                    aria-labelledby="category" hidden>
+                                    <li class="dropdown-option" role="option" aria-selected="false"
+                                        data-value="Technical Task">Technical Task</li>
+                                    <li class="dropdown-option" role="option" aria-selected="false"
+                                        data-value="User Story">User Story</li>
+                                </ul>
+                            </div>
                             </div>
                             <div class="form-inputs">
                                 <label for="subtask">Subtask</label>

@@ -167,11 +167,23 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="categoryEdit">Category</label>
-                            <select required name="categoryEdit" id="categoryEdit" data-error="Category is required">
-                                <option value="" selected hidden>Select task Category</option>
-                                <option value="Technical Task">Technical Task</option>
-                                <option value="User Story">User Story</option>
-                            </select>
+                            <div class="dropdown" id="categoryDropdownEdit">
+                                <button type="button" class="dropdown-trigger" id="categoryEdit" name="categoryEdit" required
+                                    data-error="Category is required" data-custom-dropdown="true" aria-required="true"
+                                    aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="placeholder" id="dropdownLabelEdit">Select task Category</span>
+                                    <img class="arrow" id="dropdownArrowEdit" src="../assets/ui-icons/arrow-down.svg"
+                                        alt="arrow-down" />
+                                </button>
+
+                                <ul class="dropdown-list" id="dropdownListEdit" role="listbox" tabindex="-1"
+                                    aria-labelledby="categoryEdit" hidden>
+                                    <li class="dropdown-option" role="option" aria-selected="false"
+                                        data-value="Technical Task">Technical Task</li>
+                                    <li class="dropdown-option" role="option" aria-selected="false"
+                                        data-value="User Story">User Story</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="form-inputs">
                             <label for="editSubtask">Subtask</label>

@@ -15,7 +15,7 @@ function removePriority() {
     document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('selected'));
 }
 
-function setPriority(dialog,priority) {
+function setPriority(dialog, priority) {
     const button = dialog.querySelector(`.priority-btn.${priority}`);
     if (button) {
         selectPriority(button);
@@ -58,10 +58,16 @@ const buildTaskFromForm = (form) => {
 const collectTaskField = (element, task) => {
     if (element.id === 'subtask') {
         task.subtasks = parseSubtasks(element.value);
-    } else if (['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName)) {
+    } else if (
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName) ||
+        (element.tagName === 'BUTTON' && element.dataset.customDropdown === 'true')
+    ) {
         const key = element.id || element.name || 'field';
         if (key !== 'subtask' && key !== 'contactInput' && key.length < 20) {
-            task[key] = element.value;
+            const value = element.tagName === 'BUTTON' && element.dataset.customDropdown === 'true'
+                ? element.dataset.value || ''
+                : element.value;
+            task[key] = value;
         }
     }
 }
@@ -113,9 +119,9 @@ const postNewTaskToFireBase = async (path, data = {}) => {
 
 const setContactListCard = (array, index, comparedArray) => {
     let template;
-    template = returnStandardContactListCard(array,index)
+    template = returnStandardContactListCard(array, index)
     if (comparedArray === undefined) {
-        return returnStandardContactListCard(array,index)
+        return returnStandardContactListCard(array, index)
     }
     if (comparedArray.includes(array[index].id)) {
         template = `<div class="contact-input-class-card" onclick="contactSelected(this)">
@@ -130,7 +136,7 @@ const setContactListCard = (array, index, comparedArray) => {
 }
 
 
-const returnStandardContactListCard = (array,index)=>{
+const returnStandardContactListCard = (array, index) => {
     return `<div class="contact-input-class-card" onclick="contactSelected(this)">
                     <div class="input-name-and-badge">
                     <div class="contact-input-badge"  style="background-color: rgb(${array[index].badgeColor[0]},${array[index].badgeColor[1]},${array[index].badgeColor[2]});">${array[index].fornameFirstLetter}${array[index].surnameFirstLetter}</div>
@@ -243,7 +249,7 @@ const initInput = (element, event) => {
 
 const initInputContainer = (element) => {
     element.querySelector('input').focus()
-    element.setAttribute('onclick', 'finishInputContainer(this)')    
+    element.setAttribute('onclick', 'finishInputContainer(this)')
     renderContactInputList()
 }
 
@@ -350,3 +356,89 @@ const initContactListSearch = (element, event) => {
     }
 
 }
+
+
+
+const dropdown = document.getElementById('categoryDropdown');
+const trigger = document.getElementById('category');
+const label = document.getElementById('dropdownLabel');
+const arrow = document.getElementById('dropdownArrow');
+const list = document.getElementById('dropdownList');
+const options = Array.from(list.querySelectorAll('.dropdown-option'));
+
+let activeIndex = -1;
+
+function openList() {
+    list.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    arrow.src = '../assets/ui-icons/arrow-up.svg';
+    activeIndex = options.findIndex(o => o.getAttribute('aria-selected') === 'true');
+    if (activeIndex === -1) activeIndex = 0;
+    setActive(activeIndex);
+    list.focus();
+}
+
+function closeList() {
+    list.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    arrow.src = '../assets/ui-icons/arrow-down.svg';
+}
+
+function toggleList() {
+    list.hidden ? openList() : closeList();
+}
+
+function setActive(index) {
+    options.forEach(o => o.classList.remove('active'));
+    options[index].classList.add('active');
+    activeIndex = index;
+}
+
+function selectOption(option) {
+      options.forEach(o => o.setAttribute('aria-selected', 'false'));
+      option.setAttribute('aria-selected', 'true');
+      label.textContent = option.textContent;
+      trigger.dataset.value = option.dataset.value;
+
+      // eigenes Event, damit initValidation() den Fehler beim Auswählen löschen kann
+      trigger.dispatchEvent(new Event('customchange', { bubbles: true }));
+
+      closeList();
+      trigger.focus();
+    }
+
+trigger.addEventListener('click', toggleList);
+
+options.forEach((option, index) => {
+    option.addEventListener('click', () => selectOption(option));
+    option.addEventListener('mouseenter', () => setActive(index));
+});
+
+trigger.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openList();
+    }
+});
+
+list.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActive((activeIndex + 1) % options.length);
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActive((activeIndex - 1 + options.length) % options.length);
+    } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectOption(options[activeIndex]);
+    } else if (e.key === 'Escape') {
+        closeList();
+        trigger.focus();
+    } else if (e.key === 'Tab') {
+        closeList();
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) closeList();
+});

@@ -29,8 +29,7 @@ legend {
     font-size: 1.25rem;
 }
 
-input,
-select {
+input {
     width: 440px;
     height: 48px;
     border-radius: 8px;
@@ -203,12 +202,12 @@ textarea {
 
 .pop-down-contact-liste-add-task-animating {
     display: flex !important;
-    animation: popDownContactlist 0.45s ease-out forwards;
+    animation: popDownContactlist 0.01s ease-out forwards;
 }
 
 .pop-up-contact-liste-add-task-animating {
     display: flex !important;
-    animation: popUpContactlist 0.45s ease-out forwards;
+    animation: popUpContactlist 0.01s ease-out forwards;
 }
 
 @keyframes popDownContactlist {
@@ -357,4 +356,78 @@ fieldset {
     border-radius: 16px;
     background: var(--main-color);
     color: white;
+}
+
+
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.dropdown-trigger[aria-expanded="true"] {
+    border-color: #888;
+}
+
+.dropdown-trigger .placeholder {
+    color: #333;
+}
+
+.dropdown-trigger .arrow {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.dropdown-list {
+    position: absolute;
+    /* top: calc(100% + 4px); */
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.dropdown-list[hidden] {
+    display: none;
+}
+
+.dropdown-option {
+    padding: 9px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.dropdown-option:hover {
+    background: #f0f0f0;
+}
+
+.dropdown-option[aria-selected="true"] {
+    font-weight: 600;
 }
