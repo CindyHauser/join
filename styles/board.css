@@ -69,6 +69,7 @@ h2 {
 }
 
 .add-task-btn {
+    border: none;
     background: var(--main-color);
     font-size: 20px;
     height: 48px;
@@ -79,6 +80,12 @@ h2 {
     border-radius: 8px;
     padding-inline: 24px;
     cursor: pointer;
+}
+
+.add-task-btn:hover {
+    cursor: pointer;
+    background-color: var(--easy-blue-color-secondary);
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 8px;
 }
 
 .kanban-board {
@@ -286,7 +293,7 @@ h2 {
     align-items: center;
 }
 
-.noTask-Container{
+.noTask-Container {
     color: grey;
     background: rgba(0, 0, 0, 0.06);
     border-radius: 16px;

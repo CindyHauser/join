@@ -91,7 +91,7 @@ h1 {
     aspect-ratio: 1/1;
     width: 40px;
     text-align: center;
-    color: var(--easy-blue-color-secondary);
+    color: var(--hover-effect-dark);
 }
 
 .back-arrow:hover {
@@ -162,10 +162,16 @@ h1 {
     cursor: pointer;
 }
 
+.login-signup-btn:hover {
+    transform: scale(1.005);
+    background-color: var(--hover-effect-dark);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
+}
+
 .login-btn-guest {
     background-color: transparent;
     color: var(--main-color);
-    border: 2px solid var(--main-color);
+    border: 1px solid var(--main-color);
     border-radius: 8px;
     padding: 12px 24px;
     font-size: 1.5rem;
@@ -173,11 +179,21 @@ h1 {
     cursor: pointer;
 }
 
+.login-btn-guest:hover {
+    transform: scale(1);
+    border: 2px solid var(--main-color);
+    margin: -1px;
+}
+
 .terms-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+}
+
+.terms-container input:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .footer-login-signup {
