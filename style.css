@@ -17,6 +17,7 @@ body {
     --menu-hover: #0d1d34;
     --background-color-body: #F6F7F8;
     --text-color-links: rgba(205, 205, 205);
+    --hover-effect-dark: #124658;
     font-size: 16px;
 }
 
