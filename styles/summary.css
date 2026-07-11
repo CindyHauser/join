@@ -1,5 +1,6 @@
 .main-content{
     height: 84%;
+    max-width: 1210px;
 }
 
 .summary-container {
@@ -8,7 +9,6 @@
     justify-content: flex-start;
     padding: 2rem 0 2rem 2rem;
     padding-left: 120px;
-    max-width: 1210px;
 }
 
 .summary-header {

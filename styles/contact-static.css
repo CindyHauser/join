@@ -1,11 +1,12 @@
 .main-contact-static-expanded-height {
     height: 84%;
+    max-width: 1210px;
 }
 
 
 .contact-list {
     width: 28%;
-    box-shadow: 1px -1px 10px 0px #2b2b2b33;
+    box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .add-contact-button-parent {
@@ -143,7 +144,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 2px 3px 10px 0px #2b2b2b33;
 }
 
 .contact-expanded-field-inner-container {
