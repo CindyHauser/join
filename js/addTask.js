@@ -174,6 +174,17 @@ function clearAllInput() {
     contactSelectedList = []
     document.getElementById('selectedContactField').innerHTML = ''
     removePriority();
+    resetDropdown(root);
+}
+
+function resetDropdown(root) {
+  const label = root.querySelector('#dropdownLabel, #dropdownLabelEdit');
+  const list = root.querySelector('#dropdownList, #dropdownListEdit');
+  if (!label || !list) return;
+
+  const options = Array.from(list.querySelectorAll('.dropdown-option'));
+  options.forEach(o => o.setAttribute('aria-selected', 'false'));
+  label.textContent = 'Select Task Category';
 }
 
 const postNewTaskToFireBase = async (path, data = {}) => {
@@ -434,86 +445,101 @@ const initContactListSearch = (element, event) => {
 
 
 
-const dropdown = document.getElementById('categoryDropdown');
-const trigger = document.getElementById('category');
-const label = document.getElementById('dropdownLabel');
-const arrow = document.getElementById('dropdownArrow');
-const list = document.getElementById('dropdownList');
-const options = Array.from(list.querySelectorAll('.dropdown-option'));
+function initDropdown(dialog) {
+    const oldTrigger = dialog.querySelector('#category, #categoryEdit');
+    const oldList = dialog.querySelector('#dropdownList, #dropdownListEdit');
 
-let activeIndex = -1;
+    const trigger = oldTrigger.cloneNode(true);
+    oldTrigger.parentNode.replaceChild(trigger, oldTrigger);
 
-function openList() {
-    list.hidden = false;
-    trigger.setAttribute('aria-expanded', 'true');
-    arrow.src = '../assets/ui-icons/arrow-up.svg';
-    activeIndex = options.findIndex(o => o.getAttribute('aria-selected') === 'true');
-    if (activeIndex === -1) activeIndex = 0;
-    setActive(activeIndex);
-    list.focus();
-}
+    const list = oldList.cloneNode(true);
+    oldList.parentNode.replaceChild(list, oldList);
 
-function closeList() {
-    list.hidden = true;
-    trigger.setAttribute('aria-expanded', 'false');
-    arrow.src = '../assets/ui-icons/arrow-down.svg';
-}
+    const label = dialog.querySelector('#dropdownLabel, #dropdownLabelEdit');
+    const arrow = dialog.querySelector('#dropdownArrow, #dropdownArrowEdit');
+    const options = Array.from(list.querySelectorAll('.dropdown-option'));
 
-function toggleList() {
-    list.hidden ? openList() : closeList();
-}
+    let activeIndex = -1;
 
-function setActive(index) {
-    options.forEach(o => o.classList.remove('active'));
-    options[index].classList.add('active');
-    activeIndex = index;
-}
-
-function selectOption(option) {
-      options.forEach(o => o.setAttribute('aria-selected', 'false'));
-      option.setAttribute('aria-selected', 'true');
-      label.textContent = option.textContent;
-      trigger.dataset.value = option.dataset.value;
-
-      // eigenes Event, damit initValidation() den Fehler beim Auswählen löschen kann
-      trigger.dispatchEvent(new Event('customchange', { bubbles: true }));
-
-      closeList();
-      trigger.focus();
+    function openList() {
+        list.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        arrow.src = '../assets/ui-icons/arrow-up.svg';
+        activeIndex = options.findIndex(o => o.getAttribute('aria-selected') === 'true');
+        if (activeIndex === -1) activeIndex = 0;
+        setActive(activeIndex);
+        list.focus();
     }
 
-trigger.addEventListener('click', toggleList);
-
-options.forEach((option, index) => {
-    option.addEventListener('click', () => selectOption(option));
-    option.addEventListener('mouseenter', () => setActive(index));
-});
-
-trigger.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openList();
+    function closeList() {
+        list.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+        arrow.src = '../assets/ui-icons/arrow-down.svg';
     }
-});
 
-list.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        setActive((activeIndex + 1) % options.length);
-    } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        setActive((activeIndex - 1 + options.length) % options.length);
-    } else if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        selectOption(options[activeIndex]);
-    } else if (e.key === 'Escape') {
+    function toggleList() {
+        list.hidden ? openList() : closeList();
+    }
+
+    function setActive(index) {
+        options.forEach(o => o.classList.remove('active'));
+        options[index].classList.add('active');
+        activeIndex = index;
+    }
+
+    function selectOption(option) {
+        options.forEach(o => o.setAttribute('aria-selected', 'false'));
+        option.setAttribute('aria-selected', 'true');
+        label.textContent = option.textContent;
+        trigger.dataset.value = option.dataset.value;
+
+        // eigenes Event, damit initValidation() den Fehler beim Auswählen löschen kann
+        trigger.dispatchEvent(new Event('customchange', { bubbles: true }));
+
         closeList();
         trigger.focus();
-    } else if (e.key === 'Tab') {
-        closeList();
     }
+
+    trigger.addEventListener('click', toggleList);
+
+    options.forEach((option, index) => {
+        option.addEventListener('click', () => selectOption(option));
+        option.addEventListener('mouseenter', () => setActive(index));
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openList();
+        }
+    });
+
+    list.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setActive((activeIndex + 1) % options.length);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setActive((activeIndex - 1 + options.length) % options.length);
+        } else if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            selectOption(options[activeIndex]);
+        } else if (e.key === 'Escape') {
+            closeList();
+            trigger.focus();
+        } else if (e.key === 'Tab') {
+            closeList();
+        }
+    });
+}
+document.addEventListener('click', (e) => {
+    document.querySelectorAll('.dropdown').forEach(d => {
+        if (!d.contains(e.target)) {
+            const list = d.querySelector('.dropdown-list');
+            if (list && !list.hidden) list.hidden = true;
+        }
+    });
 });
 
-document.addEventListener('click', (e) => {
-    if (!dropdown.contains(e.target)) closeList();
-});
+const root = document.getElementById('dialogAddTask') || document;
+initDropdown(root);

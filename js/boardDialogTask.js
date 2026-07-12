@@ -42,6 +42,7 @@ function openEditTaskDialog(task) {
     const dialog = document.getElementById('dialogEditTask');
     setPriority(dialog, task.priority);
     selectCategoryByValue('categoryEdit', task.category);
+    initDropdown(dialog);
     const editTaskForm = document.querySelector('#editTaskForm');
     contactSelectedList = task.contactSelect
     initValidation(editTaskForm);
@@ -56,7 +57,35 @@ async function submitFormDialog(event, taskState) {
 };
 
 function selectCategoryByValue(selectId, value) {
+    const trigger = document.getElementById(selectId);
+    const dropdown = document.getElementById(`${selectId}Dropdown`) || document.getElementById(`categoryDropdownEdit`);
+    const label = document.getElementById(`dropdownLabel${selectId === 'categoryEdit' ? 'Edit' : ''}`);
+    const options = dropdown ? Array.from(dropdown.querySelectorAll('.dropdown-option')) : [];
+
+    if (trigger && dropdown && label) {
+        options.forEach(option => {
+            option.setAttribute('aria-selected', 'false');
+            option.classList.remove('active');
+        });
+
+        const selectedOption = options.find(option => option.dataset.value === value);
+
+        if (selectedOption) {
+            selectedOption.setAttribute('aria-selected', 'true');
+            selectedOption.classList.add('active');
+            label.textContent = selectedOption.textContent;
+            trigger.dataset.value = value;
+            trigger.setAttribute('data-value', value);
+        } else {
+            label.textContent = 'Select task Category';
+            trigger.dataset.value = '';
+            trigger.setAttribute('data-value', '');
+        }
+        return;
+    }
+
     const select = document.getElementById(selectId);
+    if (!select) return;
 
     Array.from(select.options).forEach(option => {
         option.removeAttribute("selected");
@@ -98,7 +127,8 @@ async function editTask(event, taskId, taskState) {
     const taskDescription = formData.get('editDescription');
     const taskDate = formData.get('editDate');
     const taskPriority = getSelectedPriority();
-    const taskCategory = formData.get('categoryEdit');
+    const categoryTrigger = document.getElementById('categoryEdit');
+    const taskCategory = categoryTrigger?.dataset.value || formData.get('categoryEdit');
     const taskSubtasks = Object.fromEntries(
         [...document.querySelectorAll('#editSubtaskDescription li')]
             .map(li => [
