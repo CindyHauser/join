@@ -57,7 +57,8 @@ const buildTaskFromForm = (form) => {
 
 const collectTaskField = (element, task) => {
     if (element.id === 'subtask') {
-        task.subtasks = parseSubtasks(element.value);
+        const subtaskInputValue = element.dataset.subtasks?.trim() || element.value.trim();
+        task.subtasks = parseSubtasks(subtaskInputValue);
     } else if (
         ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName) ||
         (element.tagName === 'BUTTON' && element.dataset.customDropdown === 'true')
@@ -77,12 +78,80 @@ const parseSubtasks = (value) => {
     return subtaskValue === ''
         ? []
         : subtaskValue
-            .split(/[\n,;]+/)
+            .split(/\n+/)
             .map((item) => item.trim())
             .filter((item) => item.length > 0)
             .map((taskDescription) => ({ taskDescription, subtaskStateDone: false }));
 }
 
+const getSubtaskPreviewList = (input) => {
+    let previewList = input.parentElement?.querySelector('.subtask-preview-list');
+    if (!previewList) {
+        previewList = document.createElement('ul');
+        previewList.className = 'subtask-preview-list';
+        input.insertAdjacentElement('afterend', previewList);
+    }
+    return previewList;
+}
+
+const renderSubtaskPreview = (input) => {
+    const previewList = getSubtaskPreviewList(input);
+    const subtasks = input.dataset.subtasks
+        ? input.dataset.subtasks.split(/\r?\n/).filter(Boolean)
+        : [];
+
+    previewList.innerHTML = subtasks
+        .map((subtask) => `<li class="subtask-preview-item">${subtask}</li>`)
+        .join('');
+};
+
+const clearSubtaskPreview = (input) => {
+    const previewList = input?.parentElement?.querySelector('.subtask-preview-list');
+    if (previewList) {
+        previewList.remove();
+    }
+};
+
+async function addEditSubtask(event, taskId) {
+    if (event.key !== 'Enter') return;
+
+    event.preventDefault();
+
+    const input = event.target;
+    const value = input.value.trim();
+
+    if (!value) return;
+
+    if (!taskId) {
+        const storedSubtasks = input.dataset.subtasks
+            ? input.dataset.subtasks.split(/\r?\n/).filter(Boolean)
+            : [];
+        storedSubtasks.push(value);
+        input.dataset.subtasks = storedSubtasks.join('\n');
+        input.value = '';
+        renderSubtaskPreview(input);
+        return;
+    }
+
+    const subtaskList = document.getElementById('editSubtaskDescription');
+    if (!subtaskList) return;
+
+    const lastLi = subtaskList.querySelector('li:last-child');
+    const nextIndex = lastLi ? Number(lastLi.dataset.value) + 1 : 0;
+    const newSubtask = {
+        taskDescription: value,
+        subtaskStateDone: false
+    };
+
+    await fetch(`${BASE_URL}/task/${taskId}/subtasks/${nextIndex}.json`, putMethode(newSubtask));
+
+    const li = document.createElement('li');
+    li.dataset.value = nextIndex;
+    li.innerHTML = `<div class="subtask-item"><span class="editSubtaskText">${value}</span> ${getButtonSubtask()}</div>`;
+
+    subtaskList.appendChild(li);
+    input.value = '';
+}
 
 const getSelectedPriority = () => {
     const selectedPriorityButton = document.querySelector('.priority-btn.selected');
@@ -95,6 +164,12 @@ function clearAllInput() {
     const form = document.querySelector('.add-task-form');
     if (form) {
         form.reset();
+        const subtaskInput = form.querySelector('#subtask');
+        if (subtaskInput) {
+            subtaskInput.value = '';
+            subtaskInput.dataset.subtasks = '';
+            clearSubtaskPreview(subtaskInput);
+        }
     }
     contactSelectedList = []
     document.getElementById('selectedContactField').innerHTML = ''

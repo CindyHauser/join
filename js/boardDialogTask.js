@@ -70,39 +70,6 @@ function selectCategoryByValue(selectId, value) {
     } else { select.value = ""; }
 }
 
-async function addEditSubtask(event, taskId) {
-    if (event.key !== "Enter") return;
-
-    event.preventDefault();
-
-    const input = event.target;
-    const value = input.value.trim();
-
-    if (!value) return;
-
-    const subtaskList = document.getElementById("editSubtaskDescription");
-    const lastLi = subtaskList.querySelector("li:last-child");
-
-    const nextIndex = lastLi
-        ? Number(lastLi.dataset.value) + 1
-        : 0;
-
-    const newSubtask = {
-        taskDescription: value,
-        subtaskStateDone: false
-    };
-
-    await fetch(`${BASE_URL}/task/${taskId}/subtasks/${nextIndex}.json`, putMethode(newSubtask));
-
-    const li = document.createElement("li");
-    li.dataset.value = nextIndex;
-    li.innerHTML = `<div class="subtask-item"><span class="editSubtaskText">${value}</span> ${getButtonSubtask()}</div>`;
-
-    subtaskList.appendChild(li);
-
-    input.value = "";
-}
-
 async function submitEditTask(event, editTaskForm, taskId, taskState) {
     event.preventDefault();
     if (!validateForm(editTaskForm)) return;

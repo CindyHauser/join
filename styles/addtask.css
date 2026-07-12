@@ -200,6 +200,18 @@ textarea {
     overflow: auto;
 }
 
+.subtask-preview-list {
+    padding-left: 20px;
+    margin: 0;
+    width: 100%;
+    overflow: auto;
+    height: 50px;
+}
+
+.subtask-preview-item {
+    font-size: 0.95rem;
+}
+
 .pop-down-contact-liste-add-task-animating {
     display: flex !important;
     animation: popDownContactlist 0.01s ease-out forwards;
