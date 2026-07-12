@@ -5,24 +5,32 @@ function stopPropagationFunction(event) {
     event.stopPropagation();
 };
 
-function toggleDialog(id, state) {
-    const dialog = document.getElementById(id);
-    contactSelectedList = []
-    document.getElementById('selectedContactField').innerHTML = ''
-    if (dialog.open) {
-        dialog.close();
-        document.body.style.overflow = 'auto';
-        dialog.classList.remove("opened");
-    } else {
-        // if a state was provided when opening, use it
-        if (state) {
-            taskState = state;
-        }
+function resetContactSelection() {
+    contactSelectedList = [];
+    document.getElementById('selectedContactField').innerHTML = '';
+}
+
+function openDialog(dialog) {
         dialog.showModal();
         dialog.classList.add("opened");
         document.body.style.overflow = 'hidden';
         initAddTaskPage();
+    }
 
+function closeDialog(dialog) {
+    dialog.close();
+    document.body.style.overflow = 'auto';
+    dialog.classList.remove("opened");
+}
+
+function toggleDialog(id, state) {
+    const dialog = document.getElementById(id);
+    resetContactSelection();
+    if (dialog.open) {
+        closeDialog(dialog);
+    } else {
+        if (state) {taskState = state;}
+        openDialog(dialog);
     }
 };
 
@@ -56,47 +64,44 @@ async function submitFormDialog(event, taskState) {
     await initBoardPage();
 };
 
-function selectCategoryByValue(selectId, value) {
-    const trigger = document.getElementById(selectId);
-    const dropdown = document.getElementById(`${selectId}Dropdown`) || document.getElementById(`categoryDropdownEdit`);
-    const label = document.getElementById(`dropdownLabel${selectId === 'categoryEdit' ? 'Edit' : ''}`);
-    const options = dropdown ? Array.from(dropdown.querySelectorAll('.dropdown-option')) : [];
-
-    if (trigger && dropdown && label) {
-        options.forEach(option => {
-            option.setAttribute('aria-selected', 'false');
-            option.classList.remove('active');
-        });
-
-        const selectedOption = options.find(option => option.dataset.value === value);
-
-        if (selectedOption) {
-            selectedOption.setAttribute('aria-selected', 'true');
-            selectedOption.classList.add('active');
-            label.textContent = selectedOption.textContent;
-            trigger.dataset.value = value;
-            trigger.setAttribute('data-value', value);
-        } else {
-            label.textContent = 'Select task Category';
-            trigger.dataset.value = '';
-            trigger.setAttribute('data-value', '');
-        }
-        return;
-    }
-
-    const select = document.getElementById(selectId);
-    if (!select) return;
-
-    Array.from(select.options).forEach(option => {
-        option.removeAttribute("selected");
+function resetOptions(options) {
+    options.forEach(option => {
+        option.setAttribute('aria-selected', 'false');
+        option.classList.remove('active');
     });
+}
 
-    const option = Array.from(select.options).find(opt => opt.value === value);
+function applySelectedOption(option, trigger, label) {
+    option.setAttribute('aria-selected', 'true');
+    option.classList.add('active');
+    label.textContent = option.textContent;
+    trigger.dataset.value = option.dataset.value;
+}
 
-    if (option) {
-        option.setAttribute("selected", "selected");
-        select.value = value;
-    } else { select.value = ""; }
+function clearSelection(trigger, label) {
+    label.textContent = 'Select task Category';
+    trigger.dataset.value = '';
+}
+
+function getDropdownElements(selectId) {
+    const isEdit = selectId === 'categoryEdit';
+    const trigger = document.getElementById(selectId);
+    const list = document.getElementById(`dropdownList${isEdit ? 'Edit' : ''}`);
+    const label = document.getElementById(`dropdownLabel${isEdit ? 'Edit' : ''}`);
+    return { trigger, list, label };
+}
+
+function selectCategoryByValue(selectId, value) {
+    const { trigger, list, label } = getDropdownElements(selectId);
+    if (!trigger || !list || !label) return;
+
+    const options = Array.from(list.querySelectorAll('.dropdown-option'));
+    resetOptions(options);
+
+    const selectedOption = options.find(option => option.dataset.value === value);
+    selectedOption
+        ? applySelectedOption(selectedOption, trigger, label)
+        : clearSelection(trigger, label);
 }
 
 async function submitEditTask(event, editTaskForm, taskId, taskState) {
@@ -119,17 +124,28 @@ async function toggleSubtaskState(taskId, index, checked) {
     await initBoardPage();
 }
 
-async function editTask(event, taskId, taskState) {
+async function getTask(taskId) {
     const taskListLibrary = await getTaskLibraryForFirebaseInit();
-    const task = setTaskDataStructure(taskId, taskListLibrary);
+    return setTaskDataStructure(taskId, taskListLibrary);
+}
+
+function getEditFormValues(event) {
     const formData = new FormData(event.target);
-    const taskTitle = formData.get('editTitle');
-    const taskDescription = formData.get('editDescription');
-    const taskDate = formData.get('editDate');
-    const taskPriority = getSelectedPriority();
+    return {
+        formData,
+        taskTitle: formData.get('editTitle'),
+        taskDescription: formData.get('editDescription'),
+        taskDate: formData.get('editDate')
+    };
+}
+
+function getTaskCategory(formData) {
     const categoryTrigger = document.getElementById('categoryEdit');
-    const taskCategory = categoryTrigger?.dataset.value || formData.get('categoryEdit');
-    const taskSubtasks = Object.fromEntries(
+    return categoryTrigger?.dataset.value || formData.get('categoryEdit');
+}
+
+function buildEditedSubtasks(task) {
+    return Object.fromEntries(
         [...document.querySelectorAll('#editSubtaskDescription li')]
             .map(li => [
                 li.dataset.value,
@@ -139,16 +155,26 @@ async function editTask(event, taskId, taskState) {
                 }
             ])
     );
-    putTaskDataToFireBase(taskId, {
+}
+
+function collectEditData(event, task) {
+    const { formData, taskTitle, taskDescription, taskDate } = getEditFormValues(event);
+    return {
         title: taskTitle,
         description: taskDescription,
         date: taskDate,
-        state: taskState,
         contactSelect: contactSelectedList,
-        priority: taskPriority,
-        category: taskCategory,
-        subtasks: taskSubtasks
-    });
+        priority: getSelectedPriority(),
+        category: getTaskCategory(formData),
+        subtasks: buildEditedSubtasks(task)
+    };
+}
+
+async function editTask(event, taskId, taskState) {
+    const task = await getTask(taskId);
+    const data = collectEditData(event, task);
+    data.state = taskState;
+    putTaskDataToFireBase(taskId, data);
 }
 
 async function deleteTask(taskId) {
@@ -162,68 +188,70 @@ function handleEditSubtaskListClick(e) {
     if (!editSubtaskList || !editSubtaskList.contains(e.target)) return;
 
     const deleteButton = e.target.closest(".delete-btn");
-    if (deleteButton) {
-        const li = deleteButton.closest("li");
-
-        // Startwert merken (optional, falls Lücken entstehen könnten)
-        const removedValue = Number(li.dataset.value);
-
-        // alle nachfolgenden <li> anpassen
-        let next = li.nextElementSibling;
-        while (next) {
-            const current = Number(next.dataset.value);
-            next.dataset.value = current - 1;
-
-            next = next.nextElementSibling;
-        }
-        li.remove();
-        return;
-    }
+    if (deleteButton) return handleDeleteClick(deleteButton);
 
     const editButton = e.target.closest(".edit-btn");
-    if (editButton) {
-        const li = editButton.closest("li");
-        const text = li.querySelector(".editSubtaskText").textContent;
-
-        li.innerHTML = `
-        <div class="subtask-item">
-            <input class="edit-input" type="text" value="${text}" name="editSubtask">
-
-            <div class="actions">
-                <button class="confirm-btn subtaskButton">
-                    <img src="../assets/ui-icons/check.svg" alt="Bestätigen">
-                </button>
-                <button class="delete-btn subtaskButton">
-                    <img src="../assets/ui-icons/delete.svg" alt="Löschen">
-                </button>
-            </div>
-        </div>
-        `;
-
-        li.querySelector(".edit-input").focus();
-        return;
-    }
+    if (editButton) return handleEditClick(editButton);
 
     const confirmButton = e.target.closest(".confirm-btn");
-    if (confirmButton) {
-        const li = confirmButton.closest("li");
-        const value = li.querySelector(".edit-input").value;
+    if (confirmButton) return handleConfirmClick(confirmButton);
+}
 
-        li.innerHTML = `
-        <div class="subtask-item">
-            <span class="editSubtaskText">${value}</span>
+function handleDeleteClick(deleteButton) {
+    const li = deleteButton.closest("li");
+    decrementFollowingIndices(li);
+    li.remove();
+}
 
-            <div class="actions">
-                <button class="edit-btn subtaskButton">
-                    <img src="../assets/ui-icons/edit.svg" alt="Bearbeiten">
-                </button>
-                <button class="delete-btn subtaskButton">
-                    <img src="../assets/ui-icons/delete.svg" alt="Löschen">
-                </button>
-            </div>
-        </div>
-        `;
+function decrementFollowingIndices(li) {
+    let next = li.nextElementSibling;
+    while (next) {
+        next.dataset.value = Number(next.dataset.value) - 1;
+        next = next.nextElementSibling;
     }
+}
+
+function handleEditClick(editButton) {
+    const li = editButton.closest("li");
+    const text = li.querySelector(".editSubtaskText").textContent;
+    li.innerHTML = getEditModeHTML(text);
+    li.querySelector(".edit-input").focus();
+}
+
+function getEditModeHTML(text) {
+    return `
+    <div class="subtask-item">
+        <input class="edit-input" type="text" value="${text}" name="editSubtask">
+        <div class="actions">
+            <button class="confirm-btn subtaskButton">
+                <img src="../assets/ui-icons/check.svg" alt="Bestätigen">
+            </button>
+            <button class="delete-btn subtaskButton">
+                <img src="../assets/ui-icons/delete.svg" alt="Löschen">
+            </button>
+        </div>
+    </div>`;
+}
+
+function handleConfirmClick(confirmButton) {
+    const li = confirmButton.closest("li");
+    const value = li.querySelector(".edit-input").value;
+    li.innerHTML = getViewModeHTML(value);
+}
+
+function getViewModeHTML(value) {
+    return `
+    <div class="subtask-item">
+        <span class="editSubtaskText">${value}</span>
+        <div class="actions">
+            <button class="edit-btn subtaskButton">
+                <img src="../assets/ui-icons/edit.svg" alt="Bearbeiten">
+            </button>
+            <button class="delete-btn subtaskButton">
+                <img src="../assets/ui-icons/delete.svg" alt="Löschen">
+            </button>
+        </div>
+    </div>`;
 }
 
 function initEditSubtaskListEvents() {
