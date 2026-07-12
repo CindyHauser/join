@@ -38,8 +38,8 @@
             </div>
         </div>
         <div class="privacy-and-security-section">
-            <div class="privacy-button-box"><span>Privacy Policy</span></div>
-            <div class="legal-notice-box"><span>Legal Notice</span></div>
+            <a class="privacy-legal-notice-link">Privacy Policy</a>
+            <a class="privacy-legal-notice-link">Legal Notice</a>
         </div>
     </div>
     <main class="main-section">
@@ -130,8 +130,8 @@
             <section class="dialogAddTask">
                 <div class="headerDialogAddTask">
                     <h2>Add Task</h2>
-                    <button type="button" onclick="toggleDialog('dialogAddTask')"
-                        class="dialog-close-btn"><img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
+                    <button type="button" onclick="toggleDialog('dialogAddTask')" class="dialog-close-btn"><img
+                            src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
                 </div>
                 <form class="add-task-form" id="addTaskForm" novalidate>
                     <div class="add-task-content">
@@ -176,7 +176,8 @@
                                     <input type="text" placeholder="Select contact to assign"
                                         onfocus="initInput(this,event)" onblur="finishedInput(this,event)"
                                         id="contactInput" oninput="initContactListSearch(this,event)">
-                                    <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault(); event.stopPropagation()">
+                                    <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg"
+                                        onmousedown="event.preventDefault(); event.stopPropagation()">
                                 </div>
                                 <div id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
                                 <div id="selectedContactField"></div>
@@ -184,22 +185,22 @@
                             <div class="form-inputs">
                                 <label class="required" for="category">Category</label>
                                 <div class="dropdown" id="categoryDropdown">
-                                <button type="button" class="dropdown-trigger" id="category" required
-                                    data-error="Category is required" data-custom-dropdown="true" aria-required="true"
-                                    aria-haspopup="listbox" aria-expanded="false">
-                                    <span class="placeholder" id="dropdownLabel">Select task Category</span>
-                                    <img class="arrow" id="dropdownArrow" src="../assets/ui-icons/arrow-down.svg"
-                                        alt="arrow-down" />
-                                </button>
+                                    <button type="button" class="dropdown-trigger" id="category" required
+                                        data-error="Category is required" data-custom-dropdown="true"
+                                        aria-required="true" aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="placeholder" id="dropdownLabel">Select task Category</span>
+                                        <img class="arrow" id="dropdownArrow" src="../assets/ui-icons/arrow-down.svg"
+                                            alt="arrow-down" />
+                                    </button>
 
-                                <ul class="dropdown-list" id="dropdownList" role="listbox" tabindex="-1"
-                                    aria-labelledby="category" hidden>
-                                    <li class="dropdown-option" role="option" aria-selected="false"
-                                        data-value="Technical Task">Technical Task</li>
-                                    <li class="dropdown-option" role="option" aria-selected="false"
-                                        data-value="User Story">User Story</li>
-                                </ul>
-                            </div>
+                                    <ul class="dropdown-list" id="dropdownList" role="listbox" tabindex="-1"
+                                        aria-labelledby="category" hidden>
+                                        <li class="dropdown-option" role="option" aria-selected="false"
+                                            data-value="Technical Task">Technical Task</li>
+                                        <li class="dropdown-option" role="option" aria-selected="false"
+                                            data-value="User Story">User Story</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="form-inputs">
                                 <label for="subtask">Subtask</label>
@@ -225,7 +226,7 @@
 
     <dialog class="dialogDesign" id="dialogEditTask" onclick="toggleDialog('dialogEditTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContentEditTask" class="dialog-task-board-card">
-            
+
         </section>
     </dialog>
 
@@ -235,13 +236,13 @@
         </section>
     </dialog>
     <dialog class="dialogAddAndEditTaskDesign" id="successDialog">
-    <p>Task added to board</p><img src="../assets/ui-icons/board-Icons.svg" alt="board-Icon">
+        <p>Task added to board</p><img src="../assets/ui-icons/board-Icons.svg" alt="board-Icon">
     </dialog>
     <dialog class="dialogAddAndEditTaskDesign" id="editSuccessDialog">
-    <p>Edit Task successful!</p><img src="../assets/ui-icons/edit.svg" alt="edit-Icon">
+        <p>Edit Task successful!</p><img src="../assets/ui-icons/edit.svg" alt="edit-Icon">
     </dialog>
     <dialog class="dialogAddAndEditTaskDesign" id="deleteSuccessDialog">
-    <p>Delete Task successful!</p><img src="../assets/ui-icons/delete.svg" alt="delete">
+        <p>Delete Task successful!</p><img src="../assets/ui-icons/delete.svg" alt="delete">
     </dialog>
 
 </body>

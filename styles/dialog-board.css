@@ -81,7 +81,7 @@
     justify-content: space-between;
 }
 
-.dialogAddAndEditTaskDesign img{
+.dialogAddAndEditTaskDesign img {
     filter: brightness(0) invert(1);
 }
 
@@ -112,13 +112,20 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    gap: 16px;
-    padding-block: 16px;
 }
 
 .dialog-task-card-title {
     font-size: 3rem;
     margin: 0;
+    max-height: 20dvh;
+    max-height: 20vh;
+    overflow-y: auto;
+}
+
+.dialog-task-card-description {
+    max-height: 12dvh;
+    max-height: 12vh;
+    overflow-y: auto;
 }
 
 .dialog-task-card-color {
@@ -133,11 +140,12 @@
 .dialog-assigned-contact-indicator {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     align-items: flex-start;
     max-height: 12dvh;
     overflow-y: auto;
     padding-left: 10px;
+    margin-top: 12px;
 }
 
 .dialog-assigned-contact-item {
@@ -160,6 +168,11 @@
     display: flex;
     flex-direction: column;
     padding-left: 10px;
+    max-height: 12dvh;
+    max-height: 12vh;
+    overflow-y: auto;
+    margin-top: 12px;
+    gap: 6px;
 }
 
 .input-label {
@@ -202,15 +215,15 @@ ul {
     list-style-type: none;
 }
 
-li{
+li {
     display: flex;
 }
 
 li::before {
-  content: "•";
-  display: flex;
-  align-items: center;
-  height: 40px;
+    content: "•";
+    display: flex;
+    align-items: center;
+    height: 40px;
 }
 
 .subtask-item {
@@ -250,7 +263,7 @@ li:hover .actions {
     filter: brightness(0) invert(0);
 }
 
-.edit-input{
+.edit-input {
     padding: 0;
     font-size: 1rem;
     border: none;
@@ -259,18 +272,18 @@ li:hover .actions {
 }
 
 .edit-input:focus {
-  outline: none;
+    outline: none;
 }
 
-.delete-btn{
+.delete-btn {
     border-left: 1px solid var(--text-color-links);
 }
 
-li:has(input){
+li:has(input) {
     border-bottom: 2px solid var(--main-color);
     border-radius: unset;
 }
 
-li:has(input) .actions{
+li:has(input) .actions {
     display: flex;
 }
