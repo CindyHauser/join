@@ -163,7 +163,6 @@ h1 {
 }
 
 .login-signup-btn:hover {
-    transform: scale(1.005);
     background-color: var(--hover-effect-dark);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
 }
@@ -180,7 +179,6 @@ h1 {
 }
 
 .login-btn-guest:hover {
-    transform: scale(1);
     border: 2px solid var(--main-color);
     margin: -1px;
 }

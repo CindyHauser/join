@@ -332,10 +332,21 @@ fieldset {
 .btn-main {
     background-color: var(--main-color);
     color: white;
+    border: none;
+}
+
+.btn-main:hover {
+    background-color: var(--hover-effect-dark);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
 }
 
 .btn-secondary {
     background-color: white;
+}
+
+.btn-secondary:hover {
+    border: 2px solid var(--main-color);
+    margin: -1px;
 }
 
 .error-message {

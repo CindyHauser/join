@@ -53,6 +53,7 @@ h2 {
     border: none;
     outline: none;
     padding: 0 12px;
+    cursor: pointer;
 }
 
 .search-icon {
@@ -60,6 +61,17 @@ h2 {
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
+}
+
+.search-icon img {
+    padding: 5px;
+}
+
+.search-icon img:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .divider {
