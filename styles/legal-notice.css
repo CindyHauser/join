@@ -1,0 +1,51 @@
+.legalNoticeH2 {
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+
+}
+
+h3 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+h4 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+
+.legal-notice-content {
+    height: 84%;
+    max-width: 1210px;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 64px;
+    justify-content: center;
+}
+
+.legal-notice-title-container {
+    height: 20%;
+    max-width: 1016px;
+    max-height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legal-notice-text-container {
+    height: 76%;
+    max-width: 1016px;
+    max-height: 1024px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
