@@ -207,8 +207,6 @@ const putIterateAllPositionsOfContacts = async (array) => {
 const deleteContact = async (id) => {
     const taskLibrary = await getTaskLibraryForFirebaseInit()
     const taskArray = getGeneralTaskArray(taskLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
-    console.log(taskArray,id);
-    
     if (taskArray.length == 0) {
         await deleteContactDataFromFireBase("/contact/" + `${id}`)
     } else {

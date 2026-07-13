@@ -16,8 +16,6 @@ const initBoardPage = async () => {
         await setTaskLibraryForFirebaseInit();
         getGeneralTaskArray(taskListJsonLibrary,setTaskDataStructure,getPreludeGeneralTaskArray)
         getAllArray()
-        console.log(taskListJsonLibrary);
-        
         renderAllCards(toDoTaskArray,inProgressTaskArray,awaitFeedbackTaskArray,doneTaskArray) 
 }
 
