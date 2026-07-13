@@ -190,9 +190,7 @@ const findDeletedContactSelectPosition = (array, id) => {
     let positionList = []
     for (let index = 0; index < array.length; index++) {
         const task = array[index]
-        if (task.contactSelect == undefined) {
-            positionList = []
-        } else if (task.contactSelect.includes(id)) {
+     if ( task.contactSelect && task.contactSelect.includes(id)) {
             positionList.push(refreshContactSelectDataStructure(task.id, task.contactSelect,id))
         }
     }
