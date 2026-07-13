@@ -194,8 +194,6 @@ const findDeletedContactSelectPosition = (array, id) => {
             positionList = []
         } else if (task.contactSelect.includes(id)) {
             positionList.push(refreshContactSelectDataStructure(task.id, task.contactSelect,id))
-        } else {
-            positionList = []
         }
     }
     return positionList
@@ -211,6 +209,8 @@ const putIterateAllPositionsOfContacts = async (array) => {
 const deleteContact = async (id) => {
     const taskLibrary = await getTaskLibraryForFirebaseInit()
     const taskArray = getGeneralTaskArray(taskLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
+    console.log(taskArray,id);
+    
     if (taskArray.length == 0) {
         await deleteContactDataFromFireBase("/contact/" + `${id}`)
     } else {
