@@ -31,10 +31,11 @@ legend {
 
 input {
     width: 100%;
-    height: max(4vh,36px);
+    height: max(4vh, 36px);
     border-radius: 8px;
     border: 1px solid #ccc;
     padding: 10px 8px 10px 12px;
+    cursor: pointer;
 }
 
 textarea {
@@ -44,6 +45,7 @@ textarea {
     margin-bottom: 0.5rem;
     border-radius: 8px;
     border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 .main-content {
@@ -295,7 +297,14 @@ fieldset {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    height: max(4vh,36px);
+    height: max(4vh, 36px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+}
+
+.priority-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+    border: none;
+    margin: 1px;
 }
 
 /* Ausgewählte Farben */
@@ -331,7 +340,7 @@ fieldset {
 .add-task-buttons {
     display: flex;
     gap: 0.5rem;
-    height: max(4vh,36px);
+    height: max(4vh, 36px);
 }
 
 .add-task-button {
@@ -404,7 +413,7 @@ fieldset {
     cursor: pointer;
     font-size: 14px;
     color: #333;
-    height: max(4vh,36px);
+    height: max(4vh, 36px);
 }
 
 .dropdown-trigger[aria-expanded="true"] {
@@ -460,6 +469,6 @@ fieldset {
     font-weight: 600;
 }
 
-.flex1{
+.flex1 {
     flex: 1;
 }

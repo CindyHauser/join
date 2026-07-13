@@ -230,7 +230,7 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
         const description = subtask.taskDescription || subtask
         const checked = subtask.subtaskStateDone ? 'checked' : ''
         const safeId = `${taskId}-subtask-${index}`
-        return `<p class="input-label"><input class="checkbox" type="checkbox" id="${safeId}" data-value="${index}" 
+        return `<p class="input-label"><input class="checkbox checkbox-subtasks" type="checkbox" id="${safeId}" data-value="${index}" 
          onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
        <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`
     }).join("")

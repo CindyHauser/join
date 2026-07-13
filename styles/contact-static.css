@@ -29,12 +29,13 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    transition: all 450ms ease-in-out;
+    border: none;
 }
 
 .add-contact-button:hover {
     cursor: pointer;
     background-color: var(--easy-blue-color-secondary);
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 8px;
 }
 
 .contact-main-list-parent {
