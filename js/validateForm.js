@@ -50,7 +50,7 @@ function validateForm(form) {
     fields.forEach(field => {
 
         const error = field.errorElement;
-
+        
         error.textContent = "";
         field.classList.remove("input-error");
 

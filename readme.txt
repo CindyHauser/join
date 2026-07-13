@@ -68,3 +68,6 @@
 1. die HTML Datei für Help seite und Legal Notice vorbereitet
 2. Legal notice external ist mit index.html eingebunden
 3. legal notice internal vorbereitet
+
+Änderungen Stand 13.07.2026 von Arnesto
+1. Bug fixed contact select aktualisierung

@@ -97,7 +97,7 @@ const closeOverlayEditContact = () => {
 const resetAllErrorMarks = (resetAllErrorMarksCallBack) => {
     const parents = document.querySelectorAll('.contact-overlay-form-body-second-section')
     parents.forEach(
-        (parent)=>{
+        (parent) => {
             resetAllErrorMarksCallBack(parent)
         }
     )
@@ -137,8 +137,87 @@ const contactFormBlured = (element) => {
 
 
 // delete contact
+// get Task Library 
+// make array from the library 
+const getTaskLibraryForFirebaseInit = async () => {
+    const response = await fetch(BASE_URL + "/task" + ".json")
+    return response.json()
+}
+
+const putTaskContactSelectToFireBase = async (id, array = []) => {
+    const response = await fetch(BASE_URL + "/task/" + `${id}/` + "contactSelect" + ".json", putMethode(array))
+    return await response.json()
+}
+
+const setTaskDataStructure = (key, object) => {
+    return {
+        "id": key,
+        "contactSelect": object[key].contactSelect,
+    }
+}
+
+const refreshContactSelectDataStructure = (taskId, contactSelectArray,contactId) => {
+    return {
+        "taskId": taskId,
+        "contactSelectNew": setNewContactSelect(contactSelectArray, contactId),
+    }
+}
+
+const getPreludeGeneralTaskArray = (objectLibrary, callbackFn) => {
+    let preludeGeneralTaskArray = []
+    for (key in objectLibrary) {
+        if (key != "position") {
+            preludeGeneralTaskArray.push(callbackFn(key, objectLibrary))
+        }
+    }
+    return preludeGeneralTaskArray
+}
+
+const getGeneralTaskArray = (objectLibrary, callbackFn, callbackFn2) => {
+    generalTaskArray = callbackFn2(objectLibrary, callbackFn)
+    return generalTaskArray
+}
+
+// search alghorithm
+
+const setNewContactSelect = (array, id) => {
+    let index = array.indexOf(id)
+    array.splice(index, 1);
+    return array
+}
+
+const findDeletedContactSelectPosition = (array, id) => {
+    let positionList = []
+    for (let index = 0; index < array.length; index++) {
+        const task = array[index]
+        if (task.contactSelect == undefined) {
+            positionList = []
+        } else if (task.contactSelect.includes(id)) {
+            positionList.push(refreshContactSelectDataStructure(task.id, task.contactSelect,id))
+        } else {
+            positionList = []
+        }
+    }
+    return positionList
+}
+
+const putIterateAllPositionsOfContacts = async (array) => {
+    for (let index = 0; index < array.length; index++) {
+        await putTaskContactSelectToFireBase(array[index].taskId, array[index].contactSelectNew)
+    }
+}
+
+
 const deleteContact = async (id) => {
-    await deleteContactDataFromFireBase("/contact/" + `${id}`)
+    const taskLibrary = await getTaskLibraryForFirebaseInit()
+    const taskArray = getGeneralTaskArray(taskLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
+    if (taskArray.length == 0) {
+        await deleteContactDataFromFireBase("/contact/" + `${id}`)
+    } else {
+        const positions = findDeletedContactSelectPosition(taskArray, id);
+        await putIterateAllPositionsOfContacts(positions)
+        await deleteContactDataFromFireBase("/contact/" + `${id}`)
+    }
     closeExpandingCards()
     await setLibraryForFirebaseInit();
     getContactsArray();
@@ -199,12 +278,12 @@ const editContact = async () => {
         setContactInputsValidationArray, getValidationValue, markFalsevalue, allEditContactInputs
     )
     if (validationResultObject.value == true) {
-        await uploadAndShowEdit (validationResultObject.array,contactID)
+        await uploadAndShowEdit(validationResultObject.array, contactID)
     }
 }
 
-const uploadAndShowEdit = async (validationArray,id) => {
-    const response = await putContactDataToFireBase("/contact/",`${id}`, setUpContactData(getAllValue, validationArray))
+const uploadAndShowEdit = async (validationArray, id) => {
+    const response = await putContactDataToFireBase("/contact/", `${id}`, setUpContactData(getAllValue, validationArray))
     await initContactPage()
     closeOverlayEditContact()
     const newContactCard = document.getElementById(id)

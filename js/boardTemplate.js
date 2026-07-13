@@ -234,7 +234,7 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
          onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
        <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`
     }).join("")
-    };
+};
 
 const catchZeroSubtaskForBar = (subtasks) => {
     let finishedSubtask = []
@@ -339,6 +339,7 @@ const catchContactAssignedLength3 = (contact, library) => {
     let contactSelectInnerHtml = ''
     for (let index = 0; index < 3; index++) {
         contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+
     }
     return ` <div class="assigned-contact-indicator">
                     ${contactSelectInnerHtml}
