@@ -22,22 +22,6 @@ function setPriority(dialog, priority) {
     }
 }
 
-initValidation(addTaskForm);
-
-addTaskForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!validateForm(addTaskForm)) return;
-
-    if (typeof submitFormDialog === 'function') {
-        await submitFormDialog(event, typeof taskState !== 'undefined' ? taskState : 'toDo');
-        await showSuccessDialog();
-    } else {
-        await createTask(event, 'toDo');
-        await showSuccessDialog();
-        window.location.href = "../HTML/board.html";
-    }
-});
-
 async function createTask(event, state) {
     if (event) { event.preventDefault(); }
     const form = document.querySelector('.add-task-form');
@@ -543,3 +527,19 @@ document.addEventListener('click', (e) => {
 
 const root = document.getElementById('dialogAddTask') || document;
 initDropdown(root);
+
+initValidation(addTaskForm);
+
+addTaskForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!validateForm(addTaskForm)) return;
+
+    if (typeof submitFormDialog === 'function') {
+        await submitFormDialog(event, typeof taskState !== 'undefined' ? taskState : 'toDo');
+        await showSuccessDialog();
+    } else {
+        await createTask(event, 'toDo');
+        await showSuccessDialog();
+        window.location.href = "../HTML/board.html";
+    }
+});
