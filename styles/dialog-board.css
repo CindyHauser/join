@@ -36,6 +36,11 @@
 .dialog-task-board-card {
     height: 90vh;
     padding: 36px;
+}
+
+#dialogOpenBigCard,
+#dialogEditTask {
+    width: calc(100% - 32px);
     max-width: 530px;
 }
 
@@ -76,7 +81,7 @@
 }
 
 .dialogAddAndEditTaskDesign:open {
-    width: 10vw;
+    width: clamp(200px, 16vw, 400px);
     display: flex;
     justify-content: space-between;
 }

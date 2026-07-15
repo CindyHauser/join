@@ -28,7 +28,7 @@
                     <img src="../assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
                     <span>Board</span>
                 </a>
-                <a href="#" class="menu-point ">
+                <a href="./contact.html" class="menu-point ">
                     <img src="../assets/ui-icons/contact-icons.svg" alt="contact-icons.svg">
                     <span>Contacts</span>
                 </a>
@@ -44,6 +44,13 @@
             <div class="app-main-title">
                 <h1>Kanban Project Management Tool</h1>
             </div>
+            <div class="app-profile-and-help-section">
+                <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
+                <div class="profile-menu" id="profileMenu">
+                    <button onclick="window.location.href = '#'">Legal Notice</button>
+                    <button onclick="window.location.href = '#'">Privacy Police</button>
+                    <button onclick="logOut()">Log out</button>
+                </div>
         </header>
         <section class="main-content legal-notice-content">
             <div class="legal-notice-title-container">
@@ -55,8 +62,10 @@
                     <h3>Imprint</h3>
                     <div class="legal-notice-imprint-body">
                         <ul>
-                            <li class="legal-notice-imprint-body-list-point">Cindy Hauser, Kevin Eberheim, Arnesto Arnesto</li>
-                            <li class="legal-notice-imprint-body-list-point">[Address of the JOIN operator - e.g. one of the students]</li>
+                            <li class="legal-notice-imprint-body-list-point">Cindy Hauser, Kevin Eberheim, Arnesto
+                                Arnesto</li>
+                            <li class="legal-notice-imprint-body-list-point">[Address of the JOIN operator - e.g. one of
+                                the students]</li>
                             <li class="legal-notice-imprint-body-list-point">[Postcode and city]</li>
                         </ul>
                     </div>
@@ -129,5 +138,6 @@
 
 </body>
 
+<script src="/script.js"></script>
 
 </html>
