@@ -2,6 +2,7 @@ if (typeof BASE_URL === "undefined") {
     globalThis.BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/";
 }
 const addTaskForm = document.querySelector('.add-task-form');
+const root = document.getElementById('dialogAddTask') || document;
 contactListJsonLibrary = '';
 let contactInputListArray = []
 let contactSelectedList = []
@@ -21,6 +22,24 @@ function setPriority(dialog, priority) {
         selectPriority(button);
     }
 }
+
+initDropdown(root);
+
+initValidation(addTaskForm);
+
+addTaskForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!validateForm(addTaskForm)) return;
+
+    if (typeof submitFormDialog === 'function') {
+        await submitFormDialog(event, typeof taskState !== 'undefined' ? taskState : 'toDo');
+        await showSuccessDialog();
+    } else {
+        await createTask(event, 'toDo');
+        await showSuccessDialog();
+        window.location.href = "../HTML/board.html";
+    }
+});
 
 async function createTask(event, state) {
     if (event) { event.preventDefault(); }
@@ -164,11 +183,16 @@ function clearAllInput() {
 function resetDropdown(root) {
   const label = root.querySelector('#dropdownLabel, #dropdownLabelEdit');
   const list = root.querySelector('#dropdownList, #dropdownListEdit');
+  const categoryButton = root.querySelector('#category');
   if (!label || !list) return;
 
   const options = Array.from(list.querySelectorAll('.dropdown-option'));
   options.forEach(o => o.setAttribute('aria-selected', 'false'));
   label.textContent = 'Select Task Category';
+
+  if (categoryButton) {
+    categoryButton.dataset.value = '';
+  }
 }
 
 const postNewTaskToFireBase = async (path, data = {}) => {
@@ -430,92 +454,106 @@ const initContactListSearch = (element, event) => {
 
 
 function initDropdown(dialog) {
+    const els = setupElements(dialog);
+    const state = { activeIndex: -1 };
+    attachListeners(els, state);
+}
+
+function setupElements(dialog) {
     const oldTrigger = dialog.querySelector('#category, #categoryEdit');
     const oldList = dialog.querySelector('#dropdownList, #dropdownListEdit');
-
     const trigger = oldTrigger.cloneNode(true);
     oldTrigger.parentNode.replaceChild(trigger, oldTrigger);
-
     const list = oldList.cloneNode(true);
     oldList.parentNode.replaceChild(list, oldList);
-
     const label = dialog.querySelector('#dropdownLabel, #dropdownLabelEdit');
     const arrow = dialog.querySelector('#dropdownArrow, #dropdownArrowEdit');
     const options = Array.from(list.querySelectorAll('.dropdown-option'));
+    return { trigger, list, label, arrow, options };
+}
 
-    let activeIndex = -1;
+function openList(els, state) {
+    els.list.hidden = false;
+    els.trigger.setAttribute('aria-expanded', 'true');
+    els.arrow.src = '../assets/ui-icons/arrow-up.svg';
+    state.activeIndex = els.options.findIndex(o => o.getAttribute('aria-selected') === 'true');
+    if (state.activeIndex === -1) state.activeIndex = 0;
+    setActive(els, state, state.activeIndex);
+    els.list.focus();
+}
 
-    function openList() {
-        list.hidden = false;
-        trigger.setAttribute('aria-expanded', 'true');
-        arrow.src = '../assets/ui-icons/arrow-up.svg';
-        activeIndex = options.findIndex(o => o.getAttribute('aria-selected') === 'true');
-        if (activeIndex === -1) activeIndex = 0;
-        setActive(activeIndex);
-        list.focus();
+function closeList(els) {
+    els.list.hidden = true;
+    els.trigger.setAttribute('aria-expanded', 'false');
+    els.arrow.src = '../assets/ui-icons/arrow-down.svg';
+}
+
+function toggleList(els, state) {
+    els.list.hidden ? openList(els, state) : closeList(els);
+}
+
+function setActive(els, state, index) {
+    els.options.forEach(o => o.classList.remove('active'));
+    els.options[index].classList.add('active');
+    state.activeIndex = index;
+}
+
+function selectOption(els, option) {
+    els.options.forEach(o => o.setAttribute('aria-selected', 'false'));
+    option.setAttribute('aria-selected', 'true');
+    els.label.textContent = option.textContent;
+    els.trigger.dataset.value = option.dataset.value;
+    els.trigger.dispatchEvent(new Event('customchange', { bubbles: true }));
+    closeList(els);
+    els.trigger.focus();
+}
+
+function handleTriggerKeydown(e, els, state) {
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openList(els, state);
     }
+}
 
-    function closeList() {
-        list.hidden = true;
-        trigger.setAttribute('aria-expanded', 'false');
-        arrow.src = '../assets/ui-icons/arrow-down.svg';
+function handleListKeydown(e, els, state) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        handleListArrowKey(e, els, state);
+    } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectOption(els, els.options[state.activeIndex]);
+    } else if (e.key === 'Escape' || e.key === 'Tab') {
+        handleListExitKey(e, els);
     }
+}
 
-    function toggleList() {
-        list.hidden ? openList() : closeList();
-    }
+function handleListArrowKey(e, els, state) {
+    e.preventDefault();
+    const len = els.options.length;
+    const delta = e.key === 'ArrowDown' ? 1 : -1;
+    setActive(els, state, (state.activeIndex + delta + len) % len);
+    els.options.forEach(o => o.setAttribute('aria-selected', 'false'));
+    els.options[state.activeIndex].setAttribute('aria-selected', 'true');
+}
 
-    function setActive(index) {
-        options.forEach(o => o.classList.remove('active'));
-        options[index].classList.add('active');
-        activeIndex = index;
-    }
+function handleListExitKey(e, els) {
+    closeList(els);
+    if (e.key === 'Escape') els.trigger.focus();
+}
 
-    function selectOption(option) {
-        options.forEach(o => o.setAttribute('aria-selected', 'false'));
-        option.setAttribute('aria-selected', 'true');
-        label.textContent = option.textContent;
-        trigger.dataset.value = option.dataset.value;
-
-        // eigenes Event, damit initValidation() den Fehler beim Auswählen löschen kann
-        trigger.dispatchEvent(new Event('customchange', { bubbles: true }));
-
-        closeList();
-        trigger.focus();
-    }
-
-    trigger.addEventListener('click', toggleList);
-
-    options.forEach((option, index) => {
-        option.addEventListener('click', () => selectOption(option));
-        option.addEventListener('mouseenter', () => setActive(index));
-    });
-
-    trigger.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openList();
-        }
-    });
-
-    list.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            setActive((activeIndex + 1) % options.length);
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            setActive((activeIndex - 1 + options.length) % options.length);
-        } else if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            selectOption(options[activeIndex]);
-        } else if (e.key === 'Escape') {
-            closeList();
-            trigger.focus();
-        } else if (e.key === 'Tab') {
-            closeList();
-        }
+function attachOptionListeners(els, state) {
+    els.options.forEach((option, index) => {
+        option.addEventListener('click', () => selectOption(els, option));
+        option.addEventListener('mouseenter', () => setActive(els, state, index));
     });
 }
+
+function attachListeners(els, state) {
+    els.trigger.addEventListener('click', () => toggleList(els, state));
+    attachOptionListeners(els, state);
+    els.trigger.addEventListener('keydown', (e) => handleTriggerKeydown(e, els, state));
+    els.list.addEventListener('keydown', (e) => handleListKeydown(e, els, state));
+}
+
 document.addEventListener('click', (e) => {
     document.querySelectorAll('.dropdown').forEach(d => {
         if (!d.contains(e.target)) {
@@ -523,23 +561,4 @@ document.addEventListener('click', (e) => {
             if (list && !list.hidden) list.hidden = true;
         }
     });
-});
-
-const root = document.getElementById('dialogAddTask') || document;
-initDropdown(root);
-
-initValidation(addTaskForm);
-
-addTaskForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!validateForm(addTaskForm)) return;
-
-    if (typeof submitFormDialog === 'function') {
-        await submitFormDialog(event, typeof taskState !== 'undefined' ? taskState : 'toDo');
-        await showSuccessDialog();
-    } else {
-        await createTask(event, 'toDo');
-        await showSuccessDialog();
-        window.location.href = "../HTML/board.html";
-    }
 });
