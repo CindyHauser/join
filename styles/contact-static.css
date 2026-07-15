@@ -126,7 +126,7 @@
     gap: 4px;
 }
 
-#editContactOverlayFormInitial{
+#editContactOverlayFormInitial {
     color: white;
     font-weight: 700;
     font-size: 54px;
@@ -246,6 +246,21 @@
 .contacts-member-functions {
     height: 25%;
     display: flex;
+}
+
+.edit-delete-btns {
+    filter: invert(17%) sepia(70%) saturate(172%) hue-rotate(149deg) brightness(183%) contrast(175%);
+    all: unset;
+    width: 33%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.edit-delete-btns:hover {
+    font-weight: 700;
+    color: var(--hover-effect-dark);
 }
 
 .function-edit {

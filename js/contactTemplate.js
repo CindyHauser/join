@@ -107,14 +107,14 @@ const setExpandedContactcardsTemplate = (id, library) => {
         <div class="contacts-member-name-and-functions-expanded">
             <div class="contacts-member-name-expanded">${library[id].forename} ${library[id].surname}</div>
             <div class="contacts-member-functions" onclick="setEventBubbling(event)">
-                <div class="function-edit" onclick="initEditContact('${id}')">
+                <button class="edit-delete-btns" onclick="initEditContact('${id}')">
                     <img src="../assets/ui-icons/edit.svg" alt="edit.svg">
                     <span>Edit</span>
-                </div>
-                <div class="function-delete" onclick="deleteContact('${id}')">
+                </button>
+                <button class="edit-delete-btns" onclick="deleteContact('${id}')">
                     <img src="../assets/ui-icons/delete.svg" alt="delete.svg">
                     <span>Delete</span>
-                </div>
+                </button>
             </div>
         </div>
     </div>
