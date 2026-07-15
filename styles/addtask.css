@@ -38,6 +38,10 @@ input {
     cursor: pointer;
 }
 
+input::placeholder, textarea::placeholder{
+    color: black;
+}
+
 textarea {
     width: 100%;
     min-height: 20vh;
@@ -148,7 +152,6 @@ textarea {
     height: 40%;
     justify-content: space-between;
     padding: 8px;
-    transition: all 450ms ease-in-out;
 }
 
 .contact-input-class-card:hover {
@@ -185,15 +188,6 @@ textarea {
     max-height: 32px;
     display: flex;
     align-items: center;
-}
-
-.checkbox-contact-list {
-    height: 24px !important;
-    width: 24px !important;
-}
-
-.checkbox-contact-list:hover {
-    cursor: pointer;
 }
 
 #selectedContactField {
