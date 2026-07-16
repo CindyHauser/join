@@ -100,7 +100,7 @@ textarea {
     position: relative;
 }
 
-#contactInputList {
+.contact-input-list {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -115,33 +115,6 @@ textarea {
     overflow: auto;
     height: 0px;
     opacity: 0;
-}
-
-
-#contactInputListEdit {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 8;
-    padding: 16px;
-    gap: 16px;
-    top: 58%;
-    width: 100%;
-    background-color: white;
-    max-height: 200px;
-    overflow: auto;
-    height: 0px;
-    opacity: 0;
-    z-index: 4;
-}
-
-#selectedContactFieldEdit {
-    display: flex;
-    gap: 16px;
-    max-width: 440px;
-    overflow: auto;
-    height: 40px;
 }
 
 .contact-input-class-card {
@@ -190,7 +163,7 @@ textarea {
     align-items: center;
 }
 
-#selectedContactField {
+.selected-contact-field {
     height: 40px;
     display: flex;
     gap: 8px;
@@ -368,17 +341,6 @@ fieldset {
     margin: -1px;
 }
 
-.error-message {
-    color: red;
-    font-size: 0.9rem;
-    text-align: center;
-    margin: 0;
-}
-
-.input-error {
-    border: 2px solid red;
-}
-
 .dialogAddTaskDesign {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border: 2px solid var(--text-color-links);
@@ -427,7 +389,7 @@ fieldset {
 
 .dropdown-list {
     position: absolute;
-    /* top: calc(100% + 4px); */
+    width: 100%;
     top: 100%;
     left: 0;
     right: 0;
@@ -465,4 +427,15 @@ fieldset {
 
 .flex1 {
     flex: 1;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+}
+
+.input-error {
+    border: 2px solid red;
 }

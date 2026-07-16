@@ -162,8 +162,8 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                                     oninput="initContactListSearch(this,event)">
                                 <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault()">
                             </div>
-                            <div id="contactInputListEdit" onmousedown="contactInputListClicked(event)"></div>
-                            <div id="selectedContactFieldEdit">${renderDialogAssignedContactsEdit(task.contactSelect, contactLibrary)}</div>  
+                            <div class="contact-input-list" id="contactInputListEdit" onmousedown="contactInputListClicked(event)"></div>
+                            <div class="selected-contact-field" id="selectedContactFieldEdit">${renderDialogAssignedContactsEdit(task.contactSelect, contactLibrary)}</div>  
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="categoryEdit">Category</label>
