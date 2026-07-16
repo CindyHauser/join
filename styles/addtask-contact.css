@@ -1,0 +1,130 @@
+.contact-form {
+    position: relative;
+}
+
+.contact-input-list {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 8;
+    padding: 16px;
+    gap: 16px;
+    top: 57%;
+    width: 100%;
+    background-color: white;
+    max-height: 200px;
+    overflow: auto;
+    height: 0px;
+    opacity: 0;
+}
+
+.contact-input-class-card {
+    width: 90%;
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    height: 40%;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.contact-input-class-card:hover {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: white;
+}
+
+.input-name-and-badge {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.contact-input-badge {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.contact-input-name {
+    height: 6vh;
+    width: 16vw;
+    max-width: 144px;
+    max-height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.selected-contact-field {
+    height: 40px;
+    display: flex;
+    gap: 8px;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.contact-list-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.contact-list-input-container img {
+    height: 24px;
+    width: 24px;
+}
+
+.contact-list-input-container input {
+    border: none !important;
+}
+
+.contact-list-input-container input:focus {
+    outline: none;
+}
+
+.pop-down-contact-liste-add-task-animating {
+    display: flex !important;
+    animation: popDownContactlist 0.01s ease-out forwards;
+}
+
+.pop-up-contact-liste-add-task-animating {
+    display: flex !important;
+    animation: popUpContactlist 0.01s ease-out forwards;
+}
+
+@keyframes popDownContactlist {
+    0% {
+        height: 0px;
+        opacity: 0;
+    }
+
+    100% {
+        height: 200px;
+        opacity: 1;
+    }
+}
+
+@keyframes popUpContactlist {
+    0% {
+        height: 200px;
+        opacity: 1;
+    }
+
+    100% {
+        height: 0px;
+        opacity: 0;
+    }
+}

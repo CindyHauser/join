@@ -1,0 +1,48 @@
+.priority-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.priority-btn {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: max(4vh, 36px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px;
+}
+
+.priority-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 2px;
+    border: none;
+    margin: 1px;
+}
+
+.priority-btn.selected.urgent {
+    background: #FF3D00;
+    color: white;
+    border-color: #FF3D00;
+}
+
+.priority-btn.selected.medium {
+    background: #FFA800;
+    color: white;
+    border-color: #FFA800;
+}
+
+.priority-btn.selected.low {
+    background: #7AE229;
+    color: white;
+    border-color: #7AE229;
+}
+
+.priority-btn.selected img {
+    filter: brightness(0) invert(1);
+}
