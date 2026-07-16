@@ -1,3 +1,9 @@
+/**
+ * Marks a dragged task card as active and stores its drag metadata.
+ *
+ * @param {DragEvent} event - The drag event triggered by dragging a task card.
+ * @returns {void}
+ */
 const cardDragged = (event) => {
     const element = event.target.closest('.progress-tasks')
     const card = event.target
@@ -10,6 +16,12 @@ const cardDragged = (event) => {
     event.dataTransfer.setData("application/json", JSON.stringify(cardData))
 }
 
+/**
+ * Removes the visual drag state from the currently dragged task card and drag zones.
+ *
+ * @param {DragEvent} event - The drag end event.
+ * @returns {void}
+ */
 const cardDragEnd = (event) => {
     const card = event.currentTarget || event.target.closest('.task-board-card')
     if (card) {
@@ -20,6 +32,12 @@ const cardDragEnd = (event) => {
     })
 }
 
+/**
+ * Handles the drop action for a task card and updates the task state in the backend.
+ *
+ * @param {DragEvent} event - The drop event.
+ * @returns {Promise<void>}
+ */
 const cardDropped = async (event) => {
     event.preventDefault()
     const element = event.target.closest('.progress-tasks')
@@ -36,12 +54,23 @@ const cardDropped = async (event) => {
     visualRefreshCardAndDragZone(dropZone)
 }
 
-
-
+/**
+ * Removes the drag-zone highlight from the provided container.
+ *
+ * @param {HTMLElement} zone - The drag-and-drop zone to update.
+ * @returns {void}
+ */
 const visualRefreshCardAndDragZone = (zone) => {
     zone.classList.remove('drag-zone-entered')
 }
 
+/**
+ * Re-renders the dragged card inside the target drop zone.
+ *
+ * @param {HTMLElement} zone - The current drop zone.
+ * @param {HTMLElement} card - The task card element being moved.
+ * @returns {void}
+ */
 const renderDragzoneVisual = (zone, card) => {
     if (zone.contains(card)) {
         visualRefreshCardAndDragZone(zone, card)
@@ -54,14 +83,25 @@ const renderDragzoneVisual = (zone, card) => {
     }
 }
 
+/**
+ * Applies the drag-over visual state to a drop zone.
+ *
+ * @param {DragEvent} event - The drag-over event.
+ * @returns {void}
+ */
 const cardDraggedOver = (event) => {
     event.preventDefault()
     const element = event.target.closest('.progress-tasks')
     const dropZone = element.querySelector('.drag-and-drop-tasks')
     dropZone.classList.add('drag-zone-entered')
-
 }
 
+/**
+ * Applies the drag-enter visual state to a drop zone.
+ *
+ * @param {DragEvent} event - The drag-enter event.
+ * @returns {void}
+ */
 const cardEnteringDragZone = (event) => {
     event.preventDefault()
     const element = event.target.closest('.progress-tasks')
@@ -69,6 +109,12 @@ const cardEnteringDragZone = (event) => {
     dropZone.classList.add('drag-zone-entered')
 }
 
+/**
+ * Removes the drag-enter visual state when leaving a drop zone.
+ *
+ * @param {DragEvent} event - The drag-leave event.
+ * @returns {void}
+ */
 const cardLeavingDragZone = (event) => {
     event.preventDefault()
     const element = event.target.closest('.progress-tasks')
@@ -76,6 +122,12 @@ const cardLeavingDragZone = (event) => {
     dropZone.classList.remove('drag-zone-entered')
 }
 
+/**
+ * Filters tasks based on the current search input value.
+ *
+ * @param {HTMLElement} element - The input element containing the search term.
+ * @returns {void}
+ */
 const initFindTask = (element) => {
     const value = element.value
     if (value.length >= 3) {
@@ -90,6 +142,12 @@ const initFindTask = (element) => {
     }
 }
 
+/**
+ * Builds a filtered task list from the global task array using the current search string.
+ *
+ * @param {string} string - The search term entered by the user.
+ * @returns {Array<Object>} The filtered task list.
+ */
 const initFilteringArray = (string) => {
     let filteredArray = []
     for (let index = 0; index < generalTaskArray.length; index++) {
@@ -102,6 +160,12 @@ const initFilteringArray = (string) => {
     return filteredArray
 }
 
+/**
+ * Capitalizes the first character of a search string for case-insensitive matching.
+ *
+ * @param {string} string - The raw search string.
+ * @returns {string} The same string with its first character capitalized.
+ */
 const setStringToMatchTheFilter = (string) => {
     let stringAsArray = string.split('')
     stringAsArray[0] = stringAsArray[0].toUpperCase()
@@ -109,6 +173,14 @@ const setStringToMatchTheFilter = (string) => {
     return stringAsArray
 }
 
+/**
+ * Checks whether a task description matches the current search string.
+ *
+ * @param {string} string - The search string.
+ * @param {Array<Object>} generalTaskArray - The task list to inspect.
+ * @param {number} index - The index of the task in the array.
+ * @returns {boolean} True if the description matches the search string.
+ */
 const checkDesctiptionValue = (string, generalTaskArray, index) => {
     if (generalTaskArray[index].description.includes(string) ||
         generalTaskArray[index].description.includes(setStringToMatchTheFilter(string))) {
@@ -118,6 +190,14 @@ const checkDesctiptionValue = (string, generalTaskArray, index) => {
     }
 }
 
+/**
+ * Checks whether a task title matches the current search string.
+ *
+ * @param {string} string - The search string.
+ * @param {Array<Object>} generalTaskArray - The task list to inspect.
+ * @param {number} index - The index of the task in the array.
+ * @returns {boolean} True if the title matches the search string.
+ */
 const checkTitleValue = (string, generalTaskArray, index) => {
     if (generalTaskArray[index].title.includes(string) ||
         generalTaskArray[index].title.includes(setStringToMatchTheFilter(string))) {

@@ -1,3 +1,13 @@
+/**
+ * Creates the HTML markup for a task card rendered in the board.
+ *
+ * @param {Function} subtaskCatcherCallbackBar - Callback that renders the subtask progress bar.
+ * @param {Function} subtaskCatcherCallbackLabel - Callback that renders the subtask progress label.
+ * @param {Function} contactAssignedCatcherCallback - Callback that renders the assigned contact badges.
+ * @param {Array<Object>} array - The list of tasks to render.
+ * @param {number} index - The position of the current task inside the array.
+ * @returns {string} HTML markup for a board task card.
+ */
 const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, contactAssignedCatcherCallback, array, index) => {
     let template = `<div onclick="openTaskDialog('${array[index].id}')" class="task-board-card" id="${array[index].id}" draggable="true" ondragstart="cardDragged(event)" ondragend="cardDragEnd(event)">
     <div class="task-card-inner-hug">
@@ -33,6 +43,13 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     return template
 };
 
+/**
+ * Creates the HTML markup for the task details dialog.
+ *
+ * @param {Object} task - The task object to display.
+ * @param {Object<string, Object>} contactLibrary - The contact library used for rendering assigned contacts.
+ * @returns {string} HTML markup for the task dialog content.
+ */
 const taskDialogContentTemplate = (task, contactLibrary) => {
     let template = `
 <div class="dialog-task-board-card" id="${task.id}">
@@ -75,6 +92,13 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
     return template
 }
 
+/**
+ * Creates the HTML markup for the task edit dialog form.
+ *
+ * @param {Object} task - The task object currently being edited.
+ * @param {Object<string, Object>} contactLibrary - The contact library used for rendering assigned contacts.
+ * @returns {string} HTML markup for the edit dialog form.
+ */
 const taskDialogEditContentTemplate = (task, contactLibrary) => {
     let template = `
     <div class="closeButton">
@@ -161,6 +185,11 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
     return template
 }
 
+/**
+ * Returns the markup for the subtask action buttons used in the edit dialog.
+ *
+ * @returns {string} HTML markup for the subtask action buttons.
+ */
 function getButtonSubtask() {
     return `
     <div class="actions">

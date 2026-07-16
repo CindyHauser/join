@@ -1,3 +1,10 @@
+/**
+ * Normalizes a task object from the raw data structure for further rendering.
+ *
+ * @param {string} key - The unique task identifier.
+ * @param {Object} object - The source object containing all task entries.
+ * @returns {Object} A normalized task object with the expected rendering fields.
+ */
 const setTaskDataStructure = (key, object) => {
     const allSubtasks = object[key].subtasks
     const subtasksArray = reconstructSubTaskArray(allSubtasks)
@@ -14,6 +21,12 @@ const setTaskDataStructure = (key, object) => {
     }
 }
 
+/**
+ * Rebuilds a subtask array into a simplified structure that can be rendered in the UI.
+ *
+ * @param {Array<Object|String>} [array] - The raw subtask list from the task data.
+ * @returns {Array<Object>} A normalized array of subtask objects.
+ */
 const reconstructSubTaskArray = (array) => {
     let reconstructedArray = []
     if (array == undefined) {
@@ -29,6 +42,14 @@ const reconstructSubTaskArray = (array) => {
     return reconstructedArray
 }
 
+/**
+ * Creates the HTML markup for subtasks shown in a dialog.
+ *
+ * @param {Array<Object|String>} subtasks - The subtasks associated with the task.
+ * @param {boolean} editTask - Indicates whether the dialog is used in edit mode.
+ * @param {string} taskId - The identifier of the parent task.
+ * @returns {string} HTML string containing the rendered subtask list.
+ */
 const dialogSubtask = (subtasks, editTask, taskId) => {
     if (!subtasks || subtasks.length === 0) {
         return ``
@@ -49,6 +70,12 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
     }).join("")
 };
 
+/**
+ * Builds the progress bar markup for subtasks based on completed items.
+ *
+ * @param {Array<Object>} subtasks - The subtasks of the current task.
+ * @returns {string} HTML markup for the subtask progress bar.
+ */
 const catchZeroSubtaskForBar = (subtasks) => {
     let finishedSubtask = []
     for (let index = 0; index < subtasks.length; index++) {
@@ -66,6 +93,12 @@ const catchZeroSubtaskForBar = (subtasks) => {
     }
 }
 
+/**
+ * Creates the label text that shows how many subtasks are completed.
+ *
+ * @param {Array<Object>} subtasks - The subtasks of the current task.
+ * @returns {string} A label string or empty markup if there are no subtasks.
+ */
 const catchZeroSubtaskForLabel = (subtasks) => {
     let finishedSubtask = []
     for (let index = 0; index < subtasks.length; index++) {
@@ -80,6 +113,13 @@ const catchZeroSubtaskForLabel = (subtasks) => {
     }
 }
 
+/**
+ * Builds the markup for a single assigned contact in the dialog view.
+ *
+ * @param {string} contactId - The contact identifier.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup for the contact entry.
+ */
 const createDialogAssignedContactMarkup = (contactId, library) => {
     const contactData = library[contactId]
     if (!contactData) {
@@ -95,6 +135,13 @@ const createDialogAssignedContactMarkup = (contactId, library) => {
     `
 };
 
+/**
+ * Builds the compact contact markup used in edit mode for dialogs.
+ *
+ * @param {string} contactId - The contact identifier.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup for the compact contact badge.
+ */
 const createDialogAssignedContactMarkupEdit = (contactId, library) => {
     const contactData = library[contactId]
     if (!contactData) {
@@ -109,6 +156,13 @@ const createDialogAssignedContactMarkupEdit = (contactId, library) => {
     `
 };
 
+/**
+ * Renders the assigned contacts for the dialog view.
+ *
+ * @param {Array<string>} contact - The list of assigned contact identifiers.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup that displays the assigned contacts or a placeholder.
+ */
 const renderDialogAssignedContacts = (contact, library) => {
     if (contact == undefined || contact.length == 0) {
         return `<div class="dialog-assigned-contact-indicator">
@@ -121,6 +175,13 @@ const renderDialogAssignedContacts = (contact, library) => {
                 </div>`
 };
 
+/**
+ * Renders the compact assigned contact list used during editing.
+ *
+ * @param {Array<string>} contact - The list of assigned contact identifiers.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup that displays the assigned contacts or a placeholder.
+ */
 const renderDialogAssignedContactsEdit = (contact, library) => {
     if (contact == undefined || contact.length == 0) {
         return `  <span>no contact selected yet</span>
@@ -130,6 +191,13 @@ const renderDialogAssignedContactsEdit = (contact, library) => {
     return ` ${contactSelectInnerHtml}`
 };
 
+/**
+ * Returns the appropriate contact badge markup depending on the number of assigned contacts.
+ *
+ * @param {Array<string>} contact - The list of assigned contact identifiers.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup for the contact indicators.
+ */
 const catchZeroContact = (contact, library) => {
     if (contact == undefined) {
         return `<div class="assigned-contact-indicator assigned-contact-indicator-no-contact-selected">
@@ -142,6 +210,13 @@ const catchZeroContact = (contact, library) => {
     }
 }
 
+/**
+ * Builds the compact contact preview for a task with up to three assigned contacts.
+ *
+ * @param {Array<string>} contact - The list of assigned contact identifiers.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup for the preview.
+ */
 const catchContactAssignedLength3 = (contact, library) => {
     let contactSelectInnerHtml = ''
     for (let index = 0; index < 3; index++) {
@@ -154,6 +229,13 @@ const catchContactAssignedLength3 = (contact, library) => {
                 </div>`
 }
 
+/**
+ * Builds the contact preview for tasks with fewer than four assigned contacts.
+ *
+ * @param {Array<string>} contact - The list of assigned contact identifiers.
+ * @param {Object<string, Object>} library - The contact library used for lookup.
+ * @returns {string} HTML markup for the preview.
+ */
 const catchContactAssignedLengthMoreThan3 = (contact, library) => {
     let contactSelectInnerHtml = ''
     for (let index = 0; index < contact.length; index++) {
@@ -166,6 +248,12 @@ const catchContactAssignedLengthMoreThan3 = (contact, library) => {
                 </div>`
 }
 
+/**
+ * Converts a human-readable string into a CSS-friendly class name.
+ *
+ * @param {string} string - The input string to transform.
+ * @returns {string} A normalized class name or an empty string if the input is invalid.
+ */
 const convertStringToclass = (string) => {
     if (!string || typeof string !== 'string') {
         return ''
