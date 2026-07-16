@@ -249,7 +249,6 @@
 }
 
 .edit-delete-btns {
-    filter: invert(17%) sepia(70%) saturate(172%) hue-rotate(149deg) brightness(183%) contrast(175%);
     all: unset;
     width: 33%;
     display: flex;
@@ -288,7 +287,6 @@
     cursor: pointer;
     color: var(--easy-blue-color-secondary);
 }
-
 
 .contact-info-txt {
     height: 10%;

@@ -3,7 +3,6 @@ const allAddContactInputs = overlayAdd.querySelectorAll('input')
 const overlayEdit = document.getElementById('contactEditOverlay')
 const allEditContactInputs = overlayEdit.querySelectorAll('input')
 
-
 // general ui
 const clicked = (element) => {
     const container = element
@@ -29,7 +28,6 @@ const resetAllEditContactInput = () => {
         }
     )
 }
-
 
 const refreshmarksOnContactCards = () => {
     const memberCards = document.querySelectorAll('.contacts-member')
@@ -135,7 +133,6 @@ const contactFormBlured = (element) => {
     inputParent.classList.remove('contact-form-overlay-input-parent-focused')
 }
 
-
 // delete contact
 // get Task Library 
 // make array from the library 
@@ -156,7 +153,7 @@ const setTaskDataStructure = (key, object) => {
     }
 }
 
-const refreshContactSelectDataStructure = (taskId, contactSelectArray,contactId) => {
+const refreshContactSelectDataStructure = (taskId, contactSelectArray, contactId) => {
     return {
         "taskId": taskId,
         "contactSelectNew": setNewContactSelect(contactSelectArray, contactId),
@@ -190,8 +187,8 @@ const findDeletedContactSelectPosition = (array, id) => {
     let positionList = []
     for (let index = 0; index < array.length; index++) {
         const task = array[index]
-     if ( task.contactSelect && task.contactSelect.includes(id)) {
-            positionList.push(refreshContactSelectDataStructure(task.id, task.contactSelect,id))
+        if (task.contactSelect && task.contactSelect.includes(id)) {
+            positionList.push(refreshContactSelectDataStructure(task.id, task.contactSelect, id))
         }
     }
     return positionList
@@ -202,7 +199,6 @@ const putIterateAllPositionsOfContacts = async (array) => {
         await putTaskContactSelectToFireBase(array[index].taskId, array[index].contactSelectNew)
     }
 }
-
 
 const deleteContact = async (id) => {
     const taskLibrary = await getTaskLibraryForFirebaseInit()
@@ -286,3 +282,21 @@ const uploadAndShowEdit = async (validationArray, id) => {
     clicked(newContactCard)
     newContactCard.scrollIntoView({ behavior: 'smooth' })
 }
+
+function changeImageByHover(id) {
+    const changeImage = document.getElementById(id).querySelector('img');
+    if (id == 'editBtnContact') {
+        changeImage.src = '../assets/ui-icons/edit-dark-hover.svg';
+    } else if (id == 'deleteBtnContact') {
+        changeImage.src = '../assets/ui-icons/delete-dark-hover.svg';
+    }
+};
+
+function changeImageBack(id) {
+    const changeImage = document.getElementById(id).querySelector('img');
+    if (id == 'editBtnContact') {
+        changeImage.src = '../assets/ui-icons/edit.svg';
+    } else if (id == 'deleteBtnContact') {
+        changeImage.src = '../assets/ui-icons/delete.svg';
+    }
+};

@@ -44,3 +44,14 @@
     </div>
 </div>
 <!-- contact card contacts member template -->
+
+<!-- button-Hover -->
+<button class="edit-delete-btns" id="editBtnContact" onmouseover="changeImageByHover('editBtnContact')" onclick="initEditContact('${id}')"
+onmouseout="changeImageBack('editBtnContact')">
+    <img src="../assets/ui-icons/edit.svg" alt="edit.svg">
+    <span>Edit</span>
+</button>
+<button class="edit-delete-btns" id="deleteBtnContact" onmouseover="changeImageByHover('deleteBtnContact')" onclick="deleteContact('${id}')">
+    <img src="../assets/ui-icons/delete.svg" alt="delete.svg">
+    <span>Delete</span>
+</button>
