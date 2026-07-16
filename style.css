@@ -245,13 +245,6 @@ h1 {
     border: 2px solid white;
 }
 
-
-
-
-
-
-
-
 .profile-menu {
     display: none;
     position: absolute;
@@ -282,4 +275,26 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+*::-webkit-scrollbar {
+  width: 4px
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background-color-body);
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 6px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--main-color)
+                     var(--background-color-body);
+  }
 }

@@ -168,7 +168,7 @@ h2 {
 
 .task-category {
     height: 80%;
-    width: 70%;
+    width: 80%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -182,8 +182,7 @@ h2 {
     height: 84%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 8px;
+    justify-content: space-evenly;
 }
 
 .task-card-title,
@@ -220,6 +219,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
+    width: 100%;
 }
 
 .subtask-indicator-bar {
@@ -233,7 +233,7 @@ h2 {
 .subtask-indicator-bar100 {
     border: 1px solid var(--text-color-links);
     height: 30%;
-    width: 70%;
+    width: 50%;
     border-radius: 8px;
     background-color: var(--text-color-links);
 }
@@ -251,6 +251,10 @@ h2 {
     justify-content: center;
     align-items: center;
     font-size: 12px;
+}
+
+.subtask-progress-indicator:not(:has(.subtask-indicator-bar100)) .subtask-indicator-in-number {
+    width: 0;
 }
 
 .task-assigned-contact-and-priority-indicator {
