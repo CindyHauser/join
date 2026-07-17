@@ -73,3 +73,6 @@
 1. Bug fixed contact select aktualisierung
 2. bug fixed: nach dem weiteren test, muss ich noch mal schauen
 3. Bug fixed contact select aktualisierung fertig
+
+Änderungen Stand 17.07.2026 von Arnesto
+1. Help funktionalität mit eingebunden

@@ -48,6 +48,22 @@ p {
 .arrow-hug-container {
     height: 40px;
     width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 450ms ease-in-out;
+    /* button-default-override */
+    padding-block: inherit;
+    padding-inline: inherit;
+    border-width: 0;
+    border: 0;
+    background-color: unset;
+}
+
+.arrow-hug-container:hover {
+    background-color: var(--text-color-links);
+    cursor: pointer;
 }
 
 .help-text-container {

@@ -14,13 +14,13 @@ const initContactPage = async () => {
 const initBoardPage = async () => {
         await setContactLibraryForFirebaseInit()
         await setTaskLibraryForFirebaseInit();
-        getGeneralTaskArray(taskListJsonLibrary,setTaskDataStructure,getPreludeGeneralTaskArray)
+        getGeneralTaskArray(taskListJsonLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
         getAllArray()
-        renderAllCards(toDoTaskArray,inProgressTaskArray,awaitFeedbackTaskArray,doneTaskArray) 
+        renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
 }
 
 
-const initAddTaskPage = async ()=>{
+const initAddTaskPage = async () => {
         await setLibraryForFirebaseInit()
         setContactInputList()
         renderContactInputList()
@@ -46,4 +46,17 @@ function logOut() {
         localStorage.removeItem("currentUserName");
         sessionStorage.setItem("skipAnimation", "true");
         window.location.href = '../index.html';
+}
+
+// help-js
+const triggerHistoryBack = () => {
+        let historyBackSite = sessionStorage.getItem('lastVisitedSite')
+        if (historyBackSite === 'help.html'){
+            historyBackSite = 'summary.html'    
+        }
+        window.location.href = historyBackSite
+}
+
+const safeAddressToSessionStorage = (htmlAdress)=>{
+        sessionStorage.setItem('lastVisitedSite',htmlAdress)
 }

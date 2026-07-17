@@ -47,7 +47,7 @@
             </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
-                    <img src="../assets/ui-icons/help.svg" alt="help.svg">
+                     <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('help.html')"><img src="../assets/ui-icons/help.svg" alt="help.svg"></a>
                 </div>
                 <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
                 <div class="profile-menu" id="profileMenu">
@@ -62,9 +62,9 @@
                 <div class="help-title-title">
                     <h2 class="helpH2">Help</h2>
                 </div>
-                <div class="arrow-hug-container">
+                <button class="arrow-hug-container" id="arrowHugContainer" onclick="triggerHistoryBack()">
                     <img src="../assets/ui-icons/arrow-left-line.svg" alt="arrow-left-line.svg">
-                </div>
+                </button>
             </div>
             <div class="help-text-container">
                 <div class="join-help-welcoming-text">
@@ -163,5 +163,4 @@
 
 </body>
 <script src="../script.js"></script>
-
 </html>
