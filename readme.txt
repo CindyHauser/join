@@ -76,3 +76,4 @@
 
 Änderungen Stand 17.07.2026 von Arnesto
 1. Help funktionalität mit eingebunden
+2. privacy policy und legal notice sind in jede verlinkungen und seiten mit eingebunden
