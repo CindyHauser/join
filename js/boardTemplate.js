@@ -201,3 +201,45 @@ function getButtonSubtask() {
         </button>
     </div>
 `}
+
+/**
+ * Returns the HTML for a subtask item in edit mode.
+ *
+ * @param {string} text - The current subtask text.
+ * @returns {string}
+ */
+function getEditModeHTML(text) {
+    return `
+    <div class="subtask-item">
+        <input class="edit-input" type="text" value="${text}" name="editSubtask">
+        <div class="actions">
+            <button class="confirm-btn subtaskButton">
+                <img src="../assets/ui-icons/check.svg" alt="Bestätigen">
+            </button>
+            <button class="delete-btn subtaskButton">
+                <img src="../assets/ui-icons/delete.svg" alt="Löschen">
+            </button>
+        </div>
+    </div>`;
+}
+
+/**
+ * Returns the HTML for a subtask item in view mode.
+ *
+ * @param {string} value - The subtask text to display.
+ * @returns {string}
+ */
+function getViewModeHTML(value) {
+    return `
+    <div class="subtask-item">
+        <span class="editSubtaskText">${value}</span>
+        <div class="actions">
+            <button class="edit-btn subtaskButton">
+                <img src="../assets/ui-icons/edit.svg" alt="Bearbeiten">
+            </button>
+            <button class="delete-btn subtaskButton">
+                <img src="../assets/ui-icons/delete.svg" alt="Löschen">
+            </button>
+        </div>
+    </div>`;
+}

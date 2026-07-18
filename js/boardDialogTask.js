@@ -28,11 +28,11 @@ function resetContactSelection() {
  * @returns {void}
  */
 function openDialog(dialog) {
-        dialog.showModal();
-        dialog.classList.add("opened");
-        document.body.style.overflow = 'hidden';
-        initAddTaskPage();
-    }
+    dialog.showModal();
+    dialog.classList.add("opened");
+    document.body.style.overflow = 'hidden';
+    initAddTaskPage();
+}
 
 /**
  * Closes a dialog and resets the page scroll and dialog styling.
@@ -59,7 +59,7 @@ function toggleDialog(id, state) {
     if (dialog.open) {
         closeDialog(dialog);
     } else {
-        if (state) {taskState = state;}
+        if (state) { taskState = state; }
         openDialog(dialog);
     }
 };
@@ -177,10 +177,8 @@ function getDropdownElements(selectId) {
 function selectCategoryByValue(selectId, value) {
     const { trigger, list, label } = getDropdownElements(selectId);
     if (!trigger || !list || !label) return;
-
     const options = Array.from(list.querySelectorAll('.dropdown-option'));
     resetOptions(options);
-
     const selectedOption = options.find(option => option.dataset.value === value);
     selectedOption
         ? applySelectedOption(selectedOption, trigger, label)
@@ -388,27 +386,6 @@ function handleEditClick(editButton) {
 }
 
 /**
- * Returns the HTML for a subtask item in edit mode.
- *
- * @param {string} text - The current subtask text.
- * @returns {string}
- */
-function getEditModeHTML(text) {
-    return `
-    <div class="subtask-item">
-        <input class="edit-input" type="text" value="${text}" name="editSubtask">
-        <div class="actions">
-            <button class="confirm-btn subtaskButton">
-                <img src="../assets/ui-icons/check.svg" alt="Bestätigen">
-            </button>
-            <button class="delete-btn subtaskButton">
-                <img src="../assets/ui-icons/delete.svg" alt="Löschen">
-            </button>
-        </div>
-    </div>`;
-}
-
-/**
  * Confirms the edited subtask value and switches back to view mode.
  *
  * @param {HTMLElement} confirmButton - The confirm button belonging to the subtask item.
@@ -418,27 +395,6 @@ function handleConfirmClick(confirmButton) {
     const li = confirmButton.closest("li");
     const value = li.querySelector(".edit-input").value;
     li.innerHTML = getViewModeHTML(value);
-}
-
-/**
- * Returns the HTML for a subtask item in view mode.
- *
- * @param {string} value - The subtask text to display.
- * @returns {string}
- */
-function getViewModeHTML(value) {
-    return `
-    <div class="subtask-item">
-        <span class="editSubtaskText">${value}</span>
-        <div class="actions">
-            <button class="edit-btn subtaskButton">
-                <img src="../assets/ui-icons/edit.svg" alt="Bearbeiten">
-            </button>
-            <button class="delete-btn subtaskButton">
-                <img src="../assets/ui-icons/delete.svg" alt="Löschen">
-            </button>
-        </div>
-    </div>`;
 }
 
 /**

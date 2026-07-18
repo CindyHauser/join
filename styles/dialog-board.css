@@ -206,8 +206,19 @@
     gap: 5px;
 }
 
+.dialog-task-card-btn:hover {
+    color: var(--hover-effect-dark);
+    scale: calc(1.02);
+    font-weight: 600;
+}
+
+.dialog-task-card-btn:hover img {
+    filter: invert(70%) sepia(25%) saturate(898%) hue-rotate(150deg) brightness(36%) contrast(114%);
+}
+
 .border-left-btn {
     border-left: 1px solid var(--text-color-links);
+    margin-left: 1px;
 }
 
 ul {

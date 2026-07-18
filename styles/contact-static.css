@@ -82,7 +82,7 @@
     align-items: center;
     gap: 8px;
     justify-content: space-between;
-    transition: all 450ms ease-in-out;
+    transition: all 125ms ease-in-out;
 }
 
 .contacts-member:hover {
@@ -258,8 +258,13 @@
 }
 
 .edit-delete-btns:hover {
-    font-weight: 700;
     color: var(--hover-effect-dark);
+    scale: calc(1.02);
+    font-weight: 600;
+}
+
+.edit-delete-btns:hover img {
+    filter: invert(70%) sepia(25%) saturate(898%) hue-rotate(150deg) brightness(36%) contrast(114%);
 }
 
 .function-edit {
@@ -267,7 +272,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 450ms ease-in-out;
+    transition: all 125ms ease-in-out;
 }
 
 .function-edit:hover {
@@ -280,7 +285,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 450ms ease-in-out;
+    transition: all 125ms ease-in-out;
 }
 
 .function-delete:hover {

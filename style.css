@@ -83,7 +83,7 @@ h1 {
     gap: 16px;
     text-decoration: inherit;
     color: white;
-    transition: all 450ms ease-in-out;
+    transition: all 125ms ease-in-out;
 }
 
 .menu-point:hover {
@@ -105,16 +105,14 @@ h1 {
 
 .privacy-and-security-section {
     height: 25%;
-    color: white;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 16px;
     cursor: pointer;
-    width: fit-content;
-    margin: 0 auto;
 }
+
 
 .privacy-legal-notice-link {
     color: var(--text-color-links);
@@ -183,7 +181,7 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    transition: all 450ms ease-in-out;
+    transition: all 125ms ease-in-out;
 }
 
 .profile-initial:hover {
@@ -224,7 +222,8 @@ h1 {
     content: "";
     position: absolute;
     left: 4px;
-    top: -4px; /* ragt nach oben */
+    top: -4px;
+    /* ragt nach oben */
     width: 4px;
     height: 12px;
     border: solid black;
@@ -232,23 +231,25 @@ h1 {
     transform: rotate(35deg);
 }
 
-.contact-input-class-card:hover .checkbox:checked::after{
+.contact-input-class-card:hover .checkbox:checked::after {
     border: solid white;
     border-width: 0 2px 2px 0;
 }
 
-.contact-input-class-card:hover .checkbox:checked::before{
+.contact-input-class-card:hover .checkbox:checked::before {
     border: solid var(--main-color);
     border-width: 0 8px 1px 0;
 }
-.contact-input-class-card:hover .checkbox{
+
+.contact-input-class-card:hover .checkbox {
     border: 2px solid white;
 }
 
 .profile-menu {
     display: none;
     position: absolute;
-    top: 16%; /* direkt unter Header */
+    top: 16%;
+    /* direkt unter Header */
     right: 10px;
     width: 150px;
     background: var(--main-color);
@@ -258,7 +259,7 @@ h1 {
 
 .profile-menu button {
     width: 80%;
-    margin:8px;
+    margin: 8px;
     padding: 12px;
     border: none;
     background: transparent;
@@ -278,23 +279,22 @@ h1 {
 }
 
 *::-webkit-scrollbar {
-  width: 4px
+    width: 4px
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--background-color-body);
-  border-radius: 6px;
+    background: var(--background-color-body);
+    border-radius: 6px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: var(--main-color);
-  border-radius: 6px;
-  
+    background: var(--main-color);
+    border-radius: 6px;
+
 }
 
 @supports not selector(::-webkit-scrollbar) {
-  * {
-    scrollbar-color: var(--main-color)
-                     var(--background-color-body);
-  }
+    * {
+        scrollbar-color: var(--main-color) var(--background-color-body);
+    }
 }

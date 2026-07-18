@@ -52,7 +52,7 @@ p {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    transition: all 450ms ease-in-out;
+    transition: all 125ms ease-in-out;
     /* button-default-override */
     padding-block: inherit;
     padding-inline: inherit;

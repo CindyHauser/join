@@ -282,21 +282,3 @@ const uploadAndShowEdit = async (validationArray, id) => {
     clicked(newContactCard)
     newContactCard.scrollIntoView({ behavior: 'smooth' })
 }
-
-function changeImageByHover(id) {
-    const changeImage = document.getElementById(id).querySelector('img');
-    if (id == 'editBtnContact') {
-        changeImage.src = '../assets/ui-icons/edit-dark-hover.svg';
-    } else if (id == 'deleteBtnContact') {
-        changeImage.src = '../assets/ui-icons/delete-dark-hover.svg';
-    }
-};
-
-function changeImageBack(id) {
-    const changeImage = document.getElementById(id).querySelector('img');
-    if (id == 'editBtnContact') {
-        changeImage.src = '../assets/ui-icons/edit.svg';
-    } else if (id == 'deleteBtnContact') {
-        changeImage.src = '../assets/ui-icons/delete.svg';
-    }
-};
