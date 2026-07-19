@@ -29,6 +29,12 @@ h2 {
     gap: 24px;
 }
 
+.search-wrapper-ext-hug {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .search-wrapper {
     background: white;
     display: flex;
@@ -37,6 +43,11 @@ h2 {
     border-radius: 8px;
     border: 1px solid grey;
     padding-right: 12px;
+}
+
+.no-task-found-message {
+    color: red;
+    display: none;
 }
 
 .board-input {

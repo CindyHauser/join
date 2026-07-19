@@ -52,7 +52,8 @@
             </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
-                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('board.html')"><img src="../assets/ui-icons/help.svg" alt="help.svg"></a>
+                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('board.html')"><img
+                            src="../assets/ui-icons/help.svg" alt="help.svg"></a>
                 </div>
                 <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
                 <div class="profile-menu" id="profileMenu">
@@ -67,13 +68,16 @@
                 <div class="summary-header">
                     <h2>Board</h2>
                     <div class="input-task-btn">
-                        <div class="search-wrapper">
-                            <input class="board-input" type="text" placeholder="Find Task" id="boardInput"
-                                oninput="initFindTask(this)">
-                            <div class="search-icon">
-                                <span class="divider"></span>
-                                <img src="../assets/ui-icons/search.svg" alt="search symbol">
+                        <div class="search-wrapper-ext-hug">
+                            <div class="search-wrapper">
+                                <input class="board-input" type="text" placeholder="Find Task" id="boardInput"
+                                    oninput="initFindTask(this)">
+                                <div class="search-icon">
+                                    <span class="divider"></span>
+                                    <img src="../assets/ui-icons/search.svg" alt="search symbol">
+                                </div>
                             </div>
+                            <span class="no-task-found-message">no task found on Board</span>
                         </div>
                         <button onclick="toggleDialog('dialogAddTask','toDo')" class="add-task-btn">Add task <img
                                 src="../assets/ui-icons/add-board.svg" alt="plus to add"></button>
@@ -182,7 +186,8 @@
                                     <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg"
                                         onmousedown="event.preventDefault(); event.stopPropagation()">
                                 </div>
-                                <div class="contact-input-list" id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
+                                <div class="contact-input-list" id="contactInputList"
+                                    onmousedown="contactInputListClicked(event)"></div>
                                 <div class="selected-contact-field" id="selectedContactField"></div>
                             </div>
                             <div class="form-inputs">
@@ -207,8 +212,8 @@
                             </div>
                             <div class="form-inputs">
                                 <label for="subtask">Subtask</label>
-                                <input type="text" id="subtask" name="subtask"
-                                    placeholder="Add subtasks with Enter" onkeydown="addEditSubtask(event)">
+                                <input type="text" id="subtask" name="subtask" placeholder="Add subtasks with Enter"
+                                    onkeydown="addEditSubtask(event)">
                             </div>
                         </div>
                     </div>
