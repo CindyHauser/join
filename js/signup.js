@@ -30,6 +30,8 @@ async function openPostSignup() {
         password: password.value,
         initials: getInitials(name.value)
     };
+    const contactData = setUpContactData();
+    await postSignupDataToFireBase("contact", contactData);
     await postSignupDataToFireBase("user", signupData);
     signupForm.reset();
 }
@@ -87,4 +89,21 @@ function getInitials(name) {
 
     return (nameParts[0][0] + nameParts[nameParts.length - 1][0])
         .toUpperCase();
+}
+
+const setBadgeColor = () => {
+    return [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)]
+}
+
+
+const setUpContactData = () => {
+    return {
+        "forename": name.value.split(" ")[0],
+        "surname": name.value.split(" ")[1] || "",
+        "phone": "",
+        "fornameFirstLetter": getInitials(name.value)[0],
+        "surnameFirstLetter": getInitials(name.value)[1],
+        "email": email.value,
+        "badgeColor": setBadgeColor()
+    }
 }

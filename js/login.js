@@ -39,6 +39,6 @@ async function getUserByEmail() {
 
 async function saveUserDataToLocalStorage() {
     const currentUser = await getUserByEmail();
-    localStorage.setItem("currentUserName", currentUser.name);
-    localStorage.setItem("currentUserInitials", currentUser.initials);
+    sessionStorage.setItem("currentUserName", currentUser.name);
+    sessionStorage.setItem("currentUserInitials", currentUser.initials);
 }

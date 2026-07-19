@@ -8,6 +8,7 @@
 
 .main-content-board-inner-hug {
     height: 100%;
+    width: 100%;
 }
 
 .summary-header {
@@ -106,7 +107,6 @@ h2 {
     flex-direction: column;
     gap: 10px;
     width: 25%;
-    min-width: 240px;
 }
 
 .progress-tasks-header {
