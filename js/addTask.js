@@ -23,6 +23,12 @@ function removePriority() {
     document.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('selected'));
 }
 
+function resetPriority() {
+    removePriority();
+    const mediumButton = document.querySelector('.priority-btn.medium');
+    if (mediumButton) mediumButton.classList.add('selected');
+}
+
 function setPriority(dialog, priority) {
     const button = dialog.querySelector(`.priority-btn.${priority}`);
     if (button) selectPriority(button);
@@ -82,95 +88,18 @@ const getFieldValue = (element) => {
         : element.value;
 };
 
-const parseSubtasks = (value) => {
-    const subtaskValue = value.trim();
-    return subtaskValue === ''
-        ? []
-        : subtaskValue
-            .split(/\n+/)
-            .map((item) => item.trim())
-            .filter((item) => item.length > 0)
-            .map((taskDescription) => ({ taskDescription, subtaskStateDone: false }));
-};
-
-const getSubtaskPreviewList = (input) => {
-    let previewList = input.parentElement?.querySelector('.subtask-preview-list');
-    if (!previewList) {
-        previewList = document.createElement('ul');
-        previewList.className = 'subtask-preview-list';
-        input.insertAdjacentElement('afterend', previewList);
-    }
-    return previewList;
-};
-
-const renderSubtaskPreview = (input) => {
-    const previewList = getSubtaskPreviewList(input);
-    const subtasks = input.dataset.subtasks ? input.dataset.subtasks.split(/\r?\n/).filter(Boolean) : [];
-    previewList.innerHTML = subtasks.map((subtask) => `<li class="subtask-preview-item">${subtask}</li>`).join('');
-};
-
-const clearSubtaskPreview = (input) => {
-    input?.parentElement?.querySelector('.subtask-preview-list')?.remove();
-};
-
-async function addEditSubtask(event, taskId) {
-    if (event.key !== 'Enter') return;
-    event.preventDefault();
-
-    const input = event.target;
-    const value = input.value.trim();
-    if (!value) return;
-
-    if (!taskId) {
-        addSubtaskDraft(input, value);
-        return;
-    }
-    await addSubtaskToFirebase(taskId, value);
-    input.value = '';
-}
-
-const addSubtaskDraft = (input, value) => {
-    const storedSubtasks = input.dataset.subtasks ? input.dataset.subtasks.split(/\r?\n/).filter(Boolean) : [];
-    storedSubtasks.push(value);
-    input.dataset.subtasks = storedSubtasks.join('\n');
-    input.value = '';
-    renderSubtaskPreview(input);
-};
-
-async function addSubtaskToFirebase(taskId, value) {
-    const subtaskList = document.getElementById('editSubtaskDescription');
-    if (!subtaskList) return;
-
-    const nextIndex = getNextSubtaskIndex(subtaskList);
-    const newSubtask = { taskDescription: value, subtaskStateDone: false };
-    await fetch(`${BASE_URL}/task/${taskId}/subtasks/${nextIndex}.json`, putMethode(newSubtask));
-    subtaskList.appendChild(buildSubtaskListItem(nextIndex, value));
-}
-
-const getNextSubtaskIndex = (subtaskList) => {
-    const lastLi = subtaskList.querySelector('li:last-child');
-    return lastLi ? Number(lastLi.dataset.value) + 1 : 0;
-};
-
-const buildSubtaskListItem = (index, value) => {
-    const li = document.createElement('li');
-    li.dataset.value = index;
-    li.innerHTML = `<div class="subtask-item"><span class="editSubtaskText">${value}</span> ${getButtonSubtask()}</div>`;
-    return li;
-};
-
 const getSelectedPriority = () => {
     const selectedPriorityButton = document.querySelector('.priority-btn.selected');
     return selectedPriorityButton
         ? selectedPriorityButton.textContent.trim().split(' ')[0].toLowerCase()
-        : 'low';
+        : 'medium';
 };
 
 function clearAllInput() {
     resetTaskForm();
     contactSelectedList = [];
     document.getElementById('selectedContactField').innerHTML = '';
-    removePriority();
+    resetPriority();
     resetDropdown(root);
 }
 

@@ -77,7 +77,8 @@
                                     <img src="../assets/ui-icons/search.svg" alt="search symbol">
                                 </div>
                             </div>
-                            <span class="no-task-found-message" id="noTaskFoundMessage">no result found to your search keywords </span>
+                            <span class="no-task-found-message" id="noTaskFoundMessage">no result found to your search
+                                keywords </span>
                         </div>
                         <button onclick="toggleDialog('dialogAddTask','toDo')" class="add-task-btn">Add task <img
                                 src="../assets/ui-icons/add-board.svg" alt="plus to add"></button>
@@ -212,8 +213,15 @@
                             </div>
                             <div class="form-inputs">
                                 <label for="subtask">Subtask</label>
-                                <input type="text" id="subtask" name="subtask" placeholder="Add subtasks with Enter"
-                                    onkeydown="addEditSubtask(event)">
+                                <div class="subtask-field">
+                                    <input type="text" id="subtask" name="subtask" placeholder="Add subtasks with Enter"
+                                        onkeydown="addEditSubtask(event)" onfocus="showSubtaskIcons()"
+                                        onblur="hideSubtaskIconsDelayed()">
+                                    <img class="subtask-icon subtask-confirm" src="../assets/ui-icons/check.svg"
+                                        alt="Add subtask" onclick="confirmSubtask()">
+                                    <img class="subtask-icon subtask-cancel" src="../assets/ui-icons/cancel.svg"
+                                        alt="Clear input" onclick="cancelSubtask()">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -263,6 +271,7 @@
 <script src="../js/boardUserInterface.js"></script>
 <script src="../js/addTaskContact.js"></script>
 <script src="../js/addTaskDropdownSelect.js"></script>
+<script src="../js/addTaskSubtask.js"></script>
 <script src="../js/addTask.js"></script>
 <script src="../js/addTaskInit.js"></script>
 <script src="../script.js"></script>

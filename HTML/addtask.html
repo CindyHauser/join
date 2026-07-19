@@ -49,7 +49,8 @@
             </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
-                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('addtask.html')"><img src="../assets/ui-icons/help.svg" alt="help.svg"></a>
+                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('addtask.html')"><img
+                            src="../assets/ui-icons/help.svg" alt="help.svg"></a>
                 </div>
                 <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
                 <div class="profile-menu" id="profileMenu">
@@ -90,7 +91,8 @@
                                 <button type="button" class="priority-btn urgent" onclick="selectPriority(this)">
                                     Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
                                 </button>
-                                <button type="button" class="priority-btn medium" onclick="selectPriority(this)">
+                                <button type="button" class="priority-btn medium selected"
+                                    onclick="selectPriority(this)">
                                     Medium <img src="../assets/ui-icons/medium.svg" alt="medium.svg">
                                 </button>
                                 <button type="button" class="priority-btn low" onclick="selectPriority(this)">
@@ -108,7 +110,8 @@
                                 <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg"
                                     onmousedown="event.preventDefault(); event.stopPropagation()">
                             </div>
-                            <div class="contact-input-list" id="contactInputList" onmousedown="contactInputListClicked(event)"></div>
+                            <div class="contact-input-list" id="contactInputList"
+                                onmousedown="contactInputListClicked(event)"></div>
                             <div class="selected-contact-field" id="selectedContactField"></div>
                         </div>
                         <div class="form-inputs">
@@ -133,8 +136,15 @@
                         </div>
                         <div class="form-inputs">
                             <label for="subtask">Subtask</label>
-                            <input type="text" id="subtask" name="subtask"
-                                placeholder="Add subtasks with Enter" onkeydown="addEditSubtask(event)">
+                            <div class="subtask-field">
+                                <input type="text" id="subtask" name="subtask" placeholder="Add subtasks with Enter"
+                                    onkeydown="addEditSubtask(event)" onfocus="showSubtaskIcons()"
+                                    onblur="hideSubtaskIconsDelayed()">
+                                <img class="subtask-icon subtask-confirm" src="../assets/ui-icons/check.svg"
+                                    alt="Add subtask" onclick="confirmSubtask()">
+                                <img class="subtask-icon subtask-cancel" src="../assets/ui-icons/cancel.svg"
+                                    alt="Clear input" onclick="cancelSubtask()">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,6 +169,7 @@
 <script src="../js/validateForm.js"></script>
 <script src="../js/addTaskContact.js"></script>
 <script src="../js/addTaskDropdownSelect.js"></script>
+<script src="../js/addTaskSubtask.js"></script>
 <script src="../js/addTask.js"></script>
 <script src="../js/addTaskInit.js"></script>
 <script src="../script.js"></script>

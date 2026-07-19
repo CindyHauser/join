@@ -242,11 +242,11 @@ ul {
     gap: 5px;
 }
 
-li:not(:has(input)):hover {
+#editSubtaskDescription > li:not(:has(input)):hover {
     background: var(--text-color-links);
 }
 
-li:hover .actions {
+#editSubtaskDescription > li:hover .actions {
     display: flex;
 }
 

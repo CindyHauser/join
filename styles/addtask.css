@@ -38,7 +38,8 @@ input {
     cursor: pointer;
 }
 
-input::placeholder, textarea::placeholder{
+input::placeholder,
+textarea::placeholder {
     color: black;
 }
 
@@ -171,6 +172,66 @@ fieldset {
 
 .flex1 {
     flex: 1;
+}
+
+.subtask-field {
+    position: relative;
+}
+
+.subtask-field input {
+    width: 100%;
+    padding-right: 56px;
+    /* Platz für beide Icons */
+}
+
+.subtask-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+    filter: brightness(0) invert(0);
+}
+
+.subtask-field input:focus~.subtask-icon,
+.subtask-field.icons-visible .subtask-icon {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.subtask-confirm {
+    right: 28px;
+}
+
+.subtask-cancel {
+    right: 6px;
+}
+
+.subtask-actions {
+    position: relative;
+}
+
+.subtask-actions:hover .subtask-icon {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.subtask-edit {
+    right: 28px;
+}
+
+.subtask-delete {
+    right: 6px;
+}
+
+.subtask-text[contenteditable="true"] {
+    outline: 1px solid #d0d0d0;
+    border-radius: 4px;
+    padding: 2px 4px;
 }
 
 .error-message {
