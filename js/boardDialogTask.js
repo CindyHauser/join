@@ -74,10 +74,7 @@ async function openTaskDialog(taskId) {
     const taskListLibrary = await getTaskLibraryForFirebaseInit();
     const task = setTaskDataStructure(taskId, taskListLibrary);
     const dialogTaskContent = document.getElementById('dialogTaskContent');
-    const dialogEditTaskContent = document.getElementById('dialogContentEditTask');
-    dialogEditTaskContent.innerHTML = taskDialogEditContentTemplate(task, contactListJsonLibrary);
     dialogTaskContent.innerHTML = taskDialogContentTemplate(task, contactListJsonLibrary);
-    initEditSubtaskListEvents();
     toggleDialog('dialogOpenBigCard');
 };
 
@@ -88,11 +85,14 @@ async function openTaskDialog(taskId) {
  * @returns {void}
  */
 function openEditTaskDialog(task) {
+    const dialogEditTaskContent = document.getElementById('dialogContentEditTask');
+    dialogEditTaskContent.innerHTML = taskDialogEditContentTemplate(task, contactListJsonLibrary);
     toggleDialog('dialogEditTask');
     const dialog = document.getElementById('dialogEditTask');
     setPriority(dialog, task.priority);
     selectCategoryByValue('categoryEdit', task.category);
     initDropdown(dialog);
+    initEditSubtaskListEvents();
     const editTaskForm = document.querySelector('#editTaskForm');
     contactSelectedList = task.contactSelect
     initValidation(editTaskForm);
