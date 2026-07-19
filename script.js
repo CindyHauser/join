@@ -1,5 +1,5 @@
 const profileInitialElement = document.getElementById('profileInitial');
-const currentUserInitials = localStorage.getItem("currentUserInitials");
+const currentUserInitials = sessionStorage.getItem("currentUserInitials");
 profileInitialElement.textContent = currentUserInitials || "G";
 
 const initContactPage = async () => {
@@ -42,8 +42,8 @@ function showProfileMenu() {
 }
 
 function logOut() {
-        localStorage.removeItem("currentUserInitials");
-        localStorage.removeItem("currentUserName");
+        sessionStorage.removeItem("currentUserInitials");
+        sessionStorage.removeItem("currentUserName");
         sessionStorage.setItem("skipAnimation", "true");
         window.location.href = '../index.html';
 }
