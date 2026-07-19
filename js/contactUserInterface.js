@@ -4,13 +4,18 @@ const overlayEdit = document.getElementById('contactEditOverlay')
 const allEditContactInputs = overlayEdit.querySelectorAll('input')
 
 // general ui
+
+const setSubmitPreventDefault = (event)=>{
+    event.preventDefault()
+}
+
 const clicked = (element) => {
     const container = element
     const expandedContactField = document.getElementById('contactCardExpandedRenderTarget')
     refreshmarksOnContactCards()
     container.classList.add('contact-member-selected')
     expandedContactField.innerHTML = setExpandedContactcardsTemplate(element.id, contactListJsonLibrary)
-    addEnteranceEffect(expandedContactField, 450)
+    addEnteranceEffect(expandedContactField, 125)
 }
 
 const resetAllContactInput = () => {
@@ -67,27 +72,27 @@ const initOverlayAddContact = () => {
     const overlayAddContact = document.getElementById('contactAddOverlay')
     const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
     overlayAddContact.classList.add('contact-overlay-activated')
-    addEnteranceEffect(OverlayInnerContainer, 450)
+    addEnteranceEffect(OverlayInnerContainer, 125)
 }
 
 const initOverlayEditContact = () => {
     const overlayAddContact = document.getElementById('contactEditOverlay')
     const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
     overlayAddContact.classList.add('contact-overlay-activated')
-    addEnteranceEffect(OverlayInnerContainer, 450)
+    addEnteranceEffect(OverlayInnerContainer, 125)
 }
 
 const closeOverlayAddContact = () => {
     const overlayAddContact = document.getElementById('contactAddOverlay')
     const OverlayInnerContainer = overlayAddContact.querySelector('.contact-overlay-inner-container')
-    addOverlayContactEXitEffect(OverlayInnerContainer, overlayAddContact, 450)
+    addOverlayContactEXitEffect(OverlayInnerContainer, overlayAddContact, 125)
     resetAllContactInput()
 }
 
 const closeOverlayEditContact = () => {
     const overlayEditContact = document.getElementById('contactEditOverlay')
     const OverlayInnerContainer = overlayEditContact.querySelector('.contact-overlay-inner-container')
-    addOverlayContactEXitEffect(OverlayInnerContainer, overlayEditContact, 450)
+    addOverlayContactEXitEffect(OverlayInnerContainer, overlayEditContact, 125)
     resetAllEditContactInput()
     savedID = ''
 }

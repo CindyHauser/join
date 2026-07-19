@@ -139,6 +139,10 @@
 .contacts-member-email {
     font-size: 14px;
     color: var(--easy-blue-color-secondary);
+    white-space: nowrap;      
+    overflow: hidden;         
+    text-overflow: ellipsis; 
+    max-width: 186px;
 }
 
 .contact-expanded-field {

@@ -261,6 +261,7 @@
 }
 
 .contact-overlay-function-cancel-container {
+    all: unset;
     border: 2px solid black;
     display: flex;
     justify-content: center;
@@ -270,6 +271,7 @@
     gap: 8px;
     padding: 8px;
     transition: all 125ms ease-in-out;
+    
 }
 
 .contact-overlay-function-cancel-container:hover {
@@ -279,6 +281,7 @@
 }
 
 .contact-overlay-function-check-container {
+    all: unset;
     display: flex;
     justify-content: center;
     align-items: center;

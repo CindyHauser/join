@@ -1,9 +1,9 @@
 .fade-in-effect-on {
-    animation: fade-in 450ms ease-in 0s 1 normal forwards;
+    animation: fade-in 125ms ease-in 0s 1 normal forwards;
 }
 
 .fade-out-effect-on {
-    animation: fade-out 450ms ease-in 0s 1 normal forwards;
+    animation: fade-out 125ms ease-in 0s 1 normal forwards;
 }
 
 @keyframes fade-in {

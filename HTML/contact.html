@@ -88,9 +88,9 @@
             </div>
         </section>
     </main>
-    <div class="contact-overlay" id="contactAddOverlay">
+    <div class="contact-overlay" id="contactAddOverlay" aria-label="add contact overlay started">
         <div class="contact-overlay-inner-container">
-            <div class="contact-overlay-form">
+            <form class="contact-overlay-form" onsubmit="setSubmitPreventDefault(event)">
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
@@ -125,16 +125,16 @@
                                     onclick="closeOverlayAddContact()">
                             </div>
                             <div class="contact-overlay-form-name-container contact-input-parent">
-                                <input type="text" id="contactOverlayFormName" placeholder="Name"
+                                <input aria-label="enter your name"  type="text" id="contactOverlayFormName" placeholder="Name"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/person--grey.svg" alt="person--grey.svg">
                             </div>
-                            <div class="contact-overlay-error">
+                            <div  class="contact-overlay-error">
                                 <span id="contactOverlayFormNameContainerError" class="input-error-span"
                                     style="opacity: 0;">name not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-form-email-container contact-input-parent">
-                                <input type="text" id="contactOverlayFormEmail" placeholder="Email"
+                                <input aria-label="enter your mail" type="text" id="contactOverlayFormEmail" placeholder="Email"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/mail.svg" alt="mail.svg">
                             </div>
@@ -142,7 +142,7 @@
                                 <span id="contactOverlayFormEmailContainerError" class="input-error-span"
                                     style="opacity: 0;">email not valid ! please enter again</span>
                             </div>
-                            <div class="contact-overlay-form-phone-container contact-input-parent">
+                            <div aria-label="enter your phone number"  class="contact-overlay-form-phone-container contact-input-parent">
                                 <input type="text" id="contactOverlayFormPhone" placeholder="Phone"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/call.svg" alt="call.svg">
@@ -152,25 +152,25 @@
                                     style="opacity: 0;">phone number not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-functions">
-                                <div class="contact-overlay-function-cancel-container"
+                                <button aria-label="cancel add contact"  class="contact-overlay-function-cancel-container"
                                     onclick="closeOverlayAddContact()">
                                     <span>Cancel</span>
                                     <img src="../assets/ui-icons/cancel.svg" alt="cancel.svg">
-                                </div>
-                                <div class="contact-overlay-function-check-container" onclick="createContact()">
+                            </button>
+                                <button aria-label="create new contact" class="contact-overlay-function-check-container" onclick="createContact()">
                                     <span>Create contact</span>
                                     <img src="../assets/ui-icons/check.svg" alt="cancel.svg">
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <div class="contact-overlay" id="contactEditOverlay">
+    <div class="contact-overlay" id="contactEditOverlay" aria-label="edit contact overlay started">
         <div class="contact-overlay-inner-container">
-            <div class="contact-overlay-form">
+            <form class="contact-overlay-form" onsubmit="setSubmitPreventDefault(event)">
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
@@ -202,7 +202,7 @@
                                     onclick="closeOverlayEditContact()">
                             </div>
                             <div class="contact-overlay-form-name-container contact-input-parent">
-                                <input type="text" id="editContactOverlayFormName" placeholder="Name"
+                                <input aria-label="contact name to be edited" type="text" id="editContactOverlayFormName" placeholder="Name"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/person--grey.svg" alt="person--grey.svg">
                             </div>
@@ -211,7 +211,7 @@
                                     style="opacity: 0;">name not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-form-email-container contact-input-parent">
-                                <input type="text" id="editContactOverlayFormEmail" placeholder="Email"
+                                <input aria-label="contact email to be edited" type="text" id="editContactOverlayFormEmail" placeholder="Email"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/mail.svg" alt="mail.svg">
                             </div>
@@ -220,7 +220,7 @@
                                     style="opacity: 0;">email not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-form-phone-container contact-input-parent">
-                                <input type="text" id="editContactOverlayFormPhone" placeholder="Phone"
+                                <input aria-label="contact phone to be edited" type="text" id="editContactOverlayFormPhone" placeholder="Phone"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/call.svg" alt="call.svg">
                             </div>
@@ -229,20 +229,20 @@
                                     style="opacity: 0;">phone number not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-functions">
-                                <div class="contact-overlay-function-cancel-container"
+                                <button aria-label="cancel edit contact"  class="contact-overlay-function-cancel-container"
                                     onclick="closeOverlayEditContact()">
                                     <span>Cancel</span>
                                     <img src="../assets/ui-icons/cancel.svg" alt="cancel.svg">
-                                </div>
-                                <div class="contact-overlay-function-check-container" onclick="editContact()">
+                                </button>
+                                <button aria-label="save edited contact"  class="contact-overlay-function-check-container" onclick="editContact()">
                                     <span>Save</span>
                                     <img src="../assets/ui-icons/check.svg" alt="cancel.svg">
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

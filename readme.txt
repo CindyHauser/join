@@ -77,3 +77,7 @@
 Änderungen Stand 17.07.2026 von Arnesto
 1. Help funktionalität mit eingebunden
 2. privacy policy und legal notice sind in jede verlinkungen und seiten mit eingebunden
+
+Änderungen Stand 19.07.2026 von Arnesto
+1. form und button tags in den kontakte seite mit eingebunden
+2. aria label sind hinzugefügt wo es sinvoll ist
