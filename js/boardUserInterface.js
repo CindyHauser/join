@@ -132,15 +132,34 @@ const initFindTask = (element) => {
     const value = element.value
     if (value.length >= 3) {
         generalTaskArray = initFilteringArray(value)
+        setNoTaskFoundMessage(generalTaskArray)
         getAllArray()
         renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
     }
     if (value.length < 3) {
         getGeneralTaskArray(taskListJsonLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
+        setNoTaskFoundMessage(generalTaskArray)
         getAllArray()
         renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
     }
 }
+
+/**
+ * show the no task found message if the keywords dont match to the task
+ *
+ * @param {array} array - The array containing the matched task
+ * @returns {void}
+ */
+
+const setNoTaskFoundMessage = (array) => {
+    const element = document.getElementById('noTaskFoundMessage')
+    if (array.length == 0) {
+        element.classList.add('no-task-found-message-showed')
+    } else {
+        element.classList.remove('no-task-found-message-showed')
+    }
+}
+
 
 /**
  * Builds a filtered task list from the global task array using the current search string.
