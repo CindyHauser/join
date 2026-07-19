@@ -131,10 +131,10 @@ const cardLeavingDragZone = (event) => {
 const initFindTask = (element) => {
     const value = element.value
     if (value.length >= 3) {
-        generalTaskArray = initFilteringArray(value)
-        setNoTaskFoundMessage(generalTaskArray)
-        getAllArray()
-        renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
+        let array = initFilteringArray(value)
+        setNoTaskFoundMessage(array)
+        const allcards = getAllArrayGeneralFunction(array)
+        renderAllCards(allcards.toDo,allcards.inProgress,allcards.awaitFeedback,allcards.doneTask)
     }
     if (value.length < 3) {
         getGeneralTaskArray(taskListJsonLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
@@ -168,16 +168,16 @@ const setNoTaskFoundMessage = (array) => {
  * @returns {Array<Object>} The filtered task list.
  */
 const initFilteringArray = (string) => {
-    let filteredArray = []
-    for (let index = 0; index < generalTaskArray.length; index++) {
-        if (checkDesctiptionValue(string, generalTaskArray, index)) {
-            filteredArray.push(generalTaskArray[index])
-        } else if (checkTitleValue(string, generalTaskArray, index)) {
-            filteredArray.push(generalTaskArray[index])
+    const array = generalTaskArray
+    return array.filter(
+        (arrayMember) => {
+            const title = arrayMember.title || 'no title'
+            const description = arrayMember.description || 'no description'
+            return title.toLowerCase().includes(string.toLowerCase()) || description.toLowerCase().includes(string.toLowerCase())   ;
         }
-    }
-    return filteredArray
+    )
 }
+
 
 /**
  * Capitalizes the first character of a search string for case-insensitive matching.

@@ -5,7 +5,7 @@
  * @param {string} id - The HTML id of the column container.
  * @returns {void}
  */
-const renderCards = (array,id) => {
+const renderCards = (array, id) => {
     let cardListHtml = ''
     const mainElement = document.getElementById(id)
     const renderZone = mainElement.querySelector('.drag-and-drop-tasks')
@@ -29,10 +29,10 @@ const renderCards = (array,id) => {
  * @returns {void}
  */
 const renderAllCards = (todoArray, inProgressArray, awaitFeedbackArray, doneTaskArray) => {
-    renderCards(todoArray,'toDo')
-    renderCards(inProgressArray,'inProgress')
-    renderCards(awaitFeedbackArray,'awaitFeedBack')
-    renderCards(doneTaskArray,'done')
+    renderCards(todoArray, 'toDo')
+    renderCards(inProgressArray, 'inProgress')
+    renderCards(awaitFeedbackArray, 'awaitFeedBack')
+    renderCards(doneTaskArray, 'done')
 }
 
 /**
@@ -46,3 +46,37 @@ const getAllArray = () => {
     getAwaitFeedbackArray()
     getDoneTaskArray()
 }
+
+/**
+ * Filters an array of objects based on a provided state.
+ * 
+ * @param {Array<Object>} generalArray - The main array containing all objects (e.g., all tasks).
+ * @param {string} state - The state to filter by (e.g., "todo", "in progress").
+ * @returns {Array<Object>} A new array containing exclusively the objects that match the specified state.
+ */
+
+const getStateDependentArray = (generalArray, state) => {
+    let preludeArray = []
+    for (let index = 0; index < generalArray.length; index++) {
+        if (generalArray[index].state === state) {
+            preludeArray.push(generalArray[index])
+        }
+    }
+    return preludeArray
+}
+
+/**
+ * Categorizes an array of task objects into a structured object based on their status.
+ * 
+ * @param {Array<Object>} generalArray - The main array containing all task objects.
+ * @returns {Object} An object containing separated arrays for each task state ("toDo", "inProgress", "awaitFeedback", "doneTask").
+ */
+const getAllArrayGeneralFunction = (generalArray) => {
+    return {
+        "toDo": getStateDependentArray(generalArray, 'toDo'),
+        "inProgress": getStateDependentArray(generalArray, 'inProgress'),
+        "awaitFeedback": getStateDependentArray(generalArray, 'awaitFeedBack'),
+        "doneTask": getStateDependentArray(generalArray, 'done')
+    }
+}
+
