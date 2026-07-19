@@ -167,10 +167,10 @@ const initFilteringArray = (string) => {
  * @returns {string} The same string with its first character capitalized.
  */
 const setStringToMatchTheFilter = (string) => {
+    if (!string || string.length === 0) return string
     let stringAsArray = string.split('')
     stringAsArray[0] = stringAsArray[0].toUpperCase()
-    stringAsArray = stringAsArray.join('')
-    return stringAsArray
+    return stringAsArray.join('')
 }
 
 /**
@@ -182,12 +182,11 @@ const setStringToMatchTheFilter = (string) => {
  * @returns {boolean} True if the description matches the search string.
  */
 const checkDesctiptionValue = (string, generalTaskArray, index) => {
-    if (generalTaskArray[index].description.includes(string) ||
-        generalTaskArray[index].description.includes(setStringToMatchTheFilter(string))) {
-        return true
-    } else {
-        return false
-    }
+    const item = generalTaskArray[index]
+    if (!item || typeof item.description !== 'string' || !string) return false
+    const desc = item.description
+    const match = setStringToMatchTheFilter(string)
+    return desc.includes(string) || desc.includes(match)
 }
 
 /**
@@ -199,10 +198,9 @@ const checkDesctiptionValue = (string, generalTaskArray, index) => {
  * @returns {boolean} True if the title matches the search string.
  */
 const checkTitleValue = (string, generalTaskArray, index) => {
-    if (generalTaskArray[index].title.includes(string) ||
-        generalTaskArray[index].title.includes(setStringToMatchTheFilter(string))) {
-        return true
-    } else {
-        return false
-    }
+    const item = generalTaskArray[index]
+    if (!item || typeof item.title !== 'string' || !string) return false
+    const title = item.title
+    const match = setStringToMatchTheFilter(string)
+    return title.includes(string) || title.includes(match)
 }

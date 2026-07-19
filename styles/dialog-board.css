@@ -269,7 +269,6 @@ li:hover .actions {
     font-size: 1rem;
     border: none;
     height: 30px;
-    width: unset;
 }
 
 .edit-input:focus {
