@@ -5,8 +5,14 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const errorMessageElement = document.getElementById('confirmPasswordError');
+const signupButton = document.getElementById('signupButton');
 
 initValidation(signupForm);
+
+signupForm.addEventListener("input", toggleSignupButton);
+signupForm.addEventListener("change", toggleSignupButton);
+
+toggleSignupButton();
 
 signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -95,7 +101,6 @@ const setBadgeColor = () => {
     return [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)]
 }
 
-
 const setUpContactData = () => {
     return {
         "forename": name.value.split(" ")[0],
@@ -105,5 +110,14 @@ const setUpContactData = () => {
         "surnameFirstLetter": getInitials(name.value)[1],
         "email": email.value,
         "badgeColor": setBadgeColor()
+    }
+}
+
+function toggleSignupButton() {
+    signupButton.disabled = !signupForm.checkValidity();
+    if (signupButton.disabled) {
+        signupButton.classList.add("opacity");
+    } else {
+        signupButton.classList.remove("opacity");
     }
 }

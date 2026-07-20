@@ -276,8 +276,8 @@
 
 .contact-overlay-function-cancel-container:hover {
     cursor: pointer;
-    color: var(--easy-blue-color-secondary);
-    border: 2px solid var(--easy-blue-color-secondary);
+    color: var(--hover-effect-dark);
+    border: 2px solid var(--hover-effect-dark);
 }
 
 .contact-overlay-function-check-container {
@@ -296,8 +296,9 @@
 }
 
 .contact-overlay-function-check-container:hover {
-    background-color: var(--easy-blue-color-secondary);
+    background-color: var(--hover-effect-dark);
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
 }
 
 input:focus {
