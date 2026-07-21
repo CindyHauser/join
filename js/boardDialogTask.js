@@ -251,7 +251,7 @@ function getEditFormValues(event) {
  * Reads the currently selected task category from the custom dropdown.
  *
  * @param {FormData} formData - The form data object.
- * @returns {string}
+ * @returns {string|FormDataEntryValue|null}
  */
 function getTaskCategory(formData) {
     const categoryTrigger = document.getElementById('categoryEdit');
@@ -325,6 +325,12 @@ async function deleteTask(taskId) {
     await showSuccessDialog('deleteSuccessDialog');
 }
 
+/**
+ * Handles removing a subtask list item and updating following indices.
+ *
+ * @param {HTMLElement} icon - The delete icon that was clicked.
+ * @returns {void}
+ */
 function handleDeleteClick(icon) {
     const li = icon.closest("li");
     decrementFollowingIndices(li);
@@ -332,6 +338,11 @@ function handleDeleteClick(icon) {
     removeSubtaskListIfEmpty();
 }
 
+/**
+ * Removes the subtask list container if it no longer contains items.
+ *
+ * @returns {void}
+ */
 function removeSubtaskListIfEmpty() {
     const list = document.getElementById('editSubtaskDescription');
     if (list && list.children.length === 0) list.remove();
@@ -351,6 +362,12 @@ function decrementFollowingIndices(li) {
     }
 }
 
+/**
+ * Enables editing mode for a subtask text element.
+ *
+ * @param {HTMLElement} icon - The edit icon that was clicked.
+ * @returns {void}
+ */
 function handleEditClick(icon) {
     const li = icon.closest("li");
     const span = li.querySelector(".editSubtaskText");
@@ -363,6 +380,12 @@ function handleEditClick(icon) {
     attachSubtaskBlurHandler(span, li);
 }
 
+/**
+ * Attaches an Enter key handler to a subtask text element.
+ *
+ * @param {HTMLElement} span - The editable subtask text element.
+ * @returns {void}
+ */
 function attachSubtaskEnterHandler(span) {
     function onKey(e) {
         if (e.key !== "Enter") return;
@@ -373,6 +396,13 @@ function attachSubtaskEnterHandler(span) {
     span.addEventListener("keydown", onKey);
 }
 
+/**
+ * Attaches a blur handler to finalize or remove an edited subtask.
+ *
+ * @param {HTMLElement} span - The editable subtask text element.
+ * @param {HTMLElement} li - The parent list item element of the subtask.
+ * @returns {void}
+ */
 function attachSubtaskBlurHandler(span, li) {
     span.addEventListener("blur", function onBlur() {
         const newValue = span.textContent.trim();
