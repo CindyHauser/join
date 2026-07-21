@@ -88,7 +88,7 @@
 }
 
 .contact-list-input-container input {
-    border: none !important;
+    border: none
 }
 
 .contact-list-input-container input:focus {
@@ -96,12 +96,12 @@
 }
 
 .pop-down-contact-liste-add-task-animating {
-    display: flex !important;
+    display: flex;
     animation: popDownContactlist 0.01s ease-out forwards;
 }
 
 .pop-up-contact-liste-add-task-animating {
-    display: flex !important;
+    display: flex;
     animation: popUpContactlist 0.01s ease-out forwards;
 }
 

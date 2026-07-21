@@ -1,12 +1,12 @@
 * {
     text-decoration: none;
     box-sizing: border-box;
+    font-family: 'Inter-Regular';
 }
 
 body {
     margin: 0;
     display: flex;
-    font-family: 'Inter-Regular';
     background-color: var(--background-color-body);
 }
 
