@@ -12,7 +12,7 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     let template = `<div onclick="openTaskDialog('${array[index].id}')" class="task-board-card" id="${array[index].id}" draggable="true" ondragstart="cardDragged(event)" ondragend="cardDragEnd(event)">
     <div class="task-card-inner-hug">
         <div class="task-card-header">
-            <div class="task-category ${convertStringToclass(array[index].category)}">${array[index].category}</div>
+            <div class="task-category ${convertStringToClass(array[index].category)}">${array[index].category}</div>
         </div>
         <div class="task-card-body">
             <div class="task-card-title">
@@ -55,7 +55,7 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
 <div class="dialog-task-board-card" id="${task.id}">
     <div class="dialog-task-card-inner-hug">
         <header class="dialog-task-card-header">
-            <div class="task-category ${convertStringToclass(task.category)}">${task.category}</div>
+            <div class="task-category ${convertStringToClass(task.category)}">${task.category}</div>
             <button type="button" onclick="toggleDialog('dialogOpenBigCard')" class="dialog-close-btn">
             <img class="x-btn" src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
         </header>

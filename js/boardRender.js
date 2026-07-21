@@ -41,10 +41,11 @@ const renderAllCards = (todoArray, inProgressArray, awaitFeedbackArray, doneTask
  * @returns {void}
  */
 const getAllArray = () => {
-    getToDoArray()
-    getInProgressArray()
-    getAwaitFeedbackArray()
-    getDoneTaskArray()
+    const allTasks = getAllArrayGeneralFunction(generalTaskArray)
+    toDoTaskArray = allTasks.toDo
+    inProgressTaskArray = allTasks.inProgress
+    awaitFeedbackTaskArray = allTasks.awaitFeedback
+    doneTaskArray = allTasks.doneTask
 }
 
 /**

@@ -1,7 +1,6 @@
 let taskListJsonLibrary = ''
 let contactListJsonLibrary = ''
 const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
-let contactsArray = []
 let generalTaskArray = []
 let toDoTaskArray = []
 let inProgressTaskArray = []
@@ -77,61 +76,3 @@ const deleteTaskDataFromFireBase = async (id, data = {}) => {
     const response = await fetch(BASE_URL + "/task/" + `${id}` + ".json", deleteMethode())
     return await response.json()
 }
-
-const getPreludeGeneralTaskArray = (objectLibrary, callbackFn) => {
-    let preludeGeneralTaskArray = []
-    for (key in objectLibrary) {
-        if (key != "position") {
-            preludeGeneralTaskArray.push(callbackFn(key, objectLibrary))
-        }
-    }
-    return preludeGeneralTaskArray
-}
-
-const getToDoArray = () => {
-    let preludeArray = []
-    for (let index = 0; index < generalTaskArray.length; index++) {
-        if (generalTaskArray[index].state === "toDo") {
-            preludeArray.push(generalTaskArray[index])
-        }
-    }
-    toDoTaskArray = preludeArray
-}
-
-const getInProgressArray = () => {
-    let preludeArray = []
-    for (let index = 0; index < generalTaskArray.length; index++) {
-        if (generalTaskArray[index].state === "inProgress") {
-            preludeArray.push(generalTaskArray[index])
-        }
-    }
-    inProgressTaskArray = preludeArray
-}
-
-const getAwaitFeedbackArray = () => {
-    let preludeArray = []
-    for (let index = 0; index < generalTaskArray.length; index++) {
-        if (generalTaskArray[index].state === "awaitFeedBack") {
-            preludeArray.push(generalTaskArray[index])
-        }
-    }
-    awaitFeedbackTaskArray = preludeArray
-}
-
-const getDoneTaskArray = () => {
-    let preludeArray = []
-    for (let index = 0; index < generalTaskArray.length; index++) {
-        if (generalTaskArray[index].state === "done") {
-            preludeArray.push(generalTaskArray[index])
-        }
-    }
-    doneTaskArray = preludeArray
-}
-
-const getGeneralTaskArray = (objectLibrary, callbackFn, callbackFn2) => {
-    generalTaskArray = callbackFn2(objectLibrary, callbackFn)
-}
-
-
-
-
