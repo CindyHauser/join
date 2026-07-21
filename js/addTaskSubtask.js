@@ -172,13 +172,21 @@ async function addEditSubtask(event, taskId) {
 }
 
 async function addSubtaskToFirebase(taskId, value) {
-    const subtaskList = document.getElementById('editSubtaskDescription');
-    if (!subtaskList) return;
-
+    const subtaskList = getOrCreateSubtaskList();
     const nextIndex = getNextSubtaskIndex(subtaskList);
     const newSubtask = { taskDescription: value, subtaskStateDone: false };
     await fetch(`${BASE_URL}/task/${taskId}/subtasks/${nextIndex}.json`, putMethode(newSubtask));
     subtaskList.appendChild(buildSubtaskListItem(nextIndex, value));
+}
+
+function getOrCreateSubtaskList() {
+    let list = document.getElementById('editSubtaskDescription');
+    if (!list) {
+        list = document.createElement('ul');
+        list.id = 'editSubtaskDescription';
+        document.getElementById('editSubtask').insertAdjacentElement('afterend', list);
+    }
+    return list;
 }
 
 const getNextSubtaskIndex = (subtaskList) => {
@@ -188,7 +196,10 @@ const getNextSubtaskIndex = (subtaskList) => {
 
 const buildSubtaskListItem = (index, value) => {
     const li = document.createElement('li');
+    li.className = 'subtask-preview-item subtask-actions';
     li.dataset.value = index;
-    li.innerHTML = `<div class="subtask-item"><span class="editSubtaskText">${value}</span> ${getButtonSubtask()}</div>`;
+    li.innerHTML = `<span class="editSubtaskText subtask-text">${value}</span>
+        <img class="subtask-icon subtask-edit" src="../assets/ui-icons/edit.svg" alt="Edit subtask" onclick="handleEditClick(this)">
+        <img class="subtask-icon subtask-delete" src="../assets/ui-icons/delete.svg" alt="Delete subtask" onclick="handleDeleteClick(this)">`;
     return li;
 };

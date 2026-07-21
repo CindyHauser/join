@@ -1,4 +1,3 @@
-let editSubtaskList = null;
 let taskState = 'toDo';
 
 /**
@@ -92,7 +91,6 @@ function openEditTaskDialog(task) {
     setPriority(dialog, task.priority);
     selectCategoryByValue('categoryEdit', task.category);
     initDropdown(dialog);
-    initEditSubtaskListEvents();
     const editTaskForm = document.querySelector('#editTaskForm');
     contactSelectedList = task.contactSelect
     initValidation(editTaskForm);
@@ -327,35 +325,16 @@ async function deleteTask(taskId) {
     await showSuccessDialog('deleteSuccessDialog');
 }
 
-/**
- * Handles click events inside the editable subtask list.
- *
- * @param {MouseEvent} e - The click event.
- * @returns {void}
- */
-function handleEditSubtaskListClick(e) {
-    if (!editSubtaskList || !editSubtaskList.contains(e.target)) return;
-
-    const deleteButton = e.target.closest(".delete-btn");
-    if (deleteButton) return handleDeleteClick(deleteButton);
-
-    const editButton = e.target.closest(".edit-btn");
-    if (editButton) return handleEditClick(editButton);
-
-    const confirmButton = e.target.closest(".confirm-btn");
-    if (confirmButton) return handleConfirmClick(confirmButton);
-}
-
-/**
- * Removes a subtask entry and reindexes the following items.
- *
- * @param {HTMLElement} deleteButton - The delete button belonging to the subtask item.
- * @returns {void}
- */
-function handleDeleteClick(deleteButton) {
-    const li = deleteButton.closest("li");
+function handleDeleteClick(icon) {
+    const li = icon.closest("li");
     decrementFollowingIndices(li);
     li.remove();
+    removeSubtaskListIfEmpty();
+}
+
+function removeSubtaskListIfEmpty() {
+    const list = document.getElementById('editSubtaskDescription');
+    if (list && list.children.length === 0) list.remove();
 }
 
 /**
@@ -372,42 +351,37 @@ function decrementFollowingIndices(li) {
     }
 }
 
-/**
- * Switches a subtask item into edit mode.
- *
- * @param {HTMLElement} editButton - The edit button belonging to the subtask item.
- * @returns {void}
- */
-function handleEditClick(editButton) {
-    const li = editButton.closest("li");
-    const text = li.querySelector(".editSubtaskText").textContent;
-    li.innerHTML = getEditModeHTML(text);
-    li.querySelector(".edit-input").focus();
+function handleEditClick(icon) {
+    const li = icon.closest("li");
+    const span = li.querySelector(".editSubtaskText");
+    if (span.getAttribute("contenteditable") === "true") return;
+
+    span.setAttribute("contenteditable", "true");
+    span.focus();
+    placeCaretAtEnd(span);
+    attachSubtaskEnterHandler(span);
+    attachSubtaskBlurHandler(span, li);
 }
 
-/**
- * Confirms the edited subtask value and switches back to view mode.
- *
- * @param {HTMLElement} confirmButton - The confirm button belonging to the subtask item.
- * @returns {void}
- */
-function handleConfirmClick(confirmButton) {
-    const li = confirmButton.closest("li");
-    const value = li.querySelector(".edit-input").value;
-    li.innerHTML = getViewModeHTML(value);
-}
-
-/**
- * Initializes the click event listener for the editable subtask list.
- *
- * @returns {void}
- */
-function initEditSubtaskListEvents() {
-    const list = document.getElementById("editSubtaskDescription");
-    if (!list || editSubtaskList === list) return;
-    if (editSubtaskList) {
-        editSubtaskList.removeEventListener("click", handleEditSubtaskListClick);
+function attachSubtaskEnterHandler(span) {
+    function onKey(e) {
+        if (e.key !== "Enter") return;
+        e.preventDefault();
+        span.removeEventListener("keydown", onKey);
+        span.blur();
     }
-    editSubtaskList = list;
-    editSubtaskList.addEventListener("click", handleEditSubtaskListClick);
+    span.addEventListener("keydown", onKey);
+}
+
+function attachSubtaskBlurHandler(span, li) {
+    span.addEventListener("blur", function onBlur() {
+        const newValue = span.textContent.trim();
+        if (!newValue) {
+            decrementFollowingIndices(li);
+            li.remove();
+            removeSubtaskListIfEmpty();
+        } else {
+            span.removeAttribute("contenteditable");
+        }
+    }, { once: true });
 }

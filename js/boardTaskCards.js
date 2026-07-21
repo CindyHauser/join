@@ -51,23 +51,25 @@ const reconstructSubTaskArray = (array) => {
  * @returns {string} HTML string containing the rendered subtask list.
  */
 const dialogSubtask = (subtasks, editTask, taskId) => {
-    if (!subtasks || subtasks.length === 0) {
-        return ``
-    }
+    if (!subtasks || subtasks.length === 0) return ``;
     if (editTask) {
         return subtasks.map((subtask, index) => {
-            const description = subtask.taskDescription || subtask
-            return `<li data-value="${index}"><div class="subtask-item"><span class="editSubtaskText">${description}</span> ${getButtonSubtask()}</div></li>`
-        }).join("")
+            const description = subtask.taskDescription || subtask;
+            return `<li class="subtask-preview-item subtask-actions" data-value="${index}">
+                <span class="editSubtaskText subtask-text">${description}</span>
+                <img class="subtask-icon subtask-edit" src="../assets/ui-icons/edit.svg" alt="Edit subtask" onclick="handleEditClick(this)">
+                <img class="subtask-icon subtask-delete" src="../assets/ui-icons/delete.svg" alt="Delete subtask" onclick="handleDeleteClick(this)">
+            </li>`;
+        }).join("");
     }
     return subtasks.map((subtask, index) => {
-        const description = subtask.taskDescription || subtask
-        const checked = subtask.subtaskStateDone ? 'checked' : ''
-        const safeId = `${taskId}-subtask-${index}`
+        const description = subtask.taskDescription || subtask;
+        const checked = subtask.subtaskStateDone ? 'checked' : '';
+        const safeId = `${taskId}-subtask-${index}`;
         return `<p class="input-label"><input class="checkbox" type="checkbox" id="${safeId}" data-value="${index}" 
          onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
-       <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`
-    }).join("")
+       <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`;
+    }).join("");
 };
 
 /**
