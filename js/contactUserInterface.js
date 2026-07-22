@@ -3,11 +3,17 @@ const allAddContactInputs = overlayAdd.querySelectorAll('input')
 const overlayEdit = document.getElementById('contactEditOverlay')
 const allEditContactInputs = overlayEdit.querySelectorAll('input')
 
-// general ui
 
 const setSubmitPreventDefault = (event)=>{
     event.preventDefault()
 }
+
+const forms = document.querySelectorAll('form')
+forms.forEach(
+    (form)=>{
+        form.addEventListener('submit',setSubmitPreventDefault)
+    }
+)
 
 const clicked = (element) => {
     const container = element

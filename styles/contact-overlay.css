@@ -1,4 +1,5 @@
 .contact-overlay {
+    all: unset;
     background-color: rgba(0, 0, 0, 0.723);
     display: none;
     justify-content: center;
@@ -6,8 +7,6 @@
     height: 100vh;
     width: 100vw;
 }
-
-
 
 .contact-overlay-inner-container {
     height: 90%;
@@ -54,6 +53,7 @@
 }
 
 .contact-overlay-form-close-bar-responsive {
+    all: unset;
     display: none;
     justify-content: flex-end;
     padding: 8px;
@@ -145,6 +145,7 @@
 }
 
 .contact-overlay-form-close-bar-desktop {
+    all: unset;
     height: 8%;
     margin-bottom: 32px;
     display: flex;
