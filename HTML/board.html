@@ -146,8 +146,10 @@
                         <div class="add-task align-start">
                             <div class="form-inputs">
                                 <label class="required" for="title">Title</label>
-                                <input type="text" id="title" name="titel" placeholder="Enter a Title" required
-                                    data-error="Title is required">
+                                <div class="pos-rel">
+                                    <input type="text" id="title" name="titel" placeholder="Enter a Title" required
+                                        data-error="Title is required">
+                                </div>
                             </div>
                             <div class="form-inputs">
                                 <label for="description">Description</label>
@@ -156,8 +158,10 @@
                             </div>
                             <div class="form-inputs">
                                 <label class="required" for="date">Due date</label>
-                                <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required
-                                    data-error="Date is required">
+                                <div class="pos-rel">
+                                    <input type="date" id="date" name="date" placeholder="dd/mm/yyyy" required
+                                        data-error="Date is required">
+                                </div>
                             </div>
                         </div>
                         <hr>
@@ -169,7 +173,8 @@
                                     <button type="button" class="priority-btn urgent" onclick="selectPriority(this)">
                                         Urgent <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg">
                                     </button>
-                                    <button type="button" class="priority-btn medium selected" onclick="selectPriority(this)">
+                                    <button type="button" class="priority-btn medium selected"
+                                        onclick="selectPriority(this)">
                                         Medium <img src="../assets/ui-icons/medium.svg" alt="medium.svg">
                                     </button>
                                     <button type="button" class="priority-btn low" onclick="selectPriority(this)">

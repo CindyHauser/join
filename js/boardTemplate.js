@@ -110,8 +110,10 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                     <div class="add-task align-start dialog-edit-rem">
                         <div class="form-inputs">
                             <label class="required" for="editTitle">Title</label>
-                            <input type="text" id="editTitle" name="editTitle" placeholder="Enter a Title" value="${task.title}" required
+                            <div class="pos-rel">
+                                <input type="text" id="editTitle" name="editTitle" placeholder="Enter a Title" value="${task.title}" required
                                 data-error="Title is required">
+                            </div>
                         </div>
                         <div class="form-inputs">
                             <label for="editDescription">Description</label>
@@ -119,8 +121,10 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="editDate">Due date</label>
-                            <input type="date" id="editDate" name="editDate" placeholder="dd/mm/yyyy" value="${task.date}" required
-                                data-error="Date is required">
+                            <div class="pos-rel">
+                                <input type="date" id="editDate" name="editDate" placeholder="dd/mm/yyyy" value="${task.date}" required
+                                    data-error="Date is required">
+                            </div>
                         </div>
                         <fieldset>
                             <legend>Priority</legend>

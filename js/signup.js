@@ -173,7 +173,15 @@ const setUpContactData = () => {
  * @returns {void}
  */
 function toggleSignupButton() {
-    signupButton.disabled = !signupForm.checkValidity();
+    // signupButton.disabled = !signupForm.checkValidity();
+    const inputs = signupForm.querySelectorAll('input[required]');
+    const allFilled = Array.from(inputs).every(input => {
+        if (input.type === 'checkbox') {
+            return input.checked;
+        }
+        return input.value.trim() !== '';
+    });
+    signupButton.disabled = !allFilled;
     if (signupButton.disabled) {
         signupButton.classList.add("opacity");
     } else {

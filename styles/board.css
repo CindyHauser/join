@@ -34,6 +34,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .search-wrapper {
@@ -47,6 +48,8 @@ h2 {
 }
 
 .no-task-found-message {
+    position: absolute;
+    top:50px;
     color: red;
     opacity: 0;
 }
@@ -161,7 +164,7 @@ h2 {
     background-color: white;
     border-radius: 16px;
     min-height: 216px;
-    width: 99%;
+    width: 90%;
     height: 216px;
     padding: 8px;
     transition: all 125ms ease-in-out;

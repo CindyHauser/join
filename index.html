@@ -35,12 +35,15 @@
             </div>
 
             <form action="/login" method="POST" class="login-signup-form" id="loginForm" novalidate>
-                <input type="email" id="email" name="email" class="input-icon bg-input-mail"
-                    placeholder="Enter your email" autocomplete="email" required data-error="E-Mail is required">
-
-                <input type="password" id="password" name="password" class="input-icon bg-input-password"
-                    placeholder="Enter your password" autocomplete="current-password" required data-error="Password is required.">
-                <p id="loginError" class="error-message"></p>
+                <div class="pos-rel">
+                    <input type="email" id="email" name="email" class="input-icon bg-input-mail"
+                        placeholder="Enter your email" autocomplete="email" required data-error="E-Mail is required">
+                </div>
+                <div class="pos-rel">
+                    <input type="password" id="password" name="password" class="input-icon bg-input-password"
+                        placeholder="Enter your password" autocomplete="current-password" required
+                        data-error="Password is required.">
+                </div>
                 <div class="form-btn">
                     <button type="submit" class="login-signup-btn">Log in</button>
                     <button type="button" class="login-btn-guest"
@@ -59,9 +62,10 @@
         </nav>
     </footer>
     <dialog class="dialogLoginAndSignUpDesign" id="successDialog">
-    <p>Login was successful!</p>
+        <p>Login was successful!</p>
     </dialog>
 </body>
 <script src="../js/validateForm.js"></script>
 <script src="../js/login.js"></script>
+
 </html>

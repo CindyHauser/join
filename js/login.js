@@ -3,7 +3,6 @@ const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatab
 const loginForm = document.getElementById('loginForm');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const errorMessageElement = document.getElementById('loginError');
 
 /**
  * Initializes the login form validation on page load.
@@ -11,6 +10,7 @@ const errorMessageElement = document.getElementById('loginError');
  * @returns {void}
  */
 initValidation(loginForm);
+const errorMessageElement = document.getElementById('passwordError');
 
 /**
  * Handles the login form submission, validates the input and redirects on success.
