@@ -5,8 +5,19 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const errorMessageElement = document.getElementById('loginError');
 
+/**
+ * Initializes the login form validation on page load.
+ *
+ * @returns {void}
+ */
 initValidation(loginForm);
 
+/**
+ * Handles the login form submission, validates the input and redirects on success.
+ *
+ * @param {Event} event - The submit event of the login form.
+ * @returns {Promise<void>}
+ */
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!validateForm(loginForm)) return;
@@ -24,6 +35,11 @@ loginForm.addEventListener('submit', async (event) => {
     }
 });
 
+/**
+ * Checks whether a user exists for the entered credentials.
+ *
+ * @returns {Promise<boolean>} True if the entered password matches a stored user.
+ */
 async function checkUserExists() {
     const user = await getUserByEmail();
     if (!user) return false;
@@ -31,12 +47,22 @@ async function checkUserExists() {
     return false;
 }
 
+/**
+ * Fetches the matching user from the backend by email address.
+ *
+ * @returns {Promise<Object|undefined>} The matching user object or undefined if none exists.
+ */
 async function getUserByEmail() {
     const users = await fetch(BASE_URL + "user.json");
     const userData = await users.json();
     return Object.values(userData).find(u => u.email === email.value);
 }
 
+/**
+ * Stores the current user's name and initials in session storage.
+ *
+ * @returns {Promise<void>}
+ */
 async function saveUserDataToLocalStorage() {
     const currentUser = await getUserByEmail();
     sessionStorage.setItem("currentUserName", currentUser.name);

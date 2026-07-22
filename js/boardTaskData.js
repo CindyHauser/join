@@ -42,6 +42,13 @@ const reconstructSubTaskArray = (array) => {
     return reconstructedArray
 }
 
+/**
+ * Builds a normalized task array from the raw object library.
+ *
+ * @param {Object<string, Object>} objectLibrary - The raw task object library from the backend.
+ * @param {Function} callbackFn - The transformation function applied to each task entry.
+ * @returns {Array<Object>} A normalized array of task objects.
+ */
 const getPreludeGeneralTaskArray = (objectLibrary, callbackFn) => {
     let preludeGeneralTaskArray = []
     for (key in objectLibrary) {
@@ -52,6 +59,14 @@ const getPreludeGeneralTaskArray = (objectLibrary, callbackFn) => {
     return preludeGeneralTaskArray
 }
 
+/**
+ * Stores the processed general task list in the global task array variable.
+ *
+ * @param {Object<string, Object>} objectLibrary - The raw task object library from the backend.
+ * @param {Function} callbackFn - The transformation function applied to each task entry.
+ * @param {Function} callbackFn2 - The function that creates the task array from the library.
+ * @returns {void}
+ */
 const getGeneralTaskArray = (objectLibrary, callbackFn, callbackFn2) => {
     generalTaskArray = callbackFn2(objectLibrary, callbackFn)
 }

@@ -7,6 +7,11 @@ const confirmPassword = document.getElementById('confirmPassword');
 const errorMessageElement = document.getElementById('confirmPasswordError');
 const signupButton = document.getElementById('signupButton');
 
+/**
+ * Initializes the form validation for the signup form.
+ *
+ * @returns {void}
+ */
 initValidation(signupForm);
 
 signupForm.addEventListener("input", toggleSignupButton);
@@ -14,6 +19,12 @@ signupForm.addEventListener("change", toggleSignupButton);
 
 toggleSignupButton();
 
+/**
+ * Handles signup form submission, validates the user input, and stores the new user.
+ *
+ * @param {Event} event - The submit event of the signup form.
+ * @returns {Promise<void>}
+ */
 signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!validateForm(signupForm)) return;
@@ -29,6 +40,11 @@ signupForm.addEventListener("submit", async (event) => {
     }
 });
 
+/**
+ * Creates and submits the signup and contact data to the backend.
+ *
+ * @returns {Promise<void>}
+ */
 async function openPostSignup() {
     const signupData = {
         name: name.value,
@@ -42,6 +58,11 @@ async function openPostSignup() {
     signupForm.reset();
 }
 
+/**
+ * Checks whether the entered password and confirmation password match.
+ *
+ * @returns {boolean} True if the passwords differ.
+ */
 function checkPassword() {
     if (password.value !== confirmPassword.value) {
         errorMessageElement.textContent = 'Passwords do not match';
@@ -52,6 +73,11 @@ function checkPassword() {
     return false;
 }
 
+/**
+ * Checks whether a user with the entered email already exists.
+ *
+ * @returns {Promise<boolean>} True if the user already exists.
+ */
 async function checkUserExists() {
     const users = await fetch(BASE_URL + "user.json");
     const userData = await users.json();
@@ -67,6 +93,13 @@ async function checkUserExists() {
     return false;
 }
 
+/**
+ * Sends data to the specified Firebase endpoint.
+ *
+ * @param {string} path - The Firebase path to write to.
+ * @param {Object} [data={}] - The payload to send.
+ * @returns {Promise<Object>} The server response as JSON.
+ */
 const postSignupDataToFireBase = async (path, data = {}) => {
     const response = await fetch(BASE_URL + path + ".json",
         {
@@ -80,10 +113,21 @@ const postSignupDataToFireBase = async (path, data = {}) => {
     return await response.json()
 }
 
+/**
+ * Stores a flag to skip any signup animation on the next page.
+ *
+ * @returns {void}
+ */
 function goBack() {
     sessionStorage.setItem("skipAnimation", "true");
 }
 
+/**
+ * Extracts initials from a full name.
+ *
+ * @param {string} name - The full name to transform.
+ * @returns {string} The initials derived from the name.
+ */
 function getInitials(name) {
     if (!name || !name.trim()) {
         return "";
@@ -97,10 +141,20 @@ function getInitials(name) {
         .toUpperCase();
 }
 
+/**
+ * Generates a random RGB color tuple for contact badges.
+ *
+ * @returns {Array<number>} An RGB color array.
+ */
 const setBadgeColor = () => {
     return [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)]
 }
 
+/**
+ * Builds the contact data object for the newly created user.
+ *
+ * @returns {Object} The contact payload for Firebase.
+ */
 const setUpContactData = () => {
     return {
         "forename": name.value.split(" ")[0],
@@ -113,6 +167,11 @@ const setUpContactData = () => {
     }
 }
 
+/**
+ * Enables or disables the signup button based on form validity.
+ *
+ * @returns {void}
+ */
 function toggleSignupButton() {
     signupButton.disabled = !signupForm.checkValidity();
     if (signupButton.disabled) {
