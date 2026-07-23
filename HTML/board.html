@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../styles/addtask-dropdownSelect.css">
     <link rel="stylesheet" href="../styles/addtask.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/styles-media.css">
 </head>
 
 <body onload="initBoardPage()">
@@ -132,6 +133,24 @@
             </div>
         </section>
     </main>
+
+    <footer class="footer-media">
+        <a class='footer-menu-point' href='./summary.html'>
+            <img src="../assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">
+            <span>Summary</span>
+        </a>
+        <a href="./addtask.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/add-Icons.svg" alt="add-Icons.svg">
+            <span>Add Task</span></a>
+        <a href="#" class="footer-menu-point menu-point-selected">
+            <img src="../assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
+            <span>Board</span>
+        </a>
+        <a href="./contact.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/contact-icons.svg" alt="contact-icons.svg">
+            <span>Contacts</span>
+        </a>
+    </footer>
 
     <dialog class="dialogDesign" id="dialogAddTask" onclick="toggleDialog('dialogAddTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContentAddTask">
@@ -256,12 +275,15 @@
             <div id="dialogTaskContent"></div>
         </section>
     </dialog>
+
     <dialog class="dialogAddAndEditTaskDesign" id="successDialog">
         <p>Task added to board</p><img src="../assets/ui-icons/board-Icons.svg" alt="board-Icon">
     </dialog>
+
     <dialog class="dialogAddAndEditTaskDesign" id="editSuccessDialog">
         <p>Edit Task successful!</p><img src="../assets/ui-icons/edit.svg" alt="edit-Icon">
     </dialog>
+
     <dialog class="dialogAddAndEditTaskDesign" id="deleteSuccessDialog">
         <p>Delete Task successful!</p><img src="../assets/ui-icons/delete.svg" alt="delete">
     </dialog>

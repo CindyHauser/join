@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../styles/contact-overlay.css">
     <link rel="stylesheet" href="../styles/contact-userInterface.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/styles-media.css">
 </head>
 
 <body onload="initContactPage()">
@@ -161,8 +162,8 @@
                                     <span>Cancel</span>
                                     <img src="../assets/ui-icons/cancel.svg" alt="cancel.svg">
                                 </button>
-                                <button type="submit" aria-label="create new contact" class="contact-overlay-function-check-container"
-                                    onclick="createContact()">
+                                <button type="submit" aria-label="create new contact"
+                                    class="contact-overlay-function-check-container" onclick="createContact()">
                                     <span>Create contact</span>
                                     <img src="../assets/ui-icons/check.svg" alt="cancel.svg">
                                 </button>
@@ -255,6 +256,25 @@
             </div>
         </div>
     </dialog>
+
+    <footer class="footer-media">
+        <a class='footer-menu-point' href='./summary.html'>
+            <img src="../assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">
+            <span>Summary</span>
+        </a>
+        <a href="./addtask.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/add-Icons.svg" alt="add-Icons.svg">
+            <span>Add Task</span></a>
+        <a href="./board.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
+            <span>Board</span>
+        </a>
+        <a href="#" class="footer-menu-point menu-point-selected">
+            <img src="../assets/ui-icons/contact-icons.svg" alt="contact-icons.svg">
+            <span>Contacts</span>
+        </a>
+    </footer>
+
 </body>
 <script src="../js/formValidation.js"></script>
 <script src="../js/contactData.js"></script>

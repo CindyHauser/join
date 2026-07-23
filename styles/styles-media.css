@@ -1,0 +1,37 @@
+.footer-media {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-color);
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 16vh;
+}
+
+.footer-menu-point {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-inline: 10px;
+    height: 80%;
+    border-radius: 8px;
+    color: white;
+    transition: all 125ms ease-in-out;
+}
+
+.footer-menu-point img {
+    height: 30px;
+}
+
+@media (max-width: 700px) {
+    .footer-media {
+        display: flex;
+    }
+
+    .menu-section {
+        display: none;
+    }
+}

@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../styles/summary.css">
+    <link rel="stylesheet" href="../styles/styles-media.css">
 </head>
 
 <body>
@@ -47,7 +48,8 @@
             </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
-                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('summary.html')"><img src="../assets/ui-icons/help.svg" alt="help.svg"></a>
+                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('summary.html')"><img
+                            src="../assets/ui-icons/help.svg" alt="help.svg"></a>
                 </div>
                 <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
                 <div class="profile-menu" id="profileMenu">
@@ -65,60 +67,65 @@
                     <p>Key Metrics at a Glance</p>
                 </div>
                 <div class="metrics-wrapper">
-                <div class="summary-metrics">
-                    <div onclick="window.location.href = '../HTML/board.html'" class="metric-card transform-origin-left">
-                        <div class="summary-icon-container">
-                            <img src="../assets/ui-icons/edit.svg" alt="edit.svg" class="summary-icon">
-                        </div>
-                        <div class="space-between">
-                            <h2 id="numberToDo">0</h2>
-                            <p id="todoTasks">To-Do</p>
-                        </div>
+                    <div class="summary-metrics">
+                        <div onclick="window.location.href = '../HTML/board.html'"
+                            class="metric-card transform-origin-left">
+                            <div class="summary-icon-container">
+                                <img src="../assets/ui-icons/edit.svg" alt="edit.svg" class="summary-icon">
+                            </div>
+                            <div class="space-between">
+                                <h2 id="numberToDo">0</h2>
+                                <p id="todoTasks">To-Do</p>
+                            </div>
 
-                    </div>
-                    <div onclick="window.location.href = '../HTML/board.html'" class="metric-card transform-origin-right">
-                        <div class="summary-icon-container">
-                            <img src="../assets/ui-icons/done.svg" alt="done.svg" class="summary-icon">
                         </div>
-                        <div class="space-between">
-                            <h2 id="numberDoneTasks">0</h2>
-                            <p id="doneTasks">Done</p>
+                        <div onclick="window.location.href = '../HTML/board.html'"
+                            class="metric-card transform-origin-right">
+                            <div class="summary-icon-container">
+                                <img src="../assets/ui-icons/done.svg" alt="done.svg" class="summary-icon">
+                            </div>
+                            <div class="space-between">
+                                <h2 id="numberDoneTasks">0</h2>
+                                <p id="doneTasks">Done</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="summary-metrics">
-                    <div onclick="window.location.href = '../HTML/board.html'" class="metric-card transform-origin-top">
-                        <div class="summary-icon-container small bg-red">
-                            <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg" class="summary-icon">
-                        </div>
-                        <div class="space-between">
-                            <h2 id="numberOfUrgent">0</h2>
-                            <p id="urgentTasks">Urgent</p>
-                        </div>
-                        <div class="v-line-urgent"></div>
-                        <div class="space-between">
-                            <h3 id="urgentDate">October 15, 2026</h3>
-                            <p>Upcoming Deadline</p>
-                        </div>
+                    <div class="summary-metrics">
+                        <div onclick="window.location.href = '../HTML/board.html'"
+                            class="metric-card transform-origin-top">
+                            <div class="summary-icon-container small bg-red">
+                                <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg" class="summary-icon">
+                            </div>
+                            <div class="space-between">
+                                <h2 id="numberOfUrgent">0</h2>
+                                <p id="urgentTasks">Urgent</p>
+                            </div>
+                            <div class="v-line-urgent"></div>
+                            <div class="space-between">
+                                <h3 id="urgentDate">October 15, 2026</h3>
+                                <p>Upcoming Deadline</p>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
 
-                <div class="summary-metrics">
-                    <div onclick="window.location.href = '../HTML/board.html'" class="metric-card flex-column transform-origin-left">
-                        <h2 id="numberTotalTasks">0</h2>
-                        <p id="totalTasks">Task in Board</p>
+                    <div class="summary-metrics">
+                        <div onclick="window.location.href = '../HTML/board.html'"
+                            class="metric-card flex-column transform-origin-left">
+                            <h2 id="numberTotalTasks">0</h2>
+                            <p id="totalTasks">Task in Board</p>
+                        </div>
+                        <div onclick="window.location.href = '../HTML/board.html'" class="metric-card flex-column">
+                            <h2 id="numberPendingTasks">0</h2>
+                            <p id="pendingTasks">Tasks in Progress</p>
+                        </div>
+                        <div onclick="window.location.href = '../HTML/board.html'"
+                            class="metric-card flex-column transform-origin-right">
+                            <h2 id="numberAwaitingFeedback">0</h2>
+                            <p id="awaitingFeedback">Awaiting Feedback</p>
+                        </div>
                     </div>
-                    <div onclick="window.location.href = '../HTML/board.html'" class="metric-card flex-column">
-                        <h2 id="numberPendingTasks">0</h2>
-                        <p id="pendingTasks">Tasks in Progress</p>
-                    </div>
-                    <div onclick="window.location.href = '../HTML/board.html'" class="metric-card flex-column transform-origin-right">
-                        <h2 id="numberAwaitingFeedback">0</h2>
-                        <p id="awaitingFeedback">Awaiting Feedback</p>
-                    </div>
-                </div>
                 </div>
             </div>
             <div class="greeting-section">
@@ -128,6 +135,24 @@
         </section>
 
     </main>
+
+    <footer class="footer-media">
+        <a class='footer-menu-point menu-point-selected' href='./summary.html'>
+            <img src="../assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">
+            <span>Summary</span>
+        </a>
+        <a href="./addtask.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/add-Icons.svg" alt="add-Icons.svg">
+            <span>Add Task</span></a>
+        <a href="./board.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
+            <span>Board</span>
+        </a>
+        <a href="./contact.html" class="footer-menu-point">
+            <img src="../assets/ui-icons/contact-icons.svg" alt="contact-icons.svg">
+            <span>Contacts</span>
+        </a>
+    </footer>
 
 </body>
 <script src="../script.js"></script>

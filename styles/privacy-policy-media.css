@@ -1,0 +1,8 @@
+.privacy-and-security-section-media {
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+}
