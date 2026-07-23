@@ -244,6 +244,7 @@ fieldset {
     font-size: 0.9rem;
     text-align: center;
     margin: 0;
+    width: 100%;
 }
 
 .input-error {

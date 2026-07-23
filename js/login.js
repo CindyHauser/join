@@ -5,6 +5,16 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 
 /**
+ * Disables page animations when the session flag requests a skip.
+ *
+ * @returns {void}
+ */
+if (sessionStorage.getItem("skipAnimation") === "true") {
+        document.documentElement.classList.add("no-animation");
+        sessionStorage.removeItem("skipAnimation");
+    }
+
+/**
  * Initializes the login form validation on page load.
  *
  * @returns {void}

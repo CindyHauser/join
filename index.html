@@ -5,17 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../styles/loginSignup.css">
+    <link rel="shortcut icon" href="./assets/logo/logoDark.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/loginSignup.css">
+    <link rel="stylesheet" href="./styles/login-responsive.css">
 </head>
-
-<script>
-    if (sessionStorage.getItem("skipAnimation") === "true") {
-        document.documentElement.classList.add("no-animation");
-        sessionStorage.removeItem("skipAnimation");
-    }
-</script>
 
 <body class="body-login-signup">
 
@@ -52,6 +46,10 @@
                 </div>
 
             </form>
+        </div>
+        <div class="login-signup-section dp-none">
+            <span class="login-span">Not a Join user?</span>
+            <button class="login-signup-btn" onclick="window.location.href='./HTML/signup.html'">Sign Up</button>
         </div>
     </main>
 
