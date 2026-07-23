@@ -139,9 +139,9 @@
 .contacts-member-email {
     font-size: 14px;
     color: var(--easy-blue-color-secondary);
-    white-space: nowrap;      
-    overflow: hidden;         
-    text-overflow: ellipsis; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     max-width: 186px;
 }
 
@@ -162,7 +162,27 @@
 
 .contact-responsive-back-button-parent {
     height: 8%;
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
 }
+
+.contact-responsive-back-button-child {
+    all: unset;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 125ms ease-in-out;
+}
+
+.contact-responsive-back-button-child:hover {
+    cursor: pointer;
+    background-color: var(--text-color-links);
+}
+
 
 .contact-static-title {
     height: 20%;
@@ -196,6 +216,15 @@
     height: 62%;
     border-radius: 10px;
     background-color: var(--easy-blue-color-secondary);
+}
+
+.contact-border-line-responsive {
+    border: 2px solid var(--easy-blue-color-secondary);
+    height: 4px;
+    border-radius: 10px;
+    background-color: var(--easy-blue-color-secondary);
+    width: 144px;
+    display: none;
 }
 
 .contact-subtitle {
@@ -354,4 +383,51 @@
     background-color: var(--main-color);
     color: white;
     opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .contact-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 8px;
+    }
+
+    .contact-expanded-field {
+        width: 100%;
+        align-items: unset;
+        display: none;
+    }
+
+    .contact-expanded-field-inner-container {
+        justify-content: unset;
+        height: 96%;
+    }
+
+    .contact-responsive-back-button-parent {
+        display: flex;
+    }
+
+    .contact-static-title {
+        flex-direction: column;
+        align-items: unset;
+        gap: 8px;
+    }
+
+    .contact-txt {
+        justify-content: unset;
+        font-size: clamp(40px, 16svw, 56px);
+    }
+
+    .contact-border-line {
+        display: none;
+    }
+
+    .contact-border-line-responsive {
+        display: flex;
+    }
+
+    .contact-success-message-parent {
+        display: none;
+    }
 }
