@@ -64,7 +64,6 @@
 .contact-overlay-form-logo-container {
     height: 30%;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -342,7 +341,6 @@ input:focus {
         height: 32px;
         width: 32px;
         padding: 0;
-
         transition: all 125ms ease-in-out;
     }
 
