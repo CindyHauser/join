@@ -391,6 +391,12 @@ input:focus {
 
     .contact-overlay-form-body-round-initial {
         background-color: var(--text-color-links);
+        width: clamp(64px, 16svmax, 112px);
+        height: clamp(64px, 16svmax, 112px);
+        min-width: unset;
+        min-height: unset;
+        max-width: unset;
+        max-height: unset;
     }
 
     .contact-overlay-form-body-second-section {
