@@ -391,6 +391,28 @@
         flex-direction: column;
         width: 100%;
         padding-left: 8px;
+        position: relative;
+    }
+
+    .add-contact-button-parent {
+        height: 0px;
+        position: absolute;
+        bottom: 10svw;
+        right: 6svw;
+    }
+
+    .add-contact-button {
+        height: clamp(56px, 13svw, 100px);
+        width: clamp(56px, 13svw, 100px);
+        border-radius: 50%;
+    }
+
+    .add-contact-button span {
+        display: none;
+    }
+
+    .contact-main-list-parent {
+        max-height: 96svh;
     }
 
     .contact-expanded-field {
