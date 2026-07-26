@@ -28,7 +28,7 @@ toggleSignupButton();
 signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!validateForm(signupForm)) return;
-    if (checkPassword()) return;
+    if (!checkPasswordsMatch()) return;
     if (await checkUserExists()) return;
     try {
         await openPostSignup();
@@ -63,15 +63,19 @@ async function openPostSignup() {
  *
  * @returns {boolean} True if the passwords differ.
  */
-function checkPassword() {
-    if (password.value !== confirmPassword.value) {
+function checkPasswordsMatch() {
+    if (confirmPassword.value && password.value !== confirmPassword.value) {
         errorMessageElement.textContent = 'Passwords do not match';
-        password.value = '';
-        confirmPassword.value = '';
-        return true;
+        confirmPassword.classList.add('input-error');
+        return false;
     }
-    return false;
+    errorMessageElement.textContent = '';
+    confirmPassword.classList.remove('input-error');
+    return true;
 }
+
+password.addEventListener('input', checkPasswordsMatch);
+confirmPassword.addEventListener('input', checkPasswordsMatch);
 
 /**
  * Checks whether a user with the entered email already exists.
@@ -156,12 +160,13 @@ const setBadgeColor = () => {
  * @returns {Object} The contact payload for Firebase.
  */
 const setUpContactData = () => {
+    const nameParts = name.value.trim().split(/\s+/);
     return {
-        "forename": name.value.split(" ")[0],
-        "surname": name.value.split(" ")[1] || "",
+        "forename": nameParts[0],
+        "surname": nameParts.length > 1 ? nameParts[nameParts.length - 1] : "",
         "phone": "",
-        "fornameFirstLetter": getInitials(name.value)[0],
-        "surnameFirstLetter": getInitials(name.value)[1],
+        "fornameFirstLetter": getInitials(name.value)[0] || "",
+        "surnameFirstLetter": getInitials(name.value)[1] || "",
         "email": email.value,
         "badgeColor": setBadgeColor()
     }
