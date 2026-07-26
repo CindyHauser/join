@@ -65,9 +65,12 @@ const setEventBubbling = (event) => {
     event.stopPropagation()
 }
 
-const closeExpandingCards = () => {
-    refreshmarksOnContactCards()
-    document.getElementById('contactCardExpandedRenderTarget').innerHTML = ''
+const closeExpandingCards = async () => {
+    hideFunctionsMenu()
+    setTimeout(() => {
+        refreshmarksOnContactCards()
+        document.getElementById('contactCardExpandedRenderTarget').innerHTML = ''
+    }, 127);
     closeExpandingCardsResponsiveControl()
 }
 
@@ -94,10 +97,10 @@ const hideFunctionsMenu = () => {
     const contactExpandedField = document.querySelector('.contact-expanded-field')
     contactExpandedField.setAttribute('onclick', 'closeExpandingCards()')
     const functions = document.querySelector('.contacts-member-functions ')
-    functions.classList.replace('fade-in-responsive-contact-functions-effect-on','fade-out-responsive-contact-functions-effect-on')
+    functions.classList.replace('fade-in-responsive-contact-functions-effect-on', 'fade-out-responsive-contact-functions-effect-on')
     setTimeout(() => {
         functions.classList.remove('fade-out-responsive-contact-functions-effect-on')
-    }, 200);
+    }, 126);
 }
 
 const addEnteranceEffect = (container, transitionTime) => {
