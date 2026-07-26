@@ -22,11 +22,6 @@ p {
     margin-block-end: 0;
 }
 
-a {
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
 
 .legal-notice-content {
     height: 84%;
