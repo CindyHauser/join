@@ -48,10 +48,14 @@
                 <h1>Kanban Project Management Tool</h1>
             </div>
             <div class="app-profile-and-help-section">
+                <div class="help-icon">
+                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('summary.html')"><img
+                            src="../assets/ui-icons/help.svg" alt="help.svg"></a>
+                </div>
                 <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
                 <div class="profile-menu" id="profileMenu">
+                    <button class="responive-Help" onclick="openHelpPage('help.html')"> Help</button>
                     <button onclick="window.location.href = 'legal-notice-internal.html'">Legal Notice</button>
-                    <button onclick="window.location.href = 'privacy-policy-internal.html'">Privacy Police</button>
                     <button onclick="logOut()">Log out</button>
                 </div>
         </header>

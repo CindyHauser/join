@@ -49,4 +49,16 @@
     .header-main-html {
         height: 10%;
     }
+
+    .profile-menu{
+        top:10%;
+    }
+
+    .help-icon{
+        display: none;
+    }
+
+    .responive-Help{
+        display: inline-block;
+    }
 }

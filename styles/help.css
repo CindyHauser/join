@@ -1,6 +1,6 @@
 .helpH2 {
     font-weight: 700;
-    font-size: 3.5rem;
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin-block-start: 0;
     margin-block-end: 0;
 
@@ -17,6 +17,7 @@ h4 {
 }
 
 p {
+    padding-right: 8px;
     margin-block-start: 0;
     margin-block-end: 0;
 }
@@ -25,24 +26,14 @@ p {
     height: 84%;
     max-width: 1210px;
     flex-direction: column;
-    gap: 16px;
-    margin-left: 64px;
-    justify-content: center;
+    padding: 2rem;
 }
 
 .help-title-container {
     height: 20%;
-    max-width: 1016px;
-    max-height: 72px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.help-title-title {
-    height: 100%;
-    max-width: 144px;
-    min-width: 144px;
 }
 
 .arrow-hug-container {
@@ -53,11 +44,7 @@ p {
     align-items: center;
     border-radius: 50%;
     transition: all 125ms ease-in-out;
-    /* button-default-override */
-    padding-block: inherit;
-    padding-inline: inherit;
-    border-width: 0;
-    border: 0;
+    border: none;
     background-color: unset;
 }
 
@@ -67,9 +54,7 @@ p {
 }
 
 .help-text-container {
-    height: 76%;
-    max-width: 1016px;
-    max-height: 1024px;
+    height: 80%;
     overflow: auto;
 }
 
@@ -95,10 +80,16 @@ p {
 .join-how-to-use-step {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
 }
 
 .step-number {
     font-weight: 700;
     font-size: 24px;
+}
+
+@media (max-width:768px) {
+    .help-content{
+        padding: 2rem 1rem 2rem 1rem
+    }
 }

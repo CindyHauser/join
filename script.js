@@ -62,3 +62,8 @@ const triggerHistoryBack = () => {
 const safeAddressToSessionStorage = (htmlAdress)=>{
         sessionStorage.setItem('lastVisitedSite',htmlAdress)
 }
+
+const openHelpPage = (helpPage) => {
+        safeAddressToSessionStorage(window.location.href)
+        window.location.href = helpPage
+}

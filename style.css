@@ -193,6 +193,10 @@ h1 {
     display: flex;
 }
 
+.responive-Help{
+    display: none;
+}
+
 .checkbox {
     width: 16px;
     height: 16px;
