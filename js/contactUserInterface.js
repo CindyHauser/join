@@ -4,14 +4,14 @@ const overlayEdit = document.getElementById('contactEditOverlay')
 const allEditContactInputs = overlayEdit.querySelectorAll('input')
 
 
-const setSubmitPreventDefault = (event)=>{
+const setSubmitPreventDefault = (event) => {
     event.preventDefault()
 }
 
 const forms = document.querySelectorAll('form')
 forms.forEach(
-    (form)=>{
-        form.addEventListener('submit',setSubmitPreventDefault)
+    (form) => {
+        form.addEventListener('submit', setSubmitPreventDefault)
     }
 )
 
@@ -20,8 +20,20 @@ const clicked = (element) => {
     const expandedContactField = document.getElementById('contactCardExpandedRenderTarget')
     refreshmarksOnContactCards()
     container.classList.add('contact-member-selected')
+    clickedResponsiveControl(element)
     expandedContactField.innerHTML = setExpandedContactcardsTemplate(element.id, contactListJsonLibrary)
     addEnteranceEffect(expandedContactField, 125)
+}
+
+const clickedResponsiveControl = (element) => {
+    const contactList = document.querySelector('.contact-list')
+    const contactExpandedField = document.querySelector('.contact-expanded-field')
+    contactList.classList.add('hide-in-resp')
+    contactExpandedField.classList.add('show-in-resp')
+    document.body.classList.add('hide-body-scroll-bar-in-responsive')
+    setTimeout(() => {
+        document.body.classList.remove('hide-body-scroll-bar-in-responsive')
+    }, 250);
 }
 
 const resetAllContactInput = () => {
@@ -56,6 +68,36 @@ const setEventBubbling = (event) => {
 const closeExpandingCards = () => {
     refreshmarksOnContactCards()
     document.getElementById('contactCardExpandedRenderTarget').innerHTML = ''
+    closeExpandingCardsResponsiveControl()
+}
+
+const closeExpandingCardsResponsiveControl = () => {
+    const contactList = document.querySelector('.contact-list')
+    const contactExpandedField = document.querySelector('.contact-expanded-field')
+    contactList.classList.remove('hide-in-resp')
+    contactExpandedField.classList.remove('show-in-resp')
+}
+
+const showFunctionsMenu = (event) => {
+    event.stopPropagation()
+    const contactExpandedField = event.target.closest('.contact-expanded-field')
+    const functions = document.querySelector('.contacts-member-functions ')
+    showFunctionsMenuParameterControl(functions, contactExpandedField)
+}
+
+const showFunctionsMenuParameterControl = (functions, contactExpandedField) => {
+    functions.classList.add('fade-in-responsive-contact-functions-effect-on')
+    contactExpandedField.setAttribute('onclick', 'hideFunctionsMenu()')
+}
+
+const hideFunctionsMenu = () => {
+    const contactExpandedField = document.querySelector('.contact-expanded-field')
+    contactExpandedField.setAttribute('onclick', 'closeExpandingCards()')
+    const functions = document.querySelector('.contacts-member-functions ')
+    functions.classList.replace('fade-in-responsive-contact-functions-effect-on','fade-out-responsive-contact-functions-effect-on')
+    setTimeout(() => {
+        functions.classList.remove('fade-out-responsive-contact-functions-effect-on')
+    }, 200);
 }
 
 const addEnteranceEffect = (container, transitionTime) => {

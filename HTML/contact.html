@@ -63,19 +63,17 @@
         <section class="main-content main-contact-static-expanded-height">
             <div class="contact-list">
                 <div class="add-contact-button-parent" onclick="initOverlayAddContact()">
-
                     <button class="add-contact-button">
                         <span>Add new contact</span>
                         <img src="../assets/ui-icons/person_add.svg" alt="person_add.svg">
                     </button>
-
                 </div>
                 <div class="contact-main-list-parent" id="contactMainListParent"></div>
             </div>
             <div class="contact-expanded-field" onclick="closeExpandingCards()">
                 <div class="contact-expanded-field-inner-container">
                     <div class="contact-responsive-back-button-parent">
-                        <button type="button" class="contact-responsive-back-button-child">
+                        <button type="button" class="contact-responsive-back-button-child" onclick="closeExpandingCards()">
                             <img src="../assets/ui-icons/arrow-left-line.svg" alt="back to contact list ">
                         </button>
                     </div>
@@ -90,6 +88,11 @@
                         <div class="adding-contact-sucess-alert-card" id="AddContactSuccessAlert"><span>Contact
                                 successfully created</span></div>
                     </div>
+                    <button type="button" aria-label="button-responsive" class="show-contact-functions-resp" onclick="showFunctionsMenu(event)">
+                        <div class="point"></div>
+                        <div class="point"></div>
+                        <div class="point"></div>
+                    </button>
                 </div>
             </div>
         </section>
@@ -185,7 +188,7 @@
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
-                            <button type="button" class="contact-overlay-form-close-bar-responsive">
+                            <button type="button" class="contact-overlay-form-close-bar-responsive" onclick="closeOverlayEditContact()">
                                 <img src="../assets/ui-icons/Close--white--resp.svg" alt="Close--white--resp.svg">
                             </button>
                         </div>
@@ -261,7 +264,6 @@
             </div>
         </div>
     </dialog>
-
     <footer class="footer-media">
         <a class='footer-menu-point' href='./summary.html'>
             <img src="../assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">

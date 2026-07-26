@@ -6,6 +6,23 @@
     animation: fade-out 125ms ease-in 0s 1 normal forwards;
 }
 
+.fade-in-responsive-contact-functions-effect-on {
+    animation: fade-in-responsive-contact-functions 125ms ease-in 0s 1 normal forwards;
+}
+
+.fade-in-responsive-contact-functions-right-16 {
+    right: 16px;
+}
+
+.fade-out-responsive-contact-functions-right-180 {
+    right: -180px;
+}
+
+.fade-out-responsive-contact-functions-effect-on {
+    animation: fade-out-responsive-contact-functions 125ms ease-in 0s 1 normal forwards;
+}
+
+
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -30,11 +47,42 @@
     }
 }
 
+@keyframes fade-in-responsive-contact-functions {
+    0% {
+        opacity: 0;
+        transform: translateX(-180px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(16px);
+        right: 24px;
+    }
+}
+
+@keyframes fade-out-responsive-contact-functions {
+    0% {
+        opacity: 1;
+        transform: translateX(24px);
+        right: 24px;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-180px);
+        right: -180px;
+    }
+}
+
 .contact-overlay-activated {
     display: flex;
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.fade-in-responsive-contact-functions-activated {
+    right: 0px;
 }
 
 .contact-form-overlay-input-parent-focused {

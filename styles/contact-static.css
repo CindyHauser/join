@@ -274,6 +274,7 @@
     font-size: 32px;
     display: flex;
     align-items: center;
+    font-weight: 700;
 }
 
 .contacts-member-functions {
@@ -385,6 +386,35 @@
     opacity: 0;
 }
 
+.show-contact-functions-resp {
+    all: unset;
+    height: clamp(56px, 13svw, 100px);
+    width: clamp(56px, 13svw, 100px);
+    border-radius: 50%;
+    background-color: var(--menu-hover);
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    bottom: 80px;
+    right: 24px;
+    display: none;
+    transition: all 125ms ease-in-out;
+}
+
+.show-contact-functions-resp:hover {
+    cursor: pointer;
+    background-color: var(--easy-blue-color-secondary);
+}
+
+.point {
+    background-color: white;
+    height: 14%;
+    width: 14%;
+    border-radius: 50%;
+}
+
 @media (max-width: 768px) {
     .contact-list {
         display: flex;
@@ -392,6 +422,12 @@
         width: 100%;
         padding-left: 8px;
         position: relative;
+    }
+
+    .contact-expanded-field {
+        width: 100%;
+        align-items: unset;
+        display: none;
     }
 
     .add-contact-button-parent {
@@ -415,11 +451,6 @@
         max-height: 96svh;
     }
 
-    .contact-expanded-field {
-        width: 100%;
-        align-items: unset;
-        display: none;
-    }
 
     .contact-expanded-field-inner-container {
         justify-content: unset;
@@ -438,7 +469,18 @@
 
     .contact-txt {
         justify-content: unset;
-        font-size: clamp(40px, 16svw, 56px);
+        font-size: clamp(12px, 1.4rem + 2.5svw, 32px);
+    }
+
+    .contact-subtitle {
+        font-size: clamp(12px, 0.8rem + 2.5svw, 32px);
+    }
+
+    .contacts-member-circle-initial-expanded {
+        min-width: unset;
+        min-height: unset;
+        width: clamp(48px, 24svw, 96px);
+        height: clamp(48px, 24svw, 96px);
     }
 
     .contact-border-line {
@@ -449,7 +491,61 @@
         display: flex;
     }
 
+    .contact-main-expanded-card {
+        width: 100%;
+        height: 32svh;
+    }
+
+    #contactCardExpandedRenderTarget {
+        width: 100%;
+        min-height: 40svh;
+    }
+
+    .contacts-member-name-expanded {
+        font-size: clamp(12px, 0.8rem + 2.5svw, 32px);
+        height: 100%;
+    }
+
+    .contacts-member-functions {
+        border: 2px solid var(--menu-hover);
+        flex-direction: column;
+        width: clamp(86px, 24svw, 120px);
+        height: 10svh;
+        justify-content: center;
+        gap: 8px;
+        position: fixed;
+        bottom: 80px;
+        right: -180px;
+        border-radius: 20px 20px 0 20px;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        z-index: 3;
+    }
+
+    .contact-telephone-and-email-parent {
+        width: max-content;
+    }
+
     .contact-success-message-parent {
         display: none;
+    }
+
+    .show-contact-functions-resp {
+        display: flex;
+    }
+}
+
+/* control-class */
+@media(max-width:768px) {
+    .hide-in-resp {
+        display: none;
+    }
+
+    .hide-body-scroll-bar-in-responsive{
+        overflow: hidden;
+    }
+
+    .show-in-resp {
+        display: flex;
     }
 }

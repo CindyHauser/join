@@ -5,7 +5,6 @@ profileInitialElement.textContent = currentUserInitials || "G";
 const initContactPage = async () => {
         // set up the library
         await setLibraryForFirebaseInit();
-        console.log(contactListJsonLibrary);
         // setup contact Array
         getContactsArray();
         // rendering list
