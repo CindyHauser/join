@@ -1,0 +1,68 @@
+@media (max-width: 768px) {
+    .summary-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .input-task-btn {
+        display: contents;
+        /* Kinder werden zu direkten Flex-Items von .summary-header */
+    }
+
+    .summary-header h2 {
+        order: 1;
+    }
+
+    .add-task-btn {
+        order: 2;
+    }
+
+    .search-wrapper-ext-hug {
+        order: 3;
+        flex-basis: 100%;
+        /* erzwingt Umbruch, volle Breite */
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .kanban-board {
+        width: 100%;
+        padding: 8px;
+        flex-direction: column;
+        justify-content: unset;
+        overflow: auto;
+    }
+
+    .progress-tasks {
+        width: 100%;
+    }
+
+    .drag-and-drop-tasks {
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-inline: 16px;
+        width: 100%;
+        container-type: inline-size;
+    }
+
+    .drag-and-drop-tasks::-webkit-scrollbar {
+        display: none;
+    }
+
+    .task-board-card {
+        min-width: 60%;
+    }
+
+}
+
+@media (max-width: 576px){
+    .task-board-card {
+        min-width: 90%;
+    }
+}

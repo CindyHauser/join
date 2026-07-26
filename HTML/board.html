@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/board.css">
     <link rel="stylesheet" href="../styles/dialog-board.css">
     <link rel="stylesheet" href="../styles/board-userInterface.css">
+    <link rel="stylesheet" href="../styles/board-media.css">
     <link rel="stylesheet" href="../styles/addtask-priority.css">
     <link rel="stylesheet" href="../styles/addtask-contact.css">
     <link rel="stylesheet" href="../styles/addtask-dropdownSelect.css">
@@ -66,71 +67,69 @@
             </div>
         </header>
         <section class="main-content">
-            <div class="main-content-board-inner-hug">
-                <div class="summary-header">
-                    <h2>Board</h2>
-                    <div class="input-task-btn">
-                        <div class="search-wrapper-ext-hug">
-                            <div class="search-wrapper">
-                                <input class="board-input" type="text" placeholder="Find Task" id="boardInput"
-                                    oninput="initFindTask(this)">
-                                <div class="search-icon">
-                                    <span class="divider"></span>
-                                    <img src="../assets/ui-icons/search.svg" alt="search symbol">
-                                </div>
+            <div class="summary-header">
+                <h2>Board</h2>
+                <div class="input-task-btn">
+                    <div class="search-wrapper-ext-hug">
+                        <div class="search-wrapper">
+                            <input class="board-input" type="text" placeholder="Find Task" id="boardInput"
+                                oninput="initFindTask(this)">
+                            <div class="search-icon">
+                                <span class="divider"></span>
+                                <img src="../assets/ui-icons/search.svg" alt="search symbol">
                             </div>
-                            <span class="no-task-found-message" id="noTaskFoundMessage">no result found to your search
-                                keywords </span>
                         </div>
-                        <button onclick="toggleDialog('dialogAddTask','toDo')" class="add-task-btn">Add task <img
-                                src="../assets/ui-icons/add-board.svg" alt="plus to add"></button>
+                        <span class="no-task-found-message" id="noTaskFoundMessage">no result found to your search
+                            keywords </span>
                     </div>
+                    <button onclick="toggleDialog('dialogAddTask','toDo')" class="add-task-btn">
+                        <span class="btn-text">Add task</span>
+                        <img src="../assets/ui-icons/add-board.svg" alt="plus to add">
+                    </button>
+                </div>
+            </div>
+
+            <div class="kanban-board">
+                <div class="progress-tasks progress-tasks-todo" id="toDo" ondrop="cardDropped(event)"
+                    ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
+                    ondragleave="cardLeavingDragZone(event)">
+                    <div class="progress-tasks-header">
+                        <h3>To Do</h3>
+                        <button class="add-task-on-board-btn" onclick="toggleDialog('dialogAddTask','toDo')">+</button>
+                    </div>
+                    <div class="drag-and-drop-tasks"></div>
                 </div>
 
-                <div class="kanban-board">
-                    <div class="progress-tasks progress-tasks-todo" id="toDo" ondrop="cardDropped(event)"
-                        ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
-                        ondragleave="cardLeavingDragZone(event)">
-                        <div class="progress-tasks-header">
-                            <h3>To Do</h3>
-                            <button class="add-task-on-board-btn"
-                                onclick="toggleDialog('dialogAddTask','toDo')">+</button>
-                        </div>
-                        <div class="drag-and-drop-tasks"></div>
+                <div class="progress-tasks" id="inProgress" ondrop="cardDropped(event)"
+                    ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
+                    ondragleave="cardLeavingDragZone(event)">
+                    <div class="progress-tasks-header">
+                        <h3>In progress</h3>
+                        <button class="add-task-on-board-btn"
+                            onclick="toggleDialog('dialogAddTask','inProgress')">+</button>
                     </div>
-
-                    <div class="progress-tasks" id="inProgress" ondrop="cardDropped(event)"
-                        ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
-                        ondragleave="cardLeavingDragZone(event)">
-                        <div class="progress-tasks-header">
-                            <h3>In progress</h3>
-                            <button class="add-task-on-board-btn"
-                                onclick="toggleDialog('dialogAddTask','inProgress')">+</button>
-                        </div>
-                        <div class="drag-and-drop-tasks"></div>
-                    </div>
-
-                    <div class="progress-tasks" id="awaitFeedBack" ondrop="cardDropped(event)"
-                        ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
-                        ondragleave="cardLeavingDragZone(event)">
-                        <div class="progress-tasks-header">
-                            <h3>Await feedback</h3>
-                            <button class="add-task-on-board-btn"
-                                onclick="toggleDialog('dialogAddTask','awaitFeedBack')">+</button>
-                        </div>
-                        <div class="drag-and-drop-tasks"></div>
-                    </div>
-
-                    <div class="progress-tasks" id="done" ondrop="cardDropped(event)"
-                        ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
-                        ondragleave="cardLeavingDragZone(event)">
-                        <div class="progress-tasks-header">
-                            <h3>Done</h3>
-                        </div>
-                        <div class="drag-and-drop-tasks"></div>
-                    </div>
-
+                    <div class="drag-and-drop-tasks"></div>
                 </div>
+
+                <div class="progress-tasks" id="awaitFeedBack" ondrop="cardDropped(event)"
+                    ondragover="cardDraggedOver(event)" ondragenter="cardEnteringDragZone(event)"
+                    ondragleave="cardLeavingDragZone(event)">
+                    <div class="progress-tasks-header">
+                        <h3>Await feedback</h3>
+                        <button class="add-task-on-board-btn"
+                            onclick="toggleDialog('dialogAddTask','awaitFeedBack')">+</button>
+                    </div>
+                    <div class="drag-and-drop-tasks"></div>
+                </div>
+
+                <div class="progress-tasks" id="done" ondrop="cardDropped(event)" ondragover="cardDraggedOver(event)"
+                    ondragenter="cardEnteringDragZone(event)" ondragleave="cardLeavingDragZone(event)">
+                    <div class="progress-tasks-header">
+                        <h3>Done</h3>
+                    </div>
+                    <div class="drag-and-drop-tasks"></div>
+                </div>
+
             </div>
         </section>
     </main>
