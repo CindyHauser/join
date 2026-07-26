@@ -20,7 +20,7 @@ hr {
 }
 
 h2 {
-    font-size: clamp(1.5rem, 0.5rem + 4vw, 4rem);
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin: 0;
 }
 
@@ -249,4 +249,8 @@ fieldset {
 
 .input-error {
     border: 2px solid red;
+}
+
+.dp-none {
+    display: none;
 }

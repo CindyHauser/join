@@ -123,7 +123,7 @@ const collectTaskField = (element, task) => {
     if (!isRelevantFormField(element)) return;
     const key = element.id || element.name || 'field';
     if (key === 'subtask' || key === 'contactInput' || key.length >= 20) return;
-    task[key] = getFieldValue(element);
+    task[key] = getTaskFieldValue(element);
 };
 
 /**
@@ -143,7 +143,7 @@ const isRelevantFormField = (element) => {
  * @param {HTMLElement} element - The form field element.
  * @returns {string} The field value.
  */
-const getFieldValue = (element) => {
+const getTaskFieldValue = (element) => {
     return element.tagName === 'BUTTON' && element.dataset.customDropdown === 'true'
         ? element.dataset.value || ''
         : element.value;

@@ -19,7 +19,7 @@
 }
 
 h2 {
-    font-size: clamp(1.5rem, 0.5rem + 4vw, 4rem);
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin-block-start: 0;
     margin-block-end: 0;
 }

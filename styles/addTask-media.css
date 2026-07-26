@@ -1,0 +1,64 @@
+@media (max-width:768px) {
+    .main-content{
+        padding: 1rem 1rem 0 2rem
+    }
+
+    hr {
+        display: none;
+    }
+
+    .add-task-form {
+        height: 80%;
+    }
+
+    .add-task-content {
+        flex-direction: column;
+        overflow: auto;
+
+    }
+
+    .add-task {
+        gap: 2rem;
+    }
+
+    .add-task-footer {
+        justify-content: unset;
+        width: 100%;
+        height: 15%;
+        background-color: var(--background-color-body);
+    }
+
+    .add-task-footer p{
+        display: none;
+    }
+
+    .add-task-buttons{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .add-task-button{
+        padding: 10px 10px;
+    }
+
+    .dp-none{
+        display: flex;
+        margin:0
+    }
+
+    .priority-options{
+       justify-content: space-between;
+    }
+
+    .priority-btn{
+        justify-content: center;
+        padding: 10px 10px;
+    }
+
+}
+
+@media (max-width:370px) {
+    .priority-options{
+        flex-direction: column;
+    }
+}
