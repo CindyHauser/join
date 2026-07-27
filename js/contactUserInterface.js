@@ -145,6 +145,7 @@ const closeOverlayEditContact = () => {
     const OverlayInnerContainer = overlayEditContact.querySelector('.contact-overlay-inner-container')
     addOverlayContactEXitEffect(OverlayInnerContainer, overlayEditContact, 125)
     resetAllEditContactInput()
+    localStorage.removeItem('currentContactIdToEdit')
     savedID = ''
 }
 
@@ -271,6 +272,12 @@ const deleteContact = async (id) => {
     getContactsArray();
     renderContactList()
 }
+
+const deleteContactOverlayRespFunction = async()=>{
+    let id = localStorage.getItem('currentContactIdToEdit')
+    await deleteContact(id)
+    closeOverlayEditContact()
+}
 //createcontact
 const createContact = async () => {
     let validationResultObject = initValidation(
@@ -311,6 +318,7 @@ const setAlertAddContactSuccess = () => {
 let savedID = ''
 const initEditContact = (id) => {
     savedID = id
+    localStorage.setItem('currentContactIdToEdit',id)
     const contactAsJson = contactListJsonLibrary[id];
     setAllEditContactInputs(
         'editContactOverlayFormName', 'editContactOverlayFormPhone', 'editContactOverlayFormEmail',

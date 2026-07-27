@@ -274,7 +274,27 @@
 
 }
 
+.contact-overlay-function-edit-resp-container {
+    all: unset;
+    border: 2px solid black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 16px;
+    gap: 8px;
+    padding: 8px;
+    transition: all 125ms ease-in-out;
+
+}
+
 .contact-overlay-function-cancel-container:hover {
+    cursor: pointer;
+    color: var(--hover-effect-dark);
+    border: 2px solid var(--hover-effect-dark);
+}
+
+.contact-overlay-function-edit-resp-container:hover {
     cursor: pointer;
     color: var(--hover-effect-dark);
     border: 2px solid var(--hover-effect-dark);
@@ -423,6 +443,10 @@ input:focus {
 
     .contact-overlay-function-cancel-container {
         display: none;
+    }
+
+    .contact-overlay-function-edit-resp-container {
+        display: flex;
     }
 
     .contact-overlay-function-check-container {

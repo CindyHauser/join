@@ -75,7 +75,8 @@
             <div class="contact-expanded-field" onclick="closeExpandingCards()">
                 <div class="contact-expanded-field-inner-container">
                     <div class="contact-responsive-back-button-parent">
-                        <button type="button" class="contact-responsive-back-button-child" onclick="closeExpandingCards()">
+                        <button type="button" class="contact-responsive-back-button-child"
+                            onclick="closeExpandingCards()">
                             <img src="../assets/ui-icons/arrow-left-line.svg" alt="back to contact list ">
                         </button>
                     </div>
@@ -90,7 +91,8 @@
                         <div class="adding-contact-sucess-alert-card" id="AddContactSuccessAlert"><span>Contact
                                 successfully created</span></div>
                     </div>
-                    <button type="button" aria-label="button-responsive" class="show-contact-functions-resp" onclick="showFunctionsMenu(event)">
+                    <button type="button" aria-label="button-responsive" class="show-contact-functions-resp"
+                        onclick="showFunctionsMenu(event)">
                         <div class="point"></div>
                         <div class="point"></div>
                         <div class="point"></div>
@@ -105,7 +107,8 @@
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
-                            <button type="button" class="contact-overlay-form-close-bar-responsive" onclick="closeOverlayAddContact()">
+                            <button type="button" class="contact-overlay-form-close-bar-responsive"
+                                onclick="closeOverlayAddContact()">
                                 <img src="../assets/ui-icons/Close--white--resp.svg" alt="Close--white--resp.svg">
                             </button>
                         </div>
@@ -190,7 +193,8 @@
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
-                            <button type="button" class="contact-overlay-form-close-bar-responsive" onclick="closeOverlayEditContact()">
+                            <button type="button" class="contact-overlay-form-close-bar-responsive"
+                                onclick="closeOverlayEditContact()">
                                 <img src="../assets/ui-icons/Close--white--resp.svg" alt="Close--white--resp.svg">
                             </button>
                         </div>
@@ -248,6 +252,12 @@
                                     style="opacity: 0;">phone number not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-functions">
+                                <button type="button" aria-label="cancel edit contact"
+                                    class="contact-overlay-function-edit-resp-container"
+                                    onclick="deleteContactOverlayRespFunction()">
+                                    <span>Delete</span>
+                                    <img src="../assets/ui-icons/cancel.svg" alt="cancel.svg">
+                                </button>
                                 <button type="button" aria-label="cancel edit contact"
                                     class="contact-overlay-function-cancel-container"
                                     onclick="closeOverlayEditContact()">
