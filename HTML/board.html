@@ -19,11 +19,11 @@
 </head>
 
 <body onload="initBoardPage()">
-    <div class="menu-section">
+    <aside class="menu-section">
         <div class="logo-container">
             <img src="../assets/logo/join-mainlogo.svg" alt="join-mainlogo.svg" class="main-logo">
         </div>
-        <div class="menu-bar">
+        <nav class="menu-bar">
             <div class="menu-inner-container">
                 <a class='menu-point' href='./summary.html'>
                     <img src="../assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">
@@ -32,7 +32,7 @@
                 <a href="./addtask.html" class="menu-point">
                     <img src="../assets/ui-icons/add-Icons.svg" alt="add-Icons.svg">
                     <span>Add Task</span></a>
-                <a href="#" class="menu-point menu-point-selected">
+                <a href="#" class="menu-point menu-point-selected" aria-current="page">
                     <img src="../assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
                     <span>Board</span>
                 </a>
@@ -41,20 +41,21 @@
                     <span>Contacts</span>
                 </a>
             </div>
-        </div>
+        </nav>
         <div class="privacy-and-security-section">
             <a href="./privacy-policy-internal.html" class="privacy-legal-notice-link">Privacy Policy</a>
             <a href="./legal-notice-internal.html" class="privacy-legal-notice-link">Legal Notice</a>
         </div>
-    </div>
+    </aside>
     <main class="main-section">
         <header class="header-main-html">
             <div class="app-main-title">
                 <h1>Kanban Project Management Tool</h1>
+                <img src="../assets/logo/logoDark.svg" class="logoDark-responsive" alt="LogoDark">
             </div>
             <div class="app-profile-and-help-section">
                 <div class="help-icon">
-                    <a href="/HTML/help.html" onclick="safeAddressToSessionStorage('board.html')"><img
+                    <a href="../HTML/help.html" onclick="safeAddressToSessionStorage('board.html')"><img
                             src="../assets/ui-icons/help.svg" alt="help.svg"></a>
                 </div>
                 <div class="profile-initial" id="profileInitial" onclick="showProfileMenu()">G</div>
@@ -134,7 +135,7 @@
         </section>
     </main>
 
-    <footer class="footer-media">
+    <nav class="footer-media">
         <a class='footer-menu-point' href='./summary.html'>
             <img src="../assets/ui-icons/sum-Icons.svg" alt="sum-Icons.svg">
             <span>Summary</span>
@@ -142,7 +143,7 @@
         <a href="./addtask.html" class="footer-menu-point">
             <img src="../assets/ui-icons/add-Icons.svg" alt="add-Icons.svg">
             <span>Add Task</span></a>
-        <a href="#" class="footer-menu-point menu-point-selected">
+        <a href="#" class="footer-menu-point menu-point-selected" aria-current="page">
             <img src="../assets/ui-icons/board-Icons.svg" alt="board-Icons.svg">
             <span>Board</span>
         </a>
@@ -150,7 +151,7 @@
             <img src="../assets/ui-icons/contact-icons.svg" alt="contact-icons.svg">
             <span>Contacts</span>
         </a>
-    </footer>
+    </nav>
 
     <dialog class="dialogDesign" id="dialogAddTask" onclick="toggleDialog('dialogAddTask')">
         <section onclick="stopPropagationFunction(event)" id="dialogContentAddTask">

@@ -38,6 +38,10 @@ h1 {
     margin-block-end: 0;
 }
 
+.logoDark-responsive {
+    display: none;
+}
+
 .menu-section {
     height: 100vh;
     width: min(230px, 16vw);
@@ -262,7 +266,6 @@ h1 {
 }
 
 .profile-menu button {
-    width: 80%;
     margin: 8px;
     padding: 12px;
     border: none;
@@ -279,7 +282,7 @@ h1 {
 .profile-menu.active {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 *::-webkit-scrollbar {
