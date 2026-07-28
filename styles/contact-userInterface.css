@@ -92,3 +92,37 @@
 .error-message-activated {
     border: 2px solid red;
 }
+
+@media(max-width:768px) {
+    .fade-in-effect-on {
+        animation: alert-slide-in-responsive 125ms ease-in 0s 1 normal forwards;
+    }
+
+    .fade-out-effect-on {
+        animation: alert-slide-out-responsive 125ms ease-in 0s 1 normal forwards;
+    }
+}
+
+@keyframes alert-slide-in-responsive {
+    0% {
+        opacity: 0;
+        transform: translateY(100svw);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0svw);
+    }
+
+}
+
+@keyframes alert-slide-out-responsive {
+    0% {
+        opacity: 1;
+        transform: translateY(0svw);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(100svw);
+    }
+
+}

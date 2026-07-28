@@ -528,6 +528,20 @@
 
     .contact-success-message-parent {
         display: none;
+        position: fixed;
+        background-color: #0000007a;
+        top: 0;
+        width: 100svw;
+        height: 100svh;
+        left: 0;
+        justify-content: center;
+    }
+
+    .adding-contact-sucess-alert-card {
+        opacity: 1;
+        width: 96%;
+        height: 12%;
+        transform: translateY(100svw)
     }
 
     .show-contact-functions-resp {
@@ -541,7 +555,7 @@
         display: none;
     }
 
-    .hide-body-scroll-bar-in-responsive{
+    .hide-body-scroll-bar-in-responsive {
         overflow: hidden;
     }
 

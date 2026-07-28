@@ -273,7 +273,7 @@ const deleteContact = async (id) => {
     renderContactList()
 }
 
-const deleteContactOverlayRespFunction = async()=>{
+const deleteContactOverlayRespFunction = async () => {
     let id = localStorage.getItem('currentContactIdToEdit')
     await deleteContact(id)
     closeOverlayEditContact()
@@ -300,6 +300,12 @@ const uploadAndinitNewContactList = async (validationArray) => {
 
 const setAlertAddContactSuccess = () => {
     const alertElement = document.getElementById('AddContactSuccessAlert')
+    const alertElementParent = alertElement.closest('.contact-success-message-parent')
+    setAlertAddContactSuccessTimer(alertElement,alertElementParent)
+}
+
+const setAlertAddContactSuccessTimer = (alertElement, alertElementParent) => {
+    alertElementParent.classList.add('show-in-resp')
     setTimeout(() => {
         alertElement.classList.add('fade-in-effect-on')
     }, 600);
@@ -309,6 +315,7 @@ const setAlertAddContactSuccess = () => {
     }, 2550);
     setTimeout(() => {
         alertElement.classList.remove('fade-out-effect-on')
+        alertElementParent.classList.remove('show-in-resp')
     }, 3000);
 }
 
@@ -318,7 +325,7 @@ const setAlertAddContactSuccess = () => {
 let savedID = ''
 const initEditContact = (id) => {
     savedID = id
-    localStorage.setItem('currentContactIdToEdit',id)
+    localStorage.setItem('currentContactIdToEdit', id)
     const contactAsJson = contactListJsonLibrary[id];
     setAllEditContactInputs(
         'editContactOverlayFormName', 'editContactOverlayFormPhone', 'editContactOverlayFormEmail',
