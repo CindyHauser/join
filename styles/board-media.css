@@ -47,8 +47,6 @@
         scrollbar-width: none;
         -ms-overflow-style: none;
         padding-inline: 16px;
-        width: 100%;
-        container-type: inline-size;
     }
 
     .drag-and-drop-tasks::-webkit-scrollbar {
