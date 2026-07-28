@@ -229,12 +229,12 @@ const blurredContactListState = () => {
 };
 
 /**
- * Prevents default click behavior on the contact input list.
+ * Prevents default click behavior for contact input interactions.
  *
  * @param {Event} event - The click event.
  * @returns {void}
  */
-const contactInputListClicked = (event) => event.preventDefault();
+const contactInputClicked = (event) => event.preventDefault();
 
 /**
  * Prevents default behavior when the click is outside the contact inputs.
@@ -250,14 +250,6 @@ const preventDefault = (element, event) => {
         event.preventDefault();
     }
 };
-
-/**
- * Prevents default click behavior on the assigned-to label.
- *
- * @param {Event} event - The click event.
- * @returns {void}
- */
-const assignedToLabelClicked = (event) => event.preventDefault();
 
 /**
  * Toggles contact selection based on the clicked contact card.
