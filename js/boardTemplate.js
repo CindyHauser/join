@@ -101,7 +101,7 @@ const taskDialogContentTemplate = (task, contactLibrary) => {
  */
 const taskDialogEditContentTemplate = (task, contactLibrary) => {
     let template = `
-    <div class="closeButton">
+            <div class="closeButton">
                 <button type="button" onclick="toggleDialog('dialogEditTask')"
                     class="dialog-close-btn"><img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
             </div>

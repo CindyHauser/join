@@ -1,9 +1,20 @@
+@media (min-width:768px) and (max-width:1024px) {
+    h3{
+        font-size: 1rem;
+    }
+
+    .task-category{
+        font-size: 0.75rem;
+        width: 98%;
+        padding: 6px;
+    }
+}
+
 @media (max-width: 768px) {
     .summary-header {
-        display: flex;
         flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
+        gap: 0px;
+        margin-bottom: 24px;
     }
 
     .input-task-btn {
@@ -17,6 +28,8 @@
 
     .add-task-btn {
         order: 2;
+        height: unset;
+        padding: 12px;
     }
 
     .search-wrapper-ext-hug {

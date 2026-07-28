@@ -123,9 +123,7 @@ const initValidation = (setArrayCallback, getvalueCallback, markingCallback, inp
     let validationCheckvalue = getvalueCallback(validationArray)
     if (validationCheckvalue != true) {
         markingCallback(validationCheckvalue)
-        return {
-            "value": false
-        }
+        return {"value": false}
     } else {
         return {
             "value": true,
