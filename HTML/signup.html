@@ -7,6 +7,7 @@
     <title>Signup</title>
     <link rel="shortcut icon" href="../assets/logo/logoDark.svg" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/styles-media.css">
     <link rel="stylesheet" href="../styles/loginSignup.css">
 </head>
 
@@ -24,8 +25,7 @@
             <form action="/signup" method="POST" class="login-signup-form" id="signupForm" novalidate>
                 <div class="pos-rel">
                     <input type="text" id="name" name="name" class="input-icon bg-input-name"
-                        placeholder="Enter your name" autocomplete="name" required
-                        data-error="Name is required.">
+                        placeholder="Enter your name" autocomplete="name" required data-error="Name is required.">
                 </div>
                 <div class="pos-rel">
                     <input type="email" id="email" name="email" class="input-icon bg-input-mail"
@@ -65,6 +65,7 @@
     <dialog class="dialogLoginAndSignUpDesign" id="successDialog">
         <p>You Signed Up successfully!</p>
     </dialog>
+    <p class="rotate-message" role="alert">Please rotate your device back to portrait mode.</p>
 </body>
 <script src="../js/validateForm.js"></script>
 <script src="../js/signup.js"></script>
