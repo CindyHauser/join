@@ -110,7 +110,7 @@
                         </fieldset>
                         <div class="form-inputs contact-form">
                             <label for="contactInput" id="assignedToLabel"
-                                onclick="assignedToLabelClicked(event)">Assigned to</label>
+                                onclick="contactInputClicked(event)">Assigned to</label>
                             <div class="contact-list-input-container" onclick="initInputContainer(this)">
                                 <input type="text" placeholder="Select contact to assign"
                                     onfocus="initInput(this,event)" onblur="finishedInput(this,event)" id="contactInput"
@@ -119,7 +119,7 @@
                                     onmousedown="event.preventDefault(); event.stopPropagation()">
                             </div>
                             <div class="contact-input-list" id="contactInputList"
-                                onmousedown="contactInputListClicked(event)"></div>
+                                onmousedown="contactInputClicked(event)"></div>
                             <div class="selected-contact-field" id="selectedContactField"></div>
                         </div>
                         <div class="form-inputs">

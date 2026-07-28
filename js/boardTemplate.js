@@ -142,14 +142,14 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         </fieldset>
                         <div class="form-inputs contact-form">
                             <label for="contactInputEdit" id="assignedToLabel"
-                                onclick="assignedToLabelClicked(event)">Assigned to</label>
+                                onclick="contactInputClicked(event)">Assigned to</label>
                             <div class="contact-list-input-container" onclick="initInputContainer(this)">
                                 <input type="text" placeholder="Select contact to assign"
                                     onfocus="initInput(this,event)" onblur="finishedInput(this,event)" id="contactInputEdit"
                                     oninput="initContactListSearch(this,event)">
                                 <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault()">
                             </div>
-                            <div class="contact-input-list" id="contactInputListEdit" onmousedown="contactInputListClicked(event)"></div>
+                            <div class="contact-input-list" id="contactInputListEdit" onmousedown="contactInputClicked(event)"></div>
                             <div class="selected-contact-field" id="selectedContactFieldEdit">${renderDialogAssignedContactsEdit(task.contactSelect, contactLibrary)}</div>  
                         </div>
                         <div class="form-inputs">
