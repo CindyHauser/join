@@ -119,12 +119,6 @@ h1 {
     background-repeat: no-repeat;
 }
 
-.bg-input-password {
-    background-image: url('../assets/ui-icons/inputLock.svg');
-    background-position: right 12px center;
-    background-repeat: no-repeat;
-}
-
 .bg-input-name {
     background-image: url('../assets/ui-icons/inputPerson.svg');
     background-position: right 12px center;
@@ -245,6 +239,20 @@ h1 {
 
 .pos-rel {
     position: relative;
+}
+
+.password-icon {
+    position: absolute;
+    right: 12px;
+    top: 20px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: default;
+}
+
+.password-icon.clickable {
+    cursor: pointer;
 }
 
 .dp-none {

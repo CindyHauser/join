@@ -13,6 +13,8 @@ const signupButton = document.getElementById('signupButton');
  * @returns {void}
  */
 initValidation(signupForm);
+setupPasswordVisibilityToggle(password, document.getElementById('passwordIcon'));
+setupPasswordVisibilityToggle(confirmPassword, document.getElementById('confirmPasswordIcon'));
 
 signupForm.addEventListener("input", toggleSignupButton);
 signupForm.addEventListener("change", toggleSignupButton);

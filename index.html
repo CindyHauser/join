@@ -35,9 +35,13 @@
                         placeholder="Enter your email" autocomplete="email" required data-error="E-Mail is required">
                 </div>
                 <div class="pos-rel">
-                    <input type="password" id="password" name="password" class="input-icon bg-input-password"
+                    <input type="password" id="password" name="password" class="input-icon"
                         placeholder="Enter your password" autocomplete="current-password" required
                         data-error="Password is required.">
+                    <img src="./assets/ui-icons/inputLock.svg" alt="" class="password-icon" id="passwordIcon"
+                        data-lock="./assets/ui-icons/inputLock.svg"
+                        data-invisible="./assets/ui-icons/inputEyeInvisible.svg"
+                        data-visible="./assets/ui-icons/inputEyeVisible.svg">
                 </div>
                 <div class="form-btn">
                     <button type="submit" class="login-signup-btn">Log in</button>

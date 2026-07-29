@@ -21,6 +21,7 @@ if (sessionStorage.getItem("skipAnimation") === "true") {
  */
 initValidation(loginForm);
 const errorMessageElement = document.getElementById('passwordError');
+setupPasswordVisibilityToggle(password, document.getElementById('passwordIcon'));
 
 /**
  * Handles the login form submission, validates the input and redirects on success.
