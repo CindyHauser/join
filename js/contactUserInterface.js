@@ -190,113 +190,6 @@ const contactFormBlured = (element) => {
     inputParent.classList.remove('contact-form-overlay-input-parent-focused')
 }
 
-// delete contact
-// get Task Library 
-// make array from the library 
-const getTaskLibraryForFirebaseInit = async () => {
-    const response = await fetch(BASE_URL + "/task" + ".json")
-    return response.json()
-}
-
-const putTaskContactSelectToFireBase = async (id, array = []) => {
-    const response = await fetch(BASE_URL + "/task/" + `${id}/` + "contactSelect" + ".json", putMethode(array))
-    return await response.json()
-}
-
-const setTaskDataStructure = (key, object) => {
-    return {
-        "id": key,
-        "contactSelect": object[key].contactSelect,
-    }
-}
-
-const refreshContactSelectDataStructure = (taskId, contactSelectArray, contactId) => {
-    return {
-        "taskId": taskId,
-        "contactSelectNew": setNewContactSelect(contactSelectArray, contactId),
-    }
-}
-
-const getPreludeGeneralTaskArray = (objectLibrary, callbackFn) => {
-    let preludeGeneralTaskArray = []
-    for (key in objectLibrary) {
-        if (key != "position") {
-            preludeGeneralTaskArray.push(callbackFn(key, objectLibrary))
-        }
-    }
-    return preludeGeneralTaskArray
-}
-
-const getGeneralTaskArray = (objectLibrary, callbackFn, callbackFn2) => {
-    generalTaskArray = callbackFn2(objectLibrary, callbackFn)
-    return generalTaskArray
-}
-
-// search alghorithm
-
-const setNewContactSelect = (array, id) => {
-    let index = array.indexOf(id)
-    array.splice(index, 1);
-    return array
-}
-
-const findDeletedContactSelectPosition = (array, id) => {
-    let positionList = []
-    for (let index = 0; index < array.length; index++) {
-        const task = array[index]
-        if (task.contactSelect && task.contactSelect.includes(id)) {
-            positionList.push(refreshContactSelectDataStructure(task.id, task.contactSelect, id))
-        }
-    }
-    return positionList
-}
-
-const putIterateAllPositionsOfContacts = async (array) => {
-    for (let index = 0; index < array.length; index++) {
-        await putTaskContactSelectToFireBase(array[index].taskId, array[index].contactSelectNew)
-    }
-}
-
-const deleteContact = async (id) => {
-    const taskLibrary = await getTaskLibraryForFirebaseInit()
-    const taskArray = getGeneralTaskArray(taskLibrary, setTaskDataStructure, getPreludeGeneralTaskArray)
-    if (taskArray.length == 0) {
-        await deleteContactDataFromFireBase("/contact/" + `${id}`)
-    } else {
-        const positions = findDeletedContactSelectPosition(taskArray, id);
-        await putIterateAllPositionsOfContacts(positions)
-        await deleteContactDataFromFireBase("/contact/" + `${id}`)
-    }
-    closeExpandingCards()
-    await setLibraryForFirebaseInit();
-    getContactsArray();
-    renderContactList()
-}
-
-const deleteContactOverlayRespFunction = async () => {
-    let id = localStorage.getItem('currentContactIdToEdit')
-    await deleteContact(id)
-    closeOverlayEditContact()
-}
-//createcontact
-const createContact = async () => {
-    let validationResultObject = initValidation(
-        setContactInputsValidationArray, getValidationValue, markFalsevalue, allAddContactInputs
-    )
-    if (validationResultObject.value == true) {
-        await uploadAndinitNewContactList(validationResultObject.array)
-    }
-}
-
-const uploadAndinitNewContactList = async (validationArray) => {
-    const response = await postContactDataToFireBase("/contact", setUpContactData(getAllValue, validationArray))
-    await initContactPage()
-    closeOverlayAddContact()
-    const newContactCard = document.getElementById(response.name)
-    clicked(newContactCard)
-    newContactCard.scrollIntoView({ behavior: 'smooth' })
-    setAlertAddContactSuccess()
-}
 
 const setAlertAddContactSuccess = () => {
     const alertElement = document.getElementById('AddContactSuccessAlert')
@@ -319,9 +212,6 @@ const setAlertAddContactSuccessTimer = (alertElement, alertElementParent) => {
     }, 3000);
 }
 
-// edit contact
-
-
 let savedID = ''
 const initEditContact = (id) => {
     savedID = id
@@ -333,23 +223,4 @@ const initEditContact = (id) => {
         contactAsJson.phone, contactAsJson.badgeColor, contactAsJson.fornameFirstLetter, contactAsJson.surnameFirstLetter
     )
     initOverlayEditContact()
-}
-
-const editContact = async () => {
-    const contactID = savedID
-    let validationResultObject = initValidation(
-        setContactInputsValidationArray, getValidationValue, markFalsevalue, allEditContactInputs
-    )
-    if (validationResultObject.value == true) {
-        await uploadAndShowEdit(validationResultObject.array, contactID)
-    }
-}
-
-const uploadAndShowEdit = async (validationArray, id) => {
-    const response = await putContactDataToFireBase("/contact/", `${id}`, setUpContactData(getAllValue, validationArray))
-    await initContactPage()
-    closeOverlayEditContact()
-    const newContactCard = document.getElementById(id)
-    clicked(newContactCard)
-    newContactCard.scrollIntoView({ behavior: 'smooth' })
 }
