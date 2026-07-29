@@ -1,3 +1,11 @@
+.h2-contact-txt {
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
 .main-contact-static-expanded-height {
     height: 84%;
     max-width: 1210px;

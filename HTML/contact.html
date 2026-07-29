@@ -64,8 +64,8 @@
         </header>
         <section class="main-content main-contact-static-expanded-height">
             <div class="contact-list">
-                <div class="add-contact-button-parent" onclick="initOverlayAddContact()">
-                    <button class="add-contact-button">
+                <div class="add-contact-button-parent">
+                    <button class="add-contact-button" onclick="initOverlayAddContact()">
                         <span>Add new contact</span>
                         <img src="../assets/ui-icons/person_add.svg" alt="person_add.svg">
                     </button>
@@ -81,7 +81,7 @@
                         </button>
                     </div>
                     <div class="contact-static-title">
-                        <div class="contact-txt"><span>Contacts</span></div>
+                        <div class="contact-txt"><h2 class="h2-contact-txt">Contacts</h2></div>
                         <div class="contact-border-line"></div>
                         <div class="contact-subtitle"><span>Better with a team </span></div>
                         <div class="contact-border-line-responsive"></div>
@@ -160,7 +160,7 @@
                             </div>
                             <div aria-label="enter your phone number"
                                 class="contact-overlay-form-phone-container contact-input-parent">
-                                <input type="text" id="contactOverlayFormPhone" placeholder="Phone"
+                                <input type="tel" id="contactOverlayFormPhone" placeholder="Phone"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/call.svg" alt="call.svg">
                             </div>
@@ -216,7 +216,7 @@
                                 <img src="../assets/ui-icons/person.svg" alt="person.svg">
                             </div>
                         </div>
-                        <form class="contact-overlay-form-body-second-section">
+                        <form novalidate class="contact-overlay-form-body-second-section">
                             <button type="button" class="contact-overlay-form-close-bar-desktop">
                                 <img src="../assets/ui-icons/Close.svg" alt="Close.svg"
                                     onclick="closeOverlayEditContact()">
@@ -242,7 +242,7 @@
                                     style="opacity: 0;">email not valid ! please enter again</span>
                             </div>
                             <div class="contact-overlay-form-phone-container contact-input-parent">
-                                <input aria-label="contact phone to be edited" type="text"
+                                <input aria-label="contact phone to be edited" type="tel"
                                     id="editContactOverlayFormPhone" placeholder="Phone"
                                     onfocus="contactFormFocused(this)" onblur="contactFormBlured(this)">
                                 <img src="../assets/ui-icons/call.svg" alt="call.svg">
