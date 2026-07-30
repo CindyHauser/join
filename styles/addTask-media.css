@@ -1,6 +1,6 @@
 @media (max-width:768px) {
     .main-content {
-        padding: 1rem 1rem 0 2rem
+        padding: 1rem 1rem 0 1rem
     }
 
     hr {
@@ -53,6 +53,26 @@
     .priority-btn {
         justify-content: center;
         padding: 10px 10px;
+    }
+}
+
+@media (max-width:500px) {
+    .addTask-header {
+        height: 12%;
+    }
+
+    .addTask-header h2 {
+        font-size: 2rem;
+    }
+
+    .add-task {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .add-task-textarea {
+        min-height: 10vh;
     }
 }
 

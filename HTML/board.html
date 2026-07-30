@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="../styles/addtask.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../styles/styles-media.css">
+    <link rel="stylesheet" href="../styles/addTask-media.css">
+    <link rel="stylesheet" href="../styles/dialog-board-media.css">
 </head>
 
 <body onload="initBoardPage()">
@@ -174,7 +176,7 @@
                             <div class="form-inputs">
                                 <label for="description">Description</label>
                                 <textarea name="description" id="description"
-                                    placeholder="Enter a Description"></textarea>
+                                    placeholder="Enter a Description" class="add-task-textarea"></textarea>
                             </div>
                             <div class="form-inputs">
                                 <label class="required" for="date">Due date</label>
@@ -250,12 +252,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="add-task-footer">
+                    <div class="add-task-footer add-task-footer-dialog">
                         <p class="required">This field is required</p>
                         <div class="add-task-buttons">
-                            <button type="button" onclick="clearAllInput()" class="add-task-button  btn-secondary">Clear
+                            <button type="button" onclick="clearAllInput()" class="add-task-button add-task-button-dialog btn-secondary">Clear
                                 <img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
-                            <button type="submit" class="add-task-button btn-main">Create task <img
+                            <button type="submit" class="add-task-button add-task-button-dialog btn-main">Create task <img
                                     src="../assets/ui-icons/check.svg" alt="check.svg"></button>
                         </div>
 
