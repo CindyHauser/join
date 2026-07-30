@@ -1,4 +1,41 @@
 /**
+ * Prevents the default behavior of a DOM event.
+ * Most commonly used to stop the browser from reloading the page when a form is submitted,
+ * allowing for custom JavaScript handling instead.
+ *
+ * @param {Event} event - The DOM event object triggered by the user's action (e.g., a submit event).
+ */
+const setSubmitPreventDefault = (event) => {
+    event.preventDefault()
+}
+
+/**
+ * Initializes event listeners for all forms on the document.
+ * Iterates through every `<form>` element currently in the DOM and attaches the 
+ * `setSubmitPreventDefault` function to the 'submit' event. This ensures that 
+ * no form submission triggers a disruptive page reload.
+ */
+const forms = document.querySelectorAll('form')
+forms.forEach(
+    (form) => {
+        form.addEventListener('submit', setSubmitPreventDefault)
+    }
+)
+
+/**
+ * Prevents an event from bubbling up the DOM tree.
+ * Stops parent event handlers from being triggered by the current event.
+ * Highly useful for overlays or modals to ensure clicking inside them doesn't trigger 
+ * a "close overlay" event attached to a background container.
+ *
+ * @param {Event} event - The DOM event object triggered by the user's action.
+ */
+const setEventBubbling = (event) => {
+    event.stopPropagation()
+}
+
+
+/**
  * Asynchronously fetches the entire task library from the Firebase Realtime Database.
  * It accesses the "/task.json" endpoint and parses the response.
  *

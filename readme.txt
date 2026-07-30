@@ -81,3 +81,6 @@
 Änderungen Stand 19.07.2026 von Arnesto
 1. form und button tags in den kontakte seite mit eingebunden
 2. aria label sind hinzugefügt wo es sinvoll ist
+
+Änderungen Stand 31.07.2026 von Arnesto
+1. Js doc in alle contact js dateien fertig
