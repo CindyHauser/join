@@ -1,9 +1,9 @@
 @media (min-width:768px) and (max-width:1024px) {
-    h3{
+    h3 {
         font-size: 1rem;
     }
 
-    .task-category{
+    .task-category {
         font-size: 0.75rem;
         width: 98%;
         padding: 6px;
@@ -36,6 +36,7 @@
         order: 3;
         flex-basis: 100%;
         /* erzwingt Umbruch, volle Breite */
+        margin-top: 10px;
     }
 
     .btn-text {
@@ -72,8 +73,103 @@
 
 }
 
-@media (max-width: 576px){
+@media (max-width: 768px) {
+    .search-wrapper {
+        height: 32px;
+    }
+
+    .board-input {
+        height: 29px;
+        font-size: 18px;
+    }
+
+    .summary-header h2 {
+        font-size: 2rem;
+    }
+
+    .add-task-btn {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem 1rem 0 2rem
+    }
+
+    hr {
+        display: none;
+    }
+
+    .add-task-form {
+        height: 80%;
+    }
+
+    .add-task-content {
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .add-task {
+        gap: 2rem;
+    }
+
+    .add-task-footer {
+        justify-content: unset;
+        width: 100%;
+        height: 15%;
+    }
+
+    .add-task-footer p {
+        display: none;
+    }
+
+    .add-task-buttons {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .dp-none {
+        display: flex;
+        margin: 0
+    }
+
+    .priority-options {
+        justify-content: space-between;
+    }
+
+    .priority-btn {
+        justify-content: center;
+        padding: 10px 10px;
+    }
+}
+
+@media (max-width: 576px) {
     .task-board-card {
         min-width: 90%;
+    }
+
+    .priority-options {
+        flex-direction: column;
+    }
+
+    .add-task-footer {
+        height: 14% !important;
+    }
+}
+
+@media (max-width: 370px) {
+    .add-task-button {
+        padding-inline: 10px !important;
+        padding-block: 0px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .add-task-buttons img {
+        height: 65%;
+    }
+
+    .dialogAddTask h2 {
+        font-size: 2rem;
     }
 }

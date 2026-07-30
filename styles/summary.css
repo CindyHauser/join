@@ -38,7 +38,7 @@
 
 .summary-header h2 {
     min-width: clamp(200px, 120.34px + 10.37vw, 250px);
-    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
+    font-size: clamp(2rem, 1.78rem + 2.53vw, 4rem);
     margin: 0;
 }
 

@@ -20,7 +20,7 @@ hr {
 }
 
 h2 {
-    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
+    font-size: clamp(2rem, 1.78rem + 2.53vw, 4rem);
     margin: 0;
 }
 
@@ -132,7 +132,8 @@ fieldset {
 }
 
 .add-task-button {
-    padding: 10px 20px;
+    padding-inline: 20px;
+    padding-block: 10px;
     border: 1px solid #ccc;
     cursor: pointer;
     border-radius: 8px;

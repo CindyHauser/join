@@ -1,5 +1,5 @@
 @media (max-width:768px) {
-    .main-content{
+    .main-content {
         padding: 1rem 1rem 0 2rem
     }
 
@@ -14,7 +14,6 @@
     .add-task-content {
         flex-direction: column;
         overflow: auto;
-
     }
 
     .add-task {
@@ -28,37 +27,37 @@
         background-color: var(--background-color-body);
     }
 
-    .add-task-footer p{
+    .add-task-footer p {
         display: none;
     }
 
-    .add-task-buttons{
+    .add-task-buttons {
         width: 100%;
         justify-content: space-evenly;
     }
 
-    .add-task-button{
-        padding: 10px 10px;
+    .add-task-button {
+        padding-inline: 10px;
+        padding-block: 10px;
     }
 
-    .dp-none{
+    .dp-none {
         display: flex;
-        margin:0
+        margin: 0
     }
 
-    .priority-options{
-       justify-content: space-between;
+    .priority-options {
+        justify-content: space-between;
     }
 
-    .priority-btn{
+    .priority-btn {
         justify-content: center;
         padding: 10px 10px;
     }
-
 }
 
 @media (max-width:370px) {
-    .priority-options{
+    .priority-options {
         flex-direction: column;
     }
 }
