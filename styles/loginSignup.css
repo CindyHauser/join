@@ -9,12 +9,18 @@
     pointer-events: none;
 }
 
-.logoDark {
+.logoBright {
+    display: none;
+}
+
+.logoDark, 
+.logoBright {
     z-index: 1;
     animation: introLogo 1.2s ease-in-out forwards;
 }
 
-.no-animation .logoDark {
+.no-animation .logoDark 
+.logoBright {
     animation: none;
     transform: translate(0, 0) scale(1);
 }
@@ -290,5 +296,16 @@ h1 {
 
     .main-login-signup {
         justify-content: space-evenly;
+    }
+}
+
+@media (max-width:500px) {
+    .logoDark {
+        display: none;
+    }
+
+    .logoBright {
+        display: flex;
+        width: 64px;
     }
 }
