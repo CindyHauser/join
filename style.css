@@ -136,7 +136,7 @@ h1 {
 }
 
 .main-section {
-    height: 100vh;
+    height: 100svh;
     width: calc(100vw - min(230px, 16vw));
 }
 
