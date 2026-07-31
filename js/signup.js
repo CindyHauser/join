@@ -22,16 +22,6 @@ signupForm.addEventListener("change", toggleSignupButton);
 toggleSignupButton();
 
 /**
- * Disables page animations when the session flag requests a skip.
- *
- * @returns {void}
- */
-if (sessionStorage.getItem("skipAnimation") === "true") {
-        document.documentElement.classList.add("no-animation");
-        sessionStorage.removeItem("skipAnimation");
-    }
-
-/**
  * Handles signup form submission, validates the user input, and stores the new user.
  *
  * @param {Event} event - The submit event of the signup form.

@@ -1,0 +1,61 @@
+@media (max-width: 500px) {
+    .header-login-signup {
+        position: relative;
+    }
+
+    body {
+        background-color: var(--main-color);
+        animation: bgToLight 0.4s 0.8s ease-in-out forwards;
+    }
+
+    .no-animation body {
+        animation: none;
+        background-color: var(--background-color-body);
+    }
+
+    @keyframes bgToLight {
+        to {
+            background-color: var(--background-color-body);
+        }
+    }
+
+    .logoDark {
+        opacity: 0;
+        animation: introLogo 1.2s ease-in-out forwards,
+            logoDarkIn 0.2s 1.0s ease-in-out forwards;
+    }
+
+    .logoBright {
+        display: block;
+        position: absolute;
+        left: 16px;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        animation: introLogo 1.2s ease-in-out forwards,
+            logoBrightOut 0.2s 0.8s ease-in-out forwards;
+    }
+
+    .no-animation .logoDark {
+        animation: none;
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    .no-animation .logoBright {
+        animation: none;
+        display: none;
+    }
+
+    @keyframes logoDarkIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes logoBrightOut {
+        to {
+            opacity: 0;
+        }
+    }
+}
