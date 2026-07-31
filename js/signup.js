@@ -22,6 +22,16 @@ signupForm.addEventListener("change", toggleSignupButton);
 toggleSignupButton();
 
 /**
+ * Disables page animations when the session flag requests a skip.
+ *
+ * @returns {void}
+ */
+if (sessionStorage.getItem("skipAnimation") === "true") {
+        document.documentElement.classList.add("no-animation");
+        sessionStorage.removeItem("skipAnimation");
+    }
+
+/**
  * Handles signup form submission, validates the user input, and stores the new user.
  *
  * @param {Event} event - The submit event of the signup form.
@@ -120,12 +130,13 @@ const postSignupDataToFireBase = async (path, data = {}) => {
 }
 
 /**
- * Stores a flag to skip any signup animation on the next page.
+ * Stores a flag to skip any animation on the next page and go to the index page.
  *
  * @returns {void}
  */
 function goBack() {
     sessionStorage.setItem("skipAnimation", "true");
+    window.location.href='../index.html';
 }
 
 /**

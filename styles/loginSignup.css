@@ -13,13 +13,13 @@
     display: none;
 }
 
-.logoDark, 
+.logoDark,
 .logoBright {
     z-index: 1;
     animation: introLogo 1.2s ease-in-out forwards;
 }
 
-.no-animation .logoDark, 
+.no-animation .logoDark,
 .no-animation .logoBright {
     animation: none;
     transform: translate(0, 0) scale(1);
@@ -95,6 +95,9 @@ h1 {
 }
 
 .back-arrow {
+    appearance: none;
+    border: none;
+    background: none;
     position: absolute;
     top: clamp(12px, -16.4px + 7.1vw, 83px);
     left: 20px;
@@ -103,6 +106,7 @@ h1 {
     width: 40px;
     text-align: center;
     color: var(--hover-effect-dark);
+    cursor: pointer;
 }
 
 .back-arrow:hover {
@@ -275,7 +279,8 @@ h1 {
     }
 
     .logoDark,
-    .logoDark-SignUp, .logoBright {
+    .logoDark-SignUp,
+    .logoBright {
         width: 64px;
     }
 
@@ -315,13 +320,15 @@ h1 {
     }
 
     @keyframes bgToLight {
-        to { background-color: var(--background-color-body); }
+        to {
+            background-color: var(--background-color-body);
+        }
     }
 
     .logoDark {
         opacity: 0;
         animation: introLogo 1.2s ease-in-out forwards,
-                   logoDarkIn 0.2s 1.0s ease-in-out forwards;
+            logoDarkIn 0.2s 1.0s ease-in-out forwards;
     }
 
     .logoBright {
@@ -332,7 +339,7 @@ h1 {
         bottom: 0;
         margin: auto 0;
         animation: introLogo 1.2s ease-in-out forwards,
-                   logoBrightOut 0.2s 0.8s ease-in-out forwards;
+            logoBrightOut 0.2s 0.8s ease-in-out forwards;
     }
 
     .no-animation .logoDark {
@@ -347,10 +354,14 @@ h1 {
     }
 
     @keyframes logoDarkIn {
-        to { opacity: 1; }
+        to {
+            opacity: 1;
+        }
     }
 
     @keyframes logoBrightOut {
-        to { opacity: 0; }
+        to {
+            opacity: 0;
+        }
     }
 }

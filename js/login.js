@@ -79,3 +79,13 @@ async function saveUserDataToLocalStorage() {
     sessionStorage.setItem("currentUserName", currentUser.name);
     sessionStorage.setItem("currentUserInitials", currentUser.initials);
 }
+
+/**
+ * Stores a flag to skip any animation on the next page and go to the signup page.
+ *
+ * @returns {void}
+ */
+function goToSignupPage() {
+    sessionStorage.setItem("skipAnimation", "true")
+    window.location.href='./HTML/signup.html';
+}
