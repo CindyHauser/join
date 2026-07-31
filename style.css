@@ -113,15 +113,17 @@ h1 {
     height: 25%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     gap: 16px;
     cursor: pointer;
+    text-align: center;
 }
 
 
 .privacy-legal-notice-link {
     color: var(--text-color-links);
+    width: 100%;
+    padding-block: 6px;
 }
 
 .privacy-legal-notice-link:hover {
