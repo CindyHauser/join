@@ -3,3 +3,30 @@
     flex-direction: column;
     gap: 8px;
 }
+
+.privacy-and-security-section-media {
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .privacy-and-security-section-media {
+        height: 96%;
+    }
+
+    .menu-point-selected-responsive {
+        background-color: var(--menu-hover);
+    }
+
+    .privacy-legal-notice-link {
+        padding-inline: 10px;
+        height: 100%;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+    }
+}

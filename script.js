@@ -8,9 +8,7 @@ const initContactPage = async () => {
         // setup contact Array
         getContactsArray();
         // rendering list
-        renderContactList();
-        
-        
+        renderContactList(); 
 }
 
 const initBoardPage = async () => {
@@ -20,7 +18,6 @@ const initBoardPage = async () => {
         getAllArray()
         renderAllCards(toDoTaskArray, inProgressTaskArray, awaitFeedbackTaskArray, doneTaskArray)
 }
-
 
 const initAddTaskPage = async () => {
         await setLibraryForFirebaseInit()

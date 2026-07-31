@@ -74,7 +74,6 @@
     object-fit: cover;
 }
 
-
 .contact-overlay-form-title-container {
     width: 96%;
     height: 15%;
@@ -224,7 +223,6 @@
     min-height: 24px;
 }
 
-
 .contact-overlay-form-phone-container {
     border: 2px solid var(--text-color-links);
     height: 8%;
@@ -233,8 +231,6 @@
     border-radius: 8px 8px 8px 8px;
     justify-content: center;
 }
-
-
 
 .contact-overlay-form-phone-container input {
     width: 90%;
@@ -253,7 +249,6 @@
     min-height: 24px;
 }
 
-
 .contact-overlay-functions {
     display: flex;
     gap: 16px;
@@ -271,7 +266,6 @@
     gap: 8px;
     padding: 8px;
     transition: all 125ms ease-in-out;
-
 }
 
 .contact-overlay-function-edit-resp-container {
@@ -285,7 +279,6 @@
     gap: 8px;
     padding: 8px;
     transition: all 125ms ease-in-out;
-
 }
 
 .contact-overlay-function-cancel-container:hover {

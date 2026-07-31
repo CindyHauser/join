@@ -181,7 +181,6 @@ const setUpContactData = () => {
  * @returns {void}
  */
 function toggleSignupButton() {
-    // signupButton.disabled = !signupForm.checkValidity();
     const inputs = signupForm.querySelectorAll('input[required]');
     const allFilled = Array.from(inputs).every(input => {
         if (input.type === 'checkbox') {

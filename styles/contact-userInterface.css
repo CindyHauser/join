@@ -22,7 +22,6 @@
     animation: fade-out-responsive-contact-functions 125ms ease-in 0s 1 normal forwards;
 }
 
-
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -112,7 +111,6 @@
         opacity: 1;
         transform: translateY(0svw);
     }
-
 }
 
 @keyframes alert-slide-out-responsive {
@@ -124,5 +122,4 @@
         opacity: 1;
         transform: translateY(100svw);
     }
-
 }

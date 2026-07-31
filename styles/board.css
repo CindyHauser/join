@@ -46,7 +46,7 @@ h2 {
 
 .no-task-found-message {
     position: absolute;
-    top:50px;
+    top: 50px;
     color: red;
     opacity: 0;
 }
