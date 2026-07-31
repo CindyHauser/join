@@ -393,8 +393,8 @@
 
 .show-contact-functions-resp {
     all: unset;
-    height: clamp(56px, 13svw, 100px);
-    width: clamp(56px, 13svw, 100px);
+    height: clamp(56px, 13svw, 80px);
+    width: clamp(56px, 13svw, 80px);
     border-radius: 50%;
     background-color: var(--menu-hover);
     position: fixed;
@@ -437,9 +437,10 @@
 
     .add-contact-button-parent {
         height: 0px;
-        position: absolute;
-        bottom: 10svw;
-        right: 6svw;
+        position: fixed;
+        bottom: 16svh;
+        width: max-content;
+        right: 24px;
     }
 
     .add-contact-button {
@@ -484,8 +485,9 @@
     .contacts-member-circle-initial-expanded {
         min-width: unset;
         min-height: unset;
-        width: clamp(48px, 24svw, 96px);
-        height: clamp(48px, 24svw, 96px);
+        width: clamp(48px, 15svw, 80px);
+        height: clamp(48px, 15svw, 80px);
+        font-size: 24px;
     }
 
     .contact-border-line {
@@ -515,11 +517,11 @@
         border: 2px solid var(--menu-hover);
         flex-direction: column;
         width: clamp(86px, 24svw, 120px);
-        height: 10svh;
+        height: 12svh;
         justify-content: center;
         gap: 8px;
         position: fixed;
-        bottom: 80px;
+        bottom: 12svh;
         right: -180px;
         border-radius: 20px 20px 0 20px;
         box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
@@ -551,6 +553,7 @@
 
     .show-contact-functions-resp {
         display: flex;
+        bottom: 12svh;
     }
 }
 

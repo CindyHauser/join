@@ -394,7 +394,7 @@ input:focus {
 
     .contact-overlay-form-body-inner-hug {
         flex-direction: column;
-        transform: translateY(-70px);
+        transform: translateY(-12%);
         height: 120%;
         gap: 16px;
     }
