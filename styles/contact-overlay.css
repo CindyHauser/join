@@ -4,8 +4,8 @@
     display: none;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    height: 100svh;
+    width: 100svw;
     z-index: 8;
 }
 
