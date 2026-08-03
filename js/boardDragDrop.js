@@ -13,7 +13,7 @@ const cardDragged = (event) => {
         "cardId": card.id,
         "cardState": element.id
     }
-    event.dataTransfer.setData("application/json", JSON.stringify(cardData))
+    event.dataTransfer.setData("text/plain", JSON.stringify(cardData))
 }
 
 /**
@@ -42,7 +42,7 @@ const cardDropped = async (event) => {
     event.preventDefault()
     const element = event.target.closest('.progress-tasks')
     const dropZone = element.querySelector('.drag-and-drop-tasks')
-    const preludeStringifyData = event.dataTransfer.getData("application/json")
+    const preludeStringifyData = event.dataTransfer.getData("text/plain")
     const cardData = JSON.parse(preludeStringifyData)
     const draggedCard = document.querySelector('.task-board-card-dragged')
     if (draggedCard) {
