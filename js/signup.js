@@ -34,9 +34,8 @@ signupForm.addEventListener("submit", async (event) => {
     if (await checkUserExists()) return;
     try {
         await openPostSignup();
-        goBack();
         await showSuccessDialog("successDialog");
-        window.location.href = "../index.html";
+        goBack();
     } catch (error) {
         console.error(error);
     }

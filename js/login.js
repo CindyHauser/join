@@ -36,8 +36,6 @@ loginForm.addEventListener('submit', async (event) => {
     const user = await checkUserExists();
     if (user) {
         await saveUserDataToLocalStorage();
-        email.value = '';
-        password.value = '';
         await showSuccessDialog('successDialog');
         window.location.href = './HTML/summary.html';
     } else {
