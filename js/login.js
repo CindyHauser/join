@@ -37,6 +37,7 @@ loginForm.addEventListener('submit', async (event) => {
     if (user) {
         await saveUserDataToLocalStorage();
         await showSuccessDialog('successDialog');
+        sessionStorage.setItem('cameFromIndex', 'true');
         window.location.href = './HTML/summary.html';
     } else {
         errorMessageElement.textContent = 'Invalid email or password';

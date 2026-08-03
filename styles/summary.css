@@ -199,16 +199,40 @@
         gap: 0.5rem;
     }
 
-    .greeting-section {
-        display: none;
-    }
-
     .v-line-header {
         display: none;
     }
 
     .h-line-header {
         display: block;
+    }
+
+    .greeting-section {
+        display: none;
+    }
+
+    html.pending-greeting .greeting-section {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding-top: unset;
+        background: var(--background-color-body);
+        animation: fadeOutGreeting 3s forwards;
+    }
+
+    @keyframes fadeOutGreeting {
+
+        0%,
+        80% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
     }
 }
 

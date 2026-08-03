@@ -178,3 +178,14 @@ const computeUrgentStats = (tasks) => {
 document.addEventListener('DOMContentLoaded', () => {
     updateSummaryMetrics();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    sessionStorage.removeItem('cameFromIndex');
+    const html = document.documentElement;
+    if (html.classList.contains('pending-greeting')) {
+        const greetingSection = document.querySelector('.greeting-section');
+        greetingSection.addEventListener('animationend', () => {
+            html.classList.remove('pending-greeting');
+        }, { once: true });
+    }
+});
