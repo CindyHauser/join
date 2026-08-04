@@ -1,4 +1,5 @@
 let moveMenuTaskId = null;
+let activeMoveMenuTaskId = null;
 
 /**
  * Marks a dragged task card as active and stores its drag metadata.
@@ -124,8 +125,6 @@ const cardLeavingDragZone = (event) => {
     dropZone.classList.remove('drag-zone-entered')
 }
 
-
-
 /**
  * Opens the move menu for a specific task and triggers the slide-in animation.
  * Stops the event from bubbling up to prevent unintended clicks on parent elements.
@@ -135,10 +134,15 @@ const cardLeavingDragZone = (event) => {
  */
 const openMoveMenu = (event, taskId) => {
     event.stopPropagation();
+
+    if (activeMoveMenuTaskId && activeMoveMenuTaskId !== taskId) {
+        closeMoveMenu(activeMoveMenuTaskId);
+    }
     const moveDownMenu = document.getElementById(`moveMenu${taskId}`)
     const moveDownMenuParent = moveDownMenu.closest('.progress-tasks')
     moveDownMenuParent.classList.add('drag-zone-entered')
     moveDownMenu.classList.add('move-menu-slide-in-resp-board-functions-effect-on')
+    activeMoveMenuTaskId = taskId;
 };
 
 /**
@@ -149,12 +153,16 @@ const openMoveMenu = (event, taskId) => {
  */
 const closeMoveMenu = (taskId) => {
     const moveDownMenu = document.getElementById(`moveMenu${taskId}`)
+    if (!moveDownMenu) return;
     const moveDownMenuParent = moveDownMenu.closest('.progress-tasks')
-    moveDownMenuParent.classList.remove('drag-zone-entered')
+    moveDownMenuParent?.classList.remove('drag-zone-entered')
     moveDownMenu.classList.replace('move-menu-slide-in-resp-board-functions-effect-on', 'move-menu-slide-in-resp-board-functions-effect-off')
     setTimeout(() => {
         moveDownMenu.classList.remove('move-menu-slide-in-resp-board-functions-effect-off')
     }, 150);
+    if (activeMoveMenuTaskId === taskId) {
+        activeMoveMenuTaskId = null;
+    }
 }
 
 /**
@@ -195,7 +203,7 @@ const scrollToMovedTask = (taskId) => {
         behavior: 'smooth',
         block: 'center'
     });
-    scrollToMovedTaskTimeFunctions(movedTask, movedTaskParent) 
+    scrollToMovedTaskTimeFunctions(movedTask, movedTaskParent)
 }
 
 /**
