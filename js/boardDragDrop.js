@@ -124,90 +124,98 @@ const cardLeavingDragZone = (event) => {
     dropZone.classList.remove('drag-zone-entered')
 }
 
+
+
 /**
- * Toggles the move-to menu for a task; opens it if closed or for a different task, closes otherwise.
+ * Opens the move menu for a specific task and triggers the slide-in animation.
+ * Stops the event from bubbling up to prevent unintended clicks on parent elements.
  *
- * @param {Event} event - The click event on the move icon.
- * @param {string} taskId - The task identifier.
- * @param {string} currentState - The task's current column state.
- * @returns {void}
+ * @param {Event} event - The DOM event triggered by the user interaction (e.g., click).
+ * @param {string|number} taskId - The unique identifier of the task to locate its specific menu.
  */
-const openMoveMenu = (event, taskId, currentState) => {
+const openMoveMenu = (event, taskId) => {
     event.stopPropagation();
-    const menu = document.getElementById('moveMenu');
-    if (!menu.hidden && moveMenuTaskId === taskId) {
-        closeMoveMenu();
-        return;
-    }
-    moveMenuTaskId = taskId;
-    filterMoveMenuOptions(menu, currentState);
-    positionMoveMenu(menu, event.currentTarget);
-    menu.hidden = false;
+    const moveDownMenu = document.getElementById(`moveMenu${taskId}`)
+    const moveDownMenuParent = moveDownMenu.closest('.progress-tasks')
+    moveDownMenuParent.classList.add('drag-zone-entered')
+    moveDownMenu.classList.add('move-menu-slide-in-resp-board-functions-effect-on')
 };
 
 /**
- * Shows only the move-menu options that differ from the task's current state.
+ * Closes the move menu for a specific task and triggers the slide-out animation.
+ * Cleans up the animation classes after a short delay (150ms) to allow the transition to finish.
  *
- * @param {HTMLElement} menu - The move menu element.
- * @param {string} currentState - The task's current column state.
- * @returns {void}
+ * @param {string|number} taskId - The unique identifier of the task to locate its specific menu.
  */
-const filterMoveMenuOptions = (menu, currentState) => {
-    menu.querySelectorAll('.move-menu-item').forEach(btn => {
-        btn.hidden = btn.dataset.state === currentState;
-    });
-};
+const closeMoveMenu = (taskId) => {
+    const moveDownMenu = document.getElementById(`moveMenu${taskId}`)
+    const moveDownMenuParent = moveDownMenu.closest('.progress-tasks')
+    moveDownMenuParent.classList.remove('drag-zone-entered')
+    moveDownMenu.classList.replace('move-menu-slide-in-resp-board-functions-effect-on', 'move-menu-slide-in-resp-board-functions-effect-off')
+    setTimeout(() => {
+        moveDownMenu.classList.remove('move-menu-slide-in-resp-board-functions-effect-off')
+    }, 150);
+}
 
 /**
- * Positions the move menu directly under the icon that triggered it.
+ * Prevents further propagation of the current event in the capturing and bubbling phases.
+ * Useful to stop parent elements from triggering their own event listeners (e.g., when clicking a button inside a clickable container).
  *
- * @param {HTMLElement} menu - The move menu element.
- * @param {HTMLElement} anchor - The icon element the menu should appear under.
- * @returns {void}
+ * @param {Event} event - The DOM event triggered by the user interaction.
  */
-const positionMoveMenu = (menu, anchor) => {
-    const rect = anchor.getBoundingClientRect();
-    menu.style.top = `${rect.bottom + window.scrollY + 4}px`;
-    menu.style.left = `${rect.left + window.scrollX}px`;
-};
+const stopEventPropagation = (event) => {
+    event.stopPropagation();
+}
 
 /**
- * Closes the move-to menu.
+ * Asynchronously moves a task to a new state (column), updates the database, and refreshes the UI.
+ * Saves the task ID to local storage and scrolls the newly moved task into view after the board reloads.
  *
- * @returns {void}
+ * @param {HTMLElement} element - The DOM element that was clicked, containing the target state in its dataset (e.g., data-state="todo").
+ * @param {string|number} taskId - The unique identifier of the task being moved.
  */
-const closeMoveMenu = () => {
-    const menu = document.getElementById('moveMenu');
-    menu.hidden = true;
-    moveMenuTaskId = null;
-};
-
-/**
- * Moves a task to the selected state and refreshes the board.
- *
- * @param {string} newState - The target column state.
- * @returns {Promise<void>}
- */
-const moveTaskTo = async (newState) => {
-    if (!moveMenuTaskId) return;
-    await putTaskDataToFireBaseOnDrop(moveMenuTaskId, newState);
-    closeMoveMenu();
+const moveTaskTo = async (element, taskId) => {
+    localStorage.setItem('movedTask', `${taskId}`)
+    await putTaskDataToFireBaseOnDrop(`${taskId}`, element.dataset.state);
+    closeMoveMenu(`${taskId}`);
     await initBoardPage();
+    scrollToMovedTask(taskId)
 };
 
-document.addEventListener('click', (event) => {
-    const menu = document.getElementById('moveMenu');
-    if (!menu.hidden && !menu.contains(event.target) && !event.target.closest('.move-task-btn')) {
-        closeMoveMenu();
-    }
-});
-
-document.querySelectorAll('.move-menu-item').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        moveTaskTo(btn.dataset.state);
+/**
+ * Smoothly scrolls the viewport so that the specified task is centered on the screen.
+ * Also retrieves the task's parent container and triggers subsequent time-based visual effects (e.g., highlighting).
+ *
+ * @param {string|number} taskId - The unique identifier of the task to scroll into view.
+ */
+const scrollToMovedTask = (taskId) => {
+    const movedTask = document.getElementById(`${taskId}`)
+    const movedTaskParent = movedTask.closest('.progress-tasks')
+    movedTask.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
     });
-});
+    scrollToMovedTaskTimeFunctions(movedTask, movedTaskParent) 
+}
+
+/**
+ * Applies temporary visual highlight effects to a recently moved task and its new parent container.
+ * Automatically removes the highlight classes after 750ms and cleans up the local storage after 1000ms.
+ *
+ * @param {HTMLElement} movedTask - The DOM element of the task that was moved.
+ * @param {HTMLElement} movedTaskParent - The DOM element of the task's new parent column.
+ */
+const scrollToMovedTaskTimeFunctions = (movedTask, movedTaskParent) => {
+    movedTask.classList.add('task-board-card-dragged')
+    movedTaskParent.classList.add('drag-zone-entered')
+    setTimeout(() => {
+        movedTaskParent.classList.remove('drag-zone-entered')
+        movedTask.classList.remove('task-board-card-dragged')
+    }, 750);
+    setTimeout(() => {
+        localStorage.removeItem('movedTask')
+    }, 1000);
+}
 
 /**
  * Enables native drag on cards above 768px, disables it below.
@@ -220,5 +228,4 @@ const updateCardDraggability = () => {
         card.draggable = !isMobile;
     });
 };
-
 window.addEventListener('resize', updateCardDraggability);
