@@ -71,6 +71,7 @@
 
     .task-board-card {
         min-width: 60%;
+        -webkit-user-drag: none;
     }
 
     .search-wrapper {

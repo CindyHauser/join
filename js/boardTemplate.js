@@ -13,6 +13,9 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     <div class="task-card-inner-hug">
         <div class="task-card-header">
             <div class="task-category ${convertStringToClass(array[index].category)}">${array[index].category}</div>
+                <button type="button" class="move-task-btn" onclick="openMoveMenu(event, '${array[index].id}', '${array[index].state}')" aria-label="Move task">
+                    <img src="../assets/ui-icons/moveTo.svg" alt="" class="move-task-icon">
+                </button>
         </div>
         <div class="task-card-body">
             <div class="task-card-title">

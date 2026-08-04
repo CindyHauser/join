@@ -175,8 +175,8 @@
                             </div>
                             <div class="form-inputs">
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description"
-                                    placeholder="Enter a Description" class="add-task-textarea"></textarea>
+                                <textarea name="description" id="description" placeholder="Enter a Description"
+                                    class="add-task-textarea"></textarea>
                             </div>
                             <div class="form-inputs">
                                 <label class="required" for="date">Due date</label>
@@ -255,10 +255,11 @@
                     <div class="add-task-footer add-task-footer-dialog">
                         <p class="required">This field is required</p>
                         <div class="add-task-buttons">
-                            <button type="button" onclick="clearAllInput()" class="add-task-button add-task-button-dialog btn-secondary">Clear
+                            <button type="button" onclick="clearAllInput()"
+                                class="add-task-button add-task-button-dialog btn-secondary">Clear
                                 <img src="../assets/ui-icons/Close.svg" alt="Schliessen"></button>
-                            <button type="submit" class="add-task-button add-task-button-dialog btn-main">Create task <img
-                                    src="../assets/ui-icons/check.svg" alt="check.svg"></button>
+                            <button type="submit" class="add-task-button add-task-button-dialog btn-main">Create task
+                                <img src="../assets/ui-icons/check.svg" alt="check.svg"></button>
                         </div>
 
                     </div>
@@ -291,6 +292,14 @@
         <p>Delete Task successful!</p><img src="../assets/ui-icons/delete.svg" alt="delete">
     </dialog>
     <p class="rotate-message" role="alert">Please rotate your device back to portrait mode.</p>
+
+    <nav class="move-menu" id="moveMenu" hidden>
+        <h4>Move To:</h4>
+        <button type="button" class="move-menu-item" data-state="toDo">To Do</button>
+        <button type="button" class="move-menu-item" data-state="inProgress">In Progress</button>
+        <button type="button" class="move-menu-item" data-state="awaitFeedBack">Await Feedback</button>
+        <button type="button" class="move-menu-item" data-state="done">Done</button>
+    </nav>
 </body>
 <script src="../js/validateForm.js"></script>
 <script src="../js/boardData.js"></script>

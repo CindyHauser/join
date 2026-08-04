@@ -31,3 +31,69 @@
     background-color: #0038FF;
 }
 
+.move-task-btn {
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    border: 1px solid black;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.move-task-icon {
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+
+.move-task-btn:hover {
+    background: var(--easy-blue-color-secondary);
+}
+
+.move-menu {
+    position: absolute;
+    background: var(--main-color);
+    border-radius: 0px 16px 16px 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    padding: 6px;
+    z-index: 20;
+}
+
+.move-menu[hidden] {
+    display: none;
+}
+
+.move-menu-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 9px 10px;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}
+
+.move-menu-item:hover {
+    background: var(--menu-hover);
+}
+
+.move-menu h4{
+    color: white;
+    width: 100%;
+    text-align: left;
+    padding: 9px 10px;
+    margin: 0;
+}
+
+@media (min-width: 769px) {
+    .move-task-btn{
+        display: none;
+    }
+}

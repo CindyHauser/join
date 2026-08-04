@@ -17,6 +17,7 @@ const renderCards = (array, id) => {
         cardListHtml = `<div class="noTask-Container"><p>No Task ${id === 'toDo' ? 'To do' : id === 'inProgress' ? 'In Progress' : id === 'awaitFeedBack' ? 'in Await Feedback' : 'in Done'}</p></div>`
     }
     renderZone.innerHTML = cardListHtml
+    updateCardDraggability()
 }
 
 /**

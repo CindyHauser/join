@@ -1,3 +1,5 @@
+let moveMenuTaskId = null;
+
 /**
  * Marks a dragged task card as active and stores its drag metadata.
  *
@@ -121,3 +123,102 @@ const cardLeavingDragZone = (event) => {
     const dropZone = element.querySelector('.drag-and-drop-tasks')
     dropZone.classList.remove('drag-zone-entered')
 }
+
+/**
+ * Toggles the move-to menu for a task; opens it if closed or for a different task, closes otherwise.
+ *
+ * @param {Event} event - The click event on the move icon.
+ * @param {string} taskId - The task identifier.
+ * @param {string} currentState - The task's current column state.
+ * @returns {void}
+ */
+const openMoveMenu = (event, taskId, currentState) => {
+    event.stopPropagation();
+    const menu = document.getElementById('moveMenu');
+    if (!menu.hidden && moveMenuTaskId === taskId) {
+        closeMoveMenu();
+        return;
+    }
+    moveMenuTaskId = taskId;
+    filterMoveMenuOptions(menu, currentState);
+    positionMoveMenu(menu, event.currentTarget);
+    menu.hidden = false;
+};
+
+/**
+ * Shows only the move-menu options that differ from the task's current state.
+ *
+ * @param {HTMLElement} menu - The move menu element.
+ * @param {string} currentState - The task's current column state.
+ * @returns {void}
+ */
+const filterMoveMenuOptions = (menu, currentState) => {
+    menu.querySelectorAll('.move-menu-item').forEach(btn => {
+        btn.hidden = btn.dataset.state === currentState;
+    });
+};
+
+/**
+ * Positions the move menu directly under the icon that triggered it.
+ *
+ * @param {HTMLElement} menu - The move menu element.
+ * @param {HTMLElement} anchor - The icon element the menu should appear under.
+ * @returns {void}
+ */
+const positionMoveMenu = (menu, anchor) => {
+    const rect = anchor.getBoundingClientRect();
+    menu.style.top = `${rect.bottom + window.scrollY + 4}px`;
+    menu.style.left = `${rect.left + window.scrollX}px`;
+};
+
+/**
+ * Closes the move-to menu.
+ *
+ * @returns {void}
+ */
+const closeMoveMenu = () => {
+    const menu = document.getElementById('moveMenu');
+    menu.hidden = true;
+    moveMenuTaskId = null;
+};
+
+/**
+ * Moves a task to the selected state and refreshes the board.
+ *
+ * @param {string} newState - The target column state.
+ * @returns {Promise<void>}
+ */
+const moveTaskTo = async (newState) => {
+    if (!moveMenuTaskId) return;
+    await putTaskDataToFireBaseOnDrop(moveMenuTaskId, newState);
+    closeMoveMenu();
+    await initBoardPage();
+};
+
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('moveMenu');
+    if (!menu.hidden && !menu.contains(event.target) && !event.target.closest('.move-task-btn')) {
+        closeMoveMenu();
+    }
+});
+
+document.querySelectorAll('.move-menu-item').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        moveTaskTo(btn.dataset.state);
+    });
+});
+
+/**
+ * Enables native drag on cards above 768px, disables it below.
+ *
+ * @returns {void}
+ */
+const updateCardDraggability = () => {
+    const isMobile = window.innerWidth < 768;
+    document.querySelectorAll('.task-board-card').forEach(card => {
+        card.draggable = !isMobile;
+    });
+};
+
+window.addEventListener('resize', updateCardDraggability);
