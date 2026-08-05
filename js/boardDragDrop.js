@@ -131,8 +131,9 @@ const cardLeavingDragZone = (event) => {
  *
  * @param {Event} event - The DOM event triggered by the user interaction (e.g., click).
  * @param {string|number} taskId - The unique identifier of the task to locate its specific menu.
+ * @param {string} currentState - The current state of the task.
  */
-const openMoveMenu = (event, taskId) => {
+const openMoveMenu = (event, taskId, currentState) => {
     event.stopPropagation();
 
     if (activeMoveMenuTaskId && activeMoveMenuTaskId !== taskId) {
@@ -142,7 +143,21 @@ const openMoveMenu = (event, taskId) => {
     const moveDownMenuParent = moveDownMenu.closest('.progress-tasks')
     moveDownMenuParent.classList.add('drag-zone-entered')
     moveDownMenu.classList.add('move-menu-slide-in-resp-board-functions-effect-on')
+    filterMoveMenuOptions(moveDownMenu, currentState)
     activeMoveMenuTaskId = taskId;
+};
+
+/**
+ * Shows only the move-menu options that differ from the task's current state.
+ *
+ * @param {HTMLElement} menu - The move menu element.
+ * @param {string} currentState - The task's current column state.
+ * @returns {void}
+ */
+const filterMoveMenuOptions = (menu, currentState) => {
+    menu.querySelectorAll('.move-menu-item').forEach(btn => {
+        btn.hidden = btn.dataset.state === currentState;
+    });
 };
 
 /**

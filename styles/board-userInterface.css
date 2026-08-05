@@ -121,6 +121,10 @@
     cursor: pointer;
 }
 
+.move-menu-item[hidden] {
+    display: none;
+}
+
 .move-menu-item:hover {
     background: var(--menu-hover);
 }

@@ -13,17 +13,17 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
     <div class="task-card-inner-hug">
         <div class="task-card-header">
             <div class="task-category ${convertStringToClass(array[index].category)}">${array[index].category}</div>
-                <button type="button" class="move-task-btn" onclick="openMoveMenu(event, '${array[index].id}')" aria-label="Move task">
+                <button type="button" class="move-task-btn" onclick="openMoveMenu(event, '${array[index].id}', '${array[index].state}')" aria-label="Move task">
                     <img src="../assets/ui-icons/moveTo.svg" alt="" class="move-task-icon">
                 </button>
-                    <nav class="move-menu" id="moveMenu${array[index].id}" onclick="stopEventPropagation(event)">
+                    <section class="move-menu" id="moveMenu${array[index].id}" onclick="stopEventPropagation(event)">
                         <h4>Move To:</h4>
                         <button onclick="moveTaskTo (this, '${array[index].id}')"  type="button" class="move-menu-item" data-state="toDo">To Do</button>
                         <button onclick="moveTaskTo (this, '${array[index].id}')"  type="button" class="move-menu-item" data-state="inProgress">In Progress</button>
                         <button onclick="moveTaskTo (this, '${array[index].id}')"  type="button" class="move-menu-item" data-state="awaitFeedBack">Await Feedback</button>
                         <button onclick="moveTaskTo (this, '${array[index].id}')"  type="button" class="move-menu-item" data-state="done">Done</button>
                         <button onclick="closeMoveMenu('${array[index].id}')"      type="button" class="move-menu-item" data-state="cancel"><b>Cancel</b></button>
-                     </nav>
+                    </section>
         </div>
         <div class="task-card-body">
             <div class="task-card-title">
