@@ -23,9 +23,9 @@ p {
 
 .legal-notice-content {
     height: 84%;
-    max-width: 1210px;
     flex-direction: column;
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 0.5rem;
 }
 
 .legal-notice-title-container {
@@ -43,11 +43,6 @@ p {
     gap: 16px;
 }
 
-@media (max-width:768px) {
-    .legal-notice-content {
-        padding: 2rem 1rem 2rem 1rem
-    }
-}
 
 @media (max-width:370px) {
     .legalNoticeH2 {

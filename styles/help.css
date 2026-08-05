@@ -24,9 +24,9 @@ p {
 
 .help-content {
     height: 84%;
-    max-width: 1210px;
     flex-direction: column;
-    padding: 2rem;
+    padding-left:2rem;
+    padding-bottom: 0.5rem;
 }
 
 .help-title-container {
@@ -88,8 +88,3 @@ p {
     font-size: 24px;
 }
 
-@media (max-width:768px) {
-    .help-content{
-        padding: 2rem 1rem 2rem 1rem
-    }
-}
