@@ -27,7 +27,7 @@
 
 @keyframes introLogo {
     from {
-        transform: translate(calc(50vw - 50% - max(16px, calc((100vw - 1440px)/2))), calc(50vh - 15vh)) scale(5);
+        transform: translate(calc(50vw - 50% - max(16px, calc((100vw - 1440px)/2))), calc(50vh - 15vh)) scale(3.3);
     }
 
     to {
@@ -136,7 +136,7 @@ h1 {
 }
 
 .login-signup-container {
-    width: max(50%, 285px);
+    width: max(40%, 285px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -220,6 +220,10 @@ h1 {
 
 .footer-login-signup nav a {
     color: var(--text-color-links);
+}
+
+.footer-login-signup nav a:hover {
+    color: var(--hover-effect-dark);
 }
 
 .error-message {
