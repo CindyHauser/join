@@ -1,7 +1,8 @@
 .body-login-signup {
     flex-direction: column;
-    height: 100vh;
-    height: 100dvh;
+    padding-block: 64px 40px;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .opacity {
@@ -52,8 +53,6 @@
 }
 
 .header-login-signup {
-    height: 30vh;
-    height: 30dvh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,13 +65,14 @@
 }
 
 .login-span {
-    font-size: clamp(0.8rem, 0.52rem + 1.12vw, 1.5rem);
+    font-size: 24px;
     font-weight: 400;
 }
 
 .main-login-signup {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     flex: 1;
 }
@@ -136,7 +136,7 @@ h1 {
 }
 
 .login-signup-container {
-    width: max(40%, 285px);
+    width: max(40%, 300px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -163,12 +163,13 @@ h1 {
 }
 
 .login-signup-btn {
+    font-family: 'Inter-Bold';
     background-color: var(--main-color);
     color: white;
     border: none;
     border-radius: 8px;
     padding: 12px 24px;
-    font-size: clamp(0.8rem, 0.52rem + 1.12vw, 1.5rem);
+    font-size: clamp(1rem, 0.52rem + 1.12vw, 1.5rem);
     font-weight: 700;
     cursor: pointer;
 }
@@ -179,12 +180,13 @@ h1 {
 }
 
 .login-btn-guest {
+    font-family: 'Inter-Bold';
     background-color: transparent;
     color: var(--main-color);
     border: 1px solid var(--main-color);
     border-radius: 8px;
     padding: 12px 24px;
-    font-size: clamp(0.8rem, 0.52rem + 1.12vw, 1.5rem);
+    font-size: clamp(1rem, 0.52rem + 1.12vw, 1.5rem);
     font-weight: 700;
     cursor: pointer;
 }
@@ -213,9 +215,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-block: 32px;
-    height: 10vh;
-    height: 10dvh;
 }
 
 .footer-login-signup nav {
@@ -280,7 +279,16 @@ h1 {
 }
 
 @media (max-width:768px) {
+    .body-login-signup{
+        padding-block: 32px 16px;
+        overflow: auto;
+        gap: 1rem;
+    }
+
     .login-signup-section {
+        width: max(40%, 285px);
+        justify-content: space-evenly;
+        gap: unset;
         display: none;
     }
 
@@ -288,15 +296,14 @@ h1 {
         display: flex;
     }
 
+    .login-span{
+        font-size: 20px;
+    }
+
     .logoDark,
     .logoDark-SignUp,
     .logoBright {
         width: 64px;
-    }
-
-    .header-login-signup {
-        height: 15vh;
-        height: 15dvh;
     }
 
     .form-btn {
@@ -309,7 +316,12 @@ h1 {
         width: 60%;
     }
 
+    .width-40{
+        width: 40%;
+    }
+
     .main-login-signup {
         justify-content: space-evenly;
+        gap: 1rem;
     }
 }
