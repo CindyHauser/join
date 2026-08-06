@@ -24,26 +24,28 @@
             </div>
             <form action="/signup" method="POST" class="login-signup-form" id="signupForm" novalidate>
                 <div class="pos-rel">
-                    <input type="text" id="name" name="name" class="input-icon bg-input-name"
-                        placeholder="Name" autocomplete="name" required data-error="Name is required.">
+                    <label for="name" class="visually-hidden">Name</label>
+                    <input type="text" id="name" name="name" class="input-icon bg-input-name" placeholder="Name"
+                        autocomplete="name" required data-error="Name is required.">
                 </div>
                 <div class="pos-rel">
-                    <input type="email" id="email" name="email" class="input-icon bg-input-mail"
-                        placeholder="Email" autocomplete="email" required data-error="E-Mail is required.">
+                    <label for="email" class="visually-hidden">Email</label>
+                    <input type="email" id="email" name="email" class="input-icon bg-input-mail" placeholder="Email"
+                        autocomplete="email" required data-error="E-Mail is required.">
                 </div>
                 <div class="pos-rel">
-                    <input type="password" id="password" name="password" class="input-icon"
-                        placeholder="Password" autocomplete="new-password" required
-                        data-error="Password is required.">
+                    <label for="password" class="visually-hidden">Password</label>
+                    <input type="password" id="password" name="password" class="input-icon" placeholder="Password"
+                        autocomplete="new-password" required data-error="Password is required.">
                     <img src="../assets/ui-icons/inputLock.svg" alt="" class="password-icon" id="passwordIcon"
                         data-lock="../assets/ui-icons/inputLock.svg"
                         data-invisible="../assets/ui-icons/inputEyeInvisible.svg"
                         data-visible="../assets/ui-icons/inputEyeVisible.svg">
                 </div>
                 <div class="pos-rel">
-                    <input type="password" id="confirmPassword" name="confirm-password"
-                        class="input-icon" placeholder="Confirm Password" required
-                        data-error="Please confirm your password.">
+                    <label for="confirmPassword" class="visually-hidden">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirm-password" class="input-icon"
+                        placeholder="Confirm Password" required data-error="Please confirm your password.">
                     <img src="../assets/ui-icons/inputLock.svg" alt="" class="password-icon" id="confirmPasswordIcon"
                         data-lock="../assets/ui-icons/inputLock.svg"
                         data-invisible="../assets/ui-icons/inputEyeInvisible.svg"
