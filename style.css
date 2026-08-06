@@ -267,19 +267,22 @@ h1 {
     /* direkt unter Header */
     right: 10px;
     width: 150px;
+    padding-block: 6px;
     background: var(--main-color);
     border-radius: 8px 0 8px 8px;
     z-index: 1000;
 }
 
 .profile-menu button {
-    margin: 8px;
     padding: 12px;
     border: none;
     background: transparent;
     color: var(--background-color-body);
     cursor: pointer;
     font-weight: 400;
+    width: calc(100% - 12px);
+    margin: 0 auto;
+    text-align: left;
 }
 
 .profile-menu button:hover {
@@ -289,7 +292,6 @@ h1 {
 .profile-menu.active {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 *::-webkit-scrollbar {
