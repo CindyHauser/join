@@ -41,7 +41,6 @@ loginForm.addEventListener('submit', async (event) => {
         window.location.href = './HTML/summary.html';
     } else {
         errorMessageElement.textContent = 'Invalid email or password';
-        password.value = '';
     }
 });
 

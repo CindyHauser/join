@@ -233,9 +233,7 @@ h1 {
 
 .error-message {
     position: absolute;
-    top: 45px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: calc(100% + 10px);
     color: red;
     font-size: 0.9rem;
     text-align: left;

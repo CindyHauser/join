@@ -14,6 +14,38 @@ function initValidation(form) {
             attachBlurValidation(field);
         }
     });
+
+     attachCheckboxBlurOnConfirmPassword(form);
+}
+
+/**
+ * Triggers checkbox validation when the confirm password field loses focus.
+ * Ensures that the required checkbox is validated after all other required fields are filled.
+ * @param {HTMLFormElement} form - The form containing the checkbox and confirm password field.
+ * @returns {void}
+ */
+function attachCheckboxBlurOnConfirmPassword(form) {
+    const confirmPassword = form.querySelector("#confirmPassword");
+    const checkbox = form.querySelector('input[type="checkbox"][required]');
+    if (!confirmPassword || !checkbox) return;
+    confirmPassword.addEventListener("blur", () => {
+        if (!allOtherFieldsFilled(form, checkbox)) return;
+        checkCheckbox(checkbox, checkbox.errorElement);
+    });
+}
+
+/**
+ * Checks whether all required fields except the checkbox have values.
+ * @param {HTMLFormElement} form - The form containing the required fields.
+ * @param {HTMLInputElement} checkbox - The checkbox field to ignore during the check.
+ * @returns {boolean} True if all other required fields are filled, otherwise false.
+ */
+function allOtherFieldsFilled(form, checkbox) {
+    const fields = form.querySelectorAll("[required]");
+    return Array.from(fields).every(field => {
+        if (field === checkbox) return true;
+        return getFieldValue(field).trim() !== "";
+    });
 }
 
 /**
@@ -104,17 +136,32 @@ function validateForm(form) {
     const fields = form.querySelectorAll("[required]");
     fields.forEach(field => {
         const error = field.errorElement;
+        if (field.type === "checkbox") {
+            if (!checkCheckbox(field, error)) valid = false;
+            return;
+        }
         error.textContent = "";
         field.classList.remove("input-error");
-        if (field.type === "checkbox") {
-            if (!field.checked) {
-                error.textContent = field.dataset.error;
-                field.classList.add("input-error");
-                valid = false;
-            } return;
-        } valid = checkOtherInputs(field, error, valid)
+        valid = checkOtherInputs(field, error, valid)
     }); return valid;
 };
+
+/**
+ * Validates a required checkbox field and updates its error state.
+ * @param {HTMLInputElement} field - The checkbox input to validate.
+ * @param {HTMLElement} error - The element that displays validation errors.
+ * @returns {boolean} True if the checkbox is checked; otherwise false.
+ */
+function checkCheckbox(field, error) {
+    if (!field.checked) {
+        error.textContent = field.dataset.error;
+        field.classList.add("input-error");
+        return false;
+    }
+    error.textContent = "";
+    field.classList.remove("input-error");
+    return true;
+}
 
 /**
  * Retrieves the comparable value of a field, accounting for custom dropdowns.
@@ -153,7 +200,7 @@ function checkEmpty(field, error, value) {
  */
 function checkEmail(field, error) {
     if (field.type !== "email") return true;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+    if (!/^[a-zA-Z0-9](?:[a-zA-Z0-9._%+-]*[a-zA-Z0-9])?@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/.test(field.value)) {
         error.textContent = "Please enter a valid email address.";
         field.classList.add("input-error");
         return false;
