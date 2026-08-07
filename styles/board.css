@@ -221,14 +221,14 @@ h2 {
 }
 
 .task-card-title {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     max-height: calc(1.2em * 2);
 }
 
 .task-card-description {
     color: #A8A8A8;
-    font-size: 12px;
+    font-size: 16px;
     max-height: calc(1.2em * 2);
 }
 
@@ -237,7 +237,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 16px;
     width: 100%;
 }
 
@@ -269,7 +269,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .subtask-progress-indicator:not(:has(.subtask-indicator-bar100)) .subtask-indicator-in-number {
@@ -294,7 +294,7 @@ h2 {
 }
 
 .assigned-contact-indicator-no-contact-selected {
-    font-size: 12px;
+    font-size: 16px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -307,15 +307,16 @@ h2 {
 
 .board-card-assigned-contact-badge {
     border: 2px solid var(--background-color-body);
-    width: 32px;
+    width: 42px;
     border-radius: 50%;
-    height: 32px;
+    height: 42px;
     position: absolute;
     top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    font-size: 12px;
 }
 
 .priority-indicator {
