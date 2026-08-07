@@ -70,7 +70,7 @@
     }
 
     .task-board-card {
-        min-width: 60%;
+        min-width: 252px;
         -webkit-user-drag: none;
     }
 
@@ -107,7 +107,7 @@
     }
 
     .task-board-card {
-        min-width: 90%;
+        min-width: 252px;
     }
 
     .priority-options {
