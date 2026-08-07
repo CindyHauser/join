@@ -25,7 +25,7 @@ p {
 .help-content {
     height: 84%;
     flex-direction: column;
-    padding-left:2rem;
+    padding-left: 2rem;
     padding-bottom: 0.5rem;
 }
 
@@ -53,9 +53,12 @@ p {
     cursor: pointer;
 }
 
-.help-text-container {
-    height: 80%;
+.help-main-text-section {
     overflow: auto;
+}
+
+.help-text-container {
+    max-width: 1014px;
 }
 
 .join-help-description {
@@ -87,4 +90,3 @@ p {
     font-weight: 700;
     font-size: 24px;
 }
-
