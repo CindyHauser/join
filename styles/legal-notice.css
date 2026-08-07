@@ -36,12 +36,8 @@ p {
     align-items: center;
 }
 
-.legal-notice-main-section {
-    overflow: auto;
-}
 
 .legal-notice-text-container {
-    max-width: 1014px;
     display: flex;
     flex-direction: column;
     gap: 16px;

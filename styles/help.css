@@ -27,6 +27,7 @@ p {
     flex-direction: column;
     padding-left: 2rem;
     padding-bottom: 0.5rem;
+    overflow: auto;
 }
 
 .help-title-container {
@@ -53,12 +54,10 @@ p {
     cursor: pointer;
 }
 
-.help-main-text-section {
-    overflow: auto;
-}
+
 
 .help-text-container {
-    max-width: 1014px;
+    max-width: 1210px;
 }
 
 .join-help-description {
