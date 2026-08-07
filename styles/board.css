@@ -4,6 +4,7 @@
     height: 84%;
     width: 100%;
     align-items: center;
+    overflow: auto;
 }
 
 .summary-header {
@@ -122,6 +123,7 @@ h2 {
     flex-direction: column;
     gap: 10px;
     width: 25%;
+    min-width: 268px;
 }
 
 .progress-tasks-header {
