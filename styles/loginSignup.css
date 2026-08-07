@@ -289,10 +289,10 @@ h1 {
 }
 
 @media (max-width:768px) {
-    .body-login-signup{
+    .body-login-signup {
         padding-block: 32px 16px;
         overflow: auto;
-        gap: 1rem;
+        gap: 2rem;
     }
 
     .login-signup-section {
@@ -306,8 +306,8 @@ h1 {
         display: flex;
     }
 
-    .login-span{
-        font-size: 20px;
+    .login-span {
+        font-size: 16px;
     }
 
     .logoDark,
@@ -326,12 +326,25 @@ h1 {
         width: 60%;
     }
 
-    .width-40{
+    .width-40 {
         width: 40%;
     }
 
     .main-login-signup {
         justify-content: space-evenly;
-        gap: 1rem;
+        gap: 2rem;
+    }
+}
+
+@media (max-width:500px) {
+
+    .logoDark,
+    .logoDark-SignUp,
+    .logoBright {
+        width: 42px;
+    }
+
+    .body-login-signup {
+        padding-block: 16px 16px;
     }
 }
