@@ -26,6 +26,7 @@ p {
     flex-direction: column;
     padding-left: 2rem;
     padding-bottom: 0.5rem;
+    overflow: auto;
 }
 
 .legal-notice-title-container {
@@ -44,6 +45,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    max-width: 1210px;
 }
 
 
