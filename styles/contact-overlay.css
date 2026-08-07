@@ -11,7 +11,7 @@
 
 .contact-overlay-inner-container {
     height: 90%;
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,6 +22,8 @@
     width: 90%;
     border-radius: 10px;
     display: flex;
+    max-height: 592px;
+    max-width: 1212px;
 }
 
 .contact-overlay-form-header {
@@ -47,7 +49,8 @@
 }
 
 .contact-overlay-form-second-section {
-    height: 80%;
+    justify-content: center;
+    height: 60%;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -69,7 +72,7 @@
 }
 
 .contact-overlay-form-logo-container img {
-    height: 80%;
+    height: 66.48px;
     width: auto;
     object-fit: cover;
 }
@@ -78,7 +81,7 @@
     width: 96%;
     height: 15%;
     color: white;
-    font-size: 42px;
+    font-size: 61px;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -90,6 +93,7 @@
     height: 8%;
     display: flex;
     align-items: center;
+    font-size: 27px;
 }
 
 .contact-overlay-form-border-line {
@@ -149,6 +153,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    max-width: 422px;
 }
 
 .contact-overlay-form-close-bar-desktop img {
@@ -163,9 +168,18 @@
     background-color: var(--text-color-links);
 }
 
+.form-main-container {
+    max-height: 215px;
+    max-width: 422px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .contact-overlay-form-name-container {
     border: 2px solid var(--text-color-links);
-    height: 8%;
+    height: 50px;
     display: flex;
     align-items: center;
     border-radius: 8px 8px 8px 8px;
@@ -190,7 +204,7 @@
 }
 
 .contact-overlay-error {
-    height: 6%;
+    height: 8%;
     display: flex;
     color: red;
     font-size: 12px;
@@ -199,7 +213,7 @@
 
 .contact-overlay-form-email-container {
     border: 2px solid var(--text-color-links);
-    height: 8%;
+    height: 50px;
     display: flex;
     align-items: center;
     border-radius: 8px 8px 8px 8px;
@@ -225,7 +239,7 @@
 
 .contact-overlay-form-phone-container {
     border: 2px solid var(--text-color-links);
-    height: 8%;
+    height: 50px;
     display: flex;
     align-items: center;
     border-radius: 8px 8px 8px 8px;
@@ -252,7 +266,8 @@
 .contact-overlay-functions {
     display: flex;
     gap: 16px;
-    height: 11%;
+    width: 364px;
+    height: 57px;
 }
 
 .contact-overlay-function-cancel-container {

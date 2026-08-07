@@ -398,8 +398,8 @@
 }
 
 .adding-contact-sucess-alert-card {
-    height: 90%;
-    width: 40%;
+    width: 326px;
+    height: 74px;
     display: flex;
     justify-content: center;
     align-items: center;

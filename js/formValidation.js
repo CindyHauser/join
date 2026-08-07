@@ -12,7 +12,7 @@ const isValidName = (name) => /^[a-zA-ZäöüÄÖÜß\s\-]{2,}$/.test(name);
  * @param {string} email - The input value to validate.
  * @returns {boolean} True if the email matches the expected pattern.
  */
-const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+const isValidEmail = (email) => /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/.test(email);
 
 /**
  * Validates that a phone number uses an allowed phone pattern.
