@@ -29,8 +29,14 @@ function attachCheckboxBlurOnConfirmPassword(form) {
     const checkbox = form.querySelector('input[type="checkbox"][required]');
     if (!confirmPassword || !checkbox) return;
     confirmPassword.addEventListener("blur", () => {
+        if (event.relatedTarget === checkbox) return;
         if (!allOtherFieldsFilled(form, checkbox)) return;
         checkCheckbox(checkbox, checkbox.errorElement);
+    });
+    checkbox.addEventListener("change", () => {
+        if (!checkbox.checked) {
+            checkCheckbox(checkbox, checkbox.errorElement);
+        }
     });
 }
 

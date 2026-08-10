@@ -250,6 +250,10 @@ input::placeholder {
     border: 2px solid red;
 }
 
+.terms-container + .error-message {
+    text-align: center;
+}
+
 .dialogLoginAndSignUpDesign {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border: 2px solid var(--text-color-links);
