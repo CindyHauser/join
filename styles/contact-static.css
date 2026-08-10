@@ -6,9 +6,15 @@
     margin-inline-end: 0px;
 }
 
+
+.contact-main-section {
+    overflow-y: hidden;
+}
+
 .main-contact-static-expanded-height {
-    height: 84%;
+    height: 92%;
     max-width: 1210px;
+    overflow: auto;
 }
 
 
@@ -49,7 +55,7 @@
 }
 
 .contact-main-list-parent {
-    max-height: 64vh;
+    max-height: 72%;
     overflow: auto;
     display: flex;
     flex-direction: column;

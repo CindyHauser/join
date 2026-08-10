@@ -77,3 +77,8 @@ async function saveUserDataToLocalStorage() {
     sessionStorage.setItem("currentUserName", currentUser.name);
     sessionStorage.setItem("currentUserInitials", currentUser.initials);
 }
+
+
+const startHistoryCounter = ()=>{
+        sessionStorage.setItem('historyCounter',0)
+}

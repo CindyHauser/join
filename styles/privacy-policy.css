@@ -4,6 +4,23 @@
     gap: 8px;
 }
 
+.arrow-hug-container {
+    height: 40px;
+    width: 40px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 125ms ease-in-out;
+    border: none;
+    background-color: unset;
+}
+
+.arrow-hug-container:hover {
+    background-color: var(--text-color-links);
+    cursor: pointer;
+}
+
 .privacy-and-security-section-media {
     height: 25%;
     display: flex;
@@ -28,5 +45,9 @@
         border-radius: 8px;
         display: flex;
         align-items: center;
+    }
+
+    .arrow-hug-container {
+        display: flex;
     }
 }

@@ -1,6 +1,9 @@
 const profileInitialElement = document.getElementById('profileInitial');
 const currentUserInitials = sessionStorage.getItem("currentUserInitials");
-profileInitialElement.textContent = currentUserInitials || "G";
+if (profileInitialElement) {
+        profileInitialElement.textContent = currentUserInitials || "G";
+}
+
 
 const initContactPage = async () => {
         // set up the library
@@ -8,7 +11,8 @@ const initContactPage = async () => {
         // setup contact Array
         getContactsArray();
         // rendering list
-        renderContactList(); 
+        renderContactList();
+        console.log()
 }
 
 const initBoardPage = async () => {
@@ -43,24 +47,49 @@ function showProfileMenu() {
 function logOut() {
         sessionStorage.removeItem("currentUserInitials");
         sessionStorage.removeItem("currentUserName");
+        sessionStorage.removeItem("lastVisitedSite")
         sessionStorage.setItem("skipAnimation", "true");
         window.location.href = '../index.html';
 }
 
 // help-js
+
+
 const triggerHistoryBack = () => {
-        let historyBackSite = sessionStorage.getItem('lastVisitedSite')
-        if (historyBackSite === 'help.html'){
-            historyBackSite = 'summary.html'    
+        let count = sessionStorage.getItem('historyCounter') 
+        if (count < 0) {
+                count == 0
         }
+        let historyBackSite = sessionStorage.getItem(`lastVisitedSite${count-1}`) || 'summary.html'
         window.location.href = historyBackSite
+        count--
+        sessionStorage.removeItem(`lastVisitedSite${count}`)
+        sessionStorage.setItem('historyCounter', count)
 }
 
-const safeAddressToSessionStorage = (htmlAdress)=>{
-        sessionStorage.setItem('lastVisitedSite',htmlAdress)
+const triggerLogInPage = () => {
+        window.location.href = '../index.html';
+}
+
+const safeAddressToSessionStorage = (htmlAdress) => {
+        let count = sessionStorage.getItem('historyCounter')
+        if (count < 0) {
+                count == 0
+        }
+        sessionStorage.setItem(`lastVisitedSite${count}`, htmlAdress)
+        count++
+        sessionStorage.setItem('historyCounter', count)
 }
 
 const openHelpPage = (helpPage) => {
         safeAddressToSessionStorage(window.location.href)
         window.location.href = helpPage
 }
+
+// general-hyperlink-fn 
+
+const openPage = (pageAdress) => {
+        safeAddressToSessionStorage(window.location.href)
+        window.location.href = pageAdress
+}
+

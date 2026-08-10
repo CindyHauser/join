@@ -123,3 +123,7 @@
         transform: translateY(100svw);
     }
 }
+
+.padding-80{
+    padding: 80px;
+}

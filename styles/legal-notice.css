@@ -6,6 +6,23 @@
     font-family: Inter-Bold;
 }
 
+.arrow-hug-container {
+    height: 40px;
+    width: 40px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 125ms ease-in-out;
+    border: none;
+    background-color: unset;
+}
+
+.arrow-hug-container:hover {
+    background-color: var(--text-color-links);
+    cursor: pointer;
+}
+
 h3 {
     margin-block-start: 0;
     margin-block-end: 0;
@@ -45,9 +62,18 @@ p {
     max-width: 1210px;
 }
 
-@media (max-width:768px){
-    .legal-notice-content{
+@media (max-width:768px) {
+    .legal-notice-content {
         padding-left: 1rem;
+        padding-top: 32px;
+    }
+
+    .legal-notice-title-container {
+        margin-bottom: 32px;
+    }
+
+    .arrow-hug-container {
+        display: flex;
     }
 }
 
