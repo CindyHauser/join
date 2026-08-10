@@ -125,7 +125,7 @@ h1 {
 
 input::placeholder {
     font-size: 20px;
-    color: black;
+    color: #686868;
 }
 
 .bg-input-mail {

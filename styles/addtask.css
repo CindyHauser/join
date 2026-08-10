@@ -42,7 +42,7 @@ input {
 input::placeholder,
 textarea::placeholder {
     font-size: 20px;
-    color: black;
+    color: #686868;
 }
 
 textarea {
