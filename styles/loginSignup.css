@@ -123,6 +123,11 @@ h1 {
     border-radius: 8px;
 }
 
+input::placeholder {
+    font-size: 20px;
+    color: black;
+}
+
 .bg-input-mail {
     background-image: url('../assets/ui-icons/inputMail.svg');
     background-position: right 12px center;
@@ -314,6 +319,10 @@ h1 {
     .logoDark-SignUp,
     .logoBright {
         width: 64px;
+    }
+
+    input::placeholder {
+        font-size: 16px;
     }
 
     .form-btn {

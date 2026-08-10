@@ -3,6 +3,11 @@
         padding: 1rem 1rem 0 1rem
     }
 
+    input::placeholder,
+    textarea::placeholder {
+        font-size: 16px;
+    }
+
     hr {
         display: none;
     }
