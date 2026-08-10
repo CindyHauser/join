@@ -234,6 +234,14 @@
         animation: fadeOutGreeting 3s forwards;
     }
 
+    .greeting-section h2{
+        font-size: 48px;
+    }
+
+    .greeting-section h3{
+        font-size: 36px;
+    }
+
     @keyframes fadeOutGreeting {
 
         0%,
