@@ -3,6 +3,7 @@
     font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin-block-start: 0;
     margin-block-end: 0;
+    font-family: Inter-Bold;
 }
 
 h3 {
@@ -44,9 +45,16 @@ p {
     max-width: 1210px;
 }
 
+@media (max-width:768px){
+    .legal-notice-content{
+        padding-left: 1rem;
+    }
+}
+
 
 @media (max-width:370px) {
     .legalNoticeH2 {
         font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
 }

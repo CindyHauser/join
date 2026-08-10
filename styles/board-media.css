@@ -35,7 +35,6 @@
     .search-wrapper-ext-hug {
         order: 3;
         flex-basis: 100%;
-        /* erzwingt Umbruch, volle Breite */
         margin-top: 10px;
     }
 
@@ -62,7 +61,7 @@
         overflow-x: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        padding-inline: 16px;
+        gap: 8px;
     }
 
     .drag-and-drop-tasks::-webkit-scrollbar {
@@ -81,10 +80,6 @@
     .board-input {
         height: 29px;
         font-size: 18px;
-    }
-
-    .summary-header h2 {
-        font-size: 2rem;
     }
 
     .add-task-btn {

@@ -38,8 +38,9 @@
 
 .summary-header h2 {
     min-width: clamp(200px, 120.34px + 10.37vw, 250px);
-    font-size: clamp(2rem, 1.78rem + 2.53vw, 4rem);
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin: 0;
+    font-family: Inter-Bold;
 }
 
 .summary-header p {
@@ -80,14 +81,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: min(25%, 69px);
+    width: clamp(40px, 25%, 69px);
     aspect-ratio: 1 / 1;
     background-color: var(--main-color);
     border-radius: 50%;
 }
 
 .summary-icon-container.small {
-    width: min(12%, 69px);
+    width:clamp(40px, 12%, 69px);
 }
 
 .bg-red {
@@ -101,7 +102,7 @@
 }
 
 .metric-card h2 {
-    font-size: clamp(1.5rem, 0.5rem + 4vw, 4rem);
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin: 0;
 }
 
@@ -189,7 +190,12 @@
 
     .summary-container {
         width: 100%;
-        padding: 1rem 1rem 0 2rem;
+        padding: 1rem;
+        overflow: auto;
+    }
+
+    .summary-metrics{
+        gap: 1rem;
     }
 
     .summary-header {
@@ -197,6 +203,11 @@
         align-items: flex-start;
         justify-content: center;
         gap: 0.5rem;
+    }
+
+    .metrics-wrapper{
+        width: unset;
+        gap: 1rem;
     }
 
     .v-line-header {
@@ -233,11 +244,5 @@
         100% {
             opacity: 0;
         }
-    }
-}
-
-@media (max-width:400px) {
-    .metrics-wrapper p {
-        font-size: 12px;
     }
 }

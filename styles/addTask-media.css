@@ -61,10 +61,6 @@
         height: 12%;
     }
 
-    .addTask-header h2 {
-        font-size: 2rem;
-    }
-
     .add-task {
         gap: 1rem;
     }

@@ -20,8 +20,9 @@ hr {
 }
 
 h2 {
-    font-size: clamp(2rem, 1.78rem + 2.53vw, 4rem);
+    font-size: clamp(3rem, 1.78rem + 2.53vw, 4rem);
     margin: 0;
+    font-family: Inter-Bold;
 }
 
 label,
