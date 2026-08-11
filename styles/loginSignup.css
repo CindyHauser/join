@@ -141,7 +141,7 @@ input::placeholder {
 }
 
 .login-signup-container {
-    width: max(45%, 300px);
+    width: max(45%, 470px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -239,6 +239,7 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 32px;
 }
 
 .footer-login-signup nav {
@@ -276,10 +277,15 @@ input::placeholder {
 .dialogLoginAndSignUpDesign {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border: 2px solid var(--text-color-links);
-    padding: 16px;
+    padding: 24px;
     border-radius: 16px;
     background: var(--main-color);
     color: white;
+    font-size: 20px;
+}
+
+.dialogLoginAndSignUpDesign p {
+    margin: 0;
 }
 
 .pos-rel {
@@ -364,19 +370,17 @@ input::placeholder {
     }
 
     .main-login-signup {
-        justify-content: space-evenly;
         gap: 2rem;
     }
 }
 
 @media (max-width:500px) {
 
-    .logoDark-SignUp,
-    .logoBright {
-        width: 42px;
-    }
-
     .body-login-signup {
         padding-block: 16px 16px;
+    }
+
+    .login-signup-container {
+        width: 100%;
     }
 }
