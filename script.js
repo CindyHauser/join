@@ -72,7 +72,7 @@ const triggerLogInPage = () => {
 }
 
 const safeAddressToSessionStorage = (htmlAdress) => {
-        let count = sessionStorage.getItem('historyCounter')
+        let count = sessionStorage.getItem('historyCounter') || 0
         if (count < 0) {
                 count == 0
         }
