@@ -65,7 +65,7 @@
 }
 
 .login-span {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -118,7 +118,7 @@ h1 {
 .input-icon {
     width: 100%;
     padding-left: 12px;
-    height: 40px;
+    height: 48px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -141,7 +141,7 @@ input::placeholder {
 }
 
 .login-signup-container {
-    width: max(40%, 300px);
+    width: max(45%, 300px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -149,8 +149,8 @@ input::placeholder {
     justify-content: center;
     border-radius: 16px;
     background-color: white;
-    padding-inline: clamp(24px, 8px + 4vw, 64px);
-    padding-block: clamp(12px, -8.8px + 5.2vw, 64px);
+    padding-inline: 112px;
+    padding-block: 48px;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -158,13 +158,14 @@ input::placeholder {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1.75rem;
 }
 
 .form-btn {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    margin-top: 24px;
 }
 
 .login-signup-btn {
@@ -174,7 +175,7 @@ input::placeholder {
     border: none;
     border-radius: 8px;
     padding: 12px 24px;
-    font-size: clamp(1rem, 0.52rem + 1.12vw, 1.5rem);
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -184,6 +185,11 @@ input::placeholder {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
 }
 
+.login-signup-section .login-signup-btn {
+    font-size: 16px;
+    padding: 16px;
+}
+
 .login-btn-guest {
     font-family: 'Inter-Bold';
     background-color: transparent;
@@ -191,7 +197,7 @@ input::placeholder {
     border: 1px solid var(--main-color);
     border-radius: 8px;
     padding: 12px 24px;
-    font-size: clamp(1rem, 0.52rem + 1.12vw, 1.5rem);
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -238,9 +244,9 @@ input::placeholder {
 
 .error-message {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 2px);
     color: red;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
     margin: 0;
     width: 100%;
