@@ -4,7 +4,6 @@
     height: 84%;
     width: 100%;
     align-items: center;
-    overflow: auto;
 }
 
 .summary-header {
@@ -113,9 +112,9 @@ h2 {
 
 .kanban-board {
     display: flex;
-    justify-content: center;
     gap: 20px;
     height: 80%;
+    width: 100%;
 }
 
 .progress-tasks {
@@ -333,4 +332,22 @@ h2 {
     text-align: center;
     width: 100%;
     border: 1px dashed grey;
+}
+
+@media(max-width:1440px) {
+    .task-board-card {
+        width: 96%;
+        overflow: hidden;
+    }
+
+    .progress-tasks {
+        min-width: unset
+    }
+}
+
+@media(max-width:768px) {
+    .task-board-card {
+        width: 252px;
+
+    }
 }

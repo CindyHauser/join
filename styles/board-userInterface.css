@@ -77,34 +77,34 @@
 }
 
 .move-menu-slide-in-resp-board-functions-effect-on {
-    animation: move-menu-slided-in 125ms ease-in 0s 1 normal forwards ;
+    animation: move-menu-slided-in 125ms ease-in 0s 1 normal forwards;
 }
 
 .move-menu-slide-in-resp-board-functions-effect-off {
-    animation: move-menu-slided-out 125ms ease-in 0s 1 normal forwards ;
+    animation: move-menu-slided-out 125ms ease-in 0s 1 normal forwards;
 }
 
 @keyframes move-menu-slided-in {
     0% {
-		transform: scaleX(0);
-		transform-origin: 100% 100%;
+        transform: scaleX(0);
+        transform-origin: 100% 100%;
     }
 
     100% {
-		transform: scaleX(1);
-		transform-origin: 100% 100%;
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
     }
 }
 
 @keyframes move-menu-slided-out {
     0% {
-		transform: scaleX(1);
-		transform-origin: 100% 100%;
+        transform: scaleX(1);
+        transform-origin: 100% 100%;
     }
 
     100% {
-		transform: scaleX(0);
-		transform-origin: 100% 100%;
+        transform: scaleX(0);
+        transform-origin: 100% 100%;
     }
 }
 
@@ -143,6 +143,16 @@
     }
 }
 
-.padding-80{
-    padding: 80px;
+.padding-80 {
+    padding-left: 80px;
+}
+
+@media (max-width: 768px) {
+    .padding-80 {
+        padding-left: unset;
+    }
+}
+
+.overflowXAuto {
+    overflow-x: auto;
 }
