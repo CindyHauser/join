@@ -6,8 +6,9 @@
 .summary-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-inline: 6rem;
+    justify-content: flex-start;
+    padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
+    padding-inline: clamp(16px, -81.2px + 12.66vw, 96px);
     width: 100%;
     height: 100%;
     gap: 56px;
@@ -16,8 +17,7 @@
 .summary-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
+    gap: 30px;
     width: 625px;
 }
 
@@ -29,10 +29,9 @@
 
 .h-line-header {
     display: none;
-    width: 100px;
-    height: 2px;
+    width: 90px;
+    height: 3px;
     background-color: var(--easy-blue-color-secondary);
-    margin: 8px 0 16px 0;
 }
 
 .summary-header h2 {
@@ -43,7 +42,7 @@
 }
 
 .summary-header p {
-    font-size: 24px;
+    font-size: 26px;
     margin: 0;
 }
 
@@ -57,8 +56,8 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    min-width: 560px;
-    max-width: 560px;
+    min-width: clamp(396px, 196.7px + 25.95vw, 560px);
+    max-width: clamp(396px, 196.7px + 25.95vw, 560px);
 }
 
 .metric-card {
@@ -70,17 +69,17 @@
     border-radius: 30px;
     gap: 20px;
     width: 100%;
-    min-height: 170px;
+    min-height: clamp(116px, 48.03px + 15.88vw, 170px);
     padding: 20px;
 }
 
-.metric-greeting .metric-card{
+.metric-greeting .metric-card {
     height: 100%;
 }
 
-.metric-greeting{
+.metric-greeting {
     display: flex;
-    gap: 80px;
+    gap: clamp(32px, -26.3px + 7.59vw, 80px);
 }
 
 .metric-card-gap {
@@ -92,14 +91,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 69px;
+    width: clamp(40px, 3.49px + 8.53vw, 69px);
     aspect-ratio: 1 / 1;
     background-color: var(--main-color);
     border-radius: 50%;
 }
 
 .summary-icon-container.small {
-    width: 69px;
+    width: clamp(40px, 3.49px + 8.53vw, 69px);
 }
 
 .bg-red {
@@ -140,7 +139,7 @@
 
 .metric-card:hover .summary-icon-container:not(.bg-red) .summary-icon {
     filter: brightness(0);
-    transform: scale(1.1);
+    transform: scale(1.1);    
 }
 
 .v-line-urgent {
@@ -191,7 +190,7 @@
     transform: scaleX(1.1);
 }
 
-.gap-between{
+.gap-between {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -200,25 +199,32 @@
 @media (max-width:768px) {
 
     .summary-container {
-        width: 100%;
-        padding: 1rem;
         overflow: auto;
     }
 
-    .summary-metrics{
+    .summary-header p {
+        font-size: 24px;
+    }
+
+    .summary-metrics {
         gap: 1rem;
+        min-width: clamp(396px, -32px + 100vw, 736px);
     }
 
     .summary-header {
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 1rem;
+        width: unset;
     }
 
-    .metrics-wrapper{
-        width: unset;
+    .metrics-wrapper {
         gap: 1rem;
+    }
+
+    .v-line-urgent {
+        margin: clamp(30px, -40.56px + 16.22vw, 84px);
     }
 
     .v-line-header {
@@ -245,11 +251,11 @@
         animation: fadeOutGreeting 3s forwards;
     }
 
-    .greeting-section h2{
+    .greeting-section h2 {
         font-size: 48px;
     }
 
-    .greeting-section h3{
+    .greeting-section h3 {
         font-size: 36px;
     }
 
@@ -263,5 +269,28 @@
         100% {
             opacity: 0;
         }
+    }
+}
+
+@media (max-width:435px) {
+    .summary-metrics {
+        gap: 0.5rem;
+        min-width: clamp(288px, -26.18px + 98.18vw, 396px);
+    }
+
+    .metric-card{
+        padding: clamp(0px, -58.18px + 18.18vw, 20px);
+    }
+
+    .v-line-urgent {
+        margin: clamp(0px, -87.27px + 27.27vw, 30px);
+    }
+
+    .metric-card h3 {
+        font-size: 15px;
+    }
+
+    .metric-card p {
+        font-size: 12px;
     }
 }
