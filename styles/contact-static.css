@@ -14,7 +14,7 @@
 .main-contact-static-expanded-height {
     height: 92%;
     max-width: 1210px;
-    overflow: auto;
+    overflow: clip;
 }
 
 
@@ -56,7 +56,8 @@
 
 .contact-main-list-parent {
     max-height: 72%;
-    overflow: auto;
+    overflow-x: clip;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -258,8 +259,6 @@
 .contact-subtitle {
     font-size: 27px;
 }
-
-
 
 .contact-expanded-name-and-functions {
     height: 40%;
@@ -476,6 +475,8 @@
         height: clamp(56px, 13svw, 100px);
         width: clamp(56px, 13svw, 100px);
         border-radius: 50%;
+        max-height: unset;
+        max-width: unset;
     }
 
     .add-contact-button span {

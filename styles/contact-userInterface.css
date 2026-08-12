@@ -107,6 +107,7 @@
         opacity: 0;
         transform: translateY(100svw);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0svw);
@@ -118,12 +119,19 @@
         opacity: 1;
         transform: translateY(0svw);
     }
+
     100% {
         opacity: 1;
         transform: translateY(100svw);
     }
 }
 
-.padding-80{
-    padding: 80px;
+.padding-80 {
+    padding-left: 80px;
+}
+
+@media(max-width:768px) {
+    .padding-80 {
+        padding-left: unset;
+    }
 }
