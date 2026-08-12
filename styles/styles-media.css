@@ -6,9 +6,10 @@
     background-color: var(--main-color);
     display: none;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 10%;
     font-size: 1rem;
+    padding-inline: 1rem;
 }
 
 .footer-menu-point {
@@ -17,7 +18,7 @@
     justify-content: space-evenly;
     align-items: center;
     height: 96%;
-    min-width: 16%;
+    width: 80px;
     border-radius: 8px;
     color: white;
     transition: all 125ms ease-in-out;
@@ -46,6 +47,7 @@
 
     .header-main-html {
         height: 10%;
+        padding-inline: 16px;
     }
 
     .profile-menu {
@@ -84,8 +86,8 @@
         height: 80%;
     }
 
-    .footer-menu-point img {
-        height: 20px;
+    .footer-media {
+        font-size: 0.8rem;
     }
 
     .profile-initial {
