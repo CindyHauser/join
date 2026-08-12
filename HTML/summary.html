@@ -77,7 +77,7 @@
                             <div class="summary-icon-container">
                                 <img src="../assets/ui-icons/edit.svg" alt="edit.svg" class="summary-icon">
                             </div>
-                            <div class="space-between">
+                            <div>
                                 <h2 id="numberToDo">0</h2>
                                 <p id="todoTasks">To-Do</p>
                             </div>
@@ -88,53 +88,53 @@
                             <div class="summary-icon-container">
                                 <img src="../assets/ui-icons/done.svg" alt="done.svg" class="summary-icon">
                             </div>
-                            <div class="space-between">
+                            <div>
                                 <h2 id="numberDoneTasks">0</h2>
                                 <p id="doneTasks">Done</p>
                             </div>
                         </div>
                     </div>
+                    <div class="metric-greeting">
+                        <div class="summary-metrics">
+                            <div onclick="window.location.href = '../HTML/board.html'"
+                                class="metric-card transform-origin-top">
+                                <div class="summary-icon-container small bg-red">
+                                    <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg" class="summary-icon">
+                                </div>
+                                <div>
+                                    <h2 id="numberOfUrgent">0</h2>
+                                    <p id="urgentTasks">Urgent</p>
+                                </div>
+                                <div class="v-line-urgent"></div>
+                                <div class="gap-between">
+                                    <h3 id="urgentDate">October 15, 2026</h3>
+                                    <p>Upcoming Deadline</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="summary-metrics">
-                        <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card transform-origin-top">
-                            <div class="summary-icon-container small bg-red">
-                                <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg" class="summary-icon">
-                            </div>
-                            <div class="space-between">
-                                <h2 id="numberOfUrgent">0</h2>
-                                <p id="urgentTasks">Urgent</p>
-                            </div>
-                            <div class="v-line-urgent"></div>
-                            <div class="space-between">
-                                <h3 id="urgentDate">October 15, 2026</h3>
-                                <p>Upcoming Deadline</p>
-                            </div>
-
+                        <div class="greeting-section">
+                            <h3>Good morning<span id="greetingUser">!</span></h3>
+                            <h2 id="greetingUserName"></h2>
                         </div>
                     </div>
-
                     <div class="summary-metrics">
                         <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card flex-column transform-origin-left">
+                            class="metric-card metric-card-gap transform-origin-left">
                             <h2 id="numberTotalTasks">0</h2>
                             <p id="totalTasks">Task in Board</p>
                         </div>
-                        <div onclick="window.location.href = '../HTML/board.html'" class="metric-card flex-column">
+                        <div onclick="window.location.href = '../HTML/board.html'" class="metric-card metric-card-gap">
                             <h2 id="numberPendingTasks">0</h2>
                             <p id="pendingTasks">Tasks in Progress</p>
                         </div>
                         <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card flex-column transform-origin-right">
+                            class="metric-card metric-card-gap transform-origin-right">
                             <h2 id="numberAwaitingFeedback">0</h2>
                             <p id="awaitingFeedback">Awaiting Feedback</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="greeting-section">
-                <h3>Good morning<span id="greetingUser">!</span></h3>
-                <h2 id="greetingUserName"></h2>
             </div>
         </section>
 
