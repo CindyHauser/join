@@ -337,7 +337,6 @@ h2 {
 @media(max-width:1440px) {
     .task-board-card {
         width: 96%;
-        overflow: hidden;
     }
 
     .progress-tasks {
