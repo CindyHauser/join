@@ -83,7 +83,7 @@
 
     .logoDark-responsive {
         display: flex;
-        height: 80%;
+        height: 72%;
     }
 
     .footer-media {
@@ -91,7 +91,7 @@
     }
 
     .profile-initial {
-        height: 90%;
+        height: 72%;
         aspect-ratio: 1/1;
         width: auto;
         border: 3px solid black;
