@@ -16,7 +16,6 @@ hr {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 20%;
 }
 
 h2 {
@@ -67,8 +66,10 @@ fieldset {
 .main-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
+    padding-left: 96px;
+    padding-right: 96px;
+    padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
+    gap: 48px;
     max-width: 1210px;
     height: 84%;
 }

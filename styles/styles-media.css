@@ -28,6 +28,15 @@
     height: 24px;
 }
 
+@media (max-width: 1066px) {
+    .menu-point, 
+    .privacy-legal-notice-link {
+        padding-left: 8px;
+        gap: 8px;
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-media {
         display: flex;

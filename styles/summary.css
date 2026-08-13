@@ -6,9 +6,9 @@
 .summary-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
-    padding-inline: clamp(16px, -81.2px + 12.66vw, 96px);
+    padding-left: 96px;
+    padding-right: 96px;
     width: 100%;
     height: 100%;
     gap: 56px;
@@ -57,7 +57,7 @@
     justify-content: space-between;
     gap: 1.5rem;
     min-width: clamp(396px, 196.7px + 25.95vw, 560px);
-    max-width: clamp(396px, 196.7px + 25.95vw, 560px);
+    /* max-width: clamp(396px, 196.7px + 25.95vw, 560px); */
 }
 
 .metrics-wrapper > .summary-metrics:first-child{
@@ -221,6 +221,7 @@
 
     .summary-container {
         overflow: auto;
+        padding-inline: clamp(16px, -81.2px + 12.66vw, 96px);
     }
 
     .summary-header p {
