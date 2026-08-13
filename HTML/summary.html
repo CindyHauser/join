@@ -73,35 +73,35 @@
                     <p>Key Metrics at a Glance</p>
                     <div class="h-line-header"></div>
                 </div>
-                <div class="metrics-wrapper">
-                    <div class="summary-metrics">
-                        <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card transform-origin-left">
-                            <div class="summary-icon-container">
-                                <img src="../assets/ui-icons/edit.svg" alt="edit.svg" class="summary-icon">
-                            </div>
-                            <div>
-                                <h2 id="numberToDo">0</h2>
-                                <p id="todoTasks">To-Do</p>
-                            </div>
+                <div class="metric-greeting">
+                    <div class="metrics-wrapper">
+                        <div class="summary-metrics">
+                            <div onclick="window.location.href = '../HTML/board.html'"
+                                class="metric-card transform-origin-left">
+                                <div class="summary-icon-container">
+                                    <img src="../assets/ui-icons/edit.svg" alt="edit.svg" class="summary-icon">
+                                </div>
+                                <div>
+                                    <h2 id="numberToDo">0</h2>
+                                    <p id="todoTasks">To-Do</p>
+                                </div>
 
-                        </div>
-                        <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card transform-origin-right">
-                            <div class="summary-icon-container">
-                                <img src="../assets/ui-icons/done.svg" alt="done.svg" class="summary-icon">
                             </div>
-                            <div>
-                                <h2 id="numberDoneTasks">0</h2>
-                                <p id="doneTasks">Done</p>
+                            <div onclick="window.location.href = '../HTML/board.html'"
+                                class="metric-card transform-origin-right">
+                                <div class="summary-icon-container">
+                                    <img src="../assets/ui-icons/done.svg" alt="done.svg" class="summary-icon">
+                                </div>
+                                <div>
+                                    <h2 id="numberDoneTasks">0</h2>
+                                    <p id="doneTasks">Done</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="metric-greeting">
                         <div class="summary-metrics">
                             <div onclick="window.location.href = '../HTML/board.html'"
                                 class="metric-card transform-origin-top">
-                                <div class="summary-icon-container small bg-red">
+                                <div class="summary-icon-container bg-red">
                                     <img src="../assets/ui-icons/urgent.svg" alt="urgent.svg" class="summary-icon">
                                 </div>
                                 <div>
@@ -115,27 +115,27 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="greeting-section">
-                            <h3>Good morning<span id="greetingUser">!</span></h3>
-                            <h2 id="greetingUserName"></h2>
+                        <div class="summary-metrics">
+                            <div onclick="window.location.href = '../HTML/board.html'"
+                                class="metric-card metric-card-gap transform-origin-left">
+                                <h2 id="numberTotalTasks">0</h2>
+                                <p id="totalTasks">Task in Board</p>
+                            </div>
+                            <div onclick="window.location.href = '../HTML/board.html'"
+                                class="metric-card metric-card-gap">
+                                <h2 id="numberPendingTasks">0</h2>
+                                <p id="pendingTasks">Tasks in Progress</p>
+                            </div>
+                            <div onclick="window.location.href = '../HTML/board.html'"
+                                class="metric-card metric-card-gap transform-origin-right">
+                                <h2 id="numberAwaitingFeedback">0</h2>
+                                <p id="awaitingFeedback">Awaiting Feedback</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="summary-metrics">
-                        <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card metric-card-gap transform-origin-left">
-                            <h2 id="numberTotalTasks">0</h2>
-                            <p id="totalTasks">Task in Board</p>
-                        </div>
-                        <div onclick="window.location.href = '../HTML/board.html'" class="metric-card metric-card-gap">
-                            <h2 id="numberPendingTasks">0</h2>
-                            <p id="pendingTasks">Tasks in Progress</p>
-                        </div>
-                        <div onclick="window.location.href = '../HTML/board.html'"
-                            class="metric-card metric-card-gap transform-origin-right">
-                            <h2 id="numberAwaitingFeedback">0</h2>
-                            <p id="awaitingFeedback">Awaiting Feedback</p>
-                        </div>
+                    <div class="greeting-section">
+                        <h3>Good morning<span id="greetingUser">!</span></h3>
+                        <h2 id="greetingUserName"></h2>
                     </div>
                 </div>
             </div>

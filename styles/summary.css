@@ -55,9 +55,13 @@
 .summary-metrics {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1.5rem;
     min-width: clamp(396px, 196.7px + 25.95vw, 560px);
     max-width: clamp(396px, 196.7px + 25.95vw, 560px);
+}
+
+.metrics-wrapper > .summary-metrics:first-child{
+    gap: 2rem;
 }
 
 .metric-card {
@@ -70,7 +74,38 @@
     gap: 20px;
     width: 100%;
     min-height: clamp(116px, 48.03px + 15.88vw, 170px);
+    min-width: clamp(116px, 48.03px + 15.88vw, 170px);
     padding: 20px;
+    position: relative;
+    isolation: isolate;
+}
+
+.metric-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    border-radius: 30px;
+    transform-origin: inherit;
+    transition: transform 0.2s, background-color 0.2s;
+    z-index: -1;
+    box-shadow: 0px 0px 8px #00000066;
+}
+
+.metric-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.metric-card:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.metric-card:hover::before {
+    transform: scale(1.05);
+    background-color: var(--main-color);
+    box-shadow: 0px 4px 4px #00000066;
 }
 
 .metric-greeting .metric-card {
@@ -95,10 +130,6 @@
     aspect-ratio: 1 / 1;
     background-color: var(--main-color);
     border-radius: 50%;
-}
-
-.summary-icon-container.small {
-    width: clamp(40px, 3.49px + 8.53vw, 69px);
 }
 
 .bg-red {
@@ -126,20 +157,12 @@
     margin: 0;
 }
 
-.metric-card:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    background-color: var(--main-color);
-    color: white;
-}
-
 .metric-card:hover .summary-icon-container:not(.bg-red) {
     background-color: white;
 }
 
 .metric-card:hover .summary-icon-container:not(.bg-red) .summary-icon {
-    filter: brightness(0);
-    transform: scale(1.1);    
+    filter: brightness(0);   
 }
 
 .v-line-urgent {
@@ -156,6 +179,7 @@
     justify-content: center;
     gap: 0.5rem;
     height: 100%;
+    width: 100%;
 }
 
 .greeting-section h2 {
@@ -182,12 +206,9 @@
     transform-origin: top center;
 }
 
-.metric-card.transform-origin-top:hover {
-    transform: scaleY(1.1);
-}
-
-.metric-card.transform-origin-top:hover .summary-icon-container {
-    transform: scaleX(1.1);
+.metric-card.transform-origin-top:hover::before {
+    transform: scaleY(1.05);
+    box-shadow: 0px 4px 4px #00000066;
 }
 
 .gap-between {
