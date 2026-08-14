@@ -7,7 +7,7 @@
     display: none;
     align-items: center;
     justify-content: space-between;
-    height: 10%;
+    height: 80px;
     font-size: 1rem;
     padding-inline: 1rem;
 }
@@ -17,7 +17,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 96%;
+    height: 76px;
     width: 80px;
     border-radius: 8px;
     color: white;
@@ -93,10 +93,6 @@
     .logoDark-responsive {
         display: flex;
         height: 70%;
-    }
-
-    .footer-media {
-        font-size: 0.8rem;
     }
 
     .profile-initial {
