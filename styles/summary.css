@@ -266,8 +266,12 @@
     }
 
     .summary-metrics {
-        gap: 1rem;
+        gap: 1.5rem;
         min-width: clamp(396px, -32px + 100vw, 736px);
+    }
+
+    .metrics-wrapper>.summary-metrics:first-child {
+        gap: 1.5rem;
     }
 
     .summary-header {
@@ -297,7 +301,7 @@
 
 @media (max-width:435px) {
     .summary-metrics {
-        gap: 0.5rem;
+        gap: 1rem;
         min-width: clamp(288px, -26.18px + 98.18vw, 396px);
     }
 
