@@ -333,6 +333,17 @@ input:focus {
     outline: none;
 }
 
+@media(max-width:1024px) and (max-height:720px) {
+    .contact-overlay-form-title-container {
+        font-size: 48px;
+    }
+
+    .contact-overlay-form-subtitle-container {
+        font-size: 20px;
+    }
+
+}
+
 @media(max-width:768px) {
     .contact-overlay-inner-container {
         width: 100%;
