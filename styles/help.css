@@ -23,6 +23,7 @@ p {
 }
 
 .help-content {
+    padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
     height: 84%;
     flex-direction: column;
     padding-left: 2rem;
@@ -36,6 +37,7 @@ p {
     justify-content: space-between;
     align-items: center;
     max-width: 1210px;
+    margin-bottom: 32px;
 }
 
 .arrow-hug-container {
@@ -89,8 +91,14 @@ p {
     font-size: 24px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .help-content {
-        padding-top: 32px;
+        padding-left: 1rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .helpH2 {
+        font-size: 2.3rem;
     }
 }

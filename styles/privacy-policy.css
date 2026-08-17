@@ -35,16 +35,37 @@
         height: 96%;
     }
 
+    .privacy-and-security-section-media a {
+        font-family: 'OpenSans-Regular';
+    }
+
+    .menu-point {
+        height: auto;
+    }
+
+    .menu-point span {
+        font-family: 'OpenSans-Regular';
+    }
+
+    .menu-point:hover {
+        background-color: unset;
+    }
+
     .menu-point-selected-responsive {
         background-color: var(--menu-hover);
+    }
+
+    .privacy-legal-notice-link:hover {
+        color: white;        
     }
 
     .privacy-legal-notice-link {
         padding-inline: 10px;
         height: 100%;
-        border-radius: 8px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
+        color: white;
     }
 
     .arrow-hug-container {

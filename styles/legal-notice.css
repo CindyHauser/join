@@ -40,6 +40,7 @@ p {
 }
 
 .legal-notice-content {
+    padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
     height: 84%;
     flex-direction: column;
     padding-left: 2rem;
@@ -52,6 +53,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 32px;
 }
 
 
@@ -62,14 +64,9 @@ p {
     max-width: 1210px;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .legal-notice-content {
         padding-left: 1rem;
-        padding-top: 32px;
-    }
-
-    .legal-notice-title-container {
-        margin-bottom: 32px;
     }
 
     .arrow-hug-container {
@@ -78,9 +75,9 @@ p {
 }
 
 
-@media (max-width:370px) {
+@media (max-width:390px) {
     .legalNoticeH2 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
         margin-bottom: 1rem;
     }
 }
