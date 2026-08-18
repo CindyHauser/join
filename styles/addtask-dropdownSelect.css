@@ -7,14 +7,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0px 10px 12px;
+    padding: 12px 16px 12px 16px;
     background: #fff;
     border: 1px solid #d0d0d0;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
-    color: #333;
-    height: max(4vh, 36px);
+    font-size: 20px;
+    color: #686868;
+    height: 48px;
 }
 
 .dropdown-trigger[aria-expanded="true"] {
@@ -22,7 +22,7 @@
 }
 
 .dropdown-trigger .placeholder {
-    color: #333;
+    color: #686868;
 }
 
 .dropdown-trigger .arrow {

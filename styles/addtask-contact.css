@@ -10,7 +10,7 @@
     z-index: 8;
     padding: 16px;
     gap: 16px;
-    top: 57%;
+    top: 100%;
     width: 100%;
     background-color: white;
     max-height: 200px;
@@ -67,7 +67,7 @@
 
 .selected-contact-field {
     height: 40px;
-    display: flex;
+    display: none;
     gap: 8px;
     max-width: 100%;
     overflow: auto;
@@ -80,6 +80,7 @@
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 8px;
+    padding-right: 16px;
 }
 
 .contact-list-input-container img {
