@@ -115,7 +115,6 @@
 .metric-greeting {
     display: flex;
     gap: clamp(32px, -26.3px + 7.59vw, 80px);
-    padding-bottom: 16px;
 }
 
 .metric-card-gap {
@@ -296,6 +295,10 @@
 
     .h-line-header {
         display: block;
+    }
+
+    .metric-greeting {
+        padding-bottom: 16px;
     }
 }
 

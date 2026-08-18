@@ -168,6 +168,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
 }
 
 .contact-expanded-field-inner-container {
@@ -175,7 +176,6 @@
     width: 96%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .contact-responsive-back-button-parent {
