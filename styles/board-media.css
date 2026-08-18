@@ -1,4 +1,4 @@
-@media (min-width:768px) and (max-width:1024px) {
+/* @media (min-width:768px) and (max-width:1024px) {
     h3 {
         font-size: 1rem;
     }
@@ -8,9 +8,9 @@
         width: 98%;
         padding: 6px;
     }
-}
+} */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .summary-header {
         flex-wrap: wrap;
         gap: 0px;

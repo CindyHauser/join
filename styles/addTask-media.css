@@ -52,7 +52,7 @@
         width: 100%;
         height: 15%;
         background-color: var(--background-color-body);
-        padding-bottom: 8px;
+        padding-bottom: 12px;
     }
 
     .add-task-footer p {

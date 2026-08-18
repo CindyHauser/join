@@ -328,7 +328,8 @@ h1 {
 }
 
 *::-webkit-scrollbar-thumb {
-    background: var(--main-color);
+    /* background: var(--main-color); */
+    background: transparent;
     border-radius: 6px;
 }
 
