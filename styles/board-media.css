@@ -10,6 +10,19 @@
     }
 } */
 
+@media (min-width: 1025px) and (max-width: 1300px) {
+    .subtask-progress-indicator {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .subtask-indicator-in-number {
+        width: unset;
+        justify-content: flex-start;
+        margin-top: 8px;
+    }
+}
+
 @media (max-width: 1024px) {
     .summary-header {
         flex-wrap: wrap;
