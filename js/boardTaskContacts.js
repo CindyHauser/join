@@ -86,7 +86,6 @@ const renderDialogAssignedContactsEdit = (contact, library) => {
 const catchZeroContact = (contact, library) => {
     if (contact == undefined) {
         return `<div class="assigned-contact-indicator assigned-contact-indicator-no-contact-selected">
-                    <span>no contact selected yet</span>
                 </div>`
     } else if (contact.length >= 4) {
         return catchContactAssignedLengthMoreThan3(contact, library)

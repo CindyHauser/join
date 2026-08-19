@@ -83,19 +83,24 @@ const dialogSubtask = (subtasks, editTask, taskId) => {
  * @returns {string} HTML markup for the subtask progress bar.
  */
 const catchZeroSubtaskForBar = (subtasks) => {
+    subtasks = subtasks || []
     let finishedSubtask = []
     for (let index = 0; index < subtasks.length; index++) {
         if (subtasks[index].subtaskStateDone == true) {
             finishedSubtask.push(subtasks[index])
         }
     }
-    if (subtasks.length == 0) {
-        return `no subtask selected yet`
+    if (subtasks.length === 0) {
+        return '';
     } else {
-        return `    <div class="subtask-indicator-bar100">
-                          <div class="subtask-indicator-bar-current" style="width: calc(${finishedSubtask.length}/${subtasks.length}*100%);"></div>
+        return `<div class="subtask-progress-indicator">
+                    <div class="subtask-indicator-bar100">
+                        <div class="subtask-indicator-bar-current" style="width: calc(${finishedSubtask.length}/${subtasks.length}*100%);"></div>
                     </div>
-                `
+                    <div class="subtask-indicator-in-number">
+                        ${catchZeroSubtaskForLabel(subtasks)}
+                    </div>
+                </div>`
     }
 }
 
@@ -118,3 +123,4 @@ const catchZeroSubtaskForLabel = (subtasks) => {
         return `<span>${finishedSubtask.length}/${subtasks.length} Subtasks</span>`
     }
 }
+

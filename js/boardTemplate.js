@@ -36,12 +36,7 @@ const setContactCard = (subtaskCatcherCallbackBar, subtaskCatcherCallbackLabel, 
                     ${array[index].description}
                 </span>
             </div>
-            <div class="subtask-progress-indicator">
-                        ${subtaskCatcherCallbackBar(array[index].subtasks)}
-                <div class="subtask-indicator-in-number">
-                       ${subtaskCatcherCallbackLabel(array[index].subtasks)}
-                </div>
-            </div>
+            ${subtaskCatcherCallbackBar(array[index].subtasks)}
             <div class="task-assigned-contact-and-priority-indicator">
                 ${contactAssignedCatcherCallback(array[index].contactSelect, contactListJsonLibrary)}
                 <div class="priority-indicator">
