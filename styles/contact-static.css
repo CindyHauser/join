@@ -19,23 +19,21 @@
 
 
 .contact-list {
-    padding-left: 2rem;
-    width: 40%;
+    width: 36%;
     box-shadow: 2px 0px 6px 0px rgba(0, 0, 0, 0.2);
+    padding-inline: 24px;
 }
 
 .add-contact-button-parent {
     height: 16%;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .add-contact-button {
     height: 50%;
-    width: 96%;
+    width: 100%;
     max-height: 56px;
-    max-width: 352px;
     border-radius: 10px;
     background-color: var(--main-color);
     font-weight: 700;
@@ -55,17 +53,14 @@
 }
 
 .contact-main-list-parent {
-    max-height: 72%;
+    max-height: 100%;
     overflow-x: clip;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
 }
 
 .contact-card {
-    width: 96%;
     border-radius: 10px;
     max-width: 352px;
 }
@@ -75,12 +70,13 @@
     flex-direction: column;
     justify-content: space-around;
     min-height: 58px;
+    margin-bottom: 8px;
 }
 
 .leter-border-letter-box {
     height: 10vh;
     width: 19%;
-    font-size: 32px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,8 +94,7 @@
 .contacts-member {
     display: flex;
     align-items: center;
-    gap: 8px;
-    justify-content: space-between;
+    justify-content: space-around;
     transition: all 125ms ease-in-out;
     min-height: 78px;
 }
@@ -120,18 +115,15 @@
 }
 
 .contacts-member-circle-initial {
-    width: 56px;
-    height: 56px;
-    margin-left: 8px;
-    min-height: 56px;
-    min-width: 56px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: var(--easy-blue-color-secondary);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .contacts-member-name-and-email-parent {
@@ -166,9 +158,9 @@
 .contact-expanded-field {
     width: 72%;
     display: flex;
-    justify-content: center;
     align-items: center;
     padding-top: clamp(48px, -27.32px + 9.81vw, 110px);
+    padding-left: 55px;
 }
 
 .contact-expanded-field-inner-container {
