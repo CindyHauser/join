@@ -344,10 +344,10 @@ input:focus {
 
 }
 
-@media(max-width:768px) {
+@media(max-width:1024px) {
     .contact-overlay-inner-container {
         width: 100%;
-        align-items: unset;
+        align-items: center;
         height: 96%;
         min-height: 0;
     }
@@ -356,8 +356,9 @@ input:focus {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 88%;
+        height: 96%;
         min-height: 0;
+        max-height: 720px;
     }
 
     .contact-overlay-form-header {
@@ -444,6 +445,13 @@ input:focus {
         width: 100%;
         height: 72%;
         justify-content: unset;
+        align-items: center;
+    }
+
+    .form-main-container {
+        max-height: unset;
+        max-width: unset;
+        width: 100%;
     }
 
     .contact-overlay-form-close-bar-desktop {
@@ -471,7 +479,7 @@ input:focus {
 
     .contact-overlay-function-check-container {
         height: 5svh;
-        width: clamp(100px, 48svw, 200px);
+        width: clamp(100px, 40svw, 200px);
         font-size: clamp(16px, 4svw, 24px);
     }
 }

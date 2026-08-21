@@ -53,7 +53,7 @@
 }
 
 .contact-main-list-parent {
-    max-height: 100%;
+    max-height: 75%;
     overflow-x: clip;
     overflow-y: auto;
     display: flex;
@@ -435,7 +435,7 @@
     border-radius: 50%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .contact-main-section {
         overflow: hidden;
     }
@@ -452,6 +452,7 @@
         width: 100%;
         align-items: unset;
         display: none;
+        padding-top: unset;
     }
 
     .add-contact-button-parent {
@@ -463,8 +464,8 @@
     }
 
     .add-contact-button {
-        height: clamp(56px, 13svw, 100px);
-        width: clamp(56px, 13svw, 100px);
+        height: clamp(56px, 13svw, 80px);
+        width: clamp(56px, 13svw, 80px);
         border-radius: 50%;
         max-height: unset;
         max-width: unset;
@@ -475,7 +476,7 @@
     }
 
     .contact-main-list-parent {
-        max-height: 96svh;
+        max-height: 80svh;
         overflow-x: hidden;
     }
 
@@ -548,6 +549,7 @@
         flex-direction: column;
         width: clamp(86px, 24svw, 120px);
         height: 12svh;
+        min-height: 90px;
         justify-content: center;
         gap: 8px;
         position: fixed;
@@ -609,7 +611,7 @@
 }
 
 /* control-class */
-@media(max-width:768px) {
+@media(max-width:1024px) {
     .hide-in-resp {
         display: none;
     }
