@@ -358,7 +358,7 @@ input:focus {
         align-items: center;
         height: 96%;
         min-height: 0;
-        max-height: 720px;
+        max-height: 750px;
     }
 
     .contact-overlay-form-header {
