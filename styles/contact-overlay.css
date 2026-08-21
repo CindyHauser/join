@@ -479,7 +479,7 @@ input:focus {
 
     .contact-overlay-function-check-container {
         height: 5svh;
-        width: clamp(100px, 40svw, 200px);
+        width: clamp(100px, 42svw, 200px);
         font-size: clamp(16px, 4svw, 24px);
     }
 }
