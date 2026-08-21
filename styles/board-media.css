@@ -75,6 +75,8 @@
         scrollbar-width: none;
         -ms-overflow-style: none;
         gap: 8px;
+        align-items: flex-start;
+        margin-top: 8px;
     }
 
     .drag-and-drop-tasks::-webkit-scrollbar {
@@ -131,5 +133,16 @@
 
     .add-task-buttons img {
         height: 65%;
+    }
+
+    .search-wrapper {
+        width: 270px;
+    }
+}
+
+@media (max-height: 480px) {
+    .main-content{
+        gap: 8px !important;
+        padding-top: 16px;
     }
 }
