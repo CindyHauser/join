@@ -550,6 +550,7 @@
         width: clamp(86px, 24svw, 120px);
         height: 12svh;
         min-height: 90px;
+        max-height: 132px;
         justify-content: center;
         gap: 8px;
         position: fixed;
