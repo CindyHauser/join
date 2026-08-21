@@ -129,13 +129,15 @@ h2 {
 
 .add-task-on-board-btn {
     cursor: pointer;
-    padding: 0;
     border: 2px solid black;
     height: 24px;
     width: 24px;
     border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .drag-and-drop-tasks {
@@ -152,7 +154,7 @@ h2 {
 }
 
 .task-board-card {
-    box-shadow: 0px 0px 3px #00000014; 
+    box-shadow: 0px 0px 3px #00000014;
     background-color: white;
     border-radius: 16px;
     width: 98%;
