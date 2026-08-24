@@ -31,6 +31,10 @@
         font-size: 27px;
     }
 
+    .noTask-Container {
+        width: 252px;
+    }
+
     .add-task-on-board-btn {
         height: 30px;
         width: 30px;
