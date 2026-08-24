@@ -2,6 +2,10 @@
     .priority-options {
         flex-direction: column;
     }
+
+    .dialogAddTask{
+        width: 90vw;
+    }
 }
 
 @media (max-width:1024px) {
@@ -31,10 +35,6 @@
 
     hr {
         display: none;
-    }
-
-    .add-task-form {
-        height: 80%;
     }
 
     .add-task-content {
@@ -90,7 +90,7 @@
     }
 }
 
-@media (max-width:420px) {
+@media (max-width:465px) {
     .priority-options {
         flex-direction: column;
     }

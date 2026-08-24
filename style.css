@@ -323,18 +323,17 @@ h1 {
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--background-color-body);
+    background: transparent;
     border-radius: 6px;
 }
 
 *::-webkit-scrollbar-thumb {
-    /* background: var(--main-color); */
     background: transparent;
     border-radius: 6px;
 }
 
 @supports not selector(::-webkit-scrollbar) {
     * {
-        scrollbar-color: var(--main-color) var(--background-color-body);
+        scrollbar-color: transparent transparent;
     }
 }
