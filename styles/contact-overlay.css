@@ -29,11 +29,12 @@
 .contact-overlay-form-header {
     height: 100%;
     border-radius: 10px 0px 0px 10px;
-    width: 37%;
+    width: 40%;
     background-color: var(--menu-hover);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding-left: 24px;
 }
 
 .contact-overlay-form-header-inner-hug {
@@ -105,7 +106,7 @@
 
 .contact-overlay-form-body {
     background-color: white;
-    width: 63%;
+    width: 60%;
     border-radius: 0 10px 10px 0;
 }
 
@@ -142,14 +143,14 @@
     width: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 8px;
 }
 
 .contact-overlay-form-close-bar-desktop {
     all: unset;
     height: 8%;
-    margin-bottom: 32px;
+    margin-bottom: 57px;
+    margin-top: 48px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -157,8 +158,8 @@
 }
 
 .contact-overlay-form-close-bar-desktop img {
-    height: 24px;
-    width: 24px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
     transition: all 125ms ease-in-out;
 }
@@ -365,6 +366,7 @@ input:focus {
         height: 40%;
         width: clamp(300px, 90svw, 560px);
         border-radius: 10px 10px 0 0;
+        padding-left: unset;
     }
 
     .contact-overlay-form-header-inner-hug {
