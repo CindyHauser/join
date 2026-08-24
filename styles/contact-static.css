@@ -144,6 +144,9 @@
 
 .contacts-member-name {
     font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contacts-member-email {
@@ -248,7 +251,7 @@
 }
 
 .contact-subtitle {
-    font-size: 27px;
+    font-size: clamp(1.125rem, 10.101vw - 5.5732rem, 1.75rem);
 }
 
 .contact-expanded-name-and-functions {
