@@ -20,3 +20,9 @@
         height: 6%;
     }
 }
+
+@media (max-width: 360px) {
+    .dialogAddAndEditTaskDesign {
+        font-size: 16px;
+    }
+}

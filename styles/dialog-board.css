@@ -79,12 +79,17 @@
     border-radius: 16px;
     background: var(--main-color);
     color: white;
+    font-size: 20px;
+
 }
 
 .dialogAddAndEditTaskDesign:open {
-    width: clamp(200px, 16vw, 400px);
+    width: 326px;
+    height: 74px;
     display: flex;
-    justify-content: space-between;
+    gap:16px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .dialogAddAndEditTaskDesign img {
