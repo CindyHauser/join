@@ -224,7 +224,7 @@ function checkEmail(field, error) {
 function checkNameFormat(field, error) {
     if (field.id !== "name") return true;
     if (!/^[A-Za-zÄÖÜäöüß]+(?:[- ][A-Za-zÄÖÜäöüß]+)*$/.test(field.value)) {
-        error.textContent = "Name may only contain letters, spaces and single hyphens";
+        error.textContent = "Letters, spaces & single hyphens only";
         field.classList.add("input-error");
         return false;
     }
