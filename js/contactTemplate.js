@@ -231,9 +231,9 @@ const setExpandedContactcardsTemplate = (id, library) => {
     <div class="contact-info-txt"><span>Contact Information</span></div>
     <div class="contact-telephone-and-email-parent" onclick="setEventBubbling(event)">
         <div aria-label="beginning Email text section" class="contact-email-txt"><span>Email</span></div>
-        <div aria-label="contact email is ${library[id].email}" class="contact-email" id="contactEmail"><a href="mailto:${library[id].email}">${library[id].email}</a></div>
+        <div onclick="hideFunctionsMenu()" aria-label="contact email is ${library[id].email}" class="contact-email" id="contactEmail"><a href="mailto:${library[id].email}">${library[id].email}</a></div>
         <div aria-label="beginning Phone text section" class="contact-phone-txt"><span>Phone</span></div>
-        <div aria-label="contact phone is ${library[id].phone}" class="contact-phone" id="contactPhone"><a href="tel:${library[id].phone}">${library[id].phone}</a></div>
+        <div onclick="hideFunctionsMenu()" aria-label="contact phone is ${library[id].phone}" class="contact-phone" id="contactPhone"><a href="tel:${library[id].phone}">${library[id].phone}</a></div>
     </div>
 </div>`
     return template

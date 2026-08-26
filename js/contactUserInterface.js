@@ -28,7 +28,10 @@ const allEditContactInputs = overlayEdit.querySelectorAll('input')
  * @param {HTMLElement} element - The DOM element of the clicked contact card.
  */
 const clicked = (element) => {
+    const expandedContact = document.querySelector('.contact-member-selected')
+    expandedContact?.setAttribute('onclick', 'clicked(this)')
     const container = element
+    element.setAttribute('onclick', 'closeExpandingCards()')
     const expandedContactField = document.getElementById('contactCardExpandedRenderTarget')
     refreshmarksOnContactCards()
     container.classList.add('contact-member-selected')
@@ -105,6 +108,8 @@ const refreshmarksOnContactCards = () => {
 const closeExpandingCards = async () => {
     hideFunctionsMenu()
     setTimeout(() => {
+        const expandedContact = document.querySelector('.contact-member-selected')
+        expandedContact?.setAttribute('onclick', 'clicked(this)')
         refreshmarksOnContactCards()
         document.getElementById('contactCardExpandedRenderTarget').innerHTML = ''
     }, 127);
@@ -161,12 +166,10 @@ const showFunctionsMenuParameterControl = (functions, contactExpandedField) => {
  * class, and removes the animation class entirely after the transition completes (126ms).
  */
 const hideFunctionsMenu = () => {
-    const contactExpandedField = document.querySelector('.contact-expanded-field')
-    contactExpandedField.setAttribute('onclick', 'closeExpandingCards()')
     const functions = document.querySelector('.contacts-member-functions ')
-    functions.classList.replace('fade-in-responsive-contact-functions-effect-on', 'fade-out-responsive-contact-functions-effect-on')
+    functions?.classList.replace('fade-in-responsive-contact-functions-effect-on', 'fade-out-responsive-contact-functions-effect-on')
     setTimeout(() => {
-        functions.classList.remove('fade-out-responsive-contact-functions-effect-on')
+        functions?.classList.remove('fade-out-responsive-contact-functions-effect-on')
     }, 126);
 }
 
