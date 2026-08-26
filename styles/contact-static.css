@@ -44,12 +44,13 @@
     align-items: center;
     gap: 16px;
     border: none;
+    transition: all 125ms ease-in-out;
 }
 
 .add-contact-button:hover {
+    background-color: var(--hover-effect-dark);
     cursor: pointer;
-    background-color: var(--easy-blue-color-secondary);
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
 }
 
 .contact-main-list-parent {

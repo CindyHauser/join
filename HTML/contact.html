@@ -76,7 +76,7 @@
                 </div>
                 <div class="contact-main-list-parent" id="contactMainListParent"></div>
             </div>
-            <div class="contact-expanded-field" onclick="closeExpandingCards()">
+            <div class="contact-expanded-field">
                 <div class="contact-expanded-field-inner-container">
                     <div class="contact-responsive-back-button-parent">
                         <button type="button" class="contact-responsive-back-button-child"
@@ -109,9 +109,9 @@
             </div>
         </section>
     </main>
-    <dialog class="contact-overlay" id="contactAddOverlay" aria-label="add contact overlay started">
+    <dialog class="contact-overlay" id="contactAddOverlay" aria-label="add contact overlay started" onclick="closeOverlayAddContact()">
         <div class="contact-overlay-inner-container">
-            <div class="contact-overlay-form">
+            <div class="contact-overlay-form" onclick="setEventBubbling(event)">
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
@@ -197,9 +197,9 @@
             </div>
         </div>
     </dialog>
-    <dialog class="contact-overlay" id="contactEditOverlay" aria-label="edit contact overlay started">
+    <dialog class="contact-overlay" id="contactEditOverlay" aria-label="edit contact overlay started" onclick="closeOverlayEditContact()">
         <div class="contact-overlay-inner-container">
-            <div class="contact-overlay-form">
+            <div class="contact-overlay-form" onclick="setEventBubbling(event)">
                 <div class="contact-overlay-form-header">
                     <div class="contact-overlay-form-header-inner-hug">
                         <div class="contact-overlay-form-fist-section">
