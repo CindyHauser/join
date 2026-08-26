@@ -199,6 +199,7 @@ h1 {
     width: 24px;
     border-radius: 50%;
     overflow: hidden;
+    filter: brightness(0.7);
 }
 
 .help-icon:hover {
@@ -207,12 +208,12 @@ h1 {
 }
 
 .profile-initial {
-    border: 4px solid black;
+    border: 3px solid #2A3647;
     width: 56px;
     height: 56px;
     border-radius: 50%;
     font-weight: 700;
-    color: var(--easy-blue-color-secondary);
+    color: var(--hover-effect-dark);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -222,7 +223,7 @@ h1 {
 
 .profile-initial:hover {
     cursor: pointer;
-    background-color: rgba(0, 183, 255, 0.352);
+    background-color: #0C2E621F;
 }
 
 .main-content {

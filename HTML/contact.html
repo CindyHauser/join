@@ -78,16 +78,16 @@
             </div>
             <div class="contact-expanded-field">
                 <div class="contact-expanded-field-inner-container">
-                    <div class="contact-responsive-back-button-parent">
-                        <button type="button" class="contact-responsive-back-button-child"
-                            onclick="closeExpandingCards()">
-                            <img src="../assets/ui-icons/arrow-left-line.svg" alt="back to contact list ">
-                        </button>
-                    </div>
                     <section class="contact-details-section">
                         <div class="contact-static-title">
                             <div class="contact-txt">
                                 <h2 class="h2-contact-txt">Contacts</h2>
+                                <div class="contact-responsive-back-button-parent">
+                                    <button type="button" class="contact-responsive-back-button-child"
+                                        onclick="closeExpandingCards()">
+                                        <img src="../assets/ui-icons/arrow-left-line.svg" alt="back to contact list ">
+                                    </button>
+                                </div>
                             </div>
                             <div class="contact-border-line"></div>
                             <div class="contact-subtitle"><span>Better with a team </span></div>
@@ -109,7 +109,8 @@
             </div>
         </section>
     </main>
-    <dialog class="contact-overlay" id="contactAddOverlay" aria-label="add contact overlay started" onclick="closeOverlayAddContact()">
+    <dialog class="contact-overlay" id="contactAddOverlay" aria-label="add contact overlay started"
+        onclick="closeOverlayAddContact()">
         <div class="contact-overlay-inner-container">
             <div class="contact-overlay-form" onclick="setEventBubbling(event)">
                 <div class="contact-overlay-form-header">
@@ -197,7 +198,8 @@
             </div>
         </div>
     </dialog>
-    <dialog class="contact-overlay" id="contactEditOverlay" aria-label="edit contact overlay started" onclick="closeOverlayEditContact()">
+    <dialog class="contact-overlay" id="contactEditOverlay" aria-label="edit contact overlay started"
+        onclick="closeOverlayEditContact()">
         <div class="contact-overlay-inner-container">
             <div class="contact-overlay-form" onclick="setEventBubbling(event)">
                 <div class="contact-overlay-form-header">
