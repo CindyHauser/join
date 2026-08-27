@@ -1,5 +1,6 @@
 initDropdown(root);
 initValidation(addTaskForm);
+initDatePicker();
 
 /**
  * Initializes the custom dropdown within the specified dialog.
@@ -56,3 +57,13 @@ const initContactListSearch = (element, event) => {
     }
     if (inputValue < 3) renderContactInputList();
 };
+
+/**
+ * Sets today's date as the minimum selectable date in the date picker.
+ *
+ * @returns {void}
+ */
+function initDatePicker() {
+    const toDay = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', toDay);
+}
