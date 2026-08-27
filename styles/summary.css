@@ -61,7 +61,6 @@
     justify-content: space-between;
     gap: 1.5rem;
     min-width: clamp(396px, 196.7px + 25.95vw, 560px);
-    /* max-width: clamp(396px, 196.7px + 25.95vw, 560px); */
 }
 
 .metrics-wrapper>.summary-metrics:first-child {

@@ -20,7 +20,6 @@
 
     .input-task-btn {
         display: contents;
-        /* Kinder werden zu direkten Flex-Items von .summary-header */
     }
 
     .summary-header h2 {
@@ -148,10 +147,6 @@
     .add-task-button-dialog {
         padding-block: 0px !important;
     }
-
-    /* .add-task-buttons img {
-        height: 65%;
-    } */
 }
 
 @media (max-height: 480px) {

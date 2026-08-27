@@ -598,7 +598,6 @@
     }
 }
 
-/* control-class */
 @media(max-width:1024px) {
     .hide-in-resp {
         display: none;

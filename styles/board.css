@@ -332,20 +332,3 @@ h2 {
     width: 100%;
     border: 1px dashed grey;
 }
-
-/* @media(max-width:1440px) {
-    .task-board-card {
-        width: 96%;
-    }
-
-    .progress-tasks {
-        min-width: unset
-    }
-}
-
-@media(max-width:768px) {
-    .task-board-card {
-        width: 252px;
-
-    }
-} */

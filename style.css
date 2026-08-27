@@ -10,7 +10,6 @@ body {
     background-color: var(--background-color-body);
 }
 
-/* color-palette */
 :root {
     --main-color: #2A3647;
     --easy-blue-color-secondary: #29ABE2;
@@ -21,7 +20,6 @@ body {
     font-size: 16px;
 }
 
-/*for safari-browser:*/
 input[type="date"] {
     min-width: 0;
     appearance: none;
@@ -31,7 +29,6 @@ input[type="date"] {
     padding: 0 max(16px, calc((100% - 1440px)/2));
 }
 
-/* font-settings */
 @font-face {
     font-family: 'Inter-Regular';
     src: url('assets/fonts/Inter_18pt-Regular.ttf') format('truetype');
@@ -264,7 +261,6 @@ h1 {
     position: absolute;
     left: 4px;
     top: -4px;
-    /* ragt nach oben */
     width: 4px;
     height: 12px;
     border: solid black;
