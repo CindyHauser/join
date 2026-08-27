@@ -82,22 +82,71 @@ const renderfilteredArrayList = (filteredArray, comparedArray) => {
 };
 
 /**
- * Renders the currently selected contacts as badges.
+ * Builds the HTML for the visible selected contact badges.
  *
+ * @param {Array<string>} list - The list of selected contact ids.
+ * @param {number} maxVisible - The maximum number of badges to display.
+ * @param {Object<string, Object>} jsonLibrary - The contact library for lookup.
+ * @returns {string} HTML markup for the visible contact badges.
+ */
+const buildVisibleBadgesHtml = (list, maxVisible, jsonLibrary) => {
+    let html = '';
+    const visibleCount = Math.min(list.length, maxVisible);
+    for (let index = 0; index < visibleCount; index++) {
+        html += setSelectedContactBadge(list, index, jsonLibrary);
+    }
+    return html;
+};
+
+/**
+ * Builds a badge indicating how many selected contacts are not displayed.
+ *
+ * @param {number} total - The total number of selected contacts.
+ * @param {number} maxVisible - The maximum number of badges displayed.
+ * @returns {string} HTML markup for the remaining contacts badge, or an empty string.
+ */
+const buildMoreBadgeHtml = (total, maxVisible) => {
+    const remaining = total - maxVisible;
+    return remaining > 0 ? `<div class="contact-input-badge">+${remaining}</div>` : '';
+};
+
+/**
+ * Updates the visibility and position of the contact selection fields.
+ *
+ * @param {string} html - The rendered HTML of the selected contact badges.
  * @returns {void}
  */
-const renderContactSelectedList = () => {
-    let html = '';
-    for (let index = 0; index < contactSelectedList.length; index++) {
-        html += setSelectedContactBadge(contactSelectedList, index, contactListJsonLibrary);
-    }
+const updateContactFieldVisibility = (html) => {
     const selectContactField = document.querySelector('.selected-contact-field');
     if (selectContactField) selectContactField.style.display = html ? 'flex' : 'none';
     const contactInputList = document.querySelector('.contact-input-list');
     if (contactInputList) contactInputList.style.top = html ? 'calc(100% - 48px)' : '100%';
+};
+
+/**
+ * Inserts the selected contact badges into the contact field containers.
+ *
+ * @param {string} html - The rendered HTML of the selected contact badges.
+ * @returns {void}
+ */
+const injectContactFieldHtml = (html) => {
     document.getElementById('selectedContactField').innerHTML = html;
     const editTarget = document.getElementById('selectedContactFieldEdit');
     if (editTarget) editTarget.innerHTML = html;
+};
+
+/**
+ * Renders the selected contacts and updates the contact field display.
+ *
+ * @returns {void}
+ */
+const renderContactSelectedList = () => {
+    const maxVisible = 4;
+    const html = buildVisibleBadgesHtml(contactSelectedList, maxVisible, contactListJsonLibrary)
+        + buildMoreBadgeHtml(contactSelectedList.length, maxVisible);
+
+    updateContactFieldVisibility(html);
+    injectContactFieldHtml(html);
 };
 
 /**
