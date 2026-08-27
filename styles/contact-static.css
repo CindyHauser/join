@@ -433,13 +433,6 @@
     background-color: var(--hover-effect-dark);
 }
 
-.point {
-    background-color: white;
-    height: 14%;
-    width: 14%;
-    border-radius: 50%;
-}
-
 @media (max-width: 1024px) {
     .contact-main-section {
         overflow: hidden;
@@ -616,6 +609,11 @@
     .show-contact-functions-resp {
         display: flex;
         bottom: 12svh;
+    }
+
+    .show-contact-functions-resp img{
+        min-width: 32px;
+        min-height: 32px;
     }
 
     .contacts-member-functions {
