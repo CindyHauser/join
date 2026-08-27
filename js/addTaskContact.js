@@ -91,6 +91,10 @@ const renderContactSelectedList = () => {
     for (let index = 0; index < contactSelectedList.length; index++) {
         html += setSelectedContactBadge(contactSelectedList, index, contactListJsonLibrary);
     }
+    const selectContactField = document.querySelector('.selected-contact-field');
+    if (selectContactField) selectContactField.style.display = html ? 'flex' : 'none';
+    const contactInputList = document.querySelector('.contact-input-list');
+    if (contactInputList) contactInputList.style.top = html ? 'calc(100% - 48px)' : '100%';
     document.getElementById('selectedContactField').innerHTML = html;
     const editTarget = document.getElementById('selectedContactFieldEdit');
     if (editTarget) editTarget.innerHTML = html;
