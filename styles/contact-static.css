@@ -454,24 +454,8 @@
         padding-top: unset;
     }
 
-    .add-contact-button-parent {
-        height: 0px;
-        position: fixed;
-        bottom: 16svh;
-        width: max-content;
-        right: 24px;
-    }
-
-    .add-contact-button {
-        height: clamp(56px, 13svw, 80px);
-        width: clamp(56px, 13svw, 80px);
-        border-radius: 50%;
-        max-height: unset;
-        max-width: unset;
-    }
-
-    .add-contact-button span {
-        display: none;
+    .add-contact-button{
+        width: 352px;
     }
 
     .contact-main-list-parent {
@@ -534,7 +518,7 @@
         width: 100%;
         height: 50svh;
         overflow: auto;
-        max-height: 274px;
+        max-height: 278px;
     }
 
     #contactCardExpandedRenderTarget {
@@ -611,7 +595,7 @@
         bottom: 12svh;
     }
 
-    .show-contact-functions-resp img{
+    .show-contact-functions-resp img {
         min-width: 32px;
         min-height: 32px;
     }
@@ -632,6 +616,26 @@
         box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2);
         background-color: white;
         z-index: 3;
+    }
+
+    .add-contact-button-parent {
+        height: 0px;
+        position: fixed;
+        bottom: 16svh;
+        width: max-content;
+        right: 24px;
+    }
+
+    .add-contact-button {
+        height: 56px;
+        width: 56px;
+        border-radius: 50%;
+        max-height: unset;
+        max-width: unset;
+    }
+
+    .add-contact-button span {
+        display: none;
     }
 }
 
