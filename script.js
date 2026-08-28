@@ -57,6 +57,9 @@ const initAddTaskPage = async () => {
         await setLibraryForFirebaseInit()
         setContactInputList()
         renderContactInputList()
+        initDropdown(root);
+        initValidation(addTaskForm);
+        initDatePicker();
 }
 
 /**

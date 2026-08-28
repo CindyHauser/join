@@ -11,6 +11,10 @@
  *
  * @returns {void}
  */
-if (sessionStorage.getItem('cameFromIndex') && window.matchMedia('(max-width: 768px)').matches) {
-    document.documentElement.classList.add('pending-greeting');
+function pendingGreetingInit(){
+    if (sessionStorage.getItem('cameFromIndex') && window.matchMedia('(max-width: 768px)').matches) {
+        document.documentElement.classList.add('pending-greeting');
+    }
 }
+// Execute immediately during HTML parsing (in the <head>)
+pendingGreetingInit()

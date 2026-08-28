@@ -1,4 +1,3 @@
-const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
 const greetingUserName = document.getElementById('greetingUserName');
 greetingUserName.textContent = sessionStorage.getItem("currentUserName");
 
@@ -13,11 +12,11 @@ if (greetingUserName.textContent) {
  * @returns {string} One of "Good morning", "Good afternoon", "Good evening", or "Good night".
  */
 function getGreeting(date = new Date()) {
-  const h = date.getHours();
-  if (h >= 5 && h < 12) return "Good morning";
-  if (h >= 12 && h < 17) return "Good afternoon";
-  if (h >= 17 && h < 21) return "Good evening";
-  return "Good night";
+    const h = date.getHours();
+    if (h >= 5 && h < 12) return "Good morning";
+    if (h >= 12 && h < 17) return "Good afternoon";
+    if (h >= 17 && h < 21) return "Good evening";
+    return "Good night";
 }
 
 document.querySelector('.greeting-section h3').firstChild.textContent = getGreeting();

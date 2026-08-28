@@ -1,5 +1,3 @@
-const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
-
 const loginForm = document.getElementById('loginForm');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -78,7 +76,12 @@ async function saveUserDataToLocalStorage() {
     sessionStorage.setItem("currentUserInitials", currentUser.initials);
 }
 
-
+/**
+ * Initializes or resets the history counter in the session storage.
+ * Sets the 'historyCounter' key to 0.
+ * 
+ * @returns {void}
+ */
 const startHistoryCounter = ()=>{
         sessionStorage.setItem('historyCounter',0)
 }

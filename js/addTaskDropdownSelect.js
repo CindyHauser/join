@@ -187,6 +187,12 @@ function attachListeners(els, state) {
     els.list.addEventListener('keydown', (e) => handleListKeydown(e, els, state));
 }
 
+/**
+ * Global click event listener to manage dropdown visibility.
+ * Iterates through all elements with the class '.dropdown' and calls 
+ * `closeDropdownIfOutside` to check if the user clicked outside the dropdown, 
+ * closing it if necessary.
+ */
 document.addEventListener('click', (e) => {
     document.querySelectorAll('.dropdown').forEach(d => closeDropdownIfOutside(d, e.target));
 });
@@ -202,7 +208,6 @@ function closeDropdownIfOutside(dropdown, target) {
     if (dropdown.contains(target)) return;
     const list = dropdown.querySelector('.dropdown-list');
     if (!list || list.hidden) return;
- 
     list.hidden = true;
     const trigger = dropdown.querySelector(TRIGGER_SELECTOR);
     const arrow = dropdown.querySelector(ARROW_SELECTOR);

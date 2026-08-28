@@ -1,6 +1,5 @@
 let taskListJsonLibrary = ''
 let contactListJsonLibrary = ''
-const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
 let generalTaskArray = []
 let toDoTaskArray = []
 let inProgressTaskArray = []

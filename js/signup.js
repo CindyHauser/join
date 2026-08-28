@@ -1,4 +1,3 @@
-const BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/"
 const signupForm = document.getElementById('signupForm');
 const name = document.getElementById('name');
 const email = document.getElementById('email');

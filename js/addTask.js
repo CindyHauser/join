@@ -1,7 +1,3 @@
-if (typeof BASE_URL === "undefined") {
-    globalThis.BASE_URL = "https://join3195-7c673-default-rtdb.europe-west1.firebasedatabase.app/";
-}
-
 const ARROW_UP_ICON = '../assets/ui-icons/arrow-up.svg';
 const ARROW_DOWN_ICON = '../assets/ui-icons/arrow-down.svg';
 const TRIGGER_SELECTOR = '#category, #categoryEdit';

@@ -1,6 +1,3 @@
-initDropdown(root);
-initValidation(addTaskForm);
-initDatePicker();
 
 /**
  * Initializes the custom dropdown within the specified dialog.

@@ -1,4 +1,13 @@
+/**
+ * Stores the ID of the task currently selected to be moved.
+ * @type {string | number | null}
+ */
 let moveMenuTaskId = null;
+
+/**
+ * Stores the ID of the task whose move menu is currently active or open.
+ * @type {string | number | null}
+ */
 let activeMoveMenuTaskId = null;
 
 /**
@@ -251,4 +260,10 @@ const updateCardDraggability = () => {
         card.draggable = !isMobile;
     });
 };
+
+/**
+ * Event listener for the window 'resize' event.
+ * Triggers the `updateCardDraggability` function whenever the browser window is resized
+ * to adjust or evaluate the drag-and-drop behavior of the task cards based on the new screen size.
+ */
 window.addEventListener('resize', updateCardDraggability);
