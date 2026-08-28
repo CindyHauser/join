@@ -128,7 +128,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                         <div class="form-inputs">
                             <label class="required" for="editDate">Due date</label>
                             <div class="pos-rel">
-                                <input type="date" id="editDate" name="editDate" placeholder="dd/mm/yyyy" value="${task.date}" required
+                                <input type="date" min="${new Date().toISOString().split('T')[0]}" id="editDate" name="editDate" placeholder="dd/mm/yyyy" value="${task.date}" required
                                     data-error="Date is required">
                             </div>
                         </div>
