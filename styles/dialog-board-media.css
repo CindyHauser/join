@@ -1,15 +1,10 @@
 @media (max-width: 500px) {
     .dialog-task-board-card {
-        height: 80vh;
         padding: 1rem;
     }
 
     .dialog-task-card-title {
         font-size: 1.6rem;
-    }
-
-    .dialog-task-card-body section {
-        font-size: 0.8rem;
     }
 
     .dialog-edit-form-height {
