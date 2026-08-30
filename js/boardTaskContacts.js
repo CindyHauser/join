@@ -120,7 +120,9 @@ const selectedContactsToEdit = (contact, library) => {
  */
 const buildMoreBadgeHtmlEditTask = (total, maxVisible) => {
     const remaining = total - maxVisible;
-    return remaining > 0 ? `<div class="contact-input-badge">+${remaining}</div>` : '';
+    return remaining > 0 ? `<div class="dialog-assigned-contact-item">
+                            <div class="contact-input-badge">+${remaining}</div>
+                            </div>` : '';
 };
 
 /**
