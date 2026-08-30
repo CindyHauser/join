@@ -72,8 +72,55 @@ const renderDialogAssignedContactsEdit = (contact, library) => {
         return `  <span>no contact selected yet</span>
                 `
     };
-    const contactSelectInnerHtml = contact.map(contactId => createDialogAssignedContactMarkupEdit(contactId, library)).join('')
+    const contactSelectInnerHtml = setContactSelectInnerHtmlAssignedContactsEdit(contact, library)
     return ` ${contactSelectInnerHtml}`
+};
+
+/**
+ * Determines and generates the HTML markup for the assigned contacts in the edit task dialog.
+ * If more than 4 contacts are assigned, it delegates to a helper function to show the first 4 
+ * along with an overflow badge. Otherwise, it renders all assigned contacts directly.
+ * 
+ * @param {Array} contact - An array of the currently assigned contact IDs or objects.
+ * @param {Object|Array} library - The data library containing full contact details.
+ * @returns {string} The generated HTML string for displaying the assigned contacts.
+ */
+const setContactSelectInnerHtmlAssignedContactsEdit = (contact, library) => {
+    if (contact.length > 4) {
+        return selectedContactsToEdit(contact, library)
+    }
+    return contact.map(contactId => createDialogAssignedContactMarkupEdit(contactId, library)).join('')
+}
+
+/**
+ * Generates the HTML markup for displaying assigned contacts in the edit task dialog.
+ * Creates the visual representations for up to the first 4 contacts and appends 
+ * a badge indicating the number of additional contacts if the total exceeds 4.
+ * 
+ * @param {Array} contact - An array of the currently selected or assigned contacts.
+ * @param {Object|Array} library - The complete contact library used to fetch specific contact details.
+ * @returns {string} The combined HTML string containing the assigned contacts and the overflow badge.
+ */
+const selectedContactsToEdit = (contact, library) => {
+    let template = ''
+    for (let index = 0; index < 4; index++) {
+        template += createDialogAssignedContactMarkupEdit(contact[index], library)
+    }
+    return template + buildMoreBadgeHtmlEditTask(contact.length, 4)
+}
+
+/**
+ * Generates the HTML for a "+X" badge when the number of items exceeds the maximum visible limit.
+ * Calculates the difference between the total items and the maximum visible items. 
+ * If there are remaining items, it returns a badge containing the surplus count; otherwise, it returns an empty string.
+ * 
+ * @param {number} total - The total number of items (e.g., assigned contacts).
+ * @param {number} maxVisible - The maximum number of items allowed to be displayed.
+ * @returns {string} The HTML string representing the "+X" badge, or an empty string if no extra items exist.
+ */
+const buildMoreBadgeHtmlEditTask = (total, maxVisible) => {
+    const remaining = total - maxVisible;
+    return remaining > 0 ? `<div class="contact-input-badge">+${remaining}</div>` : '';
 };
 
 /**
