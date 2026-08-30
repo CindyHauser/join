@@ -98,26 +98,6 @@ const catchZeroSubtaskForBar = (subtasks) => {
 }
 
 /**
- * Generates the HTML string for a subtask progress indicator.
- * Calculates the width of the progress bar based on the ratio of finished subtasks 
- * to total subtasks, and includes a text label for the current progress.
- * 
- * @param {Array} finishedSubtask - An array containing the completed subtasks.
- * @param {Array} subtasks - An array containing all subtasks for the current task.
- * @returns {string} The HTML string representing the progress bar and its label.
- */
-const setCatchZeroSubtaskForBarHtml = (finishedSubtask,subtasks) => {
-    return `<div class="subtask-progress-indicator">
-                    <div class="subtask-indicator-bar100">
-                        <div class="subtask-indicator-bar-current" style="width: calc(${finishedSubtask.length}/${subtasks.length}*100%);"></div>
-                    </div>
-                    <div class="subtask-indicator-in-number">
-                        ${catchZeroSubtaskForLabel(subtasks)}
-                    </div>
-                </div>`
-}
-
-/**
  * Creates the label text that shows how many subtasks are completed.
  *
  * @param {Array<Object>} subtasks - The subtasks of the current task.

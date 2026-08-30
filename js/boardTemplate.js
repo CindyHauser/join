@@ -1,4 +1,24 @@
 /**
+ * Generates the HTML string for a subtask progress indicator.
+ * Calculates the width of the progress bar based on the ratio of finished subtasks 
+ * to total subtasks, and includes a text label for the current progress.
+ * 
+ * @param {Array} finishedSubtask - An array containing the completed subtasks.
+ * @param {Array} subtasks - An array containing all subtasks for the current task.
+ * @returns {string} The HTML string representing the progress bar and its label.
+ */
+const setCatchZeroSubtaskForBarHtml = (finishedSubtask, subtasks) => {
+    return `<div class="subtask-progress-indicator">
+                    <div class="subtask-indicator-bar100">
+                        <div class="subtask-indicator-bar-current" style="width: calc(${finishedSubtask.length}/${subtasks.length}*100%);"></div>
+                    </div>
+                    <div class="subtask-indicator-in-number">
+                        ${catchZeroSubtaskForLabel(subtasks)}
+                    </div>
+                </div>`
+}
+
+/**
  * Creates the HTML markup for a task card rendered in the board.
  *
  * @param {Function} subtaskCatcherCallbackBar - Callback that renders the subtask progress bar.
@@ -156,7 +176,7 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
                                 <img src="../assets/ui-icons/arrow-down.svg" alt="arrow.svg" onmousedown="event.preventDefault()">
                             </div>
                             <div class="contact-input-list" id="contactInputListEdit" onmousedown="contactInputClicked(event)"></div>
-                            <div class="selected-contact-field" id="selectedContactFieldEdit">${renderDialogAssignedContactsEdit(task.contactSelect, contactLibrary)}</div>  
+                            <div class="selected-contact-field" id="selectedContactFieldEdit" style="display: flex;">${renderDialogAssignedContactsEdit(task.contactSelect, contactLibrary)}</div>
                         </div>
                         <div class="form-inputs">
                             <label class="required" for="categoryEdit">Category</label>
