@@ -52,6 +52,14 @@ function setPriority(dialog, priority) {
     const button = dialog.querySelector(`.priority-btn.${priority}`);
     if (button) selectPriority(button);
 }
+
+/**
+ * Submits the add-task form by listening for the form submit event.
+ *
+ * @event submit
+ * @param {Event} event - The submit event fired when the form is submitted.
+ * @returns {void}
+ */
 addTaskForm.addEventListener('submit', handleAddTaskSubmit);
 
 /**

@@ -1,9 +1,22 @@
-const greetingUserName = document.getElementById('greetingUserName');
-greetingUserName.textContent = sessionStorage.getItem("currentUserName");
+/**
+ * Initializes the greeting content for the summary page.
+ *
+ * Reads the current username from session storage, adds the separator comma,
+ * and updates the main greeting heading based on the current time of day.
+ *
+ * @returns {void}
+ */
+function initGreeting() {
+    const greetingUserName = document.getElementById('greetingUserName');
+    greetingUserName.textContent = sessionStorage.getItem("currentUserName");
 
-const greetingUserElement = document.getElementById('greetingUser');
-if (greetingUserName.textContent) {
-    greetingUserElement.textContent = `,`;
+    const greetingUserElement = document.getElementById('greetingUser');
+    if (greetingUserName.textContent) {
+        greetingUserElement.textContent = `,`;
+    }
+    
+    const greetingSectionHeading = document.querySelector('.greeting-section h3');
+    greetingSectionHeading.firstChild.textContent = getGreeting();
 }
 
 /**
@@ -18,8 +31,6 @@ function getGreeting(date = new Date()) {
     if (h >= 17 && h < 21) return "Good evening";
     return "Good night";
 }
-
-document.querySelector('.greeting-section h3').firstChild.textContent = getGreeting();
 
 /**
  * Fetches all tasks from the Firebase Realtime Database.
@@ -173,10 +184,23 @@ const computeUrgentStats = (tasks) => {
     return { count, date: formatted };
 }
 
+/**
+ * Loads the summary metrics and initializes the greeting as soon as the HTML document is fully parsed.
+ *
+ * @event DOMContentLoaded
+ * @returns {void}
+ */
 document.addEventListener('DOMContentLoaded', () => {
     updateSummaryMetrics();
+    initGreeting();
 });
 
+/**
+ * Clears the temporary navigation flag and removes the greeting animation class once the greeting finishes.
+ *
+ * @event DOMContentLoaded
+ * @returns {void}
+ */
 document.addEventListener('DOMContentLoaded', () => {
     sessionStorage.removeItem('cameFromIndex');
     const html = document.documentElement;

@@ -33,7 +33,7 @@ const buildContactListCard = (contact, isSelected) => {
  */
 const setSelectedContactBadge = (array, index, library) => {
     const contact = library[array[index]];
-    return  getSelectedContactBadge(contact);
+    return getSelectedContactBadge(contact);
 };
 
 /**
