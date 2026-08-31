@@ -7,18 +7,32 @@ const errorMessageElement = document.getElementById('confirmPasswordError');
 const signupButton = document.getElementById('signupButton');
 
 /**
- * Initializes the form validation for the signup form.
+ * Initializes the signup form by setting up form validation, password visibility toggles,
+ * event listeners, and button state management.
+ *
+ * This function performs the following setup tasks:
+ * - Initializes form validation for all required fields
+ * - Sets up password visibility toggle for the password field
+ * - Sets up password visibility toggle for the confirm password field
+ * - Attaches input and change event listeners to manage signup button state
+ * - Attaches event listeners to password fields to validate password matching
+ * - Toggles the signup button enabled/disabled state based on form validity
  *
  * @returns {void}
  */
-initValidation(signupForm);
-setupPasswordVisibilityToggle(password, document.getElementById('passwordIcon'));
-setupPasswordVisibilityToggle(confirmPassword, document.getElementById('confirmPasswordIcon'));
+function initSignupForm() {
+    initValidation(signupForm);
+    setupPasswordVisibilityToggle(password, document.getElementById('passwordIcon'));
+    setupPasswordVisibilityToggle(confirmPassword, document.getElementById('confirmPasswordIcon'));
 
-signupForm.addEventListener("input", toggleSignupButton);
-signupForm.addEventListener("change", toggleSignupButton);
+    signupForm.addEventListener("input", toggleSignupButton);
+    signupForm.addEventListener("change", toggleSignupButton);
 
-toggleSignupButton();
+    password.addEventListener('input', checkPasswordsMatch);
+    confirmPassword.addEventListener('input', checkPasswordsMatch);
+
+    toggleSignupButton();
+}
 
 /**
  * Handles signup form submission, validates the user input, and stores the new user.
@@ -73,9 +87,6 @@ function checkPasswordsMatch() {
     confirmPassword.classList.remove('input-error');
     return true;
 }
-
-password.addEventListener('input', checkPasswordsMatch);
-confirmPassword.addEventListener('input', checkPasswordsMatch);
 
 /**
  * Checks whether a user with the entered email already exists.

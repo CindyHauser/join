@@ -1,25 +1,31 @@
 const loginForm = document.getElementById('loginForm');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+let errorMessageElement;
 
 /**
- * Disables page animations when the session flag requests a skip.
+ * Initializes the login form by setting up form validation, password visibility toggle,
+ * and animation state management.
+ *
+ * This function performs the following setup tasks:
+ * - Checks and applies the 'no-animation' class if transitioning from the signup page
+ * - Removes the skip animation flag from session storage
+ * - Initializes form validation for all required fields
+ * - Retrieves the password error message display element
+ * - Sets up password visibility toggle for the password field
  *
  * @returns {void}
  */
-if (sessionStorage.getItem("skipAnimation") === "true") {
+function initLoginForm() {
+    if (sessionStorage.getItem("skipAnimation") === "true") {
         document.documentElement.classList.add("no-animation");
         sessionStorage.removeItem("skipAnimation");
     }
 
-/**
- * Initializes the login form validation on page load.
- *
- * @returns {void}
- */
-initValidation(loginForm);
-const errorMessageElement = document.getElementById('passwordError');
-setupPasswordVisibilityToggle(password, document.getElementById('passwordIcon'));
+    initValidation(loginForm);
+    errorMessageElement = document.getElementById('passwordError');
+    setupPasswordVisibilityToggle(password, document.getElementById('passwordIcon'));
+}
 
 /**
  * Handles the login form submission, validates the input and redirects on success.
@@ -84,4 +90,19 @@ async function saveUserDataToLocalStorage() {
  */
 const startHistoryCounter = ()=>{
         sessionStorage.setItem('historyCounter',0)
+}
+
+/**
+ * Initializes the login page by setting up the history counter and login form.
+ *
+ * This is the main entry point for login page initialization that orchestrates
+ * the following initialization steps:
+ * - Resets the history counter to 0 in session storage
+ * - Initializes the login form with validation and event listeners
+ *
+ * @returns {void}
+ */
+function initLogin() {
+    startHistoryCounter();
+    initLoginForm();
 }
