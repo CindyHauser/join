@@ -32,7 +32,6 @@ const fetchTasksFromFirebase = async () => {
         const data = await res.json();
         return data || {};
     } catch (e) {
-        console.error('fetchTasksFromFirebase error', e);
         return {};
     }
 };

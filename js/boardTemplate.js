@@ -19,6 +19,22 @@ const setCatchZeroSubtaskForBarHtml = (finishedSubtask, subtasks) => {
 }
 
 /**
+ * Creates markup for an editable subtask item in the edit dialog.
+ *
+ * @param {Object|string} subtask - The subtask data or string.
+ * @param {number} index - The index of the subtask.
+ * @returns {string} HTML markup for an editable subtask list item.
+ */
+const renderEditableSubtaskItem = (subtask, index) => {
+    const description = getSubtaskDescription(subtask);
+    return `<li class="subtask-preview-item subtask-actions" data-value="${index}">
+        <span class="editSubtaskText subtask-text">${description}</span>
+        <img class="subtask-icon subtask-edit" src="../assets/ui-icons/edit.svg" alt="Edit subtask" onclick="handleEditClick(this)">
+        <img class="subtask-icon subtask-delete" src="../assets/ui-icons/delete.svg" alt="Delete subtask" onclick="handleDeleteClick(this)">
+    </li>`;
+};
+
+/**
  * Creates the HTML markup for a task card rendered in the board.
  *
  * @param {Function} subtaskCatcherCallbackBar - Callback that renders the subtask progress bar.

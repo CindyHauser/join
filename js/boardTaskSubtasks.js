@@ -9,22 +9,6 @@ const getSubtaskDescription = (subtask) => {
 };
 
 /**
- * Creates markup for an editable subtask item in the edit dialog.
- *
- * @param {Object|string} subtask - The subtask data or string.
- * @param {number} index - The index of the subtask.
- * @returns {string} HTML markup for an editable subtask list item.
- */
-const renderEditableSubtaskItem = (subtask, index) => {
-    const description = getSubtaskDescription(subtask);
-    return `<li class="subtask-preview-item subtask-actions" data-value="${index}">
-        <span class="editSubtaskText subtask-text">${description}</span>
-        <img class="subtask-icon subtask-edit" src="../assets/ui-icons/edit.svg" alt="Edit subtask" onclick="handleEditClick(this)">
-        <img class="subtask-icon subtask-delete" src="../assets/ui-icons/delete.svg" alt="Delete subtask" onclick="handleDeleteClick(this)">
-    </li>`;
-};
-
-/**
  * Creates markup for a readonly subtask item in the dialog view.
  *
  * @param {Object|string} subtask - The subtask data or string.
@@ -93,7 +77,7 @@ const catchZeroSubtaskForBar = (subtasks) => {
     if (subtasks.length === 0) {
         return '';
     } else {
-        return setCatchZeroSubtaskForBarHtml(finishedSubtask,subtasks)
+        return setCatchZeroSubtaskForBarHtml(finishedSubtask, subtasks)
     }
 }
 
