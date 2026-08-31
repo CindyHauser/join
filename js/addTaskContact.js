@@ -20,13 +20,7 @@ const setContactListCard = (array, index, comparedArray) => {
  */
 const buildContactListCard = (contact, isSelected) => {
     const checkedAttr = isSelected ? 'checked' : '';
-    return `<div class="contact-input-class-card" onclick="contactSelected(this)">
-                <div class="input-name-and-badge">
-                <div class="contact-input-badge" style="background-color: rgb(${contact.badgeColor[0]},${contact.badgeColor[1]},${contact.badgeColor[2]});">${contact.fornameFirstLetter}${contact.surnameFirstLetter}</div>
-                <div class="contact-input-name"> ${contact.forename} ${contact.surname}</div>
-                </div>
-                <input ${checkedAttr} onclick="contactSelectedCheckbox(this)" type="checkbox" name="${contact.forename} ${contact.surname}" id=${contact.id} class="checkbox">
-                </div>`;
+    return getContactListCard(contact, checkedAttr);
 };
 
 /**
@@ -39,7 +33,7 @@ const buildContactListCard = (contact, isSelected) => {
  */
 const setSelectedContactBadge = (array, index, library) => {
     const contact = library[array[index]];
-    return `<div class="contact-input-badge" style="background-color: rgb(${contact.badgeColor[0]},${contact.badgeColor[1]},${contact.badgeColor[2]});">${contact.fornameFirstLetter}${contact.surnameFirstLetter}</div>`;
+    return  getSelectedContactBadge(contact);
 };
 
 /**
@@ -107,7 +101,7 @@ const buildVisibleBadgesHtml = (list, maxVisible, jsonLibrary) => {
  */
 const buildMoreBadgeHtml = (total, maxVisible) => {
     const remaining = total - maxVisible;
-    return remaining > 0 ? `<div class="contact-input-badge">+${remaining}</div>` : '';
+    return remaining > 0 ? getMoreBadgeHtml(remaining) : '';
 };
 
 /**

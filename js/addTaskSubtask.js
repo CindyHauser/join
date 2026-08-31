@@ -65,10 +65,7 @@ function removeSubtaskPreviewList(input) {
  * @returns {string} The generated list HTML.
  */
 function buildSubtaskListHTML(subtasks) {
-    return subtasks.map((subtask, i) => `<li class="subtask-preview-item subtask-actions" data-index="${i}"><span class="subtask-text">${subtask}</span>
-        <img class="subtask-icon subtask-edit" src="../assets/ui-icons/edit.svg" alt="Edit subtask" onclick="editSubtask(this)">
-        <img class="subtask-icon subtask-delete" src="../assets/ui-icons/delete.svg" alt="Delete subtask" onclick="deleteSubtask(this)">
-    </li>`).join('');
+    return subtasks.map(subtaskItemTemplate).join('');
 }
 
 /**
@@ -358,8 +355,6 @@ const buildSubtaskListItem = (index, value) => {
     const li = document.createElement('li');
     li.className = 'subtask-preview-item subtask-actions';
     li.dataset.value = index;
-    li.innerHTML = `<span class="editSubtaskText subtask-text">${value}</span>
-        <img class="subtask-icon subtask-edit" src="../assets/ui-icons/edit.svg" alt="Edit subtask" onclick="handleEditClick(this)">
-        <img class="subtask-icon subtask-delete" src="../assets/ui-icons/delete.svg" alt="Delete subtask" onclick="handleDeleteClick(this)">`;
+    li.innerHTML = subtaskListItemInnerTemplate(value);
     return li;
 };
