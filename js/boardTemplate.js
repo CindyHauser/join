@@ -230,3 +230,139 @@ const taskDialogEditContentTemplate = (task, contactLibrary) => {
             </form>`
     return template
 }
+
+/**
+ * Creates a checkbox row for a subtask in the task dialog.
+ *
+ * @param {string} safeId - A sanitized DOM id for the checkbox.
+ * @param {number} index - The index of the subtask within the task.
+ * @param {string} checked - The HTML attribute string for the checked state.
+ * @param {string} description - The subtask description text.
+ * @param {string} taskId - The task id associated with the subtask.
+ * @returns {string} HTML markup for a readonly subtask checkbox item.
+ */
+function readonlySubtaskItemTemplate(safeId, index, checked, description, taskId) {
+    return `<p class="input-label"><input class="checkbox" type="checkbox" id="${safeId}" data-value="${index}"
+     onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
+   <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`;
+}
+
+/**
+ * Creates a circular badge for a contact with an assigned background color.
+ *
+ * @param {string} initials - The initials to display inside the badge.
+ * @param {number[]} badgeColor - RGB color values for the badge background.
+ * @returns {string} HTML markup for a contact badge.
+ */
+function contactBadgeTemplate(initials, badgeColor) {
+    return `<div class="dialog-assigned-contact-badge" 
+            style="background-color: rgb(${badgeColor[0]}, ${badgeColor[1]}, ${badgeColor[2]});">${initials}</div>`;
+}
+
+/**
+ * Creates a single assigned-contact row for the task dialog.
+ *
+ * @param {string} initials - The initials to display in the contact badge.
+ * @param {number[]} badgeColor - RGB color values for the badge background.
+ * @param {string} name - The full name of the assigned contact.
+ * @returns {string} HTML markup for a contact item with badge and label.
+ */
+function dialogAssignedContactItemTemplate(initials, badgeColor, name) {
+    return `
+        <div class="dialog-assigned-contact-item">
+            ${contactBadgeTemplate(initials, badgeColor)}
+            <span>${name}</span>
+        </div>
+    `;
+}
+
+/**
+ * Creates a compact assigned-contact badge without a name label for edit mode.
+ *
+ * @param {string} initials - The initials to display in the badge.
+ * @param {number[]} badgeColor - RGB color values for the badge background.
+ * @returns {string} HTML markup for an edit-mode contact badge container.
+ */
+function dialogAssignedContactItemEditTemplate(initials, badgeColor) {
+    return `
+        <div class="dialog-assigned-contact-item">
+            ${contactBadgeTemplate(initials, badgeColor)}
+        </div>
+    `;
+}
+
+/**
+ * Wraps rendered assigned contacts in a dedicated container.
+ *
+ * @param {string} innerHtml - The HTML content of the assigned-contact section.
+ * @returns {string} HTML markup for the assigned-contact container.
+ */
+function dialogAssignedContactIndicatorTemplate(innerHtml) {
+    return ` <div class="dialog-assigned-contact-indicator">
+                ${innerHtml}
+            </div>`;
+}
+
+/**
+ * Creates a fallback message when no contact is selected in the edit form.
+ *
+ * @returns {string} HTML text informing the user that no contact has been selected yet.
+ */
+function noContactSelectedEditTemplate() {
+    return `  <span>no contact selected yet</span>`;
+}
+
+/**
+ * Builds the overflow badge shown when more contacts are assigned than fit visually.
+ *
+ * @param {number} remaining - The number of remaining contacts to display as overflow.
+ * @returns {string} HTML markup for the overflow indicator.
+ */
+function moreBadgeTemplate(remaining) {
+    return `<div class="dialog-assigned-contact-item">
+                <div class="dialog-assigned-contact-badge">+${remaining}</div>
+            </div>`;
+}
+
+/**
+ * Creates an empty-state placeholder for contacts that are not assigned.
+ *
+ * @returns {string} HTML markup for the empty assigned-contact indicator.
+ */
+function noContactIndicatorTemplate() {
+    return `<div class="assigned-contact-indicator assigned-contact-indicator-no-contact-selected"></div>`;
+}
+
+/**
+ * Creates a contact badge for a board task card with a positioned left offset.
+ *
+ * @param {number} index - The badge position index.
+ * @param {number[]} badgeColor - RGB color values for the badge background.
+ * @param {string} initials - The initials to display in the badge.
+ * @returns {string} HTML markup for a task card contact badge.
+ */
+function boardCardContactBadgeTemplate(index, badgeColor, initials) {
+    return `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${badgeColor[0]}, ${badgeColor[1]}, ${badgeColor[2]});">${initials}</div>`;
+}
+
+/**
+ * Creates the overflow badge displayed on board cards when additional contacts exist.
+ *
+ * @param {number} remaining - The number of additional contacts not shown individually.
+ * @returns {string} HTML markup for the overflow badge.
+ */
+function boardCardOverflowBadgeTemplate(remaining) {
+    return `<div class="board-card-assigned-contact-badge left3" style="background-color: rgb(154, 148, 148);">+${remaining}</div>`;
+}
+
+/**
+ * Wraps the assigned-contact indicator in a board-card friendly container.
+ *
+ * @param {string} innerHtml - The HTML content to place inside the wrapper.
+ * @returns {string} HTML markup for the assigned-contact indicator wrapper.
+ */
+function assignedContactIndicatorWrapperTemplate(innerHtml) {
+    return ` <div class="assigned-contact-indicator">
+                ${innerHtml}
+            </div>`;
+}

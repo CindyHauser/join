@@ -11,13 +11,7 @@ const createDialogAssignedContactMarkup = (contactId, library) => {
         return ''
     };
     const initials = `${contactData.fornameFirstLetter.toUpperCase()}${contactData.surnameFirstLetter.toUpperCase()}`
-    return `
-        <div class="dialog-assigned-contact-item">
-            <div class="dialog-assigned-contact-badge" 
-            style="background-color: rgb(${contactData.badgeColor[0]}, ${contactData.badgeColor[1]}, ${contactData.badgeColor[2]});">${initials}</div>
-            <span>${contactData.forename} ${contactData.surname}</span>
-        </div>
-    `
+    return dialogAssignedContactItemTemplate(initials, contactData.badgeColor, `${contactData.forename} ${contactData.surname}`);
 };
 
 /**
@@ -33,12 +27,7 @@ const createDialogAssignedContactMarkupEdit = (contactId, library) => {
         return ''
     };
     const initials = `${contactData.fornameFirstLetter.toUpperCase()}${contactData.surnameFirstLetter.toUpperCase()}`
-    return `
-        <div class="dialog-assigned-contact-item">
-            <div class="dialog-assigned-contact-badge" 
-            style="background-color: rgb(${contactData.badgeColor[0]}, ${contactData.badgeColor[1]}, ${contactData.badgeColor[2]});">${initials}</div>
-        </div>
-    `
+    return dialogAssignedContactItemEditTemplate(initials, contactData.badgeColor);
 };
 
 /**
@@ -50,14 +39,10 @@ const createDialogAssignedContactMarkupEdit = (contactId, library) => {
  */
 const renderDialogAssignedContacts = (contact, library) => {
     if (contact == undefined || contact.length == 0) {
-        return `<div class="dialog-assigned-contact-indicator">
-                    <span>no contact selected yet</span>
-                </div>`
+        return noContactSelectedEditTemplate();
     };
     const contactSelectInnerHtml = contact.map(contactId => createDialogAssignedContactMarkup(contactId, library)).join('')
-    return ` <div class="dialog-assigned-contact-indicator">
-                    ${contactSelectInnerHtml}
-                </div>`
+    return dialogAssignedContactIndicatorTemplate(contactSelectInnerHtml);
 };
 
 /**
@@ -69,8 +54,7 @@ const renderDialogAssignedContacts = (contact, library) => {
  */
 const renderDialogAssignedContactsEdit = (contact, library) => {
     if (contact == undefined || contact.length == 0) {
-        return `  <span>no contact selected yet</span>
-                `
+        return noContactSelectedEditTemplate();
     };
     const contactSelectInnerHtml = setContactSelectInnerHtmlAssignedContactsEdit(contact, library)
     return ` ${contactSelectInnerHtml}`
@@ -120,9 +104,7 @@ const selectedContactsToEdit = (contact, library) => {
  */
 const buildMoreBadgeHtmlEditTask = (total, maxVisible) => {
     const remaining = total - maxVisible;
-    return remaining > 0 ? `<div class="dialog-assigned-contact-item">
-                            <div class="dialog-assigned-contact-badge">+${remaining}</div>
-                            </div>` : '';
+    return remaining > 0 ? moreBadgeTemplate(remaining) : '';
 };
 
 /**
@@ -134,8 +116,7 @@ const buildMoreBadgeHtmlEditTask = (total, maxVisible) => {
  */
 const catchZeroContact = (contact, library) => {
     if (contact == undefined) {
-        return `<div class="assigned-contact-indicator assigned-contact-indicator-no-contact-selected">
-                </div>`
+        return noContactIndicatorTemplate();
     } else if (contact.length >= 4) {
         return catchContactAssignedLengthMoreThan3(contact, library)
     } else {
@@ -153,13 +134,12 @@ const catchZeroContact = (contact, library) => {
 const catchContactAssignedLengthMoreThan3 = (contact, library) => {
     let contactSelectInnerHtml = ''
     for (let index = 0; index < 3; index++) {
-        contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, ${library[contact[index]].badgeColor[1]}, 
-        ${library[contact[index]].badgeColor[2]});">${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+        const c = library[contact[index]]
+        const initials = `${c.fornameFirstLetter}${c.surnameFirstLetter}`
+        contactSelectInnerHtml += boardCardContactBadgeTemplate(index, c.badgeColor, initials)
     }
-    return ` <div class="assigned-contact-indicator">
-                    ${contactSelectInnerHtml}
-                    <div class="board-card-assigned-contact-badge left3" style="background-color: rgb(154, 148, 148);">+${contact.length - 3}</div>
-                </div>`
+    contactSelectInnerHtml += boardCardOverflowBadgeTemplate(contact.length - 3)
+    return assignedContactIndicatorWrapperTemplate(contactSelectInnerHtml);
 }
 
 /**
@@ -172,11 +152,9 @@ const catchContactAssignedLengthMoreThan3 = (contact, library) => {
 const catchContactAssignedLength3 = (contact, library) => {
     let contactSelectInnerHtml = ''
     for (let index = 0; index < contact.length; index++) {
-        contactSelectInnerHtml += `<div class="board-card-assigned-contact-badge left${index}" style="background-color: rgb(${library[contact[index]].badgeColor[0]}, 
-        ${library[contact[index]].badgeColor[1]}, ${library[contact[index]].badgeColor[2]});">
-        ${library[contact[index]].fornameFirstLetter}${library[contact[index]].surnameFirstLetter}</div>`
+        const c = library[contact[index]]
+        const initials = `${c.fornameFirstLetter}${c.surnameFirstLetter}`
+        contactSelectInnerHtml += boardCardContactBadgeTemplate(index, c.badgeColor, initials)
     }
-    return ` <div class="assigned-contact-indicator">
-                    ${contactSelectInnerHtml}
-                </div>`
+    return assignedContactIndicatorWrapperTemplate(contactSelectInnerHtml)
 }

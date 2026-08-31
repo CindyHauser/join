@@ -20,9 +20,7 @@ const renderReadonlySubtaskItem = (subtask, index, taskId) => {
     const description = getSubtaskDescription(subtask);
     const checked = subtask.subtaskStateDone ? 'checked' : '';
     const safeId = `${taskId}-subtask-${index}`;
-    return `<p class="input-label"><input class="checkbox" type="checkbox" id="${safeId}" data-value="${index}"
-     onchange="toggleSubtaskState('${taskId}', ${index}, this.checked)" ${checked}>
-   <label class="dialog-task-card-checkbox-label" for="${safeId}">${description}</label></p>`;
+    return readonlySubtaskItemTemplate(safeId, index, checked, description, taskId);
 };
 
 /**
