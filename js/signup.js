@@ -50,7 +50,7 @@ signupForm.addEventListener("submit", async (event) => {
         await showSuccessDialog("successDialog");
         goBack();
     } catch (error) {
-        console.error(error);
+        return;
     }
 });
 
